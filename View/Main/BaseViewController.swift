@@ -10,11 +10,39 @@ import UIKit
 
 class BaseViewController: UIViewController {
 
+    var newNavigationBarBackgroundView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: kScreenWidth, height: kStatusBarHeight + kNavigationBarHeight))
+    var newNavigationBar: UINavigationBar = UINavigationBar(frame: CGRect(x: 0.0, y: kStatusBarHeight, width: kScreenWidth, height: kNavigationBarHeight))
+    var newNavigationItem: UINavigationItem = UINavigationItem()
+    
+    override var title: String?{
+        didSet{
+            newNavigationItem.title = title
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
+        setUI()
+    }
+    
+    func setUI() -> Void {
         view.backgroundColor = .white
+        addNewNavigationBar()
+    }
+    
+    func addNewNavigationBar() -> Void {
+        //添加导航背景
+        newNavigationBarBackgroundView.backgroundColor = UIColor.orange
+        view.addSubview(newNavigationBarBackgroundView)
+        
+        //去掉自带的灰色背景
+        newNavigationBar.barTintColor = UIColor.orange
+        //去掉边框
+        newNavigationBar.shadowImage = UIImage()
+        
+        newNavigationBar.items = [newNavigationItem]
+        newNavigationBarBackgroundView.addSubview(newNavigationBar)
     }
 
     override func didReceiveMemoryWarning() {

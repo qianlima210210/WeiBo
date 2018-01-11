@@ -27,7 +27,6 @@
 
 /* Begin PBXFileReference section */
 		E90094C12004BD1500B20928 /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
-		E90094C32004DBD100B20928 /* BYViewMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BYViewMacro.h; sourceTree = "<group>"; };
 		E90094C92005C13C00B20928 /* ViewConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewConstant.swift; sourceTree = "<group>"; };
 		E90094E02006F99400B20928 /* DemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoViewController.swift; sourceTree = "<group>"; };
 		E9584ABB200397860001A0E4 /* WeiBo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeiBo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -84,7 +83,6 @@
 			isa = PBXGroup;
 			children = (
 				E90094C92005C13C00B20928 /* ViewConstant.swift */,
-				E90094C32004DBD100B20928 /* BYViewMacro.h */,
 				E9C562EC2004B41100B7F6DE /* 应用常规尺寸.jpg */,
 				E9C562D82004683100B7F6DE /* InfoPlist.strings */,
 				E9584ABE200397860001A0E4 /* AppDelegate.swift */,

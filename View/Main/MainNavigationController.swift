@@ -14,6 +14,7 @@ class MainNavigationController: UINavigationController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        navigationBar.isHidden = true
     }
 
     override func didReceiveMemoryWarning() {
