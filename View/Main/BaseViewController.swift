@@ -10,10 +10,15 @@ import UIKit
 
 class BaseViewController: UIViewController {
 
+    //新导航栏背景，将来会上下移动
     var newNavigationBarBackgroundView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: kScreenWidth, height: kStatusBarHeight + kNavigationBarHeight))
+    //新导航栏
     var newNavigationBar: UINavigationBar = UINavigationBar(frame: CGRect(x: 0.0, y: kStatusBarHeight, width: kScreenWidth, height: kNavigationBarHeight))
+    
+    //新导航项
     var newNavigationItem: UINavigationItem = UINavigationItem()
     
+    //重写标题
     override var title: String?{
         didSet{
             newNavigationItem.title = title
@@ -31,15 +36,21 @@ class BaseViewController: UIViewController {
         addNewNavigationBar()
     }
     
+    
+    /// 添加新导航栏
     func addNewNavigationBar() -> Void {
         //添加导航背景
-        newNavigationBarBackgroundView.backgroundColor = UIColor.orange
+        newNavigationBarBackgroundView.backgroundColor = UIColor.white
         view.addSubview(newNavigationBarBackgroundView)
         
         //去掉自带的灰色背景
-        newNavigationBar.barTintColor = UIColor.orange
+        newNavigationBar.barTintColor = UIColor.white
         //去掉边框
-        newNavigationBar.shadowImage = UIImage()
+        //newNavigationBar.shadowImage = UIImage()
+        
+        //设置导航标题属性
+        newNavigationBar.titleTextAttributes = [NSAttributedStringKey.font : UIFont.boldSystemFont(ofSize: 18),
+                                                NSAttributedStringKey.foregroundColor : UIColor.black]
         
         newNavigationBar.items = [newNavigationItem]
         newNavigationBarBackgroundView.addSubview(newNavigationBar)

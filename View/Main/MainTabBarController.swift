@@ -26,9 +26,12 @@ class MainTabBarController: UITabBarController {
         //KVC实质是修改了系统的_tabBar
         self.setValue(tabBar, forKey: "tabBar")
         
+        //设置tabBar盛放的视图控制器
         self.setViewControllers()
     }
 
+    
+    /// 设置tabBar盛放的视图控制器
     func setViewControllers() -> Void {
         let homePageVC = HomePageViewController()
         homePageVC.title = "首页"

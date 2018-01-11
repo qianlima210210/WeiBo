@@ -14,16 +14,17 @@ class HomePageViewController: BaseViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        newNavigationItem.leftBarButtonItem = UIBarButtonItem(title: "好友", target: self, action: #selector(friendsBtnClicked(sender:)))
     }
 
+    @objc func friendsBtnClicked(sender: UIBarButtonItem) -> Void {
+        let vc = DemoViewController()
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        let vc = DemoViewController()
-        navigationController?.pushViewController(vc, animated: true)
     }
 
     /*
