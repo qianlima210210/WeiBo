@@ -1,0 +1,37 @@
+应用名本地化
+1、清空PROJECT---Localizations
+2、工程目录下创建文件夹，命名为en.lproj
+3、添加InfoPlist.strings文件，去除当前引用
+4、将InfoPlist.strings放入en.lproj文件内，添加InfoPlist.strings到工程
+5、你会发现PROJECT---Localizations下有English语言了，且InfoPlist.strings可以展开、缩放
+6、点击加号添加其他语言，展开InfoPlist.strings，有对应项，PROJECT---Localizations下也有对应项
+7、为每种语言编写CFBundleDisplayName = "WeiBo";
+
+应用内字符串的本地化
+1、添加Localizable.strings文件
+2、点击它，点击右边的Localize...
+3、选择English，点击Localize
+4、点击Localizable.strings，将其他语言勾选上
+5、为每种语言编写TestKey = "test";
+6、应用内使用NSLocalizedString("TestKey", comment: "")获取字符串
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+重写override func pushViewController(_ viewController: UIViewController, animated: Bool)时应注意的地方：
+
+override func pushViewController(_ viewController: UIViewController, animated: Bool) {
+if viewControllers.count > 0 {
+viewController.hidesBottomBarWhenPushed = true
+}
+super.pushViewController(viewController, animated: animated)
+}
+
+hidesBottomBarWhenPushed的设置一定放在pushViewController之前
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
