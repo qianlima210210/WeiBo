@@ -47,15 +47,16 @@ class TabBar: UITabBar {
         
         //添加首页按钮
         homepageBtn.tag = 1
+        homepageBtn.contentMode = .scaleAspectFit
         homepageBtn.setImage(#imageLiteral(resourceName: "tabbar_icon_home_normal"), for: .normal)
         homepageBtn.setImage(#imageLiteral(resourceName: "tabbar_icon_home_pressed"), for: .highlighted)
         homepageBtn.setImage(#imageLiteral(resourceName: "tabbar_icon_home_pressed"), for: .selected)
-        homepageBtn.contentMode = .center
         homepageBtn.addTarget(self, action: #selector(btnClick(sender:)), for: .touchUpInside)
         btnsBackgroundView.addSubview(homepageBtn)
         
         //添加消息按钮
         msgBtn.tag = 2
+        msgBtn.contentMode = .scaleAspectFit
         msgBtn.setImage(#imageLiteral(resourceName: "tabbar_icon_msg_normal"), for: .normal)
         msgBtn.setImage(#imageLiteral(resourceName: "tabbar_icon_msg_pressed"), for: .selected)
         msgBtn.setImage(#imageLiteral(resourceName: "tabbar_icon_msg_pressed"), for: .highlighted)
@@ -64,6 +65,7 @@ class TabBar: UITabBar {
         
         //添加中间按钮
         centerBtn.tag = 3
+        centerBtn.contentMode = .scaleAspectFit
         centerBtn.setImage(#imageLiteral(resourceName: "tabbar_middle_normal"), for: .normal)
         centerBtn.setImage(#imageLiteral(resourceName: "tabbar_middle_normal"), for: .selected)
         centerBtn.setImage(#imageLiteral(resourceName: "tabbar_middle_normal"), for: .highlighted)
@@ -73,6 +75,7 @@ class TabBar: UITabBar {
         
         //添加发现按钮
         discoveryBtn.tag = 4
+        discoveryBtn.contentMode = .scaleAspectFit
         discoveryBtn.setImage(#imageLiteral(resourceName: "tabbar_icon_discovery_normal"), for: .normal)
         discoveryBtn.setImage(#imageLiteral(resourceName: "tabbar_icon_discovery_pressed"), for: .selected)
         discoveryBtn.setImage(#imageLiteral(resourceName: "tabbar_icon_discovery_pressed"), for: .highlighted)
@@ -81,6 +84,7 @@ class TabBar: UITabBar {
         
         //添加我的按钮
         myBtn.tag = 5
+        myBtn.contentMode = .scaleAspectFit
         myBtn.setImage(#imageLiteral(resourceName: "tabbar_icon_my_normal"), for: .normal)
         myBtn.setImage(#imageLiteral(resourceName: "tabbar_icon_my_pressed"), for: .selected)
         myBtn.setImage(#imageLiteral(resourceName: "tabbar_icon_my_pressed"), for: .highlighted)
@@ -119,21 +123,13 @@ class TabBar: UITabBar {
         btnsBackgroundView.frame = bounds
         
         //中间按钮位置
-        if FiveEightInch {
-            let offset = (centerBtn.bounds.height - kBYTabBarHeight + kBottomSafeAreaHeight) / CGFloat(2)
-            centerBtn.center = CGPoint(x: bounds.width / CGFloat(2), y: (bounds.height - kBottomSafeAreaHeight) / CGFloat(2) - offset)
-        }else{
-            let offset = (centerBtn.bounds.height - kBYTabBarHeight) / CGFloat(2)
-            centerBtn.center = CGPoint(x: bounds.width / CGFloat(2), y: bounds.height / CGFloat(2) - offset)
-        }
+        let offset = (centerBtn.bounds.height - kTabBarHeight() + kBottomSafeAreaHeight()) / CGFloat(2)
+        centerBtn.center = CGPoint(x: bounds.width / CGFloat(2), y: (bounds.height - kBottomSafeAreaHeight()) / CGFloat(2) - offset)
         
         //依次调整其他按钮位置
         let widthOfCenter = centerBtn.bounds.width
-        let btnWidth = (bounds.width - centerBtn.bounds.width) / CGFloat(4)
-        var btnHeight: CGFloat = bounds.height
-        if FiveEightInch {
-            btnHeight  = btnHeight - kBottomSafeAreaHeight
-        }
+        let btnWidth = (bounds.width - widthOfCenter) / CGFloat(4)
+        let btnHeight: CGFloat = bounds.height - kBottomSafeAreaHeight()
         
         homepageBtn.frame = CGRect(x: 0.0, y: 0.0, width: btnWidth, height: btnHeight)
         

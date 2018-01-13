@@ -15,17 +15,6 @@ class DemoViewController: BaseViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
-        if let count = navigationController?.viewControllers.count {
-            title = "\(count)"
-        }
-        
-        newNavigationItem.rightBarButtonItem = UIBarButtonItem(title: "下一个", target: self, action: #selector(nextClicked(sender:)))
-    }
-    
-    @objc func nextClicked(sender: UIButton) -> Void {
-        let vc = DemoViewController()
-        navigationController?.pushViewController(vc, animated: true)
     }
 
     override func didReceiveMemoryWarning() {
