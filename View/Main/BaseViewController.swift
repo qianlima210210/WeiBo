@@ -65,12 +65,17 @@ class BaseViewController: UIViewController {
         
     }
 
-    //屏幕旋转时调整
+    //MARK: 屏幕旋转时调整
     override func viewWillLayoutSubviews() {
         topConstraint_NNB_NNBBV.constant = kStatusBarHeight()
         heightConstraint_NNB_NNBBV.constant = -kStatusBarHeight()
         
         heightConstraint_NNBBV_V.constant = kStatusBarHeight() + kNavigationBarHeight()
+    }
+    
+    //MARK: 指定状态栏风格
+    override var preferredStatusBarStyle: UIStatusBarStyle{
+        return .lightContent
     }
     
     override func didReceiveMemoryWarning() {

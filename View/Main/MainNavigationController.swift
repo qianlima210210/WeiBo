@@ -30,6 +30,10 @@ class MainNavigationController: UINavigationController {
         super.pushViewController(viewController, animated: animated)
     }
 
+    override var childViewControllerForStatusBarStyle: UIViewController?{
+        return self.topViewController
+    }
+    
     /*
     // MARK: - Navigation
 
