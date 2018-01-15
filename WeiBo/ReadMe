@@ -64,6 +64,55 @@ return self.topViewController;
 则参考上面的讲解。
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
+对于导航栏，基类仅仅提供newNavigationBar空的UIView，每个视图控制拥有的导航栏，自己添加;后期如果发现有公共的可以在基类中统一设置；
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+消除系统日志：if we're in the real pre-commit handler we can't actually add any new fences due to CA restriction
+in your Xcode:
+Click on your active scheme name right next to the Stop button
+Click on Edit Scheme....
+in Run (Debug)-->select the Arguments tab
+in Environment Variables click +
+add variable: OS_ACTIVITY_MODE = disable
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

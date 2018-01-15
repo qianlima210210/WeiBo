@@ -14,6 +14,7 @@ class HomePageViewController: BaseViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        setNavigationTitle(titlte: "首页")
     }
     
     override func didReceiveMemoryWarning() {

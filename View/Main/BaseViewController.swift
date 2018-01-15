@@ -22,6 +22,9 @@ class BaseViewController: UIViewController {
     //在设备旋转时，新导航条背景和试图控制器视图之间需要修改的约束(NNBBV_V是newNavigationBarBackgroundView和view的首拼缩写)
     var heightConstraint_NNBBV_V = NSLayoutConstraint()
     
+    //导航标题栏frame: CGRect(x: 0, y: 0, width: kScreenWidth(), height: kNavigationBarHeight())
+    var navigationTitleLab = UILabel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -64,13 +67,59 @@ class BaseViewController: UIViewController {
         newNavigationBarBackgroundView.addConstraints([heightConstraint_NNBBV_V])
         
     }
+    
+    //MARK: 设置导航标题
+    func setNavigationTitle(titlte: String) {
+        
+        navigationTitleLab.text = title
+        navigationTitleLab.font = UIFont.boldSystemFont(ofSize: 17)
+        navigationTitleLab.textColor = .white
+        navigationTitleLab.textAlignment = .center
+        
+        //为navigationTitleLab及其父视图newNavigationBar添加约束
+        navigationTitleLab.translatesAutoresizingMaskIntoConstraints = false
+        newNavigationBar.addSubview(navigationTitleLab)
+        
+        let leftConstraint_NTL_NNB = NSLayoutConstraint(item: navigationTitleLab, attribute: .left, relatedBy: .equal, toItem: newNavigationBar, attribute: .left, multiplier: 1.0, constant: 0.0)
+        let topConstraint_NTL_NNB = NSLayoutConstraint(item: navigationTitleLab, attribute: .top, relatedBy: .equal, toItem: newNavigationBar, attribute: .top, multiplier: 1.0, constant: 0.0)
+        let widthConstraint_NTL_NNB = NSLayoutConstraint(item: navigationTitleLab, attribute: .width, relatedBy: .equal, toItem: newNavigationBar, attribute: .width, multiplier: 1.0, constant: 0.0)
+        let heightConstraint_NTL_NNB = NSLayoutConstraint(item: navigationTitleLab, attribute: .height, relatedBy: .equal, toItem: newNavigationBar, attribute: .height, multiplier: 1.0, constant: 0.0)
+        
+        newNavigationBar.addConstraints([leftConstraint_NTL_NNB, topConstraint_NTL_NNB, widthConstraint_NTL_NNB, heightConstraint_NTL_NNB])
+    }
 
+    //MARK: 添加常规导航项：左边按钮，中间标题，右边按钮
+    func addNoromalNavigationItems(leftImage: UIImage, leftTarget: Any?, leftAction: Selector,
+                                   titlte: String,
+                                   rightImage: UIImage, rightTarget: Any?, rightAction: Selector) -> Void {
+        let leftMargin = 10.0
+        let topMargin = 7.0
+        
+        let leftBtun = UIButton(frame: CGRect(x: leftMargin, y: topMargin, width: 30, height: 30))
+        leftBtun.setImage(leftImage, for: .normal)
+        leftBtun.addTarget(leftTarget, action: leftAction, for: .touchUpInside)
+        newNavigationBar.addSubview(leftBtun)
+        
+        let titleLab = UILabel(frame: CGRect(x: 40, y: 0, width: kScreenWidth() - 40 * 2, height: kNavigationBarHeight()))
+        titleLab.text = title
+        titleLab.textColor = .white
+        titleLab.textAlignment = .center
+        newNavigationBar.addSubview(titleLab)
+        
+        let rightBtun = UIButton(frame: CGRect(x: Double(40.0 + titleLab.bounds.width), y: topMargin, width: 30.0, height: 30.0))
+        rightBtun.setImage(rightImage, for: .normal)
+        rightBtun.addTarget(rightTarget, action: rightAction, for: .touchUpInside)
+        newNavigationBar.addSubview(rightBtun)
+    }
+    
     //MARK: 屏幕旋转时调整
     override func viewWillLayoutSubviews() {
         topConstraint_NNB_NNBBV.constant = kStatusBarHeight()
         heightConstraint_NNB_NNBBV.constant = -kStatusBarHeight()
-        
         heightConstraint_NNBBV_V.constant = kStatusBarHeight() + kNavigationBarHeight()
+        
+        //navigationTitleLab.frame = CGRect(x: 0, y: 0, width: kScreenWidth(), height: kNavigationBarHeight())
+        
     }
     
     //MARK: 指定状态栏风格
