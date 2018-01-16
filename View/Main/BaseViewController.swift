@@ -22,8 +22,12 @@ class BaseViewController: UIViewController {
     //在设备旋转时，新导航条背景和试图控制器视图之间需要修改的约束(NNBBV_V是newNavigationBarBackgroundView和view的首拼缩写)
     var heightConstraint_NNBBV_V = NSLayoutConstraint()
     
-    //导航标题栏frame: CGRect(x: 0, y: 0, width: kScreenWidth(), height: kNavigationBarHeight())
+    //导航标题栏
     var navigationTitleLab = UILabel()
+    
+    //表格视图
+    var tableView = UITableView()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,9 +38,39 @@ class BaseViewController: UIViewController {
     func setUI() -> Void {
         view.backgroundColor = .white
         addNewNavigationBar()
+        addTableView()
     }
     
+    //MARK: 屏幕旋转时调整
+    override func viewWillLayoutSubviews() {
+        topConstraint_NNB_NNBBV.constant = kStatusBarHeight()
+        heightConstraint_NNB_NNBBV.constant = -kStatusBarHeight()
+        heightConstraint_NNBBV_V.constant = kStatusBarHeight() + kNavigationBarHeight()
+    }
     
+    //MARK: 指定状态栏风格
+    override var preferredStatusBarStyle: UIStatusBarStyle{
+        return .lightContent
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+
+    /*
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+    }
+    */
+}
+
+extension BaseViewController{
     //MARK: 添加新导航栏
     func addNewNavigationBar() -> Void {
         newNavigationBarBackgroundView.backgroundColor = UIColor.orange
@@ -87,7 +121,7 @@ class BaseViewController: UIViewController {
         
         newNavigationBar.addConstraints([leftConstraint_NTL_NNB, topConstraint_NTL_NNB, widthConstraint_NTL_NNB, heightConstraint_NTL_NNB])
     }
-
+    
     //MARK: 添加常规导航项：左边按钮，中间标题，右边按钮
     func addNoromalNavigationItems(leftImage: UIImage, leftTarget: Any?, leftAction: Selector,
                                    titlte: String,
@@ -112,36 +146,34 @@ class BaseViewController: UIViewController {
         newNavigationBar.addSubview(rightBtun)
     }
     
-    //MARK: 屏幕旋转时调整
-    override func viewWillLayoutSubviews() {
-        topConstraint_NNB_NNBBV.constant = kStatusBarHeight()
-        heightConstraint_NNB_NNBBV.constant = -kStatusBarHeight()
-        heightConstraint_NNBBV_V.constant = kStatusBarHeight() + kNavigationBarHeight()
+    //MARK: 添加表格视图
+    func addTableView() -> Void {
+        tableView.separatorStyle = .none
         
-        //navigationTitleLab.frame = CGRect(x: 0, y: 0, width: kScreenWidth(), height: kNavigationBarHeight())
+        tableView.dataSource = self
+        tableView.delegate = self
         
+        //为tableView及其父视图view添加约束
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(tableView)
+        
+        let leftConstraint_TV_V = NSLayoutConstraint(item: tableView, attribute: .left, relatedBy: .equal, toItem: view, attribute: .left, multiplier: 1.0, constant: 0.0)
+        let topConstraint_TV_V = NSLayoutConstraint(item: tableView, attribute: .top, relatedBy: .equal, toItem: newNavigationBarBackgroundView, attribute: .bottom, multiplier: 1.0, constant: 0.0)
+        let widthConstraint_TV_V = NSLayoutConstraint(item: tableView, attribute: .width, relatedBy: .equal, toItem: view, attribute: .width, multiplier: 1.0, constant: 0.0)
+        let bottomConstraint_TV_V = NSLayoutConstraint(item: tableView, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1.0, constant: 0.0)
+        
+        view.addConstraints([leftConstraint_TV_V, topConstraint_TV_V, widthConstraint_TV_V, bottomConstraint_TV_V])
     }
-    
-    //MARK: 指定状态栏风格
-    override var preferredStatusBarStyle: UIStatusBarStyle{
-        return .lightContent
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
+}
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+extension BaseViewController : UITableViewDataSource, UITableViewDelegate{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
+        return 0
     }
-    */
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
+        return UITableViewCell()
+    }
 }
 
 
