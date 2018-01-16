@@ -20,6 +20,7 @@ class HomePageViewController: BaseViewController {
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
     }
     
+    //重写父类的加载
     override func loadData() {
         for i in 0..<20 {
             dataList.insert(i.description, at: 0)
