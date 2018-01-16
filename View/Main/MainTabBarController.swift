@@ -34,27 +34,27 @@ class MainTabBarController: UITabBarController {
     /// 设置tabBar盛放的视图控制器
     func setViewControllers() -> Void {
         let homePageVC = HomePageViewController()
-        homePageVC.title = "首页"
         let homePageNav = MainNavigationController(rootViewController: homePageVC)
         
         let msgVC = MessageViewController()
-        msgVC.title = "消息"
         let msgNav = MainNavigationController(rootViewController: msgVC)
         
         let middleVC = BaseViewController()
         let middleNav = MainNavigationController(rootViewController: middleVC)
         
         let discoveryVC = DiscoveryViewController()
-        discoveryVC.title = "发现"
         let discoveryNav = MainNavigationController(rootViewController: discoveryVC)
         
         let profileVC = ProfileViewController()
-        profileVC.title = "我"
         let profileNav = MainNavigationController(rootViewController: profileVC)
         
         let controllers = [homePageNav, msgNav, middleNav, discoveryNav, profileNav]
         viewControllers = controllers
         
+    }
+    
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask{
+        return .portrait
     }
     
 }

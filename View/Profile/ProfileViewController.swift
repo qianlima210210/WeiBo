@@ -14,6 +14,7 @@ class ProfileViewController: BaseViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        setNavigationTitle(title: "个人")
     }
 
     override func didReceiveMemoryWarning() {

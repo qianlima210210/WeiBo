@@ -9,12 +9,21 @@
 import UIKit
 
 class HomePageViewController: BaseViewController {
-
+    let reuseIdentifier = "reuseIdentifier"
+    var dataList = [String]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        setNavigationTitle(titlte: "首页")
+        setNavigationTitle(title: "首页")
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
+    }
+    
+    override func loadData() {
+        for i in 0..<20 {
+            dataList.insert(i.description, at: 0)
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -33,3 +42,17 @@ class HomePageViewController: BaseViewController {
     */
 
 }
+
+extension HomePageViewController{
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return dataList.count
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath)
+        cell.textLabel?.text = dataList[indexPath.row]
+        
+        return cell
+    }
+}
+

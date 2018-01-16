@@ -33,12 +33,19 @@ class BaseViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         setUI()
+        loadData()
     }
     
+    //MARK: 设置界面
     func setUI() -> Void {
         view.backgroundColor = .white
         addNewNavigationBar()
         addTableView()
+    }
+    
+    //MARK: 加载数据
+    func loadData() -> Void {
+        
     }
     
     //MARK: 屏幕旋转时调整
@@ -70,6 +77,7 @@ class BaseViewController: UIViewController {
     */
 }
 
+//MARK: BaseViewController分类：基于UI
 extension BaseViewController{
     //MARK: 添加新导航栏
     func addNewNavigationBar() -> Void {
@@ -103,7 +111,7 @@ extension BaseViewController{
     }
     
     //MARK: 设置导航标题
-    func setNavigationTitle(titlte: String) {
+    func setNavigationTitle(title: String) {
         
         navigationTitleLab.text = title
         navigationTitleLab.font = UIFont.boldSystemFont(ofSize: 17)
@@ -166,6 +174,7 @@ extension BaseViewController{
     }
 }
 
+//MARK: BaseViewController分类：基于视图表格
 extension BaseViewController : UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         return 0

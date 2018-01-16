@@ -14,6 +14,7 @@ class DiscoveryViewController: BaseViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        setNavigationTitle(title: "发现")
     }
 
     override func didReceiveMemoryWarning() {
