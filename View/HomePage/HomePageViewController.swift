@@ -22,8 +22,17 @@ class HomePageViewController: BaseViewController {
     
     //重写父类的加载
     override func loadData() {
-        for i in 0..<20 {
-            dataList.insert(i.description, at: 0)
+        //1
+        print("请求数据\(Date())")
+        //2
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
+            print("加载数据\(Date())")
+            for i in 0..<20 {
+                self.dataList.insert(i.description, at: 0)
+            }
+            
+            self.tableView.reloadData()
+            self.refreshCtl.endRefreshing()
         }
     }
     

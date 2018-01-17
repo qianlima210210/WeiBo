@@ -28,6 +28,9 @@ class BaseViewController: UIViewController {
     //表格视图
     var tableView = UITableView()
     
+    //刷新控件
+    var refreshCtl = UIRefreshControl()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,7 +46,7 @@ class BaseViewController: UIViewController {
         addTableView()
     }
     
-    //MARK: 加载数据
+    //MARK: 加载数据，基类只定义，子类去重写
     func loadData() -> Void {
         
     }
@@ -171,10 +174,18 @@ extension BaseViewController{
         let bottomConstraint_TV_V = NSLayoutConstraint(item: tableView, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1.0, constant: 0.0)
         
         view.addConstraints([leftConstraint_TV_V, topConstraint_TV_V, widthConstraint_TV_V, bottomConstraint_TV_V])
+        
+        //为tableView添加刷新控件
+        tableView.addSubview(refreshCtl)
+        refreshCtl.addTarget(self, action: #selector(refresh(sender:)), for: .valueChanged)
+    }
+    
+    @objc func refresh(sender: UIRefreshControl) -> Void {
+        loadData()
     }
 }
 
-//MARK: BaseViewController分类：基于视图表格
+//MARK: BaseViewController分类：基于视图表格，子类去重写
 extension BaseViewController : UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         return 0
