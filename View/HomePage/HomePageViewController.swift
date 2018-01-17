@@ -22,9 +22,9 @@ class HomePageViewController: BaseViewController {
     
     //重写父类的加载
     override func loadData() {
-        //3.2
+        //3.1
         print("请求数据\(Date())")
-        //4.2
+        //4.1
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
             print("加载数据\(Date())")
             for i in 0..<20 {
