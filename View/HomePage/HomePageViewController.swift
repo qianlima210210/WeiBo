@@ -22,15 +22,19 @@ class HomePageViewController: BaseViewController {
     
     //重写父类的加载
     override func loadData() {
-        //3.1
         print("请求数据\(Date())")
-        //4.1
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3) {
             print("加载数据\(Date())")
-            for i in 0..<20 {
-                self.dataList.insert(i.description, at: 0)
+            for i in 0..<3 {
+                if self.isPullUp{
+                    self.dataList.insert("pullUp" + i.description, at: 0)
+                }else{
+                    self.dataList.insert(i.description, at: 0)
+                }
+                
             }
             
+            self.isPullUp = false
             self.tableView.reloadData()
             self.refreshCtl.endRefreshing()
         }
@@ -53,6 +57,7 @@ class HomePageViewController: BaseViewController {
 
 }
 
+//extension不能重写本类方法，但是能重写本类中的已extension的方法
 extension HomePageViewController{
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataList.count

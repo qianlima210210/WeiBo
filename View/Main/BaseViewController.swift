@@ -30,25 +30,37 @@ class BaseViewController: UIViewController {
     
     //刷新控件
     var refreshCtl = UIRefreshControl()
+    var isPullUp = false
+    
+    //是否登录
+    var isLogon = true
+    
+    //游客视图
+    var visitorView = UIView()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         setUI()
-        loadData()
     }
     
     //MARK: 设置界面
     func setUI() -> Void {
         view.backgroundColor = .white
         addNewNavigationBar()
-        addTableView()
+        
+        if isLogon {
+            addTableView()
+        }else{
+            addVisitorView()
+        }
+        
     }
     
     //MARK: 加载数据，基类只定义，子类去重写
     func loadData() -> Void {
-        
+        refreshCtl.endRefreshing()
     }
     
     //MARK: 屏幕旋转时调整
@@ -183,6 +195,22 @@ extension BaseViewController{
     @objc func refresh(sender: UIRefreshControl) -> Void {
         loadData()
     }
+    
+    //MARK:添加游客视图
+    func addVisitorView(){
+        visitorView.backgroundColor = UIColor.blue
+        
+        //为visitorView及其父视图view添加约束
+        visitorView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(visitorView)
+        
+        let leftConstraint_VV_V = NSLayoutConstraint(item: visitorView, attribute: .left, relatedBy: .equal, toItem: view, attribute: .left, multiplier: 1.0, constant: 0.0)
+        let topConstraint_VV_V = NSLayoutConstraint(item: visitorView, attribute: .top, relatedBy: .equal, toItem: newNavigationBarBackgroundView, attribute: .bottom, multiplier: 1.0, constant: 0.0)
+        let widthConstraint_VV_V = NSLayoutConstraint(item: visitorView, attribute: .width, relatedBy: .equal, toItem: view, attribute: .width, multiplier: 1.0, constant: 0.0)
+        let bottomConstraint_VV_V = NSLayoutConstraint(item: visitorView, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1.0, constant: 0.0)
+        
+        view.addConstraints([leftConstraint_VV_V, topConstraint_VV_V, widthConstraint_VV_V, bottomConstraint_VV_V])
+    }
 }
 
 //MARK: BaseViewController分类：基于视图表格，子类去重写
@@ -193,6 +221,19 @@ extension BaseViewController : UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         return UITableViewCell()
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let sectionMaxIndex = tableView.numberOfSections - 1
+        let rowMaxIndex = tableView.numberOfRows(inSection: sectionMaxIndex) - 1
+        
+        //最后一个secton的最后一个row将要显示时，并且当前内容的高度 >= tableView的高度
+        if indexPath.row == rowMaxIndex && isPullUp == false && tableView.contentSize.height >= tableView.bounds.height{
+            print("willDisplay cell \(indexPath.row), \(rowMaxIndex)")
+            isPullUp = true
+            loadData()
+        }
+        
     }
 }
 
