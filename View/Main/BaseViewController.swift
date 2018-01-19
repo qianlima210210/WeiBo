@@ -33,7 +33,7 @@ class BaseViewController: UIViewController {
     var isPullUp = false
     
     //是否登录
-    var isLogon = true
+    var isLogon = false
     
     //游客视图
     var visitorView = UIView()
@@ -198,7 +198,6 @@ extension BaseViewController{
     
     //MARK:添加游客视图
     func addVisitorView(){
-        visitorView.backgroundColor = UIColor.blue
         
         //为visitorView及其父视图view添加约束
         visitorView.translatesAutoresizingMaskIntoConstraints = false
@@ -210,6 +209,21 @@ extension BaseViewController{
         let bottomConstraint_VV_V = NSLayoutConstraint(item: visitorView, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1.0, constant: 0.0)
         
         view.addConstraints([leftConstraint_VV_V, topConstraint_VV_V, widthConstraint_VV_V, bottomConstraint_VV_V])
+        
+        //添加游客视图上的内容视图
+        let contentOfVisitorView = ContentOfVisitorView()
+        contentOfVisitorView.setAllCtlSize(noteText: "欢迎使用博客，写点有意思的东西看，关注你所感兴趣得东西。赶紧注册登录吧！")
+        //为contentOfVisitorView及其父视图visitorView添加约束
+        contentOfVisitorView.translatesAutoresizingMaskIntoConstraints = false
+        visitorView.addSubview(contentOfVisitorView)
+        
+        let layout_contentOfVisitorView = ["contentOfVisitorView":contentOfVisitorView,"visitorView":visitorView]
+        let constraintsY = NSLayoutConstraint.constraints(withVisualFormat: "V:|-[contentOfVisitorView]-|", options: NSLayoutFormatOptions.alignAllCenterY, metrics: nil, views: layout_contentOfVisitorView)
+        let constraintsX = NSLayoutConstraint.constraints(withVisualFormat: "H:|-[contentOfVisitorView]-|", options: NSLayoutFormatOptions.alignAllCenterX, metrics: nil, views: layout_contentOfVisitorView)
+        
+        visitorView.addConstraints(constraintsX)
+        visitorView.addConstraints(constraintsY)
+        
     }
 }
 

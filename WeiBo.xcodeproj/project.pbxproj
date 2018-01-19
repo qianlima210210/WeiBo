@@ -10,9 +10,10 @@
 		E90094C22004BD1500B20928 /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90094C12004BD1500B20928 /* TabBar.swift */; };
 		E90094CA2005C13C00B20928 /* ViewConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90094C92005C13C00B20928 /* ViewConstant.swift */; };
 		E90094E12006F99400B20928 /* DemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90094E02006F99400B20928 /* DemoViewController.swift */; };
-		E90094E420074F8B00B20928 /* UIBarButtonItem+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90094E320074F8B00B20928 /* UIBarButtonItem+Extension.swift */; };
+		E90094E420074F8B00B20928 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90094E320074F8B00B20928 /* String+Extension.swift */; };
 		E90094ED20084D1000B20928 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = E90094EC20084D1000B20928 /* Podfile */; };
 		E90094EF200859BC00B20928 /* Swift.gitignore in Resources */ = {isa = PBXBuildFile; fileRef = E90094EE200859BC00B20928 /* Swift.gitignore */; };
+		E92664352011C35A00ABF849 /* ContentOfVisitorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92664342011C35A00ABF849 /* ContentOfVisitorView.swift */; };
 		E9584ABF200397860001A0E4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9584ABE200397860001A0E4 /* AppDelegate.swift */; };
 		E9584AC6200397860001A0E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9584AC5200397860001A0E4 /* Assets.xcassets */; };
 		E9584ADE2003A0A10001A0E4 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9584ADD2003A0A10001A0E4 /* MainTabBarController.swift */; };
@@ -36,9 +37,10 @@
 		E90094C12004BD1500B20928 /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
 		E90094C92005C13C00B20928 /* ViewConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewConstant.swift; sourceTree = "<group>"; };
 		E90094E02006F99400B20928 /* DemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoViewController.swift; sourceTree = "<group>"; };
-		E90094E320074F8B00B20928 /* UIBarButtonItem+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+Extension.swift"; sourceTree = "<group>"; };
+		E90094E320074F8B00B20928 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		E90094EC20084D1000B20928 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		E90094EE200859BC00B20928 /* Swift.gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Swift.gitignore; sourceTree = SOURCE_ROOT; };
+		E92664342011C35A00ABF849 /* ContentOfVisitorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentOfVisitorView.swift; sourceTree = "<group>"; };
 		E9584ABB200397860001A0E4 /* WeiBo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeiBo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9584ABE200397860001A0E4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E9584AC5200397860001A0E4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -90,7 +92,7 @@
 		E90094E220074F7400B20928 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				E90094E320074F8B00B20928 /* UIBarButtonItem+Extension.swift */,
+				E90094E320074F8B00B20928 /* String+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -178,6 +180,7 @@
 				E9584ADF2003A0C00001A0E4 /* MainNavigationController.swift */,
 				E9584AE12003A0DB0001A0E4 /* BaseViewController.swift */,
 				E90094C12004BD1500B20928 /* TabBar.swift */,
+				E92664342011C35A00ABF849 /* ContentOfVisitorView.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -350,9 +353,10 @@
 			files = (
 				E90094C22004BD1500B20928 /* TabBar.swift in Sources */,
 				E9584AE22003A0DB0001A0E4 /* BaseViewController.swift in Sources */,
+				E92664352011C35A00ABF849 /* ContentOfVisitorView.swift in Sources */,
 				E9584ABF200397860001A0E4 /* AppDelegate.swift in Sources */,
 				E9584AE02003A0C00001A0E4 /* MainNavigationController.swift in Sources */,
-				E90094E420074F8B00B20928 /* UIBarButtonItem+Extension.swift in Sources */,
+				E90094E420074F8B00B20928 /* String+Extension.swift in Sources */,
 				E9C562E92004AD6A00B7F6DE /* DiscoveryViewController.swift in Sources */,
 				E90094E12006F99400B20928 /* DemoViewController.swift in Sources */,
 				E9C562E52004AD4500B7F6DE /* HomePageViewController.swift in Sources */,

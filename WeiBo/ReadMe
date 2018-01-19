@@ -77,8 +77,24 @@ add variable: OS_ACTIVITY_MODE = disable
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
+自动布局，水平居中+垂直居中
+
+//添加游客视图上的内容视图
+let contentOfVisitorView = ContentOfVisitorView()
+contentOfVisitorView.setAllCtlSize(noteText: "欢迎使用博客，写点有意思的东西看，关注你所感兴趣得东西。赶紧注册登录吧！")
+//为contentOfVisitorView及其父视图visitorView添加约束
+contentOfVisitorView.translatesAutoresizingMaskIntoConstraints = false
+visitorView.addSubview(contentOfVisitorView)
+
+let layout_contentOfVisitorView = ["contentOfVisitorView":contentOfVisitorView,"visitorView":visitorView]
+let constraintsY = NSLayoutConstraint.constraints(withVisualFormat: "V:|-[contentOfVisitorView]-|", options: NSLayoutFormatOptions.alignAllCenterY, metrics: nil, views: layout_contentOfVisitorView)
+let constraintsX = NSLayoutConstraint.constraints(withVisualFormat: "H:|-[contentOfVisitorView]-|", options: NSLayoutFormatOptions.alignAllCenterX, metrics: nil, views: layout_contentOfVisitorView)
+
+visitorView.addConstraints(constraintsX)
+visitorView.addConstraints(constraintsY)
 
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 
