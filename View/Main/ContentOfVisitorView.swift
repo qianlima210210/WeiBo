@@ -16,7 +16,7 @@ class ContentOfVisitorView: UIView {
     var logonBtn = UIButton()
     
     let margin: CGFloat = 20        //控件上下、左右间隔
-    let selfWidth: CGFloat = 320    //本身宽度
+    var selfWidth: CGFloat = 0    //本身宽度
     
     var sizeOfNoteImageView: CGSize = CGSize()
     var sizeOfNoteLabel: CGSize = CGSize()
@@ -26,6 +26,9 @@ class ContentOfVisitorView: UIView {
     
     
     override init(frame: CGRect) {
+        
+        selfWidth = kScreenWidth() - margin * 2
+        
         sizeOfNoteImageView = CGSize(width: 200, height: 100)
         sizeOfNoteLabel = CGSize(width: selfWidth, height: 0)
         sizeOfRegisterBtn = CGSize(width: (selfWidth - margin) / 2, height: 40)
@@ -90,7 +93,7 @@ class ContentOfVisitorView: UIView {
         super.layoutSubviews()
         
         //设置自身size
-        self.bounds.size = CGSize(width: 320, height: sizeOfNoteImageView.height + margin + sizeOfNoteLabel.height + margin + sizeOfRegisterBtn.height)
+        self.bounds.size = CGSize(width: selfWidth, height: sizeOfNoteImageView.height + margin + sizeOfNoteLabel.height + margin + sizeOfRegisterBtn.height)
         
         //设置坐标
         noteImageView.frame.origin.x = (selfWidth - sizeOfNoteImageView.width) / 2
