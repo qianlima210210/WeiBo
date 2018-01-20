@@ -9,22 +9,63 @@
 import UIKit
 
 class ContentOfVisitorView: UIView {
-
+    let margin: CGFloat = 20        //控件上下、左右间隔
+    var selfWidth: CGFloat = 0      //本身宽度
+    var selfHeight: CGFloat = 0     //本身高度
+    
     var noteImageView = UIImageView()
     var noteLabel = UILabel()
     var registerBtn = UIButton()
     var logonBtn = UIButton()
-    
-    let margin: CGFloat = 20        //控件上下、左右间隔
-    var selfWidth: CGFloat = 0    //本身宽度
-    var selfHeight: CGFloat = 0     //本身高度
     
     var sizeOfNoteImageView: CGSize = CGSize()
     var sizeOfNoteLabel: CGSize = CGSize()
     var sizeOfRegisterBtn: CGSize = CGSize()
     var sizeOfLogonBtn: CGSize = CGSize()
     
-    
+    var noteInfoDic:[String:Any]? {
+        didSet{
+            guard let image = noteInfoDic?["image"] as? UIImage,
+                let noteText = noteInfoDic?["noteText"] as? String else{
+                    return
+            }
+            
+            //设置提示图片
+            noteImageView.image = image
+            
+            //先设置sizeOfNoteLabel的属性字符串
+            let range = NSRange(location: 0, length: noteText.count)
+            let style = NSMutableParagraphStyle()
+            style.lineSpacing = 5.0;
+            let attributes:[NSAttributedStringKey:NSObject] = [NSAttributedStringKey.font:noteLabel.font, NSAttributedStringKey.paragraphStyle:style]
+            
+            let attributeStr = NSMutableAttributedString(string: noteText)
+            attributeStr.addAttributes(attributes, range: range)
+            noteLabel.attributedText = attributeStr
+            noteLabel.numberOfLines = 0
+            noteLabel.textAlignment = .center
+            
+            //获取上面属性字符串高度
+            sizeOfNoteLabel.height = noteText.heightOfString(size: sizeOfNoteLabel, font: noteLabel.font, lineSpacing: 5.0)
+            
+            registerBtn.setTitle("注册", for: .normal)
+            registerBtn.setTitleColor(UIColor.orange, for: .normal)
+            registerBtn.setTitleColor(UIColor.black, for: .highlighted)
+            registerBtn.backgroundColor = UIColor.white
+            registerBtn.layer.borderColor = UIColor.gray.cgColor
+            registerBtn.layer.borderWidth = 1.0
+            
+            logonBtn.setTitle("登录", for: .normal)
+            logonBtn.setTitleColor(UIColor.orange, for: .normal)
+            logonBtn.setTitleColor(UIColor.black, for: .highlighted)
+            logonBtn.backgroundColor = UIColor.white
+            logonBtn.layer.borderColor = UIColor.gray.cgColor
+            logonBtn.layer.borderWidth = 1.0
+            
+            //设置自身高度
+            selfHeight = sizeOfNoteImageView.height + margin + sizeOfNoteLabel.height + margin + sizeOfRegisterBtn.height
+        }
+    }
     
     override init(frame: CGRect) {
         
@@ -43,44 +84,10 @@ class ContentOfVisitorView: UIView {
         super.init(coder: aDecoder)
     }
     
-    /// 设置所有控件高度
-    ///
-    /// - Parameter noteText: 提示文本
-    func setAllCtlSize(noteText: String) -> Void {
-        //设置提示图片
-        noteImageView.image = #imageLiteral(resourceName: "visitorView_blank_default")
+    /// 设置提示信息
+    func setNoteInfoDic(noteInfoDictionary:[String:Any]?) -> Void {
         
-        //先设置sizeOfNoteLabel的属性字符串
-        let range = NSRange(location: 0, length: noteText.count)
-        let style = NSMutableParagraphStyle()
-        style.lineSpacing = 5.0;
-        let attributes:[NSAttributedStringKey:NSObject] = [NSAttributedStringKey.font:noteLabel.font, NSAttributedStringKey.paragraphStyle:style]
-        
-        let attributeStr = NSMutableAttributedString(string: noteText)
-        attributeStr.addAttributes(attributes, range: range)
-        noteLabel.attributedText = attributeStr
-        noteLabel.numberOfLines = 0
-        noteLabel.textAlignment = .center
-        
-        //获取上面属性字符串高度
-        sizeOfNoteLabel.height = noteText.heightOfString(size: sizeOfNoteLabel, font: noteLabel.font, lineSpacing: 5.0)
-        
-        registerBtn.setTitle("注册", for: .normal)
-        registerBtn.setTitleColor(UIColor.orange, for: .normal)
-        registerBtn.setTitleColor(UIColor.black, for: .highlighted)
-        registerBtn.backgroundColor = UIColor.white
-        registerBtn.layer.borderColor = UIColor.gray.cgColor
-        registerBtn.layer.borderWidth = 2.0
-        
-        logonBtn.setTitle("登录", for: .normal)
-        logonBtn.setTitleColor(UIColor.orange, for: .normal)
-        logonBtn.setTitleColor(UIColor.black, for: .highlighted)
-        logonBtn.backgroundColor = UIColor.white
-        logonBtn.layer.borderColor = UIColor.gray.cgColor
-        logonBtn.layer.borderWidth = 2.0
-        
-        //设置自身高度
-        selfHeight = sizeOfNoteImageView.height + margin + sizeOfNoteLabel.height + margin + sizeOfRegisterBtn.height
+        noteInfoDic = noteInfoDictionary
         
         //添加控件
         self.addSubview(noteImageView)
@@ -92,10 +99,6 @@ class ContentOfVisitorView: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        
-        //设置自身size
-        //self.bounds.size = CGSize(width: selfWidth, height: sizeOfNoteImageView.height + margin + sizeOfNoteLabel.height + margin + sizeOfRegisterBtn.height)
-        self.backgroundColor = UIColor.blue
         
         //设置坐标
         noteImageView.frame.origin.x = (selfWidth - sizeOfNoteImageView.width) / 2

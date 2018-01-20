@@ -37,6 +37,8 @@ class BaseViewController: UIViewController {
     
     //游客视图
     var visitorView = UIView()
+    //游客提示信息
+    var noteInfoDictionary:[String:Any]?
     
     
     override func viewDidLoad() {
@@ -212,7 +214,8 @@ extension BaseViewController{
         
         //添加游客视图上的内容视图
         let contentOfVisitorView = ContentOfVisitorView()
-        contentOfVisitorView.setAllCtlSize(noteText: "欢迎使用博客，写点有意思的东西看，关注你所感兴趣得东西。赶紧注册登录吧！")
+        contentOfVisitorView.setNoteInfoDic(noteInfoDictionary: noteInfoDictionary)
+        
         //为contentOfVisitorView及其父视图visitorView添加约束
         contentOfVisitorView.translatesAutoresizingMaskIntoConstraints = false
         visitorView.addSubview(contentOfVisitorView)
