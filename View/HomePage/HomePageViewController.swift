@@ -25,7 +25,7 @@ class HomePageViewController: BaseViewController {
         print("请求数据\(Date())")
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3) {
             print("加载数据\(Date())")
-            for i in 0..<3 {
+            for i in 0..<20 {
                 if self.isPullUp{
                     self.dataList.insert("pullUp" + i.description, at: 0)
                 }else{

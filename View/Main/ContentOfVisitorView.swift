@@ -17,6 +17,7 @@ class ContentOfVisitorView: UIView {
     
     let margin: CGFloat = 20        //控件上下、左右间隔
     var selfWidth: CGFloat = 0    //本身宽度
+    var selfHeight: CGFloat = 0     //本身高度
     
     var sizeOfNoteImageView: CGSize = CGSize()
     var sizeOfNoteLabel: CGSize = CGSize()
@@ -78,8 +79,8 @@ class ContentOfVisitorView: UIView {
         logonBtn.layer.borderColor = UIColor.gray.cgColor
         logonBtn.layer.borderWidth = 2.0
         
-        //设置自身size
-//        self.bounds.size = CGSize(width: selfWidth, height: sizeOfNoteImageView.height + margin + sizeOfNoteLabel.height + margin + sizeOfRegisterBtn.height)
+        //设置自身高度
+        selfHeight = sizeOfNoteImageView.height + margin + sizeOfNoteLabel.height + margin + sizeOfRegisterBtn.height
         
         //添加控件
         self.addSubview(noteImageView)
@@ -93,7 +94,8 @@ class ContentOfVisitorView: UIView {
         super.layoutSubviews()
         
         //设置自身size
-        self.bounds.size = CGSize(width: selfWidth, height: sizeOfNoteImageView.height + margin + sizeOfNoteLabel.height + margin + sizeOfRegisterBtn.height)
+        //self.bounds.size = CGSize(width: selfWidth, height: sizeOfNoteImageView.height + margin + sizeOfNoteLabel.height + margin + sizeOfRegisterBtn.height)
+        self.backgroundColor = UIColor.blue
         
         //设置坐标
         noteImageView.frame.origin.x = (selfWidth - sizeOfNoteImageView.width) / 2

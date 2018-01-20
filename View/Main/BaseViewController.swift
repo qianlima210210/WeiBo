@@ -183,7 +183,7 @@ extension BaseViewController{
         let leftConstraint_TV_V = NSLayoutConstraint(item: tableView, attribute: .left, relatedBy: .equal, toItem: view, attribute: .left, multiplier: 1.0, constant: 0.0)
         let topConstraint_TV_V = NSLayoutConstraint(item: tableView, attribute: .top, relatedBy: .equal, toItem: newNavigationBarBackgroundView, attribute: .bottom, multiplier: 1.0, constant: 0.0)
         let widthConstraint_TV_V = NSLayoutConstraint(item: tableView, attribute: .width, relatedBy: .equal, toItem: view, attribute: .width, multiplier: 1.0, constant: 0.0)
-        let bottomConstraint_TV_V = NSLayoutConstraint(item: tableView, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1.0, constant: 0.0)
+        let bottomConstraint_TV_V = NSLayoutConstraint(item: tableView, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1.0, constant: -kTabBarHeight())
         
         view.addConstraints([leftConstraint_TV_V, topConstraint_TV_V, widthConstraint_TV_V, bottomConstraint_TV_V])
         
@@ -206,7 +206,7 @@ extension BaseViewController{
         let leftConstraint_VV_V = NSLayoutConstraint(item: visitorView, attribute: .left, relatedBy: .equal, toItem: view, attribute: .left, multiplier: 1.0, constant: 0.0)
         let topConstraint_VV_V = NSLayoutConstraint(item: visitorView, attribute: .top, relatedBy: .equal, toItem: newNavigationBarBackgroundView, attribute: .bottom, multiplier: 1.0, constant: 0.0)
         let widthConstraint_VV_V = NSLayoutConstraint(item: visitorView, attribute: .width, relatedBy: .equal, toItem: view, attribute: .width, multiplier: 1.0, constant: 0.0)
-        let bottomConstraint_VV_V = NSLayoutConstraint(item: visitorView, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1.0, constant: 0.0)
+        let bottomConstraint_VV_V = NSLayoutConstraint(item: visitorView, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1.0, constant: -kTabBarHeight())
         
         view.addConstraints([leftConstraint_VV_V, topConstraint_VV_V, widthConstraint_VV_V, bottomConstraint_VV_V])
         
@@ -217,12 +217,15 @@ extension BaseViewController{
         contentOfVisitorView.translatesAutoresizingMaskIntoConstraints = false
         visitorView.addSubview(contentOfVisitorView)
         
-        let layout_contentOfVisitorView = ["contentOfVisitorView":contentOfVisitorView,"visitorView":visitorView]
-        let constraintsY = NSLayoutConstraint.constraints(withVisualFormat: "V:|-[contentOfVisitorView]-|", options: NSLayoutFormatOptions.alignAllCenterY, metrics: nil, views: layout_contentOfVisitorView)
-        let constraintsX = NSLayoutConstraint.constraints(withVisualFormat: "H:|-[contentOfVisitorView]-|", options: NSLayoutFormatOptions.alignAllCenterX, metrics: nil, views: layout_contentOfVisitorView)
+        let leadingConstraint_COVV_VV = NSLayoutConstraint(item: contentOfVisitorView, attribute: .leading, relatedBy: .equal, toItem: visitorView, attribute: .leading, multiplier: 1.0, constant: contentOfVisitorView.margin)
+        let trailingConstraint_COVV_VV = NSLayoutConstraint(item: contentOfVisitorView, attribute: .trailing, relatedBy: .equal, toItem: visitorView, attribute: .trailing, multiplier: 1.0, constant: -contentOfVisitorView.margin)
         
-        visitorView.addConstraints(constraintsX)
-        visitorView.addConstraints(constraintsY)
+        let topConstraint_COVV_VV = NSLayoutConstraint(item: contentOfVisitorView, attribute: .top, relatedBy: .equal, toItem: visitorView, attribute: .top, multiplier: 1.0, constant: (kScreenHeight() - kStatusBarHeight() - kNavigationBarHeight() - kTabBarHeight() - contentOfVisitorView.selfHeight) / 2)
+        let bottomConstraint_COVV_VV = NSLayoutConstraint(item: contentOfVisitorView, attribute: .bottom, relatedBy: .equal, toItem: visitorView, attribute: .bottom, multiplier: 1.0, constant: -(kScreenHeight() - kStatusBarHeight() - kNavigationBarHeight() - kTabBarHeight() - contentOfVisitorView.selfHeight) / 2)
+        
+
+        visitorView.addConstraints([leadingConstraint_COVV_VV, trailingConstraint_COVV_VV, topConstraint_COVV_VV, bottomConstraint_COVV_VV])
+
         
     }
 }
