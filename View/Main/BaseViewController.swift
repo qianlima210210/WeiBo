@@ -131,7 +131,7 @@ extension BaseViewController{
     func setNavigationTitle(title: String) {
         
         navigationTitleLab.text = title
-        navigationTitleLab.font = UIFont.boldSystemFont(ofSize: 17)
+        navigationTitleLab.font = UIFont.boldSystemFont(ofSize: 20)
         navigationTitleLab.textColor = .white
         navigationTitleLab.textAlignment = .center
         
@@ -226,10 +226,11 @@ extension BaseViewController{
         let topConstraint_COVV_VV = NSLayoutConstraint(item: contentOfVisitorView, attribute: .top, relatedBy: .equal, toItem: visitorView, attribute: .top, multiplier: 1.0, constant: (kScreenHeight() - kStatusBarHeight() - kNavigationBarHeight() - kTabBarHeight() - contentOfVisitorView.selfHeight) / 2)
         let bottomConstraint_COVV_VV = NSLayoutConstraint(item: contentOfVisitorView, attribute: .bottom, relatedBy: .equal, toItem: visitorView, attribute: .bottom, multiplier: 1.0, constant: -(kScreenHeight() - kStatusBarHeight() - kNavigationBarHeight() - kTabBarHeight() - contentOfVisitorView.selfHeight) / 2)
         
-
         visitorView.addConstraints([leadingConstraint_COVV_VV, trailingConstraint_COVV_VV, topConstraint_COVV_VV, bottomConstraint_COVV_VV])
 
-        
+        //为contentOfVisitorView中的按钮添加响应函数
+        contentOfVisitorView.registerBtn.addTarget(self, action: #selector(register), for: .touchUpInside)
+        contentOfVisitorView.logonBtn.addTarget(self, action: #selector(logon), for: .touchUpInside)
     }
 }
 
@@ -254,6 +255,17 @@ extension BaseViewController : UITableViewDataSource, UITableViewDelegate{
             loadData()
         }
         
+    }
+}
+
+//MARK: 设置按钮响应
+extension BaseViewController{
+    @objc func register(){
+        print("register")
+    }
+    
+    @objc func logon(){
+        print("logon")
     }
 }
 
