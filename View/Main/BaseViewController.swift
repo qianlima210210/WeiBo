@@ -33,7 +33,7 @@ class BaseViewController: UIViewController {
     var isPullUp = false
     
     //是否登录
-    var isLogon = false
+    var isLogon = true
     
     //游客视图
     var visitorView = UIView()

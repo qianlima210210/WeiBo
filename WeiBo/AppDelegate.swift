@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import BYStatistics
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,16 +17,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        //1、创建窗口，设置其白色背景
+        //1-1、创建窗口，设置其白色背景
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.backgroundColor = .white
         
-        //2、创建根视图控制器，将其作为窗口的根视图控制器
+        //1-2、创建根视图控制器，将其作为窗口的根视图控制器
         let mainTabBarController = MainTabBarController()
         window?.rootViewController = mainTabBarController
         
-        //3、设置主窗口、显示
+        //1-3、设置主窗口、显示
         window?.makeKeyAndVisible()
+        
+        //2-1添加统计
+//        BYStat.setDebugEnabled(true)
+//        BYStat.start(withAppkey: "maqianli", channel: "AppStore")
         
         return true
     }

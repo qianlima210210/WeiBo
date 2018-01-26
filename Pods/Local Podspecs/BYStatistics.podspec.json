@@ -1,0 +1,33 @@
+{
+  "name": "BYStatistics",
+  "version": "1.0.0",
+  "summary": "a statistics data sdk",
+  "description": "BYHL apps statistics data of apps.",
+  "homepage": "http://git.iqdnet.cn/qding-app/app-analytics-ios",
+  "license": "MIT",
+  "authors": {
+    "zhouchangyin": "zhouchangyin@qding.me"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source": {
+    "git": "http://git.iqdnet.cn/qding-app/app-analytics-ios",
+    "tag": "1.0.0"
+  },
+  "source_files": "BYStat/BYStatFiles/**/*.{h,m}",
+  "public_header_files": "BYStat/BYStatFiles/BYStat.h",
+  "resource_bundles": {
+    "BYStat": [
+      "BYStat/BYStatFiles/**/*.{js,a}"
+    ]
+  },
+  "frameworks": [
+    "UIKit",
+    "Foundation",
+    "SystemConfiguration",
+    "WebKit",
+    "CoreTelephony"
+  ],
+  "requires_arc": true
+}
