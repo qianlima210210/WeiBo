@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Alamofire
 
 class HomePageViewController: BaseViewController {
     let reuseIdentifier = "reuseIdentifier"
@@ -23,13 +22,8 @@ class HomePageViewController: BaseViewController {
     
     //重写父类的加载
     override func loadData() {
-        let url = "https://api.weibo.com/2/statuses/home_timeline.json"
-        let parameters: [String: Any] = ["access_token":"2.002SUK3C_5a2KB590f93dd00DxZ3yD"]
-        let dispatchQueue = DispatchQueue.main
-        
-        
-        request(url, method: .get, parameters: parameters, headers:["Name":"maqianli"]).responseJSON(queue: dispatchQueue, options: .allowFragments) { (dataResponse:DataResponse<Any>) in
-            
+        HttpEngine.httpEngine.statusesList { (list, error) in
+            print(list ?? "")
         }
         
         print("请求数据\(Date())")
