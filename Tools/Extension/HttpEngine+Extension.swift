@@ -21,8 +21,11 @@ extension HttpEngine {
             if error != nil {
                 completionHandler(nil, error)
             }else{
-                let result = ((value as? [String: Any])?["statuses"]) as? [[String:Any]]
-                completionHandler(result, error)
+                if let result = ((value as? [String: Any])?["statuses"]) as? [[String:Any]]{
+                    completionHandler(result, error)
+                }else{
+                    completionHandler(nil, WBCustomNSError(errorDescription: "返回信息格式有问题"))
+                }
             }
         }
     }

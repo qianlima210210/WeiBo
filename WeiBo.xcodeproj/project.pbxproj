@@ -22,6 +22,8 @@
 		E97AB236201AFCBE00E5C267 /* HttpEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97AB235201AFCBE00E5C267 /* HttpEngine.swift */; };
 		E97AB238201B65AE00E5C267 /* HttpEngine+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97AB237201B65AE00E5C267 /* HttpEngine+Extension.swift */; };
 		E97AB23A201B75C600E5C267 /* WBCustomNSError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97AB239201B75C600E5C267 /* WBCustomNSError.swift */; };
+		E97AB23C201CAAFD00E5C267 /* WBStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97AB23B201CAAFD00E5C267 /* WBStatus.swift */; };
+		E97AB23E201CB20500E5C267 /* WBStatusListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97AB23D201CB20500E5C267 /* WBStatusListViewModel.swift */; };
 		E9C562DA2004683100B7F6DE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E9C562D82004683100B7F6DE /* InfoPlist.strings */; };
 		E9C562DE20046BB000B7F6DE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E9C562E020046BB000B7F6DE /* Localizable.strings */; };
 		E9C562E320046D6E00B7F6DE /* ReadMe in Resources */ = {isa = PBXBuildFile; fileRef = E9C562E220046D6E00B7F6DE /* ReadMe */; };
@@ -54,6 +56,8 @@
 		E97AB235201AFCBE00E5C267 /* HttpEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpEngine.swift; sourceTree = "<group>"; };
 		E97AB237201B65AE00E5C267 /* HttpEngine+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HttpEngine+Extension.swift"; sourceTree = "<group>"; };
 		E97AB239201B75C600E5C267 /* WBCustomNSError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBCustomNSError.swift; sourceTree = "<group>"; };
+		E97AB23B201CAAFD00E5C267 /* WBStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBStatus.swift; sourceTree = "<group>"; };
+		E97AB23D201CB20500E5C267 /* WBStatusListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBStatusListViewModel.swift; sourceTree = "<group>"; };
 		E9C562D92004683100B7F6DE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		E9C562DB2004684100B7F6DE /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		E9C562DF20046BB000B7F6DE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -196,6 +200,7 @@
 		E9584AD920039FFA0001A0E4 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				E97AB23B201CAAFD00E5C267 /* WBStatus.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -203,6 +208,7 @@
 		E9584ADA20039FFA0001A0E4 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				E97AB23D201CB20500E5C267 /* WBStatusListViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -349,18 +355,18 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-WeiBo/Pods-WeiBo-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/BYStatistics/BYStatistics.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+				"${BUILT_PRODUCTS_DIR}/YYModel/YYModel.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BYStatistics.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YYModel.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -381,11 +387,13 @@
 				E9584ABF200397860001A0E4 /* AppDelegate.swift in Sources */,
 				E9584AE02003A0C00001A0E4 /* MainNavigationController.swift in Sources */,
 				E97AB238201B65AE00E5C267 /* HttpEngine+Extension.swift in Sources */,
+				E97AB23C201CAAFD00E5C267 /* WBStatus.swift in Sources */,
 				E90094E420074F8B00B20928 /* String+Extension.swift in Sources */,
 				E9C562E92004AD6A00B7F6DE /* DiscoveryViewController.swift in Sources */,
 				E90094E12006F99400B20928 /* DemoViewController.swift in Sources */,
 				E9C562E52004AD4500B7F6DE /* HomePageViewController.swift in Sources */,
 				E90094CA2005C13C00B20928 /* ViewConstant.swift in Sources */,
+				E97AB23E201CB20500E5C267 /* WBStatusListViewModel.swift in Sources */,
 				E9C562E72004AD5C00B7F6DE /* MessageViewController.swift in Sources */,
 				E9C562EB2004AD7700B7F6DE /* ProfileViewController.swift in Sources */,
 				E9584ADE2003A0A10001A0E4 /* MainTabBarController.swift in Sources */,

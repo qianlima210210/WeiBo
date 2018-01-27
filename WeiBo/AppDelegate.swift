@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import BYStatistics
+//import BYStatistics
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

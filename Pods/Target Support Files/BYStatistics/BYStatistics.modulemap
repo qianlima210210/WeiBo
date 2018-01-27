@@ -1,6 +1,0 @@
-framework module BYStatistics {
-  umbrella header "BYStatistics-umbrella.h"
-
-  export *
-  module * { export * }
-}

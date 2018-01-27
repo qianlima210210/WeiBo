@@ -192,6 +192,7 @@ extension BaseViewController{
         //为tableView添加刷新控件
         tableView.addSubview(refreshCtl)
         refreshCtl.addTarget(self, action: #selector(refresh(sender:)), for: .valueChanged)
+        
     }
     
     @objc func refresh(sender: UIRefreshControl) -> Void {

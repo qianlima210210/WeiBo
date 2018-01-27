@@ -8,36 +8,16 @@
 
 import UIKit
 
-class WBCustomNSError: NSObject, CustomNSError {
+class WBCustomNSError: NSObject, Error {
     
-    override init() {
+    var errorDescription = ""
+    
+    init(errorDescription: String) {
+        self.errorDescription = errorDescription
         super.init()
     }
     
-    static func access_token_nil_error() -> WBCustomNSError {
-        return WBCustomNSError()
+    override var description: String{
+        return errorDescription
     }
-    
-    /// The domain of the error.
-    public static var errorDomain: String {
-        get{
-            return "access_token为nil"
-        }
-    }
-    
-    /// The error code within the given domain.
-//    public var errorCode: Int {
-//        get{
-//
-//        }
-//    }
-    
-    /// The user-info dictionary.
-//    public var errorUserInfo: [String : Any] {
-//        get{
-//
-//        }
-//
-//    }
-    
 }
