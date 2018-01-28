@@ -29,7 +29,9 @@ class WBStatusListViewModel {
     ///
     /// - Parameter completion: 完成回调（数据是否成功获取）
     func loadStatus(completion:@escaping (_ isSuccess: Bool)->()) {
-        HttpEngine.httpEngine.statusesList { (value, error) in
+        //since_id：去除数组中第一条微博的ID
+        let since_id = statusList.first?.id ?? 0
+        HttpEngine.httpEngine.statusesList(since_id: since_id) { (value, error) in
             if error == nil{
                 //1、字典转模型
                 guard let list = NSArray.yy_modelArray(with: WBStatus.self, json: value ?? []) as? [WBStatus] else{
@@ -39,7 +41,9 @@ class WBStatusListViewModel {
                 }
                 
                 //2、拼接数据
-                self.statusList += list
+                //-- 下拉刷新，应将返回数据拼接在列表的前面
+                //-- 上拉刷新，应将返回数据拼接在列表的后面
+                self.statusList = list + self.statusList
                 
                 //完成回调
                 completion(true)

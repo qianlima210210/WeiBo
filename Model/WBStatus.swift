@@ -11,10 +11,10 @@ import YYModel
 
 class WBStatus: NSObject {
     
-    //微博ID，是用户ID吗？
-    var id: Int64 = 0
+    //微博ID，每一条微博都会分配一个ID
+    @objc dynamic var id: Int64 = 0
     //微博信息内容
-    var text: String?
+    @objc dynamic var text: String?
     
     override var description: String{
         return yy_modelDescription()

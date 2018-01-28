@@ -10,7 +10,8 @@ import UIKit
 
 class HomePageViewController: BaseViewController {
     let reuseIdentifier = "reuseIdentifier"
-    var dataList = [String]()
+    //列表视图模型
+    var listViewModel = WBStatusListViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,25 +23,11 @@ class HomePageViewController: BaseViewController {
     
     //重写父类的加载
     override func loadData() {
-        HttpEngine.httpEngine.statusesList { (list, error) in
-            print(list ?? "")
-        }
-        
-        print("请求数据\(Date())")
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3) {
-            print("加载数据\(Date())")
-            for i in 0..<20 {
-                if self.isPullUp{
-                    self.dataList.insert("pullUp" + i.description, at: 0)
-                }else{
-                    self.dataList.insert(i.description, at: 0)
-                }
-                
-            }
-            
+        listViewModel.loadStatus { (isSuccess) in
+            print("请求数据结束\(Date())")
             self.isPullUp = false
-            self.tableView.reloadData()
             self.refreshCtl.endRefreshing()
+            self.tableView.reloadData()
         }
     }
     
@@ -64,12 +51,12 @@ class HomePageViewController: BaseViewController {
 //extension不能重写本类方法，但是能重写本类中的已extension的方法
 extension HomePageViewController{
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataList.count
+        return listViewModel.statusList.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath)
-        cell.textLabel?.text = dataList[indexPath.row]
+        cell.textLabel?.text = listViewModel.statusList[indexPath.row].text
         
         return cell
     }
