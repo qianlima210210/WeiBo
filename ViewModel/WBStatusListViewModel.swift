@@ -1,7 +1,7 @@
 //
 //  WBStatusListViewModel.swift
 //  WeiBo
-//
+///Users/qdhl/Documents/WeiBo/View/HomePage
 //  Created by QDHL on 2018/1/27.
 //  Copyright © 2018年 QDHL. All rights reserved.
 //
@@ -28,10 +28,14 @@ class WBStatusListViewModel {
     /// 加载微博列表
     ///
     /// - Parameter completion: 完成回调（数据是否成功获取）
-    func loadStatus(completion:@escaping (_ isSuccess: Bool)->()) {
-        //since_id：去除数组中第一条微博的ID
-        let since_id = statusList.first?.id ?? 0
-        HttpEngine.httpEngine.statusesList(since_id: since_id) { (value, error) in
+    func loadStatus(isPullUp: Bool,completion:@escaping (_ isSuccess: Bool)->()) {
+        //since_id：数组中第一条微博的ID
+        let since_id = isPullUp ?  0 : (statusList.first?.id ?? 0)
+        
+        //max_id：数组中最后一条微博色ID
+        let max_id = isPullUp ? (statusList.last?.id ?? 0) : 0
+        
+        HttpEngine.httpEngine.statusesList(since_id: since_id, max_id: (max_id > 0 ? max_id - 1 : 0)) { (value, error) in
             if error == nil{
                 //1、字典转模型
                 guard let list = NSArray.yy_modelArray(with: WBStatus.self, json: value ?? []) as? [WBStatus] else{
@@ -43,10 +47,17 @@ class WBStatusListViewModel {
                 //2、拼接数据
                 //-- 下拉刷新，应将返回数据拼接在列表的前面
                 //-- 上拉刷新，应将返回数据拼接在列表的后面
-                self.statusList = list + self.statusList
+                if isPullUp {
+                    self.statusList += list
+                }else{
+                    self.statusList = list + self.statusList
+                }
                 
                 //完成回调
                 completion(true)
+            }else{
+                //完成回调
+                completion(false)
             }
         }
     }

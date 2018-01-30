@@ -30,6 +30,7 @@ class BaseViewController: UIViewController {
     
     //刷新控件
     var refreshCtl = UIRefreshControl()
+    var isPullDown = false
     var isPullUp = false
     
     //是否登录
@@ -196,6 +197,11 @@ extension BaseViewController{
     }
     
     @objc func refresh(sender: UIRefreshControl) -> Void {
+        if isPullUp {
+            refreshCtl.endRefreshing()
+            return
+        }
+        isPullDown = true
         loadData()
     }
     
@@ -250,7 +256,7 @@ extension BaseViewController : UITableViewDataSource, UITableViewDelegate{
         let rowMaxIndex = tableView.numberOfRows(inSection: sectionMaxIndex) - 1
         
         //最后一个secton的最后一个row将要显示时，并且当前内容的高度 >= tableView的高度
-        if indexPath.row == rowMaxIndex && isPullUp == false && tableView.contentSize.height >= tableView.bounds.height{
+        if isPullDown == false && isPullUp == false && indexPath.row == rowMaxIndex && tableView.contentSize.height >= tableView.bounds.height{
             print("willDisplay cell \(indexPath.row), \(rowMaxIndex)")
             isPullUp = true
             loadData()

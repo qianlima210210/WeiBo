@@ -23,8 +23,16 @@ class HomePageViewController: BaseViewController {
     
     //重写父类的加载
     override func loadData() {
-        listViewModel.loadStatus { (isSuccess) in
+        if isPullUp {
+            print("上拉前最后一条数据是：" + (listViewModel.statusList.last?.text ?? ""))
+        }else{
+            print("下拉前第一条数据是：" + (listViewModel.statusList.first?.text ?? ""))
+        }
+        
+        
+        listViewModel.loadStatus(isPullUp: isPullUp) { (isSuccess) in
             print("请求数据结束\(Date())")
+            self.isPullDown = false
             self.isPullUp = false
             self.refreshCtl.endRefreshing()
             self.tableView.reloadData()
