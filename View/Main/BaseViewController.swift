@@ -75,6 +75,8 @@ class BaseViewController: UIViewController {
     
     //MARK: 加载数据，基类只定义，子类去重写
     func loadData() -> Void {
+        isPullDown = false
+        isPullUp = false
         refreshCtl.endRefreshing()
     }
     
@@ -274,6 +276,10 @@ extension BaseViewController : UITableViewDataSource, UITableViewDelegate{
             loadData()
         }
         
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("didSelectRowAt")
     }
 }
 
