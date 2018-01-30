@@ -42,7 +42,9 @@ class HomePageViewController: BaseViewController {
             self.isPullDown = false
             self.isPullUp = false
             self.refreshCtl.endRefreshing()
-            self.tableView.reloadData()
+            if isSuccess {
+                self.tableView.reloadData()
+            }
         }
     }
     

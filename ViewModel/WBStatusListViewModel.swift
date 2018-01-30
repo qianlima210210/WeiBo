@@ -21,6 +21,12 @@ import Foundation
 
 /// 微博数据列表视图模型
 class WBStatusListViewModel {
+    
+    //上拉次数上限
+    let pullUpMaxTimes = 3
+    //上拉出错次数
+    var pullUpErrorTimes = 0
+    
     //微博模型列表
     var statusList = [WBStatus]()
     
@@ -29,6 +35,13 @@ class WBStatusListViewModel {
     ///
     /// - Parameter completion: 完成回调（数据是否成功获取）
     func loadStatus(isPullUp: Bool,completion:@escaping (_ isSuccess: Bool)->()) {
+        
+        if isPullUp && pullUpErrorTimes >= pullUpMaxTimes {
+            //完成回调
+            completion(false)
+            return
+        }
+        
         //since_id：数组中第一条微博的ID
         let since_id = isPullUp ?  0 : (statusList.first?.id ?? 0)
         
@@ -53,8 +66,17 @@ class WBStatusListViewModel {
                     self.statusList = list + self.statusList
                 }
                 
-                //完成回调
-                completion(true)
+                //3、判断是否拉倒了数据
+                if isPullUp && list.count == 0{
+                    self.pullUpErrorTimes += 1
+                    
+                    //完成回调
+                    completion(false)
+                }else{
+                    //完成回调
+                    completion(true)
+                }
+                
             }else{
                 //完成回调
                 completion(false)
