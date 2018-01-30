@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Alamofire
 
 //MARK：封装应用中网络请求
 extension HttpEngine {
@@ -24,7 +25,7 @@ extension HttpEngine {
         //组织参数并请求
         let parameters = ["since_id":since_id, "max_id":max_id]
         let url = "https://api.weibo.com/2/statuses/home_timeline.json"
-        dataRequestOfStatusesList = httpRequest(requestKey:"statusesList", url: url, parameters: parameters) { (value: Any?, error: Error?) in
+        dataRequestOfStatusesList = httpRequest(url: url, parameters: parameters) { (value: Any?, error: Error?) in
             if error != nil {
                 completionHandler(nil, error)
             }else{
@@ -45,5 +46,36 @@ extension HttpEngine {
         }
         dataRequestOfStatusesList.cancel()
         self.dataRequestOfStatusesList = nil
+    }
+    
+    
+    /// 获取账号UID
+    func getUID(completionHandler:@escaping (_ dic: [String:Any]?, _ error: Error?)->Void) -> Void {
+        // 取消账号UID请求
+        cancelGetUID()
+        
+        //组织参数并请求
+        let url = "https://api.weibo.com/2/account/get_uid.json"
+        dataRequestOfUID = httpRequest(url: url, method: .get, parameters: nil, encoding: URLEncoding.default, headers: nil, completionHandler: { (value: Any?, error: Error?) in
+            if error != nil {
+                completionHandler(nil, error)
+            }else{
+                if let result = value as? [String:Any] {
+                    completionHandler(result, error)
+                }else{
+                    completionHandler(nil, WBCustomNSError(errorDescription: "返回信息格式有问题"))
+                }
+            }
+        })
+    }
+    
+    
+    /// 取消账号UID请求
+    func cancelGetUID() -> Void {
+        guard let dataRequestOfUID = dataRequestOfStatusesList else{
+            return
+        }
+        dataRequestOfUID.cancel()
+        self.dataRequestOfUID = nil
     }
 }

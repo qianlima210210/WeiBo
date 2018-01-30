@@ -20,13 +20,14 @@ class HttpEngine: NSObject {
     
     static let httpEngine = HttpEngine()
     var access_token: String? = "2.002SUK3C_5a2KB590f93dd00DxZ3yD"
+    var uid: String? = "2159844793"
     
     var dataRequestOfStatusesList: DataRequest?
+    var dataRequestOfUID: DataRequest?
     
     /// 发送http请求
     ///
     /// - Parameters:
-    ///   - requestKey: 请求关键字
     ///   - url: 请求地址
     ///   - method: 请求方式
     ///   - parameters: 请求参数
@@ -34,7 +35,6 @@ class HttpEngine: NSObject {
     ///   - headers: 请求头
     ///   - completionHandler: 请求完成回调（通过对HttpResponse错误是否为nil做第一层的判断，即网络传输层是否正常；第二层是表示服务器理解了本次请求，但是否合法还需通过Status Code和返回的信息判断。）
     func httpRequest(
-        requestKey:String,
         url: String,
         method: HTTPMethod = .get,
         parameters: [String:Any]?,
@@ -51,10 +51,7 @@ class HttpEngine: NSObject {
             return nil
         }
         
-        //为了防止access_token被禁用，需要判断403的次数
-        
-        
-        //添加公共参数
+        //添加请求参数及公共参数
         var mutableParameters = [String: Any]()
         if let parameters = parameters {
             for (key, value) in parameters{
