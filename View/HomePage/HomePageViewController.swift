@@ -21,6 +21,13 @@ class HomePageViewController: BaseViewController {
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        //只有数据为空的情况下，才会自动尝试获取
+        if listViewModel.statusList.count == 0 {
+            super.viewDidAppear(animated)
+        }
+    }
+    
     //重写父类的加载
     override func loadData() {
         if isPullUp {

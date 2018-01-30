@@ -48,6 +48,18 @@ class BaseViewController: UIViewController {
         setUI()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if (refreshCtl.isRefreshing == false && self.tableView.contentOffset.y == 0){
+            UIView.animate(withDuration: 0.25, animations: {
+                self.tableView.contentOffset = CGPoint(x: 0, y: -self.refreshCtl.bounds.height)
+            }, completion: { (finished) in
+                self.refreshCtl.beginRefreshing()
+                self.refreshCtl.sendActions(for: UIControlEvents.valueChanged)
+            })
+        }
+    }
+    
     //MARK: 设置界面
     func setUI() -> Void {
         view.backgroundColor = .white

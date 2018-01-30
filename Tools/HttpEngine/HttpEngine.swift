@@ -51,6 +51,9 @@ class HttpEngine: NSObject {
             return nil
         }
         
+        //为了防止access_token被禁用，需要判断403的次数
+        
+        
         //添加公共参数
         var mutableParameters = [String: Any]()
         if let parameters = parameters {
