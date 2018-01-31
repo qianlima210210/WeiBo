@@ -14,6 +14,7 @@
 		E90094ED20084D1000B20928 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = E90094EC20084D1000B20928 /* Podfile */; };
 		E90094EF200859BC00B20928 /* Swift.gitignore in Resources */ = {isa = PBXBuildFile; fileRef = E90094EE200859BC00B20928 /* Swift.gitignore */; };
 		E92664352011C35A00ABF849 /* ContentOfVisitorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92664342011C35A00ABF849 /* ContentOfVisitorView.swift */; };
+		E946F46F2021B794000341E4 /* UIView+RJBadge.m in Sources */ = {isa = PBXBuildFile; fileRef = E946F46D2021B794000341E4 /* UIView+RJBadge.m */; };
 		E9584ABF200397860001A0E4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9584ABE200397860001A0E4 /* AppDelegate.swift */; };
 		E9584AC6200397860001A0E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9584AC5200397860001A0E4 /* Assets.xcassets */; };
 		E9584ADE2003A0A10001A0E4 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9584ADD2003A0A10001A0E4 /* MainTabBarController.swift */; };
@@ -46,6 +47,10 @@
 		E90094EC20084D1000B20928 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		E90094EE200859BC00B20928 /* Swift.gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Swift.gitignore; sourceTree = SOURCE_ROOT; };
 		E92664342011C35A00ABF849 /* ContentOfVisitorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentOfVisitorView.swift; sourceTree = "<group>"; };
+		E946F46C2021B794000341E4 /* RJBadgeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RJBadgeView.h; sourceTree = "<group>"; };
+		E946F46D2021B794000341E4 /* UIView+RJBadge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+RJBadge.m"; sourceTree = "<group>"; };
+		E946F46E2021B794000341E4 /* UIView+RJBadge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+RJBadge.h"; sourceTree = "<group>"; };
+		E946F4982021B8C9000341E4 /* WeiBo-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WeiBo-Bridging-Header.h"; sourceTree = "<group>"; };
 		E9584ABB200397860001A0E4 /* WeiBo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeiBo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9584ABE200397860001A0E4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E9584AC5200397860001A0E4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -109,6 +114,16 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
+		E946F46B2021B794000341E4 /* RJBadgeView */ = {
+			isa = PBXGroup;
+			children = (
+				E946F46C2021B794000341E4 /* RJBadgeView.h */,
+				E946F46D2021B794000341E4 /* UIView+RJBadge.m */,
+				E946F46E2021B794000341E4 /* UIView+RJBadge.h */,
+			);
+			path = RJBadgeView;
+			sourceTree = "<group>";
+		};
 		E9584AB2200397860001A0E4 = {
 			isa = PBXGroup;
 			children = (
@@ -134,6 +149,7 @@
 		E9584ABD200397860001A0E4 /* WeiBo */ = {
 			isa = PBXGroup;
 			children = (
+				E946F4982021B8C9000341E4 /* WeiBo-Bridging-Header.h */,
 				E90094EE200859BC00B20928 /* Swift.gitignore */,
 				E90094EC20084D1000B20928 /* Podfile */,
 				E90094C92005C13C00B20928 /* ViewConstant.swift */,
@@ -216,6 +232,7 @@
 		E9584ADB20039FFA0001A0E4 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				E946F46B2021B794000341E4 /* RJBadgeView */,
 				E97AB234201AD12100E5C267 /* HttpEngine */,
 				E90094E220074F7400B20928 /* Extension */,
 			);
@@ -392,6 +409,7 @@
 				E9C562E92004AD6A00B7F6DE /* DiscoveryViewController.swift in Sources */,
 				E90094E12006F99400B20928 /* DemoViewController.swift in Sources */,
 				E9C562E52004AD4500B7F6DE /* HomePageViewController.swift in Sources */,
+				E946F46F2021B794000341E4 /* UIView+RJBadge.m in Sources */,
 				E90094CA2005C13C00B20928 /* ViewConstant.swift in Sources */,
 				E97AB23E201CB20500E5C267 /* WBStatusListViewModel.swift in Sources */,
 				E9C562E72004AD5C00B7F6DE /* MessageViewController.swift in Sources */,
@@ -547,7 +565,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.liezhong.housing;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "WeiBo/WeiBo-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -567,7 +585,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.liezhong.housing;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "WeiBo/WeiBo-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
