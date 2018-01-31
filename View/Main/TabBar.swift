@@ -106,7 +106,6 @@ class TabBar: UITabBar {
                 selectedBtn.isSelected = false
                 sender.isSelected = true
                 self.selectedBtn = sender
-                
             }
         }
         
@@ -158,7 +157,20 @@ class TabBar: UITabBar {
         return super.hitTest(point, with: event)
     }
     
-    
+    /// 设置徽标
+    ///
+    /// - Parameter count: 未读消息条数
+    func setBadgeForHomepageBtn(count: Int) -> Void {
+        let widthOfCenter = centerBtn.bounds.width
+        let btnWidth = (bounds.width - widthOfCenter) / CGFloat(4)
+        
+        if count > 0{
+            homepageBtn.badgeOffset = CGPoint(x: -btnWidth / 2 + 30 / 2, y: 8)
+            homepageBtn.showBadge(withValue: UInt(count))
+        }else{
+            homepageBtn.hideBadge()
+        }
+    }
     
     
     

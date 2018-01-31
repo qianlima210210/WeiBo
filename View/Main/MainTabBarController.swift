@@ -9,6 +9,8 @@
 import UIKit
 
 class MainTabBarController: UITabBarController {
+    let new_tabBar = TabBar()
+    var timer: Timer?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,20 +19,16 @@ class MainTabBarController: UITabBarController {
         
         replaceSystemTabBar()
 
-        //TODO: 测试未读请求
-        HttpEngine.httpEngine.getUnread_count { (count, error) in
-            if error == nil {
-                print("为读数：\(count ?? 0)")
-            }
-        }
+        //启动定时器
+        startTimer()
+
     }
 
     
     /// 替换系统tabBar
     func replaceSystemTabBar() -> Void {
-        //创建自己的tabbar，然后用KVC将自己的tabbar和系统的tabBar替换下
-        let tabBar = TabBar()
-        tabBar.setBtnClickCallback { (index: Int) in
+        //用KVC将自己的tabbar和系统的tabBar替换下
+        new_tabBar.setBtnClickCallback { (index: Int) in
             print("index: \(index)")
             if index != 3 {
                 self.selectedIndex = index - 1
@@ -38,7 +36,7 @@ class MainTabBarController: UITabBarController {
         }
         
         //KVC实质是修改了系统的_tabBar
-        self.setValue(tabBar, forKey: "tabBar")
+        self.setValue(new_tabBar, forKey: "tabBar")
         
         //设置tabBar盛放的视图控制器
         self.setViewControllers()
@@ -70,8 +68,32 @@ class MainTabBarController: UITabBarController {
         
     }
     
+    ///启动定时器
+    func startTimer() -> Void {
+        timer = Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(onTimer), userInfo: nil, repeats: true)
+    }
+    
+    @objc func onTimer() -> Void {
+        HttpEngine.httpEngine.getUnread_count { (count, error) in
+            if error == nil {
+                print("未读数：\(count ?? 0)")
+                self.new_tabBar.setBadgeForHomepageBtn(count: count ?? 0)
+            }else{
+                print(error.debugDescription)
+            }
+        }
+    }
+    
+    func cancelTimer() -> Void {
+        timer?.invalidate()
+        timer = nil
+    }
+    
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask{
         return .portrait
     }
     
+    deinit {
+        cancelTimer()
+    }
 }
