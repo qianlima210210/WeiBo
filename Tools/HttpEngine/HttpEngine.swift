@@ -24,6 +24,7 @@ class HttpEngine: NSObject {
     
     var dataRequestOfStatusesList: DataRequest?
     var dataRequestOfUID: DataRequest?
+    var dataRequestOfUnread_count: DataRequest?
     
     /// 发送http请求
     ///

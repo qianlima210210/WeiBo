@@ -29,6 +29,7 @@ extension HttpEngine {
             if error != nil {
                 completionHandler(nil, error)
             }else{
+                //尝试转成你想要的类型
                 if let result = ((value as? [String: Any])?["statuses"]) as? [[String:Any]]{
                     completionHandler(result, error)
                 }else{
@@ -60,6 +61,7 @@ extension HttpEngine {
             if error != nil {
                 completionHandler(nil, error)
             }else{
+                //尝试转成你想要的类型
                 if let result = value as? [String:Any] {
                     completionHandler(result, error)
                 }else{
@@ -69,7 +71,6 @@ extension HttpEngine {
         })
     }
     
-    
     /// 取消账号UID请求
     func cancelGetUID() -> Void {
         guard let dataRequestOfUID = dataRequestOfStatusesList else{
@@ -78,4 +79,59 @@ extension HttpEngine {
         dataRequestOfUID.cancel()
         self.dataRequestOfUID = nil
     }
+    
+    //获取用户的各种消息未读数
+    func getUnread_count(completionHandler:@escaping (_ count: Int?, _ error: Error?) -> ()) -> Void {
+        //判断uid是否为nil，这种公共参数后期需要整理分类
+        guard let uid = uid else {
+            return
+        }
+        
+        //取消用户的各种消息未读数请求
+        cancelGetUnread_count()
+        
+        //组织参数并请求
+        let parameters = ["uid":uid]
+        let url = "https://rm.api.weibo.com/2/remind/unread_count.json"
+        
+        dataRequestOfUnread_count = httpRequest(url: url, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: nil, completionHandler: { (value: Any?, error: Error?) in
+            if error != nil {
+                completionHandler(nil, error)
+            }else{
+                //尝试转成你想要的类型
+                if let result = (value as? [String:Any])?["status"] as? Int {
+                    completionHandler(result, error)
+                }else{
+                    completionHandler(nil, WBCustomNSError(errorDescription: "返回信息格式有问题"))
+                }
+            }
+        })
+    }
+    
+    //取消用户的各种消息未读数请求
+    func cancelGetUnread_count() -> Void {
+        guard dataRequestOfUnread_count != nil else {
+            return
+        }
+        dataRequestOfUnread_count?.cancel()
+        dataRequestOfUnread_count = nil
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

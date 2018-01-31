@@ -14,6 +14,20 @@ class MainTabBarController: UITabBarController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        replaceSystemTabBar()
+
+        //TODO: 测试未读请求
+        HttpEngine.httpEngine.getUnread_count { (count, error) in
+            if error == nil {
+                print("为读数：\(count ?? 0)")
+            }
+        }
+    }
+
+    
+    /// 替换系统tabBar
+    func replaceSystemTabBar() -> Void {
         //创建自己的tabbar，然后用KVC将自己的tabbar和系统的tabBar替换下
         let tabBar = TabBar()
         tabBar.setBtnClickCallback { (index: Int) in
@@ -29,7 +43,6 @@ class MainTabBarController: UITabBarController {
         //设置tabBar盛放的视图控制器
         self.setViewControllers()
     }
-
     
     /// 设置tabBar盛放的视图控制器
     func setViewControllers() -> Void {
