@@ -10,7 +10,7 @@ import UIKit
 
 class TabBar: UITabBar {
 
-    var btnClickCallback:((Int) ->Void)?
+    var btnClickCallback:((Int, Bool) ->Void)?
     var btnsBackgroundView = UIView()
     
     var homepageBtn = UIButton()
@@ -97,11 +97,13 @@ class TabBar: UITabBar {
     }
     
     @objc func btnClick(sender: UIButton) -> Void {
+        //记录是否在选中状态下，又被点击了。
+        var repeatClick: Bool = false
         
         if let selectedBtn = selectedBtn, sender.tag != 3 {
             
             if selectedBtn == sender {
-                return
+                repeatClick = true
             }else{
                 selectedBtn.isSelected = false
                 sender.isSelected = true
@@ -110,7 +112,7 @@ class TabBar: UITabBar {
         }
         
         if let btnClickCallback = btnClickCallback {
-            btnClickCallback(sender.tag)
+            btnClickCallback(sender.tag, repeatClick)
         }
         
     }
@@ -140,7 +142,7 @@ class TabBar: UITabBar {
     }
     
     
-    func setBtnClickCallback(callback: @escaping (Int) ->Void) -> Void {
+    func setBtnClickCallback(callback: @escaping (Int, Bool) ->Void) -> Void {
         btnClickCallback = callback
     }
     
@@ -170,6 +172,8 @@ class TabBar: UITabBar {
         }else{
             homepageBtn.hideBadge()
         }
+        
+        UIApplication.shared.applicationIconBadgeNumber = count
     }
     
     

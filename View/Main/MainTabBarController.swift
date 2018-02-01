@@ -24,12 +24,17 @@ class MainTabBarController: UITabBarController {
 
     }
 
-    
     /// 替换系统tabBar
     func replaceSystemTabBar() -> Void {
         //用KVC将自己的tabbar和系统的tabBar替换下
-        new_tabBar.setBtnClickCallback { (index: Int) in
+        new_tabBar.setBtnClickCallback { (index: Int, repeatClick: Bool) in
             print("index: \(index)")
+            if repeatClick && index == 1 {
+                //将首页内容滚动到顶部
+                self.scrollTopOfHomePageContent()
+                return
+            }
+            
             if index != 3 {
                 self.selectedIndex = index - 1
             }
@@ -65,7 +70,6 @@ class MainTabBarController: UITabBarController {
         
         let controllers = [homePageNav, msgNav, middleNav, discoveryNav, profileNav]
         viewControllers = controllers
-        
     }
     
     ///启动定时器
@@ -96,4 +100,13 @@ class MainTabBarController: UITabBarController {
     deinit {
         cancelTimer()
     }
+    
+    //将首页内容滚动到顶部
+    func scrollTopOfHomePageContent() -> Void {
+        if let vc = ((self.selectedViewController as? MainNavigationController)?.childViewControllers[0]) as? BaseViewController {
+            vc.tableView.contentOffset = CGPoint(x: 0, y: 0)
+            vc.autoShowRefreshCtl()
+        }
+    }
+    
 }

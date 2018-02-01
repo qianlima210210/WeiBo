@@ -50,14 +50,7 @@ class BaseViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if (refreshCtl.isRefreshing == false && self.tableView.contentOffset.y == 0){
-            UIView.animate(withDuration: 0.25, animations: {
-                self.tableView.contentOffset = CGPoint(x: 0, y: -self.refreshCtl.bounds.height)
-            }, completion: { (finished) in
-                self.refreshCtl.beginRefreshing()
-                self.refreshCtl.sendActions(for: UIControlEvents.valueChanged)
-            })
-        }
+        autoShowRefreshCtl()
     }
     
     //MARK: 设置界面
@@ -217,6 +210,18 @@ extension BaseViewController{
         }
         isPullDown = true
         loadData()
+    }
+    
+    //自动显示刷新控件
+    func autoShowRefreshCtl() -> Void {
+        if (refreshCtl.isRefreshing == false && self.tableView.contentOffset.y == 0){
+            UIView.animate(withDuration: 0.25, animations: {
+                self.tableView.contentOffset = CGPoint(x: 0, y: -self.refreshCtl.bounds.height)
+            }, completion: { (finished) in
+                self.refreshCtl.beginRefreshing()
+                self.refreshCtl.sendActions(for: UIControlEvents.valueChanged)
+            })
+        }
     }
     
     //MARK:添加游客视图
