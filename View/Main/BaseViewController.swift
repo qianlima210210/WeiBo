@@ -292,7 +292,8 @@ extension BaseViewController{
     }
     
     @objc func logon(){
-        print("logon")
+        //发送登录通知
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: logonNotification), object: nil)
     }
 }
 

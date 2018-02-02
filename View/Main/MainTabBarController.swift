@@ -16,12 +16,13 @@ class MainTabBarController: UITabBarController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
         replaceSystemTabBar()
 
         //启动定时器
         startTimer()
 
+        /// 注册通知
+        registerNotification()
     }
 
     /// 替换系统tabBar
@@ -102,6 +103,7 @@ class MainTabBarController: UITabBarController {
     
     deinit {
         cancelTimer()
+        NotificationCenter.default.removeObserver(self)
     }
     
     //将首页内容滚动到顶部
@@ -112,4 +114,18 @@ class MainTabBarController: UITabBarController {
         }
     }
     
+    /// 注册通知
+    func registerNotification() -> Void {
+        NotificationCenter.default.addObserver(self, selector: #selector(receiveLogonNotification(no:)), name: NSNotification.Name(rawValue: logonNotification), object: nil)
+    }
+    
+    @objc func receiveLogonNotification(no: Notification) -> Void {
+        let selectVC = self.selectedViewController
+        let vc = DemoViewController()
+        vc.view.backgroundColor = UIColor.blue
+        
+        selectVC?.present(vc, animated: true, completion: {
+            
+        })
+    }
 }

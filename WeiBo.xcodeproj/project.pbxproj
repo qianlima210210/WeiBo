@@ -33,6 +33,7 @@
 		E9C562E92004AD6A00B7F6DE /* DiscoveryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C562E82004AD6A00B7F6DE /* DiscoveryViewController.swift */; };
 		E9C562EB2004AD7700B7F6DE /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C562EA2004AD7700B7F6DE /* ProfileViewController.swift */; };
 		E9C562ED2004B41200B7F6DE /* 应用常规尺寸.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E9C562EC2004B41100B7F6DE /* 应用常规尺寸.jpg */; };
+		E9D9B787202443E80056BCA3 /* NotificationConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D9B786202443E80056BCA3 /* NotificationConstant.swift */; };
 		F7FA356D787C95851A0DE7A8 /* Pods_WeiBo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFD83F2C9283CD656E4B2E5F /* Pods_WeiBo.framework */; };
 /* End PBXBuildFile section */
 
@@ -73,6 +74,7 @@
 		E9C562E82004AD6A00B7F6DE /* DiscoveryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryViewController.swift; sourceTree = "<group>"; };
 		E9C562EA2004AD7700B7F6DE /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		E9C562EC2004B41100B7F6DE /* 应用常规尺寸.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "应用常规尺寸.jpg"; sourceTree = "<group>"; };
+		E9D9B786202443E80056BCA3 /* NotificationConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationConstant.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +155,7 @@
 				E90094EE200859BC00B20928 /* Swift.gitignore */,
 				E90094EC20084D1000B20928 /* Podfile */,
 				E90094C92005C13C00B20928 /* ViewConstant.swift */,
+				E9D9B786202443E80056BCA3 /* NotificationConstant.swift */,
 				E9C562EC2004B41100B7F6DE /* 应用常规尺寸.jpg */,
 				E9C562D82004683100B7F6DE /* InfoPlist.strings */,
 				E9584ABE200397860001A0E4 /* AppDelegate.swift */,
@@ -407,6 +410,7 @@
 				E97AB23C201CAAFD00E5C267 /* WBStatus.swift in Sources */,
 				E90094E420074F8B00B20928 /* String+Extension.swift in Sources */,
 				E9C562E92004AD6A00B7F6DE /* DiscoveryViewController.swift in Sources */,
+				E9D9B787202443E80056BCA3 /* NotificationConstant.swift in Sources */,
 				E90094E12006F99400B20928 /* DemoViewController.swift in Sources */,
 				E9C562E52004AD4500B7F6DE /* HomePageViewController.swift in Sources */,
 				E946F46F2021B794000341E4 /* UIView+RJBadge.m in Sources */,
