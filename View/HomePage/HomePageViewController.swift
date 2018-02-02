@@ -23,7 +23,7 @@ class HomePageViewController: BaseViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         //只有数据为空的情况下，才会自动尝试获取
-        if listViewModel.statusList.count == 0 {
+        if HttpEngine.httpEngine.isLogon && listViewModel.statusList.count == 0 {
             super.viewDidAppear(animated)
         }
     }

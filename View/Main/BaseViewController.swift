@@ -33,9 +33,6 @@ class BaseViewController: UIViewController {
     var isPullDown = false
     var isPullUp = false
     
-    //是否登录
-    var isLogon = true
-    
     //游客视图
     var visitorView = UIView()
     //游客提示信息
@@ -58,7 +55,7 @@ class BaseViewController: UIViewController {
         view.backgroundColor = .white
         addNewNavigationBar()
         
-        if isLogon {
+        if HttpEngine.httpEngine.isLogon {
             addTableView()
         }else{
             addVisitorView()

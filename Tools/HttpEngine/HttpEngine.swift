@@ -19,8 +19,12 @@ typealias httpRequestCompletionHandler = (Any?, Error?) ->Void
 class HttpEngine: NSObject {
     
     static let httpEngine = HttpEngine()
-    var access_token: String? = "2.002SUK3C_5a2KB590f93dd00DxZ3yD"
+    var access_token: String? //= "2.002SUK3C_5a2KB590f93dd00DxZ3yD"
     var uid: String? = "2159844793"
+    
+    var isLogon: Bool {
+        return access_token != nil ? true : false
+    }
     
     var dataRequestOfStatusesList: DataRequest?
     var dataRequestOfUID: DataRequest?

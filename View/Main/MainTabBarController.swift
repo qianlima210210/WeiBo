@@ -78,6 +78,9 @@ class MainTabBarController: UITabBarController {
     }
     
     @objc func onTimer() -> Void {
+        if HttpEngine.httpEngine.isLogon == false {
+            return
+        }
         HttpEngine.httpEngine.getUnread_count { (count, error) in
             if error == nil {
                 print("未读数：\(count ?? 0)")
