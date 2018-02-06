@@ -166,6 +166,7 @@
 				E90094EC20084D1000B20928 /* Podfile */,
 				E90094C92005C13C00B20928 /* ViewConstant.swift */,
 				E9D9B786202443E80056BCA3 /* NotificationConstant.swift */,
+				E904D30C202885DC0061A790 /* ApplicationBaseInfoConstantFromSinaOpenPlatform.swift */,
 				E9C562EC2004B41100B7F6DE /* 应用常规尺寸.jpg */,
 				E9C562D82004683100B7F6DE /* InfoPlist.strings */,
 				E9584ABE200397860001A0E4 /* AppDelegate.swift */,
@@ -173,7 +174,6 @@
 				E9584ACA200397860001A0E4 /* Info.plist */,
 				E9C562E020046BB000B7F6DE /* Localizable.strings */,
 				E9C562E220046D6E00B7F6DE /* ReadMe */,
-				E904D30C202885DC0061A790 /* ApplicationBaseInfoConstantFromSinaOpenPlatform.swift */,
 			);
 			path = WeiBo;
 			sourceTree = "<group>";

@@ -50,7 +50,7 @@ class OAuthViewController: BaseViewController {
         view.addConstraints([leftConstraint_WV_V, topConstraint_WV_V, widthConstraint_WV_V, bottomConstraint_WV_V])
     
         //设置访问的url
-        let url = URL(string: "https://www.baidu.com")
+        let url = URL(string: "https://api.weibo.com/oauth2/authorize?client_id=1069040971&redirect_uri=https://www.baidu.com")
         if let url = url {
             let requeset = URLRequest(url: url)
             webView.load(requeset)
