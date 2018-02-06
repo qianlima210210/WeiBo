@@ -9,7 +9,7 @@
 import UIKit
 import WebKit
 
-class OAuthViewController: BaseViewController {
+class OAuthViewController: BaseViewController, WKNavigationDelegate {
 
     var webView = WKWebView()
     
@@ -38,6 +38,8 @@ class OAuthViewController: BaseViewController {
 
     /// 添加webView
     func addWebView() -> Void {
+        webView.navigationDelegate = self
+        
         //为webView及其父视图view添加约束
         webView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(webView)
@@ -50,7 +52,7 @@ class OAuthViewController: BaseViewController {
         view.addConstraints([leftConstraint_WV_V, topConstraint_WV_V, widthConstraint_WV_V, bottomConstraint_WV_V])
     
         //设置访问的url
-        let url = URL(string: "https://api.weibo.com/oauth2/authorize?client_id=1069040971&redirect_uri=https://www.baidu.com")
+        let url = URL(string: "https://api.weibo.com/oauth2/authorize?client_id=\(AppKey)&redirect_uri=\(OAuthCallbackUrl)")
         if let url = url {
             let requeset = URLRequest(url: url)
             webView.load(requeset)
@@ -67,5 +69,16 @@ class OAuthViewController: BaseViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    //MARK: WKNavigationDelegate
+    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Swift.Void){
+        decisionHandler(.allow)
+    }
+    
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!){
+        let jsString = "document.getElementById('userId').value = ''; document.getElementById('passwd').value = '';"
+        webView.evaluateJavaScript(jsString) { (result, error) in
+        }
+    }
 
 }
