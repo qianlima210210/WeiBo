@@ -22,8 +22,10 @@ class BaseViewController: UIViewController {
     //在设备旋转时，新导航条背景和试图控制器视图之间需要修改的约束(NNBBV_V是newNavigationBarBackgroundView和view的首拼缩写)
     var heightConstraint_NNBBV_V = NSLayoutConstraint()
     
-    //导航标题栏
+    //导航标题栏、导航左按钮、导航右按钮
     var navigationTitleLab = UILabel()
+    var navigationLeftBtn = UIButton()
+    //var navigationRightBtn = UIButton()
     
     //表格视图
     var tableView = UITableView()
@@ -152,6 +154,35 @@ extension BaseViewController{
         newNavigationBar.addConstraints([leftConstraint_NTL_NNB, topConstraint_NTL_NNB, widthConstraint_NTL_NNB, heightConstraint_NTL_NNB])
     }
     
+    //MARK: 设置导航左边按钮
+    func setNavigationLeftBtn(title: String, target: Any?, action: Selector) -> Void {
+        let leftMargin: CGFloat = 10.0
+        let topMargin: CGFloat = 7.0
+        let btnHeight: CGFloat = 30
+        
+        navigationLeftBtn.setTitle(title, for: .normal)
+        navigationLeftBtn.setTitleColor(UIColor.white, for: .normal)
+        navigationLeftBtn.addTarget(target, action: action, for: .touchUpInside)
+        
+        //为navigationLeftBtn及其父视图newNavigationBar添加约束
+        navigationLeftBtn.translatesAutoresizingMaskIntoConstraints = false
+        newNavigationBar.addSubview(navigationLeftBtn)
+        
+        let leftConstraint_NLB_NNB = NSLayoutConstraint(item: navigationLeftBtn, attribute: .left, relatedBy: .equal, toItem: newNavigationBar, attribute: .left, multiplier: 1.0, constant: leftMargin);
+        let topConstraint_NLB_NNB = NSLayoutConstraint(item: navigationLeftBtn, attribute: .top, relatedBy: .equal, toItem: newNavigationBar, attribute: .top, multiplier: 1.0, constant: topMargin)
+        let widthConstraint_NLB_NNB = NSLayoutConstraint(item: navigationLeftBtn, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 40.0)
+        let heightConstraint_NLB_NNB = NSLayoutConstraint(item: navigationLeftBtn, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: btnHeight)
+        
+        navigationLeftBtn.addConstraints([widthConstraint_NLB_NNB, heightConstraint_NLB_NNB])
+        newNavigationBar.addConstraints([leftConstraint_NLB_NNB, topConstraint_NLB_NNB])
+        
+    }
+    
+    //MARK: 设置导航右边按钮
+    func setNavigationRightBtn(tilte: String) -> Void {
+        
+    }
+    
     //MARK: 添加常规导航项：左边按钮，中间标题，右边按钮
     func addNoromalNavigationItems(leftImage: UIImage, leftTarget: Any?, leftAction: Selector,
                                    titlte: String,
@@ -223,6 +254,10 @@ extension BaseViewController{
     
     //MARK:添加游客视图
     func addVisitorView(){
+        
+        if noteInfoDictionary == nil {
+            return
+        }
         
         //为visitorView及其父视图view添加约束
         visitorView.translatesAutoresizingMaskIntoConstraints = false

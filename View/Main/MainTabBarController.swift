@@ -121,11 +121,10 @@ class MainTabBarController: UITabBarController {
     
     @objc func receiveLogonNotification(no: Notification) -> Void {
         let selectVC = self.selectedViewController
-        let vc = DemoViewController()
-        vc.view.backgroundColor = UIColor.blue
+        let vc = OAuthViewController()
         
         selectVC?.present(vc, animated: true, completion: {
-            
+
         })
     }
 }

@@ -9,10 +9,11 @@
 /* Begin PBXBuildFile section */
 		E90094C22004BD1500B20928 /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90094C12004BD1500B20928 /* TabBar.swift */; };
 		E90094CA2005C13C00B20928 /* ViewConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90094C92005C13C00B20928 /* ViewConstant.swift */; };
-		E90094E12006F99400B20928 /* DemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90094E02006F99400B20928 /* DemoViewController.swift */; };
 		E90094E420074F8B00B20928 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90094E320074F8B00B20928 /* String+Extension.swift */; };
 		E90094ED20084D1000B20928 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = E90094EC20084D1000B20928 /* Podfile */; };
 		E90094EF200859BC00B20928 /* Swift.gitignore in Resources */ = {isa = PBXBuildFile; fileRef = E90094EE200859BC00B20928 /* Swift.gitignore */; };
+		E904D30D202885DD0061A790 /* ApplicationBaseInfoConstantFromSinaOpenPlatform.swift in Sources */ = {isa = PBXBuildFile; fileRef = E904D30C202885DC0061A790 /* ApplicationBaseInfoConstantFromSinaOpenPlatform.swift */; };
+		E904D310202889060061A790 /* OAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E904D30F202889060061A790 /* OAuthViewController.swift */; };
 		E92664352011C35A00ABF849 /* ContentOfVisitorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92664342011C35A00ABF849 /* ContentOfVisitorView.swift */; };
 		E946F46F2021B794000341E4 /* UIView+RJBadge.m in Sources */ = {isa = PBXBuildFile; fileRef = E946F46D2021B794000341E4 /* UIView+RJBadge.m */; };
 		E9584ABF200397860001A0E4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9584ABE200397860001A0E4 /* AppDelegate.swift */; };
@@ -43,10 +44,11 @@
 		E824298BE511A22086D359E8 /* Pods-WeiBo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeiBo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WeiBo/Pods-WeiBo.debug.xcconfig"; sourceTree = "<group>"; };
 		E90094C12004BD1500B20928 /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
 		E90094C92005C13C00B20928 /* ViewConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewConstant.swift; sourceTree = "<group>"; };
-		E90094E02006F99400B20928 /* DemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoViewController.swift; sourceTree = "<group>"; };
 		E90094E320074F8B00B20928 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		E90094EC20084D1000B20928 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		E90094EE200859BC00B20928 /* Swift.gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Swift.gitignore; sourceTree = SOURCE_ROOT; };
+		E904D30C202885DC0061A790 /* ApplicationBaseInfoConstantFromSinaOpenPlatform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationBaseInfoConstantFromSinaOpenPlatform.swift; sourceTree = "<group>"; };
+		E904D30F202889060061A790 /* OAuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthViewController.swift; sourceTree = "<group>"; };
 		E92664342011C35A00ABF849 /* ContentOfVisitorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentOfVisitorView.swift; sourceTree = "<group>"; };
 		E946F46C2021B794000341E4 /* RJBadgeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RJBadgeView.h; sourceTree = "<group>"; };
 		E946F46D2021B794000341E4 /* UIView+RJBadge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+RJBadge.m"; sourceTree = "<group>"; };
@@ -116,6 +118,14 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
+		E904D30E202888B50061A790 /* OAuth */ = {
+			isa = PBXGroup;
+			children = (
+				E904D30F202889060061A790 /* OAuthViewController.swift */,
+			);
+			path = OAuth;
+			sourceTree = "<group>";
+		};
 		E946F46B2021B794000341E4 /* RJBadgeView */ = {
 			isa = PBXGroup;
 			children = (
@@ -163,6 +173,7 @@
 				E9584ACA200397860001A0E4 /* Info.plist */,
 				E9C562E020046BB000B7F6DE /* Localizable.strings */,
 				E9C562E220046D6E00B7F6DE /* ReadMe */,
+				E904D30C202885DC0061A790 /* ApplicationBaseInfoConstantFromSinaOpenPlatform.swift */,
 			);
 			path = WeiBo;
 			sourceTree = "<group>";
@@ -170,12 +181,12 @@
 		E9584AD420039FFA0001A0E4 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				E904D30E202888B50061A790 /* OAuth */,
 				E9584AD820039FFA0001A0E4 /* Main */,
 				E9584AD520039FFA0001A0E4 /* HomePage */,
 				E9584ADC2003A03C0001A0E4 /* Message */,
 				E9584AD620039FFA0001A0E4 /* Discovery */,
 				E9584AD720039FFA0001A0E4 /* Profile */,
-				E90094E02006F99400B20928 /* DemoViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -405,13 +416,14 @@
 				E9584AE22003A0DB0001A0E4 /* BaseViewController.swift in Sources */,
 				E92664352011C35A00ABF849 /* ContentOfVisitorView.swift in Sources */,
 				E9584ABF200397860001A0E4 /* AppDelegate.swift in Sources */,
+				E904D30D202885DD0061A790 /* ApplicationBaseInfoConstantFromSinaOpenPlatform.swift in Sources */,
 				E9584AE02003A0C00001A0E4 /* MainNavigationController.swift in Sources */,
+				E904D310202889060061A790 /* OAuthViewController.swift in Sources */,
 				E97AB238201B65AE00E5C267 /* HttpEngine+Extension.swift in Sources */,
 				E97AB23C201CAAFD00E5C267 /* WBStatus.swift in Sources */,
 				E90094E420074F8B00B20928 /* String+Extension.swift in Sources */,
 				E9C562E92004AD6A00B7F6DE /* DiscoveryViewController.swift in Sources */,
 				E9D9B787202443E80056BCA3 /* NotificationConstant.swift in Sources */,
-				E90094E12006F99400B20928 /* DemoViewController.swift in Sources */,
 				E9C562E52004AD4500B7F6DE /* HomePageViewController.swift in Sources */,
 				E946F46F2021B794000341E4 /* UIView+RJBadge.m in Sources */,
 				E90094CA2005C13C00B20928 /* ViewConstant.swift in Sources */,
