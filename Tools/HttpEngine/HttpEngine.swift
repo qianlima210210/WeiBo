@@ -29,8 +29,9 @@ class HttpEngine: NSObject {
     var dataRequestOfStatusesList: DataRequest?
     var dataRequestOfUID: DataRequest?
     var dataRequestOfUnread_count: DataRequest?
+    var dataRequestOfAccessToken: DataRequest?
     
-    /// 发送http请求
+    /// 发送登录后的http请求
     ///
     /// - Parameters:
     ///   - url: 请求地址
@@ -39,7 +40,7 @@ class HttpEngine: NSObject {
     ///   - encoding: url编码方式
     ///   - headers: 请求头
     ///   - completionHandler: 请求完成回调（通过对HttpResponse错误是否为nil做第一层的判断，即网络传输层是否正常；第二层是表示服务器理解了本次请求，但是否合法还需通过Status Code和返回的信息判断。）
-    func httpRequest(
+    func httpRequestAfterLogoned(
         url: String,
         method: HTTPMethod = .get,
         parameters: [String:Any]?,
@@ -92,7 +93,47 @@ class HttpEngine: NSObject {
         return dataRequest
     }
     
-    
+    /// 发送登录前的http请求
+    ///
+    /// - Parameters:
+    ///   - url: 请求地址
+    ///   - method: 请求方式
+    ///   - parameters: 请求参数
+    ///   - encoding: url编码方式
+    ///   - headers: 请求头
+    ///   - completionHandler: 请求完成回调（通过对HttpResponse错误是否为nil做第一层的判断，即网络传输层是否正常；第二层是表示服务器理解了本次请求，但是否合法还需通过Status Code和返回的信息判断。）
+    func httpRequestBeforeLogoned(
+        url: String,
+        method: HTTPMethod = .get,
+        parameters: [String:Any]?,
+        encoding: ParameterEncoding = URLEncoding.default,
+        headers: HTTPHeaders? = nil, completionHandler: @escaping httpRequestCompletionHandler)-> DataRequest?
+    {
+        //添加请求参数及公共参数
+        var mutableParameters = [String: Any]()
+        if let parameters = parameters {
+            for (key, value) in parameters{
+                mutableParameters[key] = value
+            }
+        }
+        
+        //调用AF
+        let dataRequest =  request(url, method: method, parameters: mutableParameters, encoding: encoding, headers: headers)
+        dataRequest.responseJSON(queue: DispatchQueue.main, options: .allowFragments) { (dataResponse:DataResponse<Any>) in
+            //请求成功
+            if dataResponse.result.isSuccess {
+                let value = dataResponse.value
+                //请求完成回调
+                completionHandler(value, nil)
+            }else{//请求失败
+                let error = dataResponse.error
+                //请求完成回调
+                completionHandler(nil, error)
+            }
+        }
+        
+        return dataRequest
+    }
     
 }
 

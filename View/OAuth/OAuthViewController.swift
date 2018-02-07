@@ -40,6 +40,7 @@ class OAuthViewController: BaseViewController, WKNavigationDelegate {
     /// 添加webView
     func addWebView() -> Void {
         webView.navigationDelegate = self
+        webView.scrollView.isScrollEnabled = false
         
         //为webView及其父视图view添加约束
         webView.translatesAutoresizingMaskIntoConstraints = false
@@ -77,11 +78,23 @@ extension OAuthViewController {
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Swift.Void){
         if let absoluteString = navigationAction.request.url?.absoluteString {
             if absoluteString.hasPrefix(successOAuthCallbackUrlPrefix){
+                //1、成功授权回调地址被调用
                 print("成功授权回调地址：\(absoluteString)")
                 let code = (absoluteString as NSString).substring(from: successOAuthCallbackUrlPrefix.count)
                 print("授权码：\(code)")
                 decisionHandler(.cancel)
-                closeBtnClicked()
+                
+                //2、获取访问令牌
+                SVProgressHUD.show()
+                HttpEngine.httpEngine.getAccessToken(code: code, completionHandler: { (result, error) in
+                    if error != nil{
+                        
+                    }else{
+                        print(result ?? "")
+                    }
+                    SVProgressHUD.dismiss()
+                    self.closeBtnClicked()
+                })
                 return
             }
         }

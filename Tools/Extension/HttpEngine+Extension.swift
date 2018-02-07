@@ -22,10 +22,10 @@ extension HttpEngine {
         //先取消上一个请求
         cancelStatusesListRequest()
         
-        //组织参数并请求
+        //组织请求地址及参数并请求
         let parameters = ["since_id":since_id, "max_id":max_id]
         let url = "https://api.weibo.com/2/statuses/home_timeline.json"
-        dataRequestOfStatusesList = httpRequest(url: url, parameters: parameters) { (value: Any?, error: Error?) in
+        dataRequestOfStatusesList = httpRequestAfterLogoned(url: url, parameters: parameters) { (value: Any?, error: Error?) in
             if error != nil {
                 completionHandler(nil, error)
             }else{
@@ -55,9 +55,9 @@ extension HttpEngine {
         // 取消账号UID请求
         cancelGetUID()
         
-        //组织参数并请求
+        //组织请求地址及参数并请求
         let url = "https://api.weibo.com/2/account/get_uid.json"
-        dataRequestOfUID = httpRequest(url: url, method: .get, parameters: nil, encoding: URLEncoding.default, headers: nil, completionHandler: { (value: Any?, error: Error?) in
+        dataRequestOfUID = httpRequestAfterLogoned(url: url, method: .get, parameters: nil, encoding: URLEncoding.default, headers: nil, completionHandler: { (value: Any?, error: Error?) in
             if error != nil {
                 completionHandler(nil, error)
             }else{
@@ -90,11 +90,11 @@ extension HttpEngine {
         //取消用户的各种消息未读数请求
         cancelGetUnread_count()
         
-        //组织参数并请求
+        //组织请求地址及参数并请求
         let parameters = ["uid":uid]
         let url = "https://rm.api.weibo.com/2/remind/unread_count.json"
         
-        dataRequestOfUnread_count = httpRequest(url: url, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: nil, completionHandler: { (value: Any?, error: Error?) in
+        dataRequestOfUnread_count = httpRequestAfterLogoned(url: url, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: nil, completionHandler: { (value: Any?, error: Error?) in
             if error != nil {
                 completionHandler(nil, error)
             }else{
@@ -118,6 +118,43 @@ extension HttpEngine {
     }
 }
 
+extension HttpEngine {
+    //获取授权过的Access Token
+    func getAccessToken(code: String, completionHandler:@escaping (_ dic: [String:Any]?, _ error: Error?) ->()) -> Void {
+        //取消获取授权过的Access Token请求
+        cancelGetAccessToken()
+        
+        //组织请求地址及参数并请求
+        let parameters = ["client_id":AppKey,
+                          "client_secret":AppSecret,
+                          "grant_type":"authorization_code",
+                          "code":code,
+                          "redirect_uri":OAuthCallbackUrl]
+        let url = "https://api.weibo.com/oauth2/access_token"
+        dataRequestOfAccessToken = httpRequestBeforeLogoned(url: url, method: .post, parameters: parameters, encoding: URLEncoding.default, headers: nil, completionHandler: { (value: Any?, error: Error?) in
+            if error != nil {
+                completionHandler(nil, error)
+            }else{
+                //尝试转换成你想要的类型
+                if let dic = value as? [String:Any]{
+                    completionHandler(dic, nil)
+                }else{
+                    completionHandler(nil, WBCustomNSError(errorDescription: "返回信息格式有问题"))
+                }
+            }
+        })
+        
+    }
+    
+    //取消获取授权过的Access Token请求
+    func cancelGetAccessToken() -> Void {
+        guard let dataRequestOfAccessToken = dataRequestOfAccessToken else {
+            return
+        }
+        dataRequestOfAccessToken.cancel()
+        self.dataRequestOfAccessToken = nil
+    }
+}
 
 
 
