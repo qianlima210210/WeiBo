@@ -79,11 +79,6 @@ class BaseViewController: UIViewController {
         heightConstraint_NNBBV_V.constant = kStatusBarHeight() + kNavigationBarHeight()
     }
     
-    //MARK: 指定状态栏风格
-    override var preferredStatusBarStyle: UIStatusBarStyle{
-        return .lightContent
-    }
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -99,6 +94,29 @@ class BaseViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+}
+
+//MARK: 设备旋转
+extension BaseViewController {
+    override var shouldAutorotate: Bool {
+        return false
+    }
+    
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask{
+        return .portrait
+    }
+    
+    override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation{
+        return .portrait
+    }
+}
+
+//MARK: 状态栏风格
+extension BaseViewController{
+    //MARK: 指定状态栏风格
+    override var preferredStatusBarStyle: UIStatusBarStyle{
+        return .lightContent
+    }
 }
 
 //MARK: BaseViewController分类：基于UI

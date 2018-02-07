@@ -8,6 +8,7 @@
 
 import UIKit
 import WebKit
+import SVProgressHUD
 
 class OAuthViewController: BaseViewController, WKNavigationDelegate {
 
@@ -69,8 +70,10 @@ class OAuthViewController: BaseViewController, WKNavigationDelegate {
         // Pass the selected object to the new view controller.
     }
     */
-    
-    //MARK: WKNavigationDelegate
+}
+
+//MARK: WKNavigationDelegate实现
+extension OAuthViewController {
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Swift.Void){
         if let absoluteString = navigationAction.request.url?.absoluteString {
             if absoluteString.hasPrefix(successOAuthCallbackUrlPrefix){
@@ -82,14 +85,26 @@ class OAuthViewController: BaseViewController, WKNavigationDelegate {
                 return
             }
         }
-
+        
         decisionHandler(.allow)
     }
     
+    func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!){
+        print("didStartProvisionalNavigation")
+        SVProgressHUD.show()
+    }
+    
+    func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error){
+        print("didFailProvisionalNavigation")
+        SVProgressHUD.dismiss()
+    }
+    
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!){
+        print("didFinish")
+        SVProgressHUD.dismiss()
+        
         let jsString = "document.getElementById('userId').value = ''; document.getElementById('passwd').value = '';"
         webView.evaluateJavaScript(jsString) { (result, error) in
         }
     }
-
 }

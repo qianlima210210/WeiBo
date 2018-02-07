@@ -29,10 +29,6 @@ class MainNavigationController: UINavigationController {
         
         super.pushViewController(viewController, animated: animated)
     }
-
-    override var childViewControllerForStatusBarStyle: UIViewController?{
-        return self.topViewController
-    }
     
     /*
     // MARK: - Navigation
@@ -44,4 +40,38 @@ class MainNavigationController: UINavigationController {
     }
     */
 
+}
+
+//MARK: 设备旋转
+extension MainNavigationController {
+    override var shouldAutorotate: Bool {
+        if let topViewController = self.topViewController {
+            return topViewController.shouldAutorotate
+        }else{
+            return false
+        }
+    }
+    
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask{
+        if let topViewController = self.topViewController {
+            return topViewController.supportedInterfaceOrientations
+        }else{
+            return .portrait
+        }
+    }
+    
+    override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation{
+        if let topViewController = self.topViewController {
+            return topViewController.preferredInterfaceOrientationForPresentation
+        }else{
+            return .portrait
+        }
+    }
+}
+
+//MARK: 状态栏风格
+extension MainNavigationController{
+    override var childViewControllerForStatusBarStyle: UIViewController?{
+        return self.topViewController?.childViewControllerForStatusBarStyle
+    }
 }

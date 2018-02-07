@@ -14,13 +14,13 @@ class MainTabBarController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         replaceSystemTabBar()
-
+        
         //启动定时器
         startTimer()
-
+        
         /// 注册通知
         registerNotification()
     }
@@ -73,6 +73,76 @@ class MainTabBarController: UITabBarController {
         viewControllers = controllers
     }
     
+    deinit {
+        cancelTimer()
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    //将首页内容滚动到顶部
+    func scrollTopOfHomePageContent() -> Void {
+        if let vc = ((self.selectedViewController as? MainNavigationController)?.childViewControllers[0]) as? BaseViewController {
+            vc.tableView.contentOffset = CGPoint(x: 0, y: 0)
+            vc.autoShowRefreshCtl()
+        }
+    }
+    
+}
+
+//MARK: 设备旋转
+extension MainTabBarController {
+    override var shouldAutorotate: Bool {
+        if let selectedViewController = self.selectedViewController {
+            return selectedViewController.shouldAutorotate
+        }else{
+            return false
+        }
+    }
+    
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask{
+        if let selectedViewController = self.selectedViewController {
+            return selectedViewController.supportedInterfaceOrientations
+        }else{
+            return .portrait
+        }
+    }
+    
+    override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation{
+        if let selectedViewController = self.selectedViewController {
+            return selectedViewController.preferredInterfaceOrientationForPresentation
+        }else{
+            return .portrait
+        }
+    }
+}
+
+//MARK: 状态栏风格
+extension MainTabBarController{
+    override var childViewControllerForStatusBarStyle: UIViewController?{
+        return self.selectedViewController?.childViewControllerForStatusBarStyle
+    }
+}
+
+//MARK: 通知
+extension MainTabBarController{
+    /// 注册通知
+    func registerNotification() -> Void {
+        NotificationCenter.default.addObserver(self, selector: #selector(receiveLogonNotification(no:)), name: NSNotification.Name(rawValue: logonNotification), object: nil)
+    }
+    
+    @objc func receiveLogonNotification(no: Notification) -> Void {
+        let selectVC = self.selectedViewController
+        
+        let vc = OAuthViewController()
+        let nav = MainNavigationController(rootViewController: vc)
+        
+        selectVC?.present(nav, animated: true, completion: {
+            
+        })
+    }
+}
+
+//MARK: 定时器
+extension MainTabBarController{
     ///启动定时器
     func startTimer() -> Void {
         timer = Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(onTimer), userInfo: nil, repeats: true)
@@ -95,36 +165,5 @@ class MainTabBarController: UITabBarController {
     func cancelTimer() -> Void {
         timer?.invalidate()
         timer = nil
-    }
-    
-    override var supportedInterfaceOrientations: UIInterfaceOrientationMask{
-        return .portrait
-    }
-    
-    deinit {
-        cancelTimer()
-        NotificationCenter.default.removeObserver(self)
-    }
-    
-    //将首页内容滚动到顶部
-    func scrollTopOfHomePageContent() -> Void {
-        if let vc = ((self.selectedViewController as? MainNavigationController)?.childViewControllers[0]) as? BaseViewController {
-            vc.tableView.contentOffset = CGPoint(x: 0, y: 0)
-            vc.autoShowRefreshCtl()
-        }
-    }
-    
-    /// 注册通知
-    func registerNotification() -> Void {
-        NotificationCenter.default.addObserver(self, selector: #selector(receiveLogonNotification(no:)), name: NSNotification.Name(rawValue: logonNotification), object: nil)
-    }
-    
-    @objc func receiveLogonNotification(no: Notification) -> Void {
-        let selectVC = self.selectedViewController
-        let vc = OAuthViewController()
-        
-        selectVC?.present(vc, animated: true, completion: {
-
-        })
     }
 }
