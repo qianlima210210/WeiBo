@@ -72,11 +72,22 @@ class OAuthViewController: BaseViewController, WKNavigationDelegate {
     
     //MARK: WKNavigationDelegate
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Swift.Void){
+        if let absoluteString = navigationAction.request.url?.absoluteString {
+            if absoluteString.hasPrefix(successOAuthCallbackUrlPrefix){
+                print("成功授权回调地址：\(absoluteString)")
+                let code = (absoluteString as NSString).substring(from: successOAuthCallbackUrlPrefix.count)
+                print("授权码：\(code)")
+                decisionHandler(.cancel)
+                closeBtnClicked()
+                return
+            }
+        }
+
         decisionHandler(.allow)
     }
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!){
-        let jsString = "document.getElementById('userId').value = ''; document.getElementById('passwd').value = '';"
+        let jsString = "document.getElementById('userId').value = 'qianlima210210@163.com'; document.getElementById('passwd').value = 'mchzmql1366';"
         webView.evaluateJavaScript(jsString) { (result, error) in
         }
     }
