@@ -87,6 +87,7 @@ class OAuthViewController: BaseViewController, WKNavigationDelegate {
     }
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!){
+        let jsString = "document.getElementById('userId').value = ''; document.getElementById('passwd').value = '';"
         webView.evaluateJavaScript(jsString) { (result, error) in
         }
     }
