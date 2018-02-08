@@ -90,7 +90,10 @@ extension OAuthViewController {
                     if error != nil{
                         
                     }else{
-                        print(result ?? "")
+                        if let result = result, let userAccount = UserAccount.yy_model(withJSON: result) {
+                            UserAccount.userAccount.initUserAccount(userAccount: userAccount)
+                            print(UserAccount.userAccount)
+                        }
                     }
                     SVProgressHUD.dismiss()
                     self.closeBtnClicked()
@@ -116,7 +119,7 @@ extension OAuthViewController {
         print("didFinish")
         SVProgressHUD.dismiss()
         
-        let jsString = "document.getElementById('userId').value = ''; document.getElementById('passwd').value = '';"
+        let jsString = "document.getElementById('userId').value = 'qianlima210210@163.com'; document.getElementById('passwd').value = 'mchzmql1366';"
         webView.evaluateJavaScript(jsString) { (result, error) in
         }
     }
