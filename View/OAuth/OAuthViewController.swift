@@ -90,8 +90,8 @@ extension OAuthViewController {
                     if error != nil{
                         
                     }else{
-                        if let result = result, let userAccount = UserAccount.yy_model(withJSON: result) {
-                            UserAccount.userAccount.initUserAccount(userAccount: userAccount)
+                        if let result = result {
+                            UserAccount.userAccount.yy_modelSet(withJSON: result)
                             print(UserAccount.userAccount)
                         }
                     }

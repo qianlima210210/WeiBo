@@ -18,9 +18,6 @@ class UserAccount: NSObject {
     static let userAccount = UserAccount()
     
     override init() {
-        access_token = ""
-        uid = ""
-        
         super.init()
     }
     
@@ -28,9 +25,4 @@ class UserAccount: NSObject {
         return yy_modelDescription()
     }
     
-    func initUserAccount(userAccount: UserAccount) -> Void {
-        access_token = userAccount.access_token ?? ""
-        uid = userAccount.uid ?? ""
-        expires_in = userAccount.expires_in >= 0.0 ? userAccount.expires_in : 0.0
-    }
 }

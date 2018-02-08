@@ -19,11 +19,9 @@ typealias httpRequestCompletionHandler = (Any?, Error?) ->Void
 class HttpEngine: NSObject {
     
     static let httpEngine = HttpEngine()
-    var access_token: String? //= "2.002SUK3C_5a2KB590f93dd00DxZ3yD"
-    var uid: String? = "2159844793"
     
     var isLogon: Bool {
-        return access_token != nil ? true : false
+        return UserAccount.userAccount.access_token != nil ? true : false
     }
     
     var dataRequestOfStatusesList: DataRequest?
@@ -48,7 +46,7 @@ class HttpEngine: NSObject {
         headers: HTTPHeaders? = nil, completionHandler: @escaping httpRequestCompletionHandler)-> DataRequest?
     {
         //判断access_token是否有值
-        guard let access_token = access_token else {
+        guard let access_token = UserAccount.userAccount.access_token else {
             //手动触发请求完成回调
             completionHandler(nil, WBCustomNSError(errorDescription: "access_token为nil"))
             

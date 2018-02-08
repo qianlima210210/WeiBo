@@ -83,7 +83,7 @@ extension HttpEngine {
     //获取用户的各种消息未读数
     func getUnread_count(completionHandler:@escaping (_ count: Int?, _ error: Error?) -> ()) -> Void {
         //判断uid是否为nil，这种公共参数后期需要整理分类
-        guard let uid = uid else {
+        guard let uid = UserAccount.userAccount.uid else {
             return
         }
         
