@@ -93,6 +93,7 @@ extension OAuthViewController {
                         if let result = result {
                             UserAccount.userAccount.yy_modelSet(withJSON: result)
                             print(UserAccount.userAccount)
+                            UserAccount.userAccount.saveUserAccount()
                         }
                     }
                     SVProgressHUD.dismiss()
@@ -119,7 +120,7 @@ extension OAuthViewController {
         print("didFinish")
         SVProgressHUD.dismiss()
         
-        let jsString = "document.getElementById('userId').value = 'qianlima210210@163.com'; document.getElementById('passwd').value = 'mchzmql1366';"
+        let jsString = "document.getElementById('userId').value = ''; document.getElementById('passwd').value = '';"
         webView.evaluateJavaScript(jsString) { (result, error) in
         }
     }

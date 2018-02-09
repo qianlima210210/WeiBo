@@ -128,6 +128,44 @@ AnyObject有什么用呢?
 set get这两个针对计算属性
 willSet didSet这两个针对存储属性
 
+存储型属性：用于存储一个常量或变量。
+计算型属性：不直接存储值，而是通过get、set方法来取值或赋值。同时还可以对其他的属性进行操作。
+类型型属性：定义在类上的属性，用static 来修饰属性，需要用类名来调用该属性。
+
+class Rectangle {
+// 存储型属性
+var origin: Point = Point()
+var size: Size = Size()
+
+// 计算型属性：（1）必须用var（2）属性的类型不可以省略 （3）如果要想修改属性的值，必须写setter方法，否则只有一个getter方法
+var center: Point {
+
+get {
+let centerX = origin.x + size.width/2
+let centerY = origin.y + size.height/2
+return Point(x: centerX, y: centerY)
+}
+// 如果不写newCenter，可以直接用newValue
+set(newCenter) {
+origin.x = newCenter.x - size.width/2
+origin.y = newCenter.y - size.height/2
+}
+}
+
+// 如果只是这样写，代表的是只有get方法,是不可以给area赋值的
+var area: Double {
+return size.width * size.height
+}
+
+　　// 类型型属性
+　　static var biggestWidth: Double = 0
+
+init(origin: Point, size: Size) {
+self.origin = origin
+self.size = size
+}
+}
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 数组的map:通过提供的闭包，闭包中对每一个数组元素进行处理，并返回处理结果；map的的最终结果是处理后的结果集；
 数组的filter:通过提供的闭包，闭包中对每一个数组元素进行判断处理，并返回true/false；map的的最终结果是过滤后的结果集；
@@ -151,9 +189,44 @@ print(dic)
 }
 }
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
+小红点的使用
 selectedBtn?.badgeOffset = CGPoint(x: -btnWidth / 2 + 30 / 2, y: 8)
 selectedBtn?.showBadge(withValue: 6)
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
+微博登录授权返回的token，在第一次获取后就拥有了expires_in；即使再次登录授权，token值是不变的，但是expires_in是减少的。
+eg:
+<WeiBo.UserAccount: 0x6000000ac240> {
+access_token = "2.00sf7gUD_5a2KB4311ca15a6JVlJvD";
+expiresDate = 2018-02-10 19:00:00 +0000;
+expires_in = 112336;
+uid = "3201800892"
+}
+
+<WeiBo.UserAccount: 0x6000000b9e00> {
+access_token = "2.00sf7gUD_5a2KB4311ca15a6JVlJvD";
+expiresDate = 2018-02-10 18:59:59 +0000;
+expires_in = 112153;
+uid = "3201800892"
+}
+
+<WeiBo.UserAccount: 0x6000000a6360> {
+access_token = "2.00sf7gUD_5a2KB4311ca15a6JVlJvD";
+expiresDate = 2018-02-10 18:59:59 +0000;
+expires_in = 111398;
+uid = "3201800892"
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+OOM(Out Of Memory)
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+听云：
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
 
 
 
