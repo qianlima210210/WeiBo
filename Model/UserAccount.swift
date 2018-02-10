@@ -45,6 +45,26 @@ class UserAccount: NSObject {
         }
         
         self.yy_modelSet(with: dic)
+        
+        //判断是否过期
+        //FIXME: 测试访问令牌过期
+        //expiresDate = Date(timeIntervalSinceNow: -3600)
+        if expiresDate?.compare(Date()) == .orderedAscending {
+            print("访问令牌过期")
+            //1、将用户对象恢复初始化
+            access_token = nil
+            uid = nil
+            expires_in = 0
+            expiresDate = nil
+            
+            //2、删除用户账号文件
+            try? FileManager.default.removeItem(at: url)
+            
+        }else{
+            print("访问令牌NO过期")
+        }
+        
+        
     }
     
     /// 存入本地
