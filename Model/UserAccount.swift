@@ -25,12 +25,27 @@ class UserAccount: NSObject {
     
     override init() {
         super.init()
+        
+        //从本地加载用户账号信息
+        loadUserAccount()
     }
     
     override var description: String{
         return yy_modelDescription()
     }
     
+    //从本地加载用户账号信息
+    func loadUserAccount() -> Void {
+        let filePath = NSHomeDirectory() + "/Documents/userAccount"
+        let url = URL(fileURLWithPath: filePath)
+        
+        guard let data = try? Data(contentsOf: url),
+            let dic = (try? JSONSerialization.jsonObject(with: data, options: [])) as? [String:Any] else {
+            return
+        }
+        
+        self.yy_modelSet(with: dic)
+    }
     
     /// 存入本地
     func saveUserAccount() -> Void {
