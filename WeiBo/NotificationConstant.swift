@@ -10,3 +10,4 @@ import Foundation
 
 let logonNotification = "logonNotification"
 
+let logonAndAOthSuccessNotification = "logonAndAOthSuccessNotification"

@@ -77,29 +77,38 @@ class OAuthViewController: BaseViewController, WKNavigationDelegate {
 extension OAuthViewController {
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Swift.Void){
         if let absoluteString = navigationAction.request.url?.absoluteString {
-            if absoluteString.hasPrefix(successOAuthCallbackUrlPrefix){
-                //1、成功授权回调地址被调用
-                print("成功授权回调地址：\(absoluteString)")
-                let code = (absoluteString as NSString).substring(from: successOAuthCallbackUrlPrefix.count)
-                print("授权码：\(code)")
+            if absoluteString.hasPrefix(OAuthCallbackUrl){
+                //1、先取消请求
                 decisionHandler(.cancel)
                 
-                //2、获取访问令牌
-                SVProgressHUD.show()
-                HttpEngine.httpEngine.getAccessToken(code: code, completionHandler: { (result, error) in
-                    if error != nil{
+                //2、判断成功/失败授权回调
+                if absoluteString.contains(SuccessOAuthKey) {//成功授权回调
+                    print("成功授权回调地址：\(absoluteString)")
+                    let code = (absoluteString as NSString).substring(from: (OAuthCallbackUrl + SuccessOAuthKey).count)
+                    print("授权码：\(code)")
+
+                    //2.获取访问令牌
+                    SVProgressHUD.show()
+                    HttpEngine.httpEngine.getAccessToken(code: code, completionHandler: { (result, error) in
+                        SVProgressHUD.dismiss()
                         
-                    }else{
-                        if let result = result {
-                            UserAccount.userAccount.yy_modelSet(withJSON: result)
-                            print(UserAccount.userAccount)
-                            UserAccount.userAccount.saveUserAccount()
+                        if error != nil{
+                            SVProgressHUD.showInfo(withStatus: "登录成功但是授权失败")
+                        }else{
+                            if let result = result {
+                                UserAccount.userAccount.yy_modelSet(withJSON: result)
+                                print(UserAccount.userAccount)
+                                UserAccount.userAccount.saveUserAccount()
+                            }
                         }
-                    }
-                    SVProgressHUD.dismiss()
-                    self.closeBtnClicked()
-                })
-                return
+                        SVProgressHUD.showInfo(withStatus: "登录成功并成功授权")
+                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: logonAndAOthSuccessNotification), object: nil)
+                        self.closeBtnClicked()
+                    })
+                    return
+                }else{//失败授权回调
+                    SVProgressHUD.showInfo(withStatus: "取消授权")
+                }
             }
         }
         
@@ -120,7 +129,7 @@ extension OAuthViewController {
         print("didFinish")
         SVProgressHUD.dismiss()
         
-        let jsString = "document.getElementById('userId').value = ''; document.getElementById('passwd').value = '';"
+        let jsString = "document.getElementById('userId').value = 'qianlima210210@163.com'; document.getElementById('passwd').value = 'mchzmql1366';"
         webView.evaluateJavaScript(jsString) { (result, error) in
         }
     }
