@@ -93,17 +93,18 @@ extension OAuthViewController {
                         SVProgressHUD.dismiss()
                         
                         if error != nil{
-                            SVProgressHUD.showInfo(withStatus: "登录成功但是授权失败")
+                            //SVProgressHUD.showInfo(withStatus: "登录成功但是授权失败")，由网页自己提示
                         }else{
                             if let result = result {
                                 UserAccount.userAccount.yy_modelSet(withJSON: result)
                                 print(UserAccount.userAccount)
                                 UserAccount.userAccount.saveUserAccount()
                             }
+                            //SVProgressHUD.showInfo(withStatus: "登录成功并成功授权")
+                            NotificationCenter.default.post(name: NSNotification.Name(rawValue: logonAndAOthSuccessNotification), object: nil)
+                            self.closeBtnClicked()
                         }
-                        SVProgressHUD.showInfo(withStatus: "登录成功并成功授权")
-                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: logonAndAOthSuccessNotification), object: nil)
-                        self.closeBtnClicked()
+
                     })
                     return
                 }else{//失败授权回调

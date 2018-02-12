@@ -63,6 +63,7 @@ class BaseViewController: UIViewController {
             addVisitorView()
         }
         
+        registerNotification()
     }
     
     //MARK: 加载数据，基类只定义，子类去重写
@@ -84,6 +85,9 @@ class BaseViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
 
     /*
     // MARK: - Navigation
@@ -350,4 +354,20 @@ extension BaseViewController{
     }
 }
 
+//MARK: 通知
+extension BaseViewController{
+    
+    func registerNotification() -> Void {
+        NotificationCenter.default.addObserver(self, selector: #selector(receivedLogonAndAOthSuccessNotification), name: NSNotification.Name(rawValue: logonAndAOthSuccessNotification), object: nil)
+    }
+    
+    @objc func receivedLogonAndAOthSuccessNotification() -> Void {
+        print("登录授权成功")
+        //在访问view的getter时，如果view==nil，会调用loadView-->viewDidLoad
+        view = nil
+        
+        //注销通知
+        NotificationCenter.default.removeObserver(self)
+    }
+}
 
