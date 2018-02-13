@@ -49,12 +49,13 @@ class BaseViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        autoShowRefreshCtl()
+        if HttpEngine.httpEngine.isLogon {
+            autoShowRefreshCtl()
+        }
     }
     
     //MARK: 设置界面
     func setUI() -> Void {
-        view.backgroundColor = .white
         addNewNavigationBar()
         
         if HttpEngine.httpEngine.isLogon {
@@ -274,6 +275,13 @@ extension BaseViewController{
         }
     }
     
+    //MARK: 移除表格视图
+    func removeTableView(){
+        tableView.removeFromSuperview()
+        tableView = UITableView()
+        refreshCtl = UIRefreshControl()
+    }
+    
     //MARK:添加游客视图
     func addVisitorView(){
         
@@ -311,6 +319,12 @@ extension BaseViewController{
         //为contentOfVisitorView中的按钮添加响应函数
         contentOfVisitorView.registerBtn.addTarget(self, action: #selector(register), for: .touchUpInside)
         contentOfVisitorView.logonBtn.addTarget(self, action: #selector(logon), for: .touchUpInside)
+    }
+    
+    //MARK:移除游客视图
+    func removeVisitorView(){
+        visitorView.removeFromSuperview()
+        visitorView = UIView()
     }
 }
 
@@ -363,11 +377,9 @@ extension BaseViewController{
     
     @objc func receivedLogonAndAOthSuccessNotification() -> Void {
         print("登录授权成功")
-        //在访问view的getter时，如果view==nil，会调用loadView-->viewDidLoad
-        view = nil
-        
-        //注销通知
-        NotificationCenter.default.removeObserver(self)
+        //显示已登录内容
+        removeVisitorView()
+        addTableView()
     }
 }
 

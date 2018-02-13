@@ -224,12 +224,34 @@ OOM(Out Of Memory)
 获取视同私有库
 https://github.com/nst/iOS-Runtime-Headers
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
+在处理登录授权成功后，显示已登录内容，中发现：如果将tableView和刷新控件封装成一个类，将访客视图封装成一个类，这两个类在BaseViewController中使用，能解耦很多。（时间紧张就不修改了）
+removeVisitorView()
+addTableView()
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+UIViewController方法：
+loadView被调用时机：调用视图控制器属性view的getter方法时，如果此时view为nil,则loadView会被调用
+loadView作用：loadView创建视图控制器属性view
+方法默认实现：即[super loadView]里到底做了哪些工作？
+    1、先查找与视图控制器相关联的xib文件，通过加载xib文件来创建UIViewController的view
+        1.1、如果在初始化UIViewController指定了xib文件名，就会根据传入的xib文件名加载对应的xib文件
+            eg: [[MJViewController alloc] initWithNibName:@"MJViewController" bundle:nil];
 
+        1.2、如果没有明显地传xib文件名，就会加载跟MJViewController类名相同的xib文件
+            eg:[[MJViewController alloc] init]; // 加载MJViewController.xib
 
+    2、如果没有找到相关联的xib文件，就会创建一个空白的UIView，然后赋值给UIViewController的view属性，大致如下
+        self.view = [[[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds] autorelease];
 
-
-
-
+正确使用这个方法:
+    因为有时候，我们自己想自定义试图控制器的view，所以就需要重写loadView方法，并且不需要调用[super loadView]，因为在第2点里面已经提到：
+    若没有xib文件，[super loadView]默认会创建一个空白的UIView。
+    我们既然要通过代码来自定义UIView，那么就没必要事先创建一个空白的UIView，以节省不必要的开销。
+    正确的做法应该是这样：
+    - (void)loadView {
+    self.view = [[[UIWebView alloc] initWithFrame:[UIScreen mainScreen].bounds] autorelease];
+    }
+    不需要调用[super loadView]，你调用了也不会出错，只是造成了一些不必要的开销。
+    总结一句话，苹果设计这个方法就是给我们自定义UIViewController的view用的
 
 
 

@@ -23,7 +23,7 @@ class OAuthViewController: BaseViewController, WKNavigationDelegate {
     
     @objc func closeBtnClicked() -> Void {
         self.dismiss(animated: true) {
-            
+
         }
     }
     
