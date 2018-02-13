@@ -254,6 +254,17 @@ loadView作用：loadView创建视图控制器属性view
     总结一句话，苹果设计这个方法就是给我们自定义UIViewController的view用的
 
 
+viewDidLoad被调用时机：不管是通过xib创建view还是通过重写loadView创建view，在创建完view后，都会调用viewDidLoad
+viewDidLoad作用：一般我们会在这里做界面上的初始化操作，比如往view中添加一些子视图、从数据库或者网络加载模型数据装配到子视图中。例如：
+    - (void)viewDidLoad{
+        [super viewDidLoad];
+
+        // 添加一个按钮
+        UIButton *button = [UIButton buttonWithType:UIButtonTypeContactAdd];
+        [button addTarget:self action:@selector(click) forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:button];
+    }
+
 
 
 
