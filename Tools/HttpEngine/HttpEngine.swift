@@ -20,10 +20,6 @@ class HttpEngine: NSObject {
     
     static let httpEngine = HttpEngine()
     
-    var isLogon: Bool {
-        return UserAccount.userAccount.access_token != nil ? true : false
-    }
-    
     var dataRequestOfStatusesList: DataRequest?
     var dataRequestOfUID: DataRequest?
     var dataRequestOfUnread_count: DataRequest?

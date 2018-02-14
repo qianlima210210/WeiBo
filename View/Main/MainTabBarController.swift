@@ -81,8 +81,10 @@ class MainTabBarController: UITabBarController {
     //将首页内容滚动到顶部
     func scrollTopOfHomePageContent() -> Void {
         if let vc = ((self.selectedViewController as? MainNavigationController)?.childViewControllers[0]) as? BaseViewController {
-            vc.tableView.contentOffset = CGPoint(x: 0, y: 0)
-            vc.autoShowRefreshCtl()
+            if vc.refreshCtl.isRefreshing == false{
+                vc.tableView.contentOffset = CGPoint(x: 0, y: 0)
+                vc.autoShowRefreshCtl()
+            }
         }
     }
     
@@ -149,7 +151,7 @@ extension MainTabBarController{
     }
     
     @objc func onTimer() -> Void {
-        if HttpEngine.httpEngine.isLogon == false {
+        if UserAccount.userAccount.isLogon == false {
             return
         }
         HttpEngine.httpEngine.getUnread_count { (count, error) in

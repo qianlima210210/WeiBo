@@ -15,9 +15,34 @@ class HomePageViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
+    }
+    
+    @objc func leftBtnClicked() -> Void {
+        if UserAccount.userAccount.isLogon {
+            print("HomePageViewController leftBtnClicked 好友")
+        }else{
+            print("HomePageViewController leftBtnClicked 注册")
+        }
+    }
+    
+    @objc func rightBtnClicked() -> Void {
+        if UserAccount.userAccount.isLogon {
+            print("HomePageViewController rightBtnClicked")
+        }else{
+            print("HomePageViewController rightBtnClicked 登录")
+            //发送登录通知
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: logonNotification), object: nil)
+        }
+    }
+    
+    override func setUI() {
+        super.setUI()
+        
         setNavigationTitle(title: "首页")
+        setNavigationLeftBtn(title: UserAccount.userAccount.isLogon ? "好友":"注册", target: self, action: #selector(leftBtnClicked))
+        setNavigationRightBtn(title: UserAccount.userAccount.isLogon ? "":"登录", target: self, action: #selector(rightBtnClicked))
+        
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
     }
     
@@ -39,9 +64,15 @@ class HomePageViewController: BaseViewController {
         
         listViewModel.loadStatus(isPullUp: isPullUp) { (isSuccess) in
             print("请求数据结束\(Date())")
-            self.isPullDown = false
-            self.isPullUp = false
-            self.refreshCtl.endRefreshing()
+            
+            if self.isPullDown{
+                self.isPullDown = false
+                self.refreshCtl.endRefreshing()
+                self.tableView.contentOffset = CGPoint(x: 0.0, y: 0.0)
+            }else{
+                self.isPullUp = false
+            }
+            
             if isSuccess {
                 self.tableView.reloadData()
             }

@@ -17,18 +17,21 @@ class OAuthViewController: BaseViewController, WKNavigationDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        setNavigationTitle(title: "登录")
-        setNavigationLeftBtn(title: "关闭", target: self, action: #selector(closeBtnClicked))
     }
     
     @objc func closeBtnClicked() -> Void {
+        SVProgressHUD.dismiss()
         self.dismiss(animated: true) {
-
+            
         }
     }
     
     override func setUI() -> Void {
         super.setUI()
+        
+        setNavigationTitle(title: "登录")
+        setNavigationLeftBtn(title: "关闭", target: self, action: #selector(closeBtnClicked))
+        
         addWebView()
     }
 

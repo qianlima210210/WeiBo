@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import SVProgressHUD
+import Alamofire
+
 //import BYStatistics
 
 @UIApplicationMain
@@ -35,5 +38,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 
+}
+
+extension AppDelegate {
+    func setAdditions() -> Void {
+        //1.设置SVProgressHUD最小移除时间
+        SVProgressHUD.setMinimumDismissTimeInterval(1.0)
+    }
+    
 }
 

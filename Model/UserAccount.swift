@@ -20,6 +20,10 @@ class UserAccount: NSObject {
     
     @objc var expiresDate: Date?
     
+    var isLogon: Bool {
+        return UserAccount.userAccount.access_token != nil ? true : false
+    }
+    
     //静态单例
     static let userAccount = UserAccount()
     

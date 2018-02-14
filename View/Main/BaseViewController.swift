@@ -25,7 +25,7 @@ class BaseViewController: UIViewController {
     //导航标题栏、导航左按钮、导航右按钮
     var navigationTitleLab = UILabel()
     var navigationLeftBtn = UIButton()
-    //var navigationRightBtn = UIButton()
+    var navigationRightBtn = UIButton()
     
     //表格视图
     var tableView = UITableView()
@@ -49,7 +49,7 @@ class BaseViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if HttpEngine.httpEngine.isLogon {
+        if UserAccount.userAccount.isLogon {
             autoShowRefreshCtl()
         }
     }
@@ -58,7 +58,7 @@ class BaseViewController: UIViewController {
     func setUI() -> Void {
         addNewNavigationBar()
         
-        if HttpEngine.httpEngine.isLogon {
+        if UserAccount.userAccount.isLogon {
             addTableView()
         }else{
             addVisitorView()
@@ -126,6 +126,14 @@ extension BaseViewController{
 
 //MARK: BaseViewController分类：基于UI
 extension BaseViewController{
+    //MARK: 移除新导航栏
+    func removeNewNavigationBar(){
+        newNavigationBarBackgroundView.removeFromSuperview()
+        
+//        newNavigationBarBackgroundView = UIView()
+//        newNavigationBar = UIView()
+    }
+    
     //MARK: 添加新导航栏
     func addNewNavigationBar() -> Void {
         newNavigationBarBackgroundView.backgroundColor = UIColor.orange
@@ -181,6 +189,7 @@ extension BaseViewController{
     func setNavigationLeftBtn(title: String, target: Any?, action: Selector) -> Void {
         let leftMargin: CGFloat = 10.0
         let topMargin: CGFloat = 7.0
+        let btnWidth: CGFloat = 40
         let btnHeight: CGFloat = 30
         
         navigationLeftBtn.setTitle(title, for: .normal)
@@ -193,7 +202,7 @@ extension BaseViewController{
         
         let leftConstraint_NLB_NNB = NSLayoutConstraint(item: navigationLeftBtn, attribute: .left, relatedBy: .equal, toItem: newNavigationBar, attribute: .left, multiplier: 1.0, constant: leftMargin);
         let topConstraint_NLB_NNB = NSLayoutConstraint(item: navigationLeftBtn, attribute: .top, relatedBy: .equal, toItem: newNavigationBar, attribute: .top, multiplier: 1.0, constant: topMargin)
-        let widthConstraint_NLB_NNB = NSLayoutConstraint(item: navigationLeftBtn, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 40.0)
+        let widthConstraint_NLB_NNB = NSLayoutConstraint(item: navigationLeftBtn, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: btnWidth)
         let heightConstraint_NLB_NNB = NSLayoutConstraint(item: navigationLeftBtn, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: btnHeight)
         
         navigationLeftBtn.addConstraints([widthConstraint_NLB_NNB, heightConstraint_NLB_NNB])
@@ -202,8 +211,27 @@ extension BaseViewController{
     }
     
     //MARK: 设置导航右边按钮
-    func setNavigationRightBtn(tilte: String) -> Void {
+    func setNavigationRightBtn(title: String, target: Any?, action: Selector) -> Void {
+        let rightMargin: CGFloat = -10.0
+        let topMargin: CGFloat = 7.0
+        let btnHeight: CGFloat = 30
         
+        
+        navigationRightBtn.setTitle(title, for: .normal)
+        navigationRightBtn.setTitleColor(UIColor.white, for: .normal)
+        navigationRightBtn.addTarget(target, action: action, for: .touchUpInside)
+        
+        //为navigationRightBtn及其父视图newNavigationBar添加约束
+        navigationRightBtn.translatesAutoresizingMaskIntoConstraints = false
+        newNavigationBar.addSubview(navigationRightBtn)
+        
+        let rightConstraint_NLB_NNB = NSLayoutConstraint(item: navigationRightBtn, attribute: .right, relatedBy: .equal, toItem: newNavigationBar, attribute: .right, multiplier: 1.0, constant: rightMargin);
+        let topConstraint_NLB_NNB = NSLayoutConstraint(item: navigationRightBtn, attribute: .top, relatedBy: .equal, toItem: newNavigationBar, attribute: .top, multiplier: 1.0, constant: topMargin)
+        let widthConstraint_NLB_NNB = NSLayoutConstraint(item: navigationRightBtn, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 40.0)
+        let heightConstraint_NLB_NNB = NSLayoutConstraint(item: navigationRightBtn, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: btnHeight)
+        
+        navigationRightBtn.addConstraints([widthConstraint_NLB_NNB, heightConstraint_NLB_NNB])
+        newNavigationBar.addConstraints([rightConstraint_NLB_NNB, topConstraint_NLB_NNB])
     }
     
     //MARK: 添加常规导航项：左边按钮，中间标题，右边按钮
@@ -379,7 +407,9 @@ extension BaseViewController{
         print("登录授权成功")
         //显示已登录内容
         removeVisitorView()
-        addTableView()
+        removeNewNavigationBar()
+        
+        setUI()
     }
 }
 
