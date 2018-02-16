@@ -132,6 +132,31 @@ extension MainTabBarController{
     }
     
     @objc func receiveLogonNotification(no: Notification) -> Void {
+        if let userInfo = no.userInfo as? [String:Any],
+            let showAlert = userInfo["showAlert"] as? Bool{
+            
+            if showAlert {
+                let alert = UIAlertController(title: "登录", message: "请求需要先登录，是否登录？", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "确认", style: .default, handler: { (alertAction) in
+                    self.presentOAuthViewController()
+                }))
+                alert.addAction(UIAlertAction(title: "取消", style: .default, handler: { (alertAction) in
+                    
+                }))
+                
+                let selectVC = self.selectedViewController
+                selectVC?.present(alert, animated: true, completion: {
+                    
+                })
+                
+            }
+        }else{
+            presentOAuthViewController()
+        }
+        
+    }
+    
+    func presentOAuthViewController() -> Void {
         let selectVC = self.selectedViewController
         
         let vc = OAuthViewController()
@@ -142,6 +167,7 @@ extension MainTabBarController{
         })
     }
 }
+
 
 //MARK: 定时器
 extension MainTabBarController{

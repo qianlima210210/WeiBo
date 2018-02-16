@@ -46,7 +46,8 @@ class HttpEngine: NSObject {
             //手动触发请求完成回调
             completionHandler(nil, WBCustomNSError(errorDescription: "access_token为nil"))
             
-            //TODO: 通知登录去获取access_token
+            //通知登录去获取access_token
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: logonNotification), object: nil, userInfo:["showAlert":true])
             
             return nil
         }
@@ -70,7 +71,9 @@ class HttpEngine: NSObject {
                     //手动触发请求完成回调
                     completionHandler(nil, WBCustomNSError(errorDescription: "Status Code: 403"))
                     
-                    //TODO: 通知登录去获取access_token
+                    //通知登录去获取access_token
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: logonNotification), object: nil, userInfo:["showAlert":true])
+                    
                     return
                 }
                 
