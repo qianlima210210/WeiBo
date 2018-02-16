@@ -116,6 +116,42 @@ extension HttpEngine {
         dataRequestOfUnread_count?.cancel()
         dataRequestOfUnread_count = nil
     }
+    
+    //获取用户信息
+    func getUserInfo(completionHandler:@escaping (_ dic: [String:Any]?, _ error: Error?) ->()) -> Void {
+        //判断uid是否为nil，这种公共参数后期需要整理分类
+        guard let uid = UserAccount.userAccount.uid else {
+            return
+        }
+        
+        //取消用户信息请求
+        cancelGetUserInfo()
+        
+        //组织请求地址及参数，然后发送请求
+        let parameters = ["uid":uid]
+        let url = "https://api.weibo.com/2/users/show.json"
+        
+        dataRequestOfUserInfo = httpRequestAfterLogoned(url: url, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: nil, completionHandler: { (value: Any?, error: Error?) in
+            if error != nil {
+                completionHandler(nil, error)
+            }else{
+                //尝试转成你想要的类型
+                if let resutl = value as? [String:Any] {
+                    completionHandler(resutl, nil)
+                }else{
+                    completionHandler(nil, WBCustomNSError(errorDescription: "返回信息格式有问题"))
+                }
+            }
+        })
+    }
+    
+    //取消用户信息请求
+    func cancelGetUserInfo() -> Void {
+        if let dataRequestOfUserInfo = dataRequestOfUserInfo {
+            dataRequestOfUserInfo.cancel()
+            self.dataRequestOfUserInfo = nil
+        }
+    }
 }
 
 extension HttpEngine {

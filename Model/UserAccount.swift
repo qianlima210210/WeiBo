@@ -10,16 +10,26 @@ import UIKit
 
 class UserAccount: NSObject {
 
+    //访问令牌
     @objc var access_token: String? //= "2.002SUK3C_5a2KB590f93dd00DxZ3yD"
+    //用户ID
     @objc var uid: String? //= "2159844793"
+    //过期时间戳
     @objc var expires_in: TimeInterval = 0.0 {
         didSet{
             expiresDate = Date(timeIntervalSinceNow: expires_in)
         }
     }
-    
+    //国际日期
     @objc var expiresDate: Date?
     
+    //昵称
+    @objc var screen_name: String?
+    
+    //大头像
+    @objc var avatar_large: String?
+    
+    //计算型属性：是否登录
     var isLogon: Bool {
         return UserAccount.userAccount.access_token != nil ? true : false
     }
@@ -60,6 +70,8 @@ class UserAccount: NSObject {
             uid = nil
             expires_in = 0
             expiresDate = nil
+            screen_name = nil
+            avatar_large = nil
             
             //2、删除用户账号文件
             try? FileManager.default.removeItem(at: url)

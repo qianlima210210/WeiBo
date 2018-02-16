@@ -27,12 +27,14 @@ class OAuthViewController: BaseViewController, WKNavigationDelegate {
     }
     
     override func setUI() -> Void {
-        super.setUI()
-        
-        setNavigationTitle(title: "登录")
-        setNavigationLeftBtn(title: "关闭", target: self, action: #selector(closeBtnClicked))
-        
-        addWebView()
+        if UserAccount.userAccount.isLogon == false {
+            super.setUI()
+            
+            setNavigationTitle(title: "登录")
+            setNavigationLeftBtn(title: "关闭", target: self, action: #selector(closeBtnClicked))
+            
+            addWebView()
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -96,16 +98,35 @@ extension OAuthViewController {
                         SVProgressHUD.dismiss()
                         
                         if error != nil{
-                            //SVProgressHUD.showInfo(withStatus: "登录成功但是授权失败")，由网页自己提示
+                            SVProgressHUD.showInfo(withStatus: "授权失败")
                         }else{
                             if let result = result {
-                                UserAccount.userAccount.yy_modelSet(withJSON: result)
-                                print(UserAccount.userAccount)
-                                UserAccount.userAccount.saveUserAccount()
+                                UserAccount.userAccount.yy_modelSet(with: result)
+                                
+                                //请求用户信息
+                                SVProgressHUD.show()
+                                HttpEngine.httpEngine.getUserInfo(completionHandler: { (result, error) in
+                                    SVProgressHUD.dismiss()
+                                    
+                                    if error != nil {
+                                        SVProgressHUD.showInfo(withStatus: "授权失败")
+                                    }else{
+                                        if let result = result {
+                                            //获取昵称及头像地址
+                                            UserAccount.userAccount.yy_modelSet(with: result)
+                                            print(UserAccount.userAccount)
+                                            UserAccount.userAccount.saveUserAccount()
+                                        }
+                                        
+                                        SVProgressHUD.showInfo(withStatus: "登录成功并成功授权")
+                                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: logonAndAOthSuccessNotification), object: nil)
+                                        self.closeBtnClicked()
+                                    }
+                                    
+                                    
+
+                                })
                             }
-                            //SVProgressHUD.showInfo(withStatus: "登录成功并成功授权")
-                            NotificationCenter.default.post(name: NSNotification.Name(rawValue: logonAndAOthSuccessNotification), object: nil)
-                            self.closeBtnClicked()
                         }
 
                     })

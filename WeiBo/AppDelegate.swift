@@ -35,6 +35,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        BYStat.setDebugEnabled(true)
 //        BYStat.start(withAppkey: "maqianli", channel: "AppStore")
         
+        setAdditions()
+        
         return true
     }
 
