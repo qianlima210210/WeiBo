@@ -26,6 +26,10 @@ class HomePageViewController: BaseViewController {
         }
     }
     
+    @objc func titleBtnClicked(sender:UIButton) -> Void {
+        sender.isSelected = !sender.isSelected
+    }
+    
     @objc func rightBtnClicked() -> Void {
         if UserAccount.userAccount.isLogon {
             print("HomePageViewController rightBtnClicked")
@@ -39,11 +43,14 @@ class HomePageViewController: BaseViewController {
     override func setUI() {
         super.setUI()
         
-        setNavigationTitle(title: "首页")
+        UserAccount.userAccount.isLogon ? setNavigationTitleButton(target: self,
+                                                                   action: #selector(titleBtnClicked(sender: ))) : setNavigationTitle(title: "首页")
         setNavigationLeftBtn(title: UserAccount.userAccount.isLogon ? "好友":"注册", target: self, action: #selector(leftBtnClicked))
         setNavigationRightBtn(title: UserAccount.userAccount.isLogon ? "":"登录", target: self, action: #selector(rightBtnClicked))
         
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
+        
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {

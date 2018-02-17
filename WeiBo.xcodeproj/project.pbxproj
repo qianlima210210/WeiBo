@@ -17,6 +17,7 @@
 		E904D312202C2A870061A790 /* UserAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = E904D311202C2A870061A790 /* UserAccount.swift */; };
 		E92664352011C35A00ABF849 /* ContentOfVisitorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92664342011C35A00ABF849 /* ContentOfVisitorView.swift */; };
 		E946F46F2021B794000341E4 /* UIView+RJBadge.m in Sources */ = {isa = PBXBuildFile; fileRef = E946F46D2021B794000341E4 /* UIView+RJBadge.m */; };
+		E94D877320382D6A00871795 /* TitleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94D877220382D6A00871795 /* TitleButton.swift */; };
 		E9584ABF200397860001A0E4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9584ABE200397860001A0E4 /* AppDelegate.swift */; };
 		E9584AC6200397860001A0E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9584AC5200397860001A0E4 /* Assets.xcassets */; };
 		E9584ADE2003A0A10001A0E4 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9584ADD2003A0A10001A0E4 /* MainTabBarController.swift */; };
@@ -56,6 +57,7 @@
 		E946F46D2021B794000341E4 /* UIView+RJBadge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+RJBadge.m"; sourceTree = "<group>"; };
 		E946F46E2021B794000341E4 /* UIView+RJBadge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+RJBadge.h"; sourceTree = "<group>"; };
 		E946F4982021B8C9000341E4 /* WeiBo-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WeiBo-Bridging-Header.h"; sourceTree = "<group>"; };
+		E94D877220382D6A00871795 /* TitleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleButton.swift; sourceTree = "<group>"; };
 		E9584ABB200397860001A0E4 /* WeiBo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeiBo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9584ABE200397860001A0E4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E9584AC5200397860001A0E4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -138,6 +140,14 @@
 			path = RJBadgeView;
 			sourceTree = "<group>";
 		};
+		E94D877120382D5200871795 /* TitleButton */ = {
+			isa = PBXGroup;
+			children = (
+				E94D877220382D6A00871795 /* TitleButton.swift */,
+			);
+			path = TitleButton;
+			sourceTree = "<group>";
+		};
 		E9584AB2200397860001A0E4 = {
 			isa = PBXGroup;
 			children = (
@@ -196,6 +206,7 @@
 		E9584AD520039FFA0001A0E4 /* HomePage */ = {
 			isa = PBXGroup;
 			children = (
+				E94D877120382D5200871795 /* TitleButton */,
 				E9C562E42004AD4500B7F6DE /* HomePageViewController.swift */,
 			);
 			path = HomePage;
@@ -432,6 +443,7 @@
 				E946F46F2021B794000341E4 /* UIView+RJBadge.m in Sources */,
 				E90094CA2005C13C00B20928 /* ViewConstant.swift in Sources */,
 				E97AB23E201CB20500E5C267 /* WBStatusListViewModel.swift in Sources */,
+				E94D877320382D6A00871795 /* TitleButton.swift in Sources */,
 				E9C562E72004AD5C00B7F6DE /* MessageViewController.swift in Sources */,
 				E9C562EB2004AD7700B7F6DE /* ProfileViewController.swift in Sources */,
 				E9584ADE2003A0A10001A0E4 /* MainTabBarController.swift in Sources */,
