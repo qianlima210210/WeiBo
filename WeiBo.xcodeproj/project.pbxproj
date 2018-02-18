@@ -16,6 +16,8 @@
 		E904D310202889060061A790 /* OAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E904D30F202889060061A790 /* OAuthViewController.swift */; };
 		E904D312202C2A870061A790 /* UserAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = E904D311202C2A870061A790 /* UserAccount.swift */; };
 		E92664352011C35A00ABF849 /* ContentOfVisitorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92664342011C35A00ABF849 /* ContentOfVisitorView.swift */; };
+		E932A08F203996FB001414E6 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E932A08E203996FB001414E6 /* WelcomeView.swift */; };
+		E932A091203997AE001414E6 /* NewFeatureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E932A090203997AE001414E6 /* NewFeatureView.swift */; };
 		E946F46F2021B794000341E4 /* UIView+RJBadge.m in Sources */ = {isa = PBXBuildFile; fileRef = E946F46D2021B794000341E4 /* UIView+RJBadge.m */; };
 		E94D877320382D6A00871795 /* TitleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94D877220382D6A00871795 /* TitleButton.swift */; };
 		E9584ABF200397860001A0E4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9584ABE200397860001A0E4 /* AppDelegate.swift */; };
@@ -53,6 +55,8 @@
 		E904D30F202889060061A790 /* OAuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthViewController.swift; sourceTree = "<group>"; };
 		E904D311202C2A870061A790 /* UserAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAccount.swift; sourceTree = "<group>"; };
 		E92664342011C35A00ABF849 /* ContentOfVisitorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentOfVisitorView.swift; sourceTree = "<group>"; };
+		E932A08E203996FB001414E6 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
+		E932A090203997AE001414E6 /* NewFeatureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFeatureView.swift; sourceTree = "<group>"; };
 		E946F46C2021B794000341E4 /* RJBadgeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RJBadgeView.h; sourceTree = "<group>"; };
 		E946F46D2021B794000341E4 /* UIView+RJBadge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+RJBadge.m"; sourceTree = "<group>"; };
 		E946F46E2021B794000341E4 /* UIView+RJBadge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+RJBadge.h"; sourceTree = "<group>"; };
@@ -128,6 +132,15 @@
 				E904D30F202889060061A790 /* OAuthViewController.swift */,
 			);
 			path = OAuth;
+			sourceTree = "<group>";
+		};
+		E932A08620393119001414E6 /* NewFeature */ = {
+			isa = PBXGroup;
+			children = (
+				E932A08E203996FB001414E6 /* WelcomeView.swift */,
+				E932A090203997AE001414E6 /* NewFeatureView.swift */,
+			);
+			path = NewFeature;
 			sourceTree = "<group>";
 		};
 		E946F46B2021B794000341E4 /* RJBadgeView */ = {
@@ -231,6 +244,7 @@
 		E9584AD820039FFA0001A0E4 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				E932A08620393119001414E6 /* NewFeature */,
 				E9584ADD2003A0A10001A0E4 /* MainTabBarController.swift */,
 				E9584ADF2003A0C00001A0E4 /* MainNavigationController.swift */,
 				E9584AE12003A0DB0001A0E4 /* BaseViewController.swift */,
@@ -429,6 +443,7 @@
 				E97AB236201AFCBE00E5C267 /* HttpEngine.swift in Sources */,
 				E9584AE22003A0DB0001A0E4 /* BaseViewController.swift in Sources */,
 				E92664352011C35A00ABF849 /* ContentOfVisitorView.swift in Sources */,
+				E932A091203997AE001414E6 /* NewFeatureView.swift in Sources */,
 				E904D312202C2A870061A790 /* UserAccount.swift in Sources */,
 				E9584ABF200397860001A0E4 /* AppDelegate.swift in Sources */,
 				E904D30D202885DD0061A790 /* ApplicationBaseInfoConstantFromSinaOpenPlatform.swift in Sources */,
@@ -444,6 +459,7 @@
 				E90094CA2005C13C00B20928 /* ViewConstant.swift in Sources */,
 				E97AB23E201CB20500E5C267 /* WBStatusListViewModel.swift in Sources */,
 				E94D877320382D6A00871795 /* TitleButton.swift in Sources */,
+				E932A08F203996FB001414E6 /* WelcomeView.swift in Sources */,
 				E9C562E72004AD5C00B7F6DE /* MessageViewController.swift in Sources */,
 				E9C562EB2004AD7700B7F6DE /* ProfileViewController.swift in Sources */,
 				E9584ADE2003A0A10001A0E4 /* MainTabBarController.swift in Sources */,

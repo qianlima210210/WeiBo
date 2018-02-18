@@ -46,6 +46,9 @@ class MainTabBarController: UITabBarController {
         
         //设置tabBar盛放的视图控制器
         self.setViewControllers()
+        
+        //设置新特性视图或欢迎视图
+        setNewFeatureViewOrWelcomeView()
     }
     
     /// 设置tabBar盛放的视图控制器
@@ -193,5 +196,22 @@ extension MainTabBarController{
     func cancelTimer() -> Void {
         timer?.invalidate()
         timer = nil
+    }
+}
+
+extension MainTabBarController{
+    //设置新特性视图或欢迎视图
+    func setNewFeatureViewOrWelcomeView() -> Void {
+        if UserAccount.userAccount.isLogon == false {
+            return
+        }
+        
+        let v = isNewFeature ? NewFeatureView() : WelcomeView()
+        v.frame = view.bounds
+        view .addSubview(v)
+    }
+    
+    private var isNewFeature: Bool{
+        return false
     }
 }
