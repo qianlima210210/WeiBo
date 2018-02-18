@@ -196,12 +196,13 @@ extension BaseViewController{
         navigationTitleLabBtn?.translatesAutoresizingMaskIntoConstraints = false
         newNavigationBar.addSubview(navigationTitleLabBtn!)
         
-        let leftConstraint_NTLB_NNB = NSLayoutConstraint(item: navigationTitleLabBtn!, attribute: .left, relatedBy: .equal, toItem: newNavigationBar, attribute: .left, multiplier: 1.0, constant: 0.0);
-        let topConstraint_NTLB_NNB = NSLayoutConstraint(item: navigationTitleLabBtn!, attribute: .top, relatedBy: .equal, toItem: newNavigationBar, attribute: .top, multiplier: 1.0, constant: 0.0)
-        let widthConstraint_NTLB_NNB = NSLayoutConstraint(item: navigationTitleLabBtn!, attribute: .width, relatedBy: .equal, toItem: newNavigationBar, attribute: .width, multiplier: 1.0, constant: 0.0)
-        let heightConstraint_NTLB_NNB = NSLayoutConstraint(item: navigationTitleLabBtn!, attribute: .height, relatedBy: .equal, toItem: newNavigationBar, attribute: .height, multiplier: 1.0, constant: 0.0)
-        
-        newNavigationBar.addConstraints([leftConstraint_NTLB_NNB, topConstraint_NTLB_NNB, widthConstraint_NTLB_NNB, heightConstraint_NTLB_NNB])
+        let centerXConstraint_NTLB_NNB = NSLayoutConstraint(item: navigationTitleLabBtn!, attribute: .centerX, relatedBy: .equal, toItem: newNavigationBar, attribute: .centerX, multiplier: 1.0, constant: 0.0)
+        let centerYConstraint_NTLB_NNB = NSLayoutConstraint(item: navigationTitleLabBtn!, attribute: .centerY, relatedBy: .equal, toItem: newNavigationBar, attribute: .centerY, multiplier: 1.0, constant: 0.0)
+        let widthConstraint_NTLB_NNB = NSLayoutConstraint(item: navigationTitleLabBtn!, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: navigationTitleLabBtn!.bounds.width)
+        let heightConstraint_NTLB_NNB = NSLayoutConstraint(item: navigationTitleLabBtn!, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: navigationTitleLabBtn!.bounds.height)
+
+        newNavigationBar.addConstraints([centerXConstraint_NTLB_NNB, centerYConstraint_NTLB_NNB])
+        navigationTitleLabBtn?.addConstraints([widthConstraint_NTLB_NNB, heightConstraint_NTLB_NNB])
     }
     
     //MARK: 设置导航左边按钮

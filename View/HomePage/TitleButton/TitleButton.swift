@@ -22,7 +22,7 @@ class TitleButton: UIButton {
         if title == nil {
             setTitle("首页", for: .normal)
         }else{
-            setTitle(title!, for: .normal)
+            setTitle(title! + " ", for: .normal)
             //设置图像
             setImage(#imageLiteral(resourceName: "common_icon_arrowdown"), for: .normal)
             setImage(#imageLiteral(resourceName: "common_icon_arrowup"), for: .selected)
@@ -31,11 +31,31 @@ class TitleButton: UIButton {
         //2>设置字体和颜色
         titleLabel?.font = UIFont.boldSystemFont(ofSize: 17)
         setTitleColor(UIColor.darkGray, for: .normal)
+        
+        //3>设置大小
+        sizeToFit()
     }
     
     required init?(coder aDecoder: NSCoder) {
         //fatalError("init(coder:) has not been implemented")
         super.init(coder: aDecoder)
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        guard let titleLabel = titleLabel,
+        let imageView = imageView  else { return }
+
+        //重新设置titleLabel，imageView的位置
+        titleLabel.frame = CGRect(x: 0.0,
+                                  y: titleLabel.frame.minY,
+                                  width: titleLabel.frame.width,
+                                  height: titleLabel.frame.height)
+        imageView.frame = CGRect(x: titleLabel.frame.width,
+                                 y: imageView.frame.minY,
+                                 width: imageView.frame.width,
+                                 height: imageView.frame.height)
     }
     
 }
