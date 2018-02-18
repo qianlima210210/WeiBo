@@ -62,7 +62,7 @@
 		E946F46E2021B794000341E4 /* UIView+RJBadge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+RJBadge.h"; sourceTree = "<group>"; };
 		E946F4982021B8C9000341E4 /* WeiBo-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WeiBo-Bridging-Header.h"; sourceTree = "<group>"; };
 		E94D877220382D6A00871795 /* TitleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleButton.swift; sourceTree = "<group>"; };
-		E9584ABB200397860001A0E4 /* WeiBo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeiBo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E9584ABB200397860001A0E4 /* WB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WB.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9584ABE200397860001A0E4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E9584AC5200397860001A0E4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E9584ACA200397860001A0E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -178,7 +178,7 @@
 		E9584ABC200397860001A0E4 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E9584ABB200397860001A0E4 /* WeiBo.app */,
+				E9584ABB200397860001A0E4 /* WB.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -317,7 +317,7 @@
 			);
 			name = WeiBo;
 			productName = WeiBo;
-			productReference = E9584ABB200397860001A0E4 /* WeiBo.app */;
+			productReference = E9584ABB200397860001A0E4 /* WB.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -612,7 +612,7 @@
 				INFOPLIST_FILE = WeiBo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.liezhong.housing;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = WB;
 				SWIFT_OBJC_BRIDGING_HEADER = "WeiBo/WeiBo-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
@@ -632,7 +632,7 @@
 				INFOPLIST_FILE = WeiBo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.liezhong.housing;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = WB;
 				SWIFT_OBJC_BRIDGING_HEADER = "WeiBo/WeiBo-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;

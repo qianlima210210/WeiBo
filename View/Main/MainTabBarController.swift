@@ -212,6 +212,16 @@ extension MainTabBarController{
     }
     
     private var isNewFeature: Bool{
-        return false
+        //1.获取当前应用版本号
+        let appVersion = (Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String) ?? ""
+        
+        //2.获取偏好设置中的版本号
+        let localVersion = (UserDefaults.standard.object(forKey: "CFBundleShortVersionString") as? String) ?? ""
+        
+        //3.保存前应用版本号到偏好设置中
+        UserDefaults.standard.set(appVersion, forKey: "CFBundleShortVersionString")
+        
+        //4.返回比较结果
+        return appVersion.compare(localVersion) != .orderedSame ? true : false
     }
 }
