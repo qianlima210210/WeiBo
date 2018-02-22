@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina5_9" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="iN0-l3-epB" customClass="WelcomeView" customModule="WB" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="S0h-5o-kL9" userLabel="BackgroundImageView">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                </imageView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DLK-T1-IK0" userLabel="MovedView">
+                    <rect key="frame" x="0.0" y="613" width="375" height="121"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avatar_large_userhead" translatesAutoresizingMaskIntoConstraints="NO" id="zJp-4K-JO9">
+                            <rect key="frame" x="145" y="0.0" width="85" height="85"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="85" id="7dJ-vX-a9F"/>
+                                <constraint firstAttribute="height" constant="85" id="qVr-Qo-iKh"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="欢迎回来" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N8m-ey-m6z">
+                            <rect key="frame" x="0.0" y="90" width="375" height="31"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="31" id="CTX-Tq-PXx"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="zJp-4K-JO9" firstAttribute="top" secondItem="DLK-T1-IK0" secondAttribute="top" id="CJk-Ep-rOo"/>
+                        <constraint firstItem="N8m-ey-m6z" firstAttribute="top" secondItem="zJp-4K-JO9" secondAttribute="bottom" constant="5" id="TBP-sX-FSa"/>
+                        <constraint firstItem="zJp-4K-JO9" firstAttribute="centerX" secondItem="DLK-T1-IK0" secondAttribute="centerX" id="XiT-Fc-QAz"/>
+                        <constraint firstAttribute="trailing" secondItem="N8m-ey-m6z" secondAttribute="trailing" id="cJB-3I-b7v"/>
+                        <constraint firstItem="N8m-ey-m6z" firstAttribute="leading" secondItem="DLK-T1-IK0" secondAttribute="leading" id="pw4-4V-AsR"/>
+                        <constraint firstAttribute="height" constant="121" id="pzD-Z1-2yr"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="DLK-T1-IK0" secondAttribute="bottom" constant="78" id="0BZ-5F-bu6"/>
+                <constraint firstAttribute="bottom" secondItem="S0h-5o-kL9" secondAttribute="bottom" id="AS4-fC-pbo"/>
+                <constraint firstAttribute="trailing" secondItem="DLK-T1-IK0" secondAttribute="trailing" id="FeI-q6-e1G"/>
+                <constraint firstAttribute="trailing" secondItem="S0h-5o-kL9" secondAttribute="trailing" id="ap1-ar-M9V"/>
+                <constraint firstItem="S0h-5o-kL9" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="cg9-P0-6Rh"/>
+                <constraint firstItem="DLK-T1-IK0" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="pQ1-WI-3Zi"/>
+                <constraint firstItem="S0h-5o-kL9" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="rKB-JM-GYI"/>
+            </constraints>
+            <connections>
+                <outlet property="backgroundImageView" destination="S0h-5o-kL9" id="h5c-Bp-Qib"/>
+                <outlet property="bottomConstraintOfView" destination="0BZ-5F-bu6" id="YiZ-jw-9PV"/>
+            </connections>
+            <point key="canvasLocation" x="-277.5" y="47"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="avatar_large_userhead" width="85" height="85"/>
+    </resources>
+</document>

@@ -206,8 +206,10 @@ extension MainTabBarController{
             return
         }
         
-        let v = isNewFeature ? NewFeatureView() : WelcomeView()
-        v.frame = view.bounds
+        let newFeatureView = NewFeatureView()
+        let welcomeView = WelcomeView.welcomeView()
+        let v = isNewFeature ? newFeatureView : welcomeView
+        
         view .addSubview(v)
     }
     
