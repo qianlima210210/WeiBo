@@ -28,7 +28,7 @@
                                 <constraint firstAttribute="height" constant="85" id="qVr-Qo-iKh"/>
                             </constraints>
                         </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="欢迎回来" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N8m-ey-m6z">
+                        <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="欢迎回来" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N8m-ey-m6z">
                             <rect key="frame" x="0.0" y="90" width="375" height="31"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="31" id="CTX-Tq-PXx"/>
@@ -38,7 +38,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="zJp-4K-JO9" firstAttribute="top" secondItem="DLK-T1-IK0" secondAttribute="top" id="CJk-Ep-rOo"/>
                         <constraint firstItem="N8m-ey-m6z" firstAttribute="top" secondItem="zJp-4K-JO9" secondAttribute="bottom" constant="5" id="TBP-sX-FSa"/>
@@ -60,8 +60,10 @@
                 <constraint firstItem="S0h-5o-kL9" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="rKB-JM-GYI"/>
             </constraints>
             <connections>
+                <outlet property="avatarImageView" destination="zJp-4K-JO9" id="I4a-iU-rpd"/>
                 <outlet property="backgroundImageView" destination="S0h-5o-kL9" id="h5c-Bp-Qib"/>
                 <outlet property="bottomConstraintOfView" destination="0BZ-5F-bu6" id="YiZ-jw-9PV"/>
+                <outlet property="noteLabel" destination="N8m-ey-m6z" id="T4f-uf-b7I"/>
             </connections>
             <point key="canvasLocation" x="-277.5" y="47"/>
         </view>

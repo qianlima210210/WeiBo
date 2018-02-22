@@ -40,6 +40,7 @@
 		E9C562ED2004B41200B7F6DE /* 应用常规尺寸.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E9C562EC2004B41100B7F6DE /* 应用常规尺寸.jpg */; };
 		E9D9B787202443E80056BCA3 /* NotificationConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D9B786202443E80056BCA3 /* NotificationConstant.swift */; };
 		E9FF994B203AB987002B8738 /* WelcomeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9FF994A203AB987002B8738 /* WelcomeView.xib */; };
+		E9FF994D203EECB7002B8738 /* NewFeatureView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9FF994C203EECB7002B8738 /* NewFeatureView.xib */; };
 		F7FA356D787C95851A0DE7A8 /* Pods_WeiBo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFD83F2C9283CD656E4B2E5F /* Pods_WeiBo.framework */; };
 /* End PBXBuildFile section */
 
@@ -87,6 +88,7 @@
 		E9C562EC2004B41100B7F6DE /* 应用常规尺寸.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "应用常规尺寸.jpg"; sourceTree = "<group>"; };
 		E9D9B786202443E80056BCA3 /* NotificationConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationConstant.swift; sourceTree = "<group>"; };
 		E9FF994A203AB987002B8738 /* WelcomeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WelcomeView.xib; sourceTree = "<group>"; };
+		E9FF994C203EECB7002B8738 /* NewFeatureView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewFeatureView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +144,7 @@
 				E932A08E203996FB001414E6 /* WelcomeView.swift */,
 				E9FF994A203AB987002B8738 /* WelcomeView.xib */,
 				E932A090203997AE001414E6 /* NewFeatureView.swift */,
+				E9FF994C203EECB7002B8738 /* NewFeatureView.xib */,
 			);
 			path = NewFeature;
 			sourceTree = "<group>";
@@ -364,6 +367,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E90094ED20084D1000B20928 /* Podfile in Resources */,
+				E9FF994D203EECB7002B8738 /* NewFeatureView.xib in Resources */,
 				E9C562E320046D6E00B7F6DE /* ReadMe in Resources */,
 				E9584AC6200397860001A0E4 /* Assets.xcassets in Resources */,
 				E9C562DE20046BB000B7F6DE /* Localizable.strings in Resources */,
