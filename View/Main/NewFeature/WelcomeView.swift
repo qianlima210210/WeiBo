@@ -21,6 +21,9 @@ class WelcomeView: UIView {
         //程序运行到此，控件引用还未生效
     }
     
+    deinit {
+        print("WelcomeView:deinit")
+    }
     
     /// xib或者storyboard加载完毕就会调用,设置初始值
     override func awakeFromNib() {
@@ -51,12 +54,16 @@ class WelcomeView: UIView {
             return
         }
         
-        avatarImageView.sd_setImage(with: url, placeholderImage: #imageLiteral(resourceName: "avatar_large_userhead"), options: []) { (_, _, _, _) in
+        avatarImageView.sd_setImage(with: url, placeholderImage: #imageLiteral(resourceName: "avatar_large_userhead"), options: []) { (image, error, type, url) in
             
+            //2.2设置头像圆角
+            //方案一：很费cpu的性能
+//            self.avatarImageView.layer.cornerRadius = self.avatarImageView.bounds.width / 2
+//            self.avatarImageView.layer.masksToBounds = true
+            
+            //方案二：从新生成大小合适的UIImage
+            self.avatarImageView.image = image?.imageWithoutColorMisaligned(size: self.avatarImageView.bounds.size, backColor: self.backgroundColor)
         }
-        //2.1设置头像圆角
-        avatarImageView.layer.cornerRadius = avatarImageView.bounds.width / 2
-        avatarImageView.layer.masksToBounds = true
     }
     
     class func welcomeView() -> WelcomeView {
