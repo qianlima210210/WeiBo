@@ -33,6 +33,10 @@ class MainTabBarController: UITabBarController {
             if repeatClick && index == 1 {
                 //将首页内容滚动到顶部
                 self.scrollTopOfHomePageContent()
+                
+                //清空徽标
+                self.new_tabBar.setBadgeForHomepageBtn(count: 0)
+                
                 return
             }
             
