@@ -15,6 +15,8 @@
 		E904D30D202885DD0061A790 /* ApplicationBaseInfoConstantFromSinaOpenPlatform.swift in Sources */ = {isa = PBXBuildFile; fileRef = E904D30C202885DC0061A790 /* ApplicationBaseInfoConstantFromSinaOpenPlatform.swift */; };
 		E904D310202889060061A790 /* OAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E904D30F202889060061A790 /* OAuthViewController.swift */; };
 		E904D312202C2A870061A790 /* UserAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = E904D311202C2A870061A790 /* UserAccount.swift */; };
+		E9083210204148AC007B6AFE /* StatusCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E908320F204148AC007B6AFE /* StatusCellTableViewCell.swift */; };
+		E9083212204148D0007B6AFE /* StatusNormalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9083211204148D0007B6AFE /* StatusNormalCell.xib */; };
 		E92664352011C35A00ABF849 /* ContentOfVisitorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92664342011C35A00ABF849 /* ContentOfVisitorView.swift */; };
 		E932A08F203996FB001414E6 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E932A08E203996FB001414E6 /* WelcomeView.swift */; };
 		E932A091203997AE001414E6 /* NewFeatureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E932A090203997AE001414E6 /* NewFeatureView.swift */; };
@@ -57,6 +59,8 @@
 		E904D30C202885DC0061A790 /* ApplicationBaseInfoConstantFromSinaOpenPlatform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationBaseInfoConstantFromSinaOpenPlatform.swift; sourceTree = "<group>"; };
 		E904D30F202889060061A790 /* OAuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthViewController.swift; sourceTree = "<group>"; };
 		E904D311202C2A870061A790 /* UserAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAccount.swift; sourceTree = "<group>"; };
+		E908320F204148AC007B6AFE /* StatusCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusCellTableViewCell.swift; sourceTree = "<group>"; };
+		E9083211204148D0007B6AFE /* StatusNormalCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StatusNormalCell.xib; sourceTree = "<group>"; };
 		E92664342011C35A00ABF849 /* ContentOfVisitorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentOfVisitorView.swift; sourceTree = "<group>"; };
 		E932A08E203996FB001414E6 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		E932A090203997AE001414E6 /* NewFeatureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFeatureView.swift; sourceTree = "<group>"; };
@@ -139,6 +143,15 @@
 				E904D30F202889060061A790 /* OAuthViewController.swift */,
 			);
 			path = OAuth;
+			sourceTree = "<group>";
+		};
+		E908320E20414878007B6AFE /* StatusCell */ = {
+			isa = PBXGroup;
+			children = (
+				E908320F204148AC007B6AFE /* StatusCellTableViewCell.swift */,
+				E9083211204148D0007B6AFE /* StatusNormalCell.xib */,
+			);
+			path = StatusCell;
 			sourceTree = "<group>";
 		};
 		E932A08620393119001414E6 /* NewFeature */ = {
@@ -228,6 +241,7 @@
 		E9584AD520039FFA0001A0E4 /* HomePage */ = {
 			isa = PBXGroup;
 			children = (
+				E908320E20414878007B6AFE /* StatusCell */,
 				E94D877120382D5200871795 /* TitleButton */,
 				E9C562E42004AD4500B7F6DE /* HomePageViewController.swift */,
 			);
@@ -373,6 +387,7 @@
 				E9FF994D203EECB7002B8738 /* NewFeatureView.xib in Resources */,
 				E9C562E320046D6E00B7F6DE /* ReadMe in Resources */,
 				E9584AC6200397860001A0E4 /* Assets.xcassets in Resources */,
+				E9083212204148D0007B6AFE /* StatusNormalCell.xib in Resources */,
 				E9C562DE20046BB000B7F6DE /* Localizable.strings in Resources */,
 				E90094EF200859BC00B20928 /* Swift.gitignore in Resources */,
 				E9C562DA2004683100B7F6DE /* InfoPlist.strings in Resources */,
@@ -469,6 +484,7 @@
 				E9C562E52004AD4500B7F6DE /* HomePageViewController.swift in Sources */,
 				E946F46F2021B794000341E4 /* UIView+RJBadge.m in Sources */,
 				E90094CA2005C13C00B20928 /* ViewConstant.swift in Sources */,
+				E9083210204148AC007B6AFE /* StatusCellTableViewCell.swift in Sources */,
 				E97AB23E201CB20500E5C267 /* WBStatusListViewModel.swift in Sources */,
 				E94D877320382D6A00871795 /* TitleButton.swift in Sources */,
 				E932A08F203996FB001414E6 /* WelcomeView.swift in Sources */,
