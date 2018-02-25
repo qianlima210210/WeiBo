@@ -7,9 +7,18 @@
 //
 
 import UIKit
+import SDWebImage
 
 class StatusCellTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var touXiangImageView: UIImageView!
+    @IBOutlet weak var screenName: UILabel!
+    @IBOutlet weak var huiYuanImageView: UIImageView!
+    @IBOutlet weak var time: UILabel!
+    @IBOutlet weak var from: UILabel!
+    @IBOutlet weak var renZhengImageView: UIImageView!
+    @IBOutlet weak var zhengWen: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -20,5 +29,61 @@ class StatusCellTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    func setCellContent(content: WBStatus) -> Void {
+        setZhengWen(text: content.text ?? "")
+        //FIXME: 先用自己的头像代替
+        setTouXiangImageView(UserAccount.userAccount.avatar_large)
+    }
+    
+    /// 设置头像
+    func setTouXiangImageView(_ avatar_large: String?) -> Void {
+        let url = URL(string: avatar_large ?? "")
+        touXiangImageView.sd_setImage(with: url, placeholderImage: #imageLiteral(resourceName: "avatar_large_userhead"), options: []) { (image, error, type, url) in
+            
+        }
+    }
+    
+    /// 设置正文内容
+    ///
+    /// - Parameter text: 正文内容；这里没有直接在外部对zhengWen的text进行赋值的原因是，需要设置
+    /// 正文标签的文本属性
+    private func setZhengWen(text: String) -> Void {
+        zhengWen.text = text
+        //调整标签行间距
+        let attributeText = NSMutableAttributedString(string: text)
+        
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineSpacing = 5.0
+        attributeText.addAttributes([NSAttributedStringKey.paragraphStyle:paragraphStyle],
+                                    range: NSRange(location: 0, length: text.count))
+        
+        zhengWen.attributedText = attributeText
+    }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

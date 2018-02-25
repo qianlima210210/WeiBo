@@ -49,7 +49,7 @@ class HomePageViewController: BaseViewController {
         setNavigationRightBtn(title: UserAccount.userAccount.isLogon ? "":"登录", target: self, action: #selector(rightBtnClicked))
         
         tableView.register(UINib(nibName: "StatusNormalCell", bundle: nil), forCellReuseIdentifier: reuseIdentifier)
-        
+
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -109,14 +109,26 @@ extension HomePageViewController{
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath)
-        //cell.textLabel?.text = listViewModel.statusList[indexPath.row].text
+        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! StatusCellTableViewCell
+        
+        let content = listViewModel.statusList[indexPath.row]
+        cell.setCellContent(content: content)
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 5.0 + 60.0 + 5.0
+        let height1 = CGFloat(65.0) //正文以上的高度
+        
+        //正文的高度
+        var height2:CGFloat = 0.0
+        if let zhengWen = listViewModel.statusList[indexPath.row].text {
+            height2 = zhengWen.heightOfString(size: CGSize(width: kScreenWidth() - CGFloat(12 * 2), height: CGFloat(1000.0)),
+                                                  font: UIFont.systemFont(ofSize: 13),
+                                                  lineSpacing: 5.0)
+        }
+
+        return height1 + height2
     }
 }
 
