@@ -58,7 +58,7 @@ class OAuthViewController: BaseViewController, WKNavigationDelegate {
         
         view.addConstraints([leftConstraint_WV_V, topConstraint_WV_V, widthConstraint_WV_V, bottomConstraint_WV_V])
     
-        //设置访问的url
+        //设置访问的url(同意授权后会重定向,我们通过拦截重定向获取授权码)
         let url = URL(string: "https://api.weibo.com/oauth2/authorize?client_id=\(AppKey)&redirect_uri=\(OAuthCallbackUrl)")
         if let url = url {
             let requeset = URLRequest(url: url)

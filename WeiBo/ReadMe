@@ -177,9 +177,9 @@ Swift类型的成员或者方法在编译时就已经决定，而运行时便不
 添加@objc修饰符并不意味着这个方法或者属性会变成动态派发，Swift依然可能会将其优化为静态调用。如果你需要和Objective-C里动态调用时相同的运行时特性的话，你需要使用的修饰符是dynamic。一般情况下在做App开发时应该用不上，但是在施展一些像动态替换方法或者运行时再决定实现这样的 "黑魔法" 的时候，我们就需要用到dynamic修饰符了。
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 HttpEngine.httpEngine.getUID { (value, error) in
-if error == nil {
-guard let dic = value else{
-return
+    if error == nil {
+    guard let dic = value else{
+    return
 }
 
 print(dic)
@@ -188,6 +188,32 @@ print(dic)
 
 }
 }
+
+//swift默认是不具备使用OC中KVC机制的；通过添加@objc修饰符，方能具备；
+//注意key名一定和类中的成员变量名（OC中叫属性名）一样。
+//setValuesForKeys的实现原理是：使用字典条目的key和字典条目的value作为参数，通过对象调用-setValue:forKey:，
+//所以一旦，key名类中的成员变量名不一样，就会触发value(forUndefinedKey）的调用，此方法会抛出异常。
+class Person : NSObject{
+@objc var age: Int = 0
+@objc var name: String?
+@objc private var address: String?
+
+override init() {
+    super.init()
+}
+
+func test() -> Void {
+    print("\(age) , \(String(describing: name)) , \(String(describing: address))")
+    }
+}
+
+let dic: [String:Any] = ["age":10, "name":"apple", "address":"shanghai"]
+
+let person = Person()
+person.setValuesForKeys(dic)
+person.test()
+
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 小红点的使用
 selectedBtn?.badgeOffset = CGPoint(x: -btnWidth / 2 + 30 / 2, y: 8)

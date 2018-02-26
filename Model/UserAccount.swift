@@ -20,7 +20,7 @@ class UserAccount: NSObject {
             expiresDate = Date(timeIntervalSinceNow: expires_in)
         }
     }
-    //国际日期
+    //过期日期
     @objc var expiresDate: Date?
     
     //昵称
