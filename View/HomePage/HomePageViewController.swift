@@ -62,9 +62,9 @@ class HomePageViewController: BaseViewController {
     //重写父类的加载
     override func loadData() {
         if isPullUp {
-            print("上拉前最后一条数据是：" + (listViewModel.statusList.last?.text ?? ""))
+            print("上拉前最后一条数据是：" + (listViewModel.statusList.last?.status.text ?? ""))
         }else{
-            print("下拉前第一条数据是：" + (listViewModel.statusList.first?.text ?? ""))
+            print("下拉前第一条数据是：" + (listViewModel.statusList.first?.status.text ?? ""))
         }
         
         
@@ -112,7 +112,7 @@ extension HomePageViewController{
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! StatusCellTableViewCell
         
         let content = listViewModel.statusList[indexPath.row]
-        cell.setCellContent(content: content)
+        cell.setCellContent(content: content.status)
         
         return cell
     }
@@ -122,7 +122,7 @@ extension HomePageViewController{
         
         //正文的高度
         var height2:CGFloat = 0.0
-        if let zhengWen = listViewModel.statusList[indexPath.row].text {
+        if let zhengWen = listViewModel.statusList[indexPath.row].status.text {
             height2 = zhengWen.heightOfString(size: CGSize(width: kScreenWidth() - CGFloat(12 * 2), height: CGFloat(1000.0)),
                                                   font: UIFont.systemFont(ofSize: 13),
                                                   lineSpacing: 5.0)

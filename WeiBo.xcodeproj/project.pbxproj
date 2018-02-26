@@ -34,6 +34,7 @@
 		E97AB23A201B75C600E5C267 /* WBCustomNSError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97AB239201B75C600E5C267 /* WBCustomNSError.swift */; };
 		E97AB23C201CAAFD00E5C267 /* WBStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97AB23B201CAAFD00E5C267 /* WBStatus.swift */; };
 		E97AB23E201CB20500E5C267 /* WBStatusListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97AB23D201CB20500E5C267 /* WBStatusListViewModel.swift */; };
+		E9949A1E2043DFAE00DFF936 /* WBStatusViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9949A1D2043DFAE00DFF936 /* WBStatusViewModel.swift */; };
 		E9C562DA2004683100B7F6DE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E9C562D82004683100B7F6DE /* InfoPlist.strings */; };
 		E9C562DE20046BB000B7F6DE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E9C562E020046BB000B7F6DE /* Localizable.strings */; };
 		E9C562E320046D6E00B7F6DE /* ReadMe in Resources */ = {isa = PBXBuildFile; fileRef = E9C562E220046D6E00B7F6DE /* ReadMe */; };
@@ -84,6 +85,7 @@
 		E97AB239201B75C600E5C267 /* WBCustomNSError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBCustomNSError.swift; sourceTree = "<group>"; };
 		E97AB23B201CAAFD00E5C267 /* WBStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBStatus.swift; sourceTree = "<group>"; };
 		E97AB23D201CB20500E5C267 /* WBStatusListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBStatusListViewModel.swift; sourceTree = "<group>"; };
+		E9949A1D2043DFAE00DFF936 /* WBStatusViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBStatusViewModel.swift; sourceTree = "<group>"; };
 		E9C562D92004683100B7F6DE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		E9C562DB2004684100B7F6DE /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		E9C562DF20046BB000B7F6DE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -293,6 +295,7 @@
 			isa = PBXGroup;
 			children = (
 				E97AB23D201CB20500E5C267 /* WBStatusListViewModel.swift */,
+				E9949A1D2043DFAE00DFF936 /* WBStatusViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -473,6 +476,7 @@
 				E9584AE22003A0DB0001A0E4 /* BaseViewController.swift in Sources */,
 				E92664352011C35A00ABF849 /* ContentOfVisitorView.swift in Sources */,
 				E932A091203997AE001414E6 /* NewFeatureView.swift in Sources */,
+				E9949A1E2043DFAE00DFF936 /* WBStatusViewModel.swift in Sources */,
 				E904D312202C2A870061A790 /* UserAccount.swift in Sources */,
 				E9584ABF200397860001A0E4 /* AppDelegate.swift in Sources */,
 				E904D30D202885DD0061A790 /* ApplicationBaseInfoConstantFromSinaOpenPlatform.swift in Sources */,

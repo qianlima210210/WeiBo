@@ -28,7 +28,7 @@ class WBStatusListViewModel {
     var pullUpErrorTimes = 0
     
     //微博模型列表
-    var statusList = [WBStatus]()
+    var statusList = [WBStatusViewModel]()
     
     
     /// 加载微博列表
@@ -43,18 +43,20 @@ class WBStatusListViewModel {
         }
         
         //since_id：数组中第一条微博的ID
-        let since_id = isPullUp ?  0 : (statusList.first?.id ?? 0)
+        let since_id = isPullUp ?  0 : (statusList.first?.status.id ?? 0)
         
         //max_id：数组中最后一条微博色ID
-        let max_id = isPullUp ? (statusList.last?.id ?? 0) : 0
+        let max_id = isPullUp ? (statusList.last?.status.id ?? 0) : 0
         
         HttpEngine.httpEngine.statusesList(since_id: since_id, max_id: (max_id > 0 ? max_id - 1 : 0)) { (value, error) in
             if error == nil{
                 //1、字典转模型
-                guard let list = NSArray.yy_modelArray(with: WBStatus.self, json: value ?? []) as? [WBStatus] else{
-                    //完成回调
-                    completion(false)
-                    return
+                var list = [WBStatusViewModel]()
+                for dic in value ?? []{
+                    guard let status = WBStatus.yy_model(with: dic) else{
+                        continue
+                    }
+                    list.append(WBStatusViewModel(status: status))
                 }
                 
                 //2、拼接数据
