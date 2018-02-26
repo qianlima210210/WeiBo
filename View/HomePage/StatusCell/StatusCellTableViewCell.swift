@@ -19,6 +19,14 @@ class StatusCellTableViewCell: UITableViewCell {
     @IBOutlet weak var renZhengImageView: UIImageView!
     @IBOutlet weak var zhengWen: UILabel!
     
+    var status: WBStatus?{
+        didSet{
+            setZhengWen(text: status?.text ?? "")
+            setScreenName(name: status?.user?.screen_name ?? "")
+            setTouXiangImageView(status?.user?.profile_image_url)
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -30,14 +38,8 @@ class StatusCellTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func setCellContent(content: WBStatus) -> Void {
-        setZhengWen(text: content.text ?? "")
-        //FIXME: 先用自己的头像代替
-        setTouXiangImageView(UserAccount.userAccount.avatar_large)
-    }
-    
     /// 设置头像
-    func setTouXiangImageView(_ avatar_large: String?) -> Void {
+    private func setTouXiangImageView(_ avatar_large: String?) -> Void {
         let url = URL(string: avatar_large ?? "")
         touXiangImageView.sd_setImage(with: url, placeholderImage: #imageLiteral(resourceName: "avatar_large_userhead"), options: []) { (image, error, type, url) in
             
@@ -59,6 +61,13 @@ class StatusCellTableViewCell: UITableViewCell {
                                     range: NSRange(location: 0, length: text.count))
         
         zhengWen.attributedText = attributeText
+    }
+    
+    /// 设置昵称
+    ///
+    /// - Parameter name: 昵称
+    private func setScreenName(name: String){
+        screenName.text = name
     }
 
 }
