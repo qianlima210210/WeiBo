@@ -24,6 +24,7 @@ class StatusCellTableViewCell: UITableViewCell {
             setZhengWen(text: statusViewModel?.status.text ?? "")
             setScreenName(name: statusViewModel?.status.user?.screen_name ?? "")
             setTouXiangImageView(statusViewModel?.status.user?.profile_image_url)
+            setHuiYuanImageView(mbrank: statusViewModel?.status.user?.mbrank)
         }
     }
     
@@ -68,6 +69,22 @@ class StatusCellTableViewCell: UITableViewCell {
     /// - Parameter name: 昵称
     private func setScreenName(name: String){
         screenName.text = name
+    }
+    
+    /// 设置会员图标
+    ///
+    /// - Parameter image:
+    private func setHuiYuanImageView(mbrank: Int?){
+        
+        guard let mbrank = mbrank else {
+            return
+        }
+        var imageName = "huaiYuan1"
+        if mbrank > 0 &&  mbrank < 7 {
+            imageName = imageName + "\(mbrank)"
+        }
+        let memberIcon = UIImage(named: imageName)
+        huiYuanImageView.image = memberIcon
     }
 
 }

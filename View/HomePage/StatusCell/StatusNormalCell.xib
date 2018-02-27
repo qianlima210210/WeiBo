@@ -43,7 +43,7 @@
                         <color key="textColor" red="1" green="0.14901960784313725" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="huaiYuan" translatesAutoresizingMaskIntoConstraints="NO" id="Uqa-N9-UFv" userLabel="会员">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="huaiYuan1" translatesAutoresizingMaskIntoConstraints="NO" id="Uqa-N9-UFv" userLabel="会员">
                         <rect key="frame" x="102" y="18.666666666666668" width="20" height="20.000000000000004"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="20" id="4wQ-QV-tmM"/>
@@ -70,7 +70,7 @@
                         <color key="textColor" red="0.50980392156862742" green="0.50980392156862742" blue="0.50980392156862742" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="level" translatesAutoresizingMaskIntoConstraints="NO" id="EoS-qh-pzE" userLabel="认证图标">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rengZhengLevel" translatesAutoresizingMaskIntoConstraints="NO" id="EoS-qh-pzE" userLabel="认证图标">
                         <rect key="frame" x="38.666666666666664" y="46.666666666666664" width="15" height="15"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="15" id="Hsw-Ix-YDY"/>
@@ -122,7 +122,7 @@
     </objects>
     <resources>
         <image name="avatar_large_userhead" width="85" height="85"/>
-        <image name="huaiYuan" width="170" height="170"/>
-        <image name="level" width="25" height="25"/>
+        <image name="huaiYuan1" width="170" height="170"/>
+        <image name="rengZhengLevel" width="25" height="25"/>
     </resources>
 </document>
