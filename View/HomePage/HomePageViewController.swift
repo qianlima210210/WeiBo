@@ -117,7 +117,8 @@ extension HomePageViewController{
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let height1 = CGFloat(65.0) //正文以上的高度
+        //正文以上的高度
+        let height1 = CGFloat(65.0)
         
         //正文的高度
         var height2:CGFloat = 0.0
@@ -126,8 +127,10 @@ extension HomePageViewController{
                                                   font: UIFont.systemFont(ofSize: 13),
                                                   lineSpacing: 5.0)
         }
-
-        return height1 + height2
+        //转发、评论、赞所在区域的高度
+        let height3 = CGFloat(28.0 + 5.0)
+        
+        return height1 + height2 + height3
     }
 }
 

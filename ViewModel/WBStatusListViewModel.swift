@@ -56,6 +56,7 @@ class WBStatusListViewModel {
                     guard let status = WBStatus.yy_model(with: dic) else{
                         continue
                     }
+                    print(status.description)
                     list.append(WBStatusViewModel(status: status))
                 }
                 

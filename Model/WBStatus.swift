@@ -18,6 +18,15 @@ class WBStatus: NSObject{
     //微博信息内容
     @objc dynamic var text: String?
     
+    //转发数
+    @objc dynamic var reposts_count: Int = 0
+    
+    //评论数
+    @objc dynamic var comments_count: Int = 0
+    
+    //表态数
+    @objc dynamic var attitudes_count: Int = 0
+    
     override var description: String{
         return yy_modelDescription()
     }

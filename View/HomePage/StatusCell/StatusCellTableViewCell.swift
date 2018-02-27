@@ -19,18 +19,33 @@ class StatusCellTableViewCell: UITableViewCell {
     @IBOutlet weak var renZhengImageView: UIImageView!
     @IBOutlet weak var zhengWen: UILabel!
     
+    @IBOutlet weak var zhuanFaBtnWidth: NSLayoutConstraint!
+    @IBOutlet weak var zhuanFaBtn: UIButton!
+    @IBOutlet weak var pingLunBtn: UIButton!
+    @IBOutlet weak var dianZhanBtn: UIButton!
+    
     var statusViewModel: WBStatusViewModel?{
         didSet{
             setZhengWen(text: statusViewModel?.status.text ?? "")
             setScreenName(name: statusViewModel?.status.user?.screen_name ?? "")
             setTouXiangImageView(statusViewModel?.status.user?.profile_image_url)
             setHuiYuanImageView(mbrank: statusViewModel?.status.user?.mbrank)
+            setRenZhengImageView(verified_type: statusViewModel?.status.user?.verified_type)
+            
+            zhuanFaBtn.setTitle(getZhuanFaPingLunZanTitle(count: statusViewModel?.status.reposts_count ?? 0, defaultTitle: " 转发"),
+                                for: .normal)
+            pingLunBtn.setTitle(getZhuanFaPingLunZanTitle(count: statusViewModel?.status.comments_count ?? 0, defaultTitle: " 评论"),
+                                for: .normal)
+            dianZhanBtn.setTitle(getZhuanFaPingLunZanTitle(count: statusViewModel?.status.attitudes_count ?? 0, defaultTitle: " 点赞"),
+                                for: .normal)
+            
         }
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        zhuanFaBtnWidth.constant = (kScreenWidth() - 12 * 2 ) / 3.0
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -38,12 +53,19 @@ class StatusCellTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
+
+}
+
+extension StatusCellTableViewCell{
     /// 设置头像
     private func setTouXiangImageView(_ avatar_large: String?) -> Void {
         let url = URL(string: avatar_large ?? "")
         touXiangImageView.sd_setImage(with: url, placeholderImage: #imageLiteral(resourceName: "avatar_large_userhead"), options: []) { (image, error, type, url) in
-            
+            if let image = image {
+                self.touXiangImageView.image = image.imageWithoutColorMisaligned(
+                    size: self.touXiangImageView.bounds.size,
+                    backColor: self.backgroundColor)
+            }
         }
     }
     
@@ -79,16 +101,74 @@ class StatusCellTableViewCell: UITableViewCell {
         guard let mbrank = mbrank else {
             return
         }
-        var imageName = "huaiYuan1"
+        var imageName = "huaiYuan"
         if mbrank > 0 &&  mbrank < 7 {
             imageName = imageName + "\(mbrank)"
         }
         let memberIcon = UIImage(named: imageName)
         huiYuanImageView.image = memberIcon
     }
-
+    
+    /// 设置认证类型
+    ///
+    /// - Parameter verified_type:
+    private func setRenZhengImageView(verified_type: Int?){
+        guard let verified_type = verified_type else {
+            return
+        }
+        var imageName = ""
+        switch verified_type {
+        case 0:
+            imageName = "yongHuRenZheng"
+        case 2, 3, 5:
+            imageName = "qiYeRenZheng"
+        case 220:
+            imageName = "daRenRenZheng"
+        default:
+            break
+        }
+        let renZhengIcon = UIImage(named:imageName)
+        renZhengImageView.image = renZhengIcon
+    }
 }
 
+extension StatusCellTableViewCell {
+    
+    /// 获取转发/评论/赞个数
+    ///
+    /// - Parameters:
+    ///   - count: 个数
+    ///   - defaultTitle: 默认标题
+    /// - Returns:转发/评论/赞个数
+    func getZhuanFaPingLunZanTitle(count: Int, defaultTitle:String) -> String {
+        
+        if count == 0 {
+            return defaultTitle
+        }
+            
+        if count < 10000 {
+            return " \(count)"
+        }
+        
+        if count > 10000 {
+            return String.init(format: " %.2f万", CGFloat(count) / 10000)
+        }
+        
+        return defaultTitle
+    }
+    
+    @IBAction func zhuanFaBtnClicked(_ sender: UIButton) {
+        
+    }
+    
+    @IBAction func dianZhanBtnClicked(_ sender: UIButton) {
+        
+    }
+    
+    @IBAction func pingLunBtnClicked(_ sender: UIButton) {
+        
+    }
+}
 
 
 
