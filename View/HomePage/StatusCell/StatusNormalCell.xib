@@ -37,14 +37,14 @@
                         <rect key="frame" x="57" y="18" width="42" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="YjE-Zz-2RN"/>
-                            <constraint firstAttribute="width" constant="42" id="m8I-Fv-GX3"/>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" id="m8I-Fv-GX3"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <color key="textColor" red="1" green="0.14901960784313725" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="huaiYuan" translatesAutoresizingMaskIntoConstraints="NO" id="Uqa-N9-UFv" userLabel="会员">
-                        <rect key="frame" x="107" y="22" width="20" height="20"/>
+                        <rect key="frame" x="102" y="18.666666666666668" width="20" height="20.000000000000004"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="20" id="4wQ-QV-tmM"/>
                             <constraint firstAttribute="height" constant="20" id="Wbz-wB-Qj9"/>
@@ -99,8 +99,8 @@
                     <constraint firstItem="BTv-SW-mx5" firstAttribute="top" secondItem="aVN-QY-ZlH" secondAttribute="bottom" constant="12" id="XM6-4U-9Ms"/>
                     <constraint firstItem="Dlc-01-ohY" firstAttribute="top" secondItem="mB5-vg-0UI" secondAttribute="top" id="aaM-mP-7Sc"/>
                     <constraint firstItem="mB5-vg-0UI" firstAttribute="bottom" secondItem="BTv-SW-mx5" secondAttribute="bottom" id="dmb-nU-Bx0"/>
-                    <constraint firstItem="Uqa-N9-UFv" firstAttribute="top" secondItem="5Ye-rh-cls" secondAttribute="top" constant="4" id="eJM-2H-3rk"/>
-                    <constraint firstItem="Uqa-N9-UFv" firstAttribute="leading" secondItem="5Ye-rh-cls" secondAttribute="trailing" constant="8" id="fcW-70-dEu"/>
+                    <constraint firstItem="Uqa-N9-UFv" firstAttribute="centerY" secondItem="5Ye-rh-cls" secondAttribute="centerY" id="eJM-2H-3rk"/>
+                    <constraint firstItem="Uqa-N9-UFv" firstAttribute="leading" secondItem="5Ye-rh-cls" secondAttribute="trailing" constant="3" id="fcW-70-dEu"/>
                     <constraint firstItem="EWg-Z4-yCz" firstAttribute="leading" secondItem="BTv-SW-mx5" secondAttribute="leading" id="i0J-PB-dls"/>
                     <constraint firstAttribute="trailing" secondItem="EWg-Z4-yCz" secondAttribute="trailing" constant="12" id="pC2-fX-aAf"/>
                     <constraint firstItem="BTv-SW-mx5" firstAttribute="leading" secondItem="LWE-Ix-6UD" secondAttribute="leading" constant="12" id="qYp-Uh-2G7"/>

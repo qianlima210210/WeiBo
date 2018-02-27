@@ -19,11 +19,11 @@ class StatusCellTableViewCell: UITableViewCell {
     @IBOutlet weak var renZhengImageView: UIImageView!
     @IBOutlet weak var zhengWen: UILabel!
     
-    var status: WBStatus?{
+    var statusViewModel: WBStatusViewModel?{
         didSet{
-            setZhengWen(text: status?.text ?? "")
-            setScreenName(name: status?.user?.screen_name ?? "")
-            setTouXiangImageView(status?.user?.profile_image_url)
+            setZhengWen(text: statusViewModel?.status.text ?? "")
+            setScreenName(name: statusViewModel?.status.user?.screen_name ?? "")
+            setTouXiangImageView(statusViewModel?.status.user?.profile_image_url)
         }
     }
     

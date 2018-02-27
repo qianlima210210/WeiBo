@@ -111,7 +111,7 @@ extension HomePageViewController{
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! StatusCellTableViewCell
         
-        cell.status = listViewModel.statusList[indexPath.row].status
+        cell.statusViewModel = listViewModel.statusList[indexPath.row]
         
         return cell
     }
