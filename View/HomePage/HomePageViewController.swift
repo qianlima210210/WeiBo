@@ -132,16 +132,19 @@ extension HomePageViewController{
                                                   lineSpacing: 5.0)
         }
         
-        //正文和分割线的间距
-        let height3 = CGFloat(12.0)
+        //图片视图容器的高度
+        let height3 = CGFloat(0.0)
+        
+        //图片视图容器和分割线的距离
+        let height4 = CGFloat(3.0)
         
         //分割线的高度
-        let height4 = CGFloat(1.0)
+        let height5 = CGFloat(1.0)
         
         //转发、评论、赞所在区域的高度
-        let height5 = CGFloat(28.0)
+        let height6 = CGFloat(28.0)
         
-        return height0 + height1 + height2 + height3 + height4 + height5
+        return height0 + height1 + height2 + height3 + height4 + height5 + height6
     }
 }
 
