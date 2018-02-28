@@ -53,11 +53,17 @@ class WBStatusListViewModel {
                 //1、字典转模型
                 var list = [WBStatusViewModel]()
                 for dic in value ?? []{
-                    guard let status = WBStatus.yy_model(with: dic) else{
-                        continue
-                    }
-                    print(status.description)
-                    list.append(WBStatusViewModel(status: status))
+                    
+                    //创建微博模型
+                    let status = WBStatus()
+                    //使用字典设置模型属性
+                    status.yy_modelSet(with: dic)
+                    //使用微博模型创建微博视图模型
+                    let viewModel = WBStatusViewModel(status: status)
+                    //添加到list
+                    list.append(viewModel)
+                    
+                    print(status)
                 }
                 
                 //2、拼接数据
