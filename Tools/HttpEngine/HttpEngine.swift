@@ -72,6 +72,9 @@ class HttpEngine: NSObject {
                     //手动触发请求完成回调
                     completionHandler(nil, WBCustomNSError(errorDescription: "Status Code: 403"))
                     
+                    //服务器禁止请求
+                    UserAccount.userAccount.resetUserAccount()
+                    
                     //通知登录去获取access_token
                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: logonNotification), object: nil, userInfo:["showAlert":true])
                     

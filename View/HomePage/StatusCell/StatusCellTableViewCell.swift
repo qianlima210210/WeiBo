@@ -19,6 +19,8 @@ class StatusCellTableViewCell: UITableViewCell {
     @IBOutlet weak var renZhengImageView: UIImageView!
     @IBOutlet weak var zhengWen: UILabel!
     
+    @IBOutlet weak var pictureViewHeight: NSLayoutConstraint!
+    
     @IBOutlet weak var zhuanFaBtnWidth: NSLayoutConstraint!
     @IBOutlet weak var zhuanFaBtn: UIButton!
     @IBOutlet weak var pingLunBtn: UIButton!
@@ -31,6 +33,8 @@ class StatusCellTableViewCell: UITableViewCell {
             setTouXiangImageView(statusViewModel?.status.user?.profile_image_url)
             setHuiYuanImageView(mbrank: statusViewModel?.status.user?.mbrank)
             setRenZhengImageView(verified_type: statusViewModel?.status.user?.verified_type)
+            
+            setPictureViewHeight(count: statusViewModel?.status.pic_urls?.count ?? 0)
             
             zhuanFaBtn.setTitle(getZhuanFaPingLunZanTitle(count: statusViewModel?.status.reposts_count ?? 0, defaultTitle: " 转发"),
                                 for: .normal)
@@ -56,6 +60,7 @@ class StatusCellTableViewCell: UITableViewCell {
 
 }
 
+//MARK: 头像、正文、昵称、会员、认证类型
 extension StatusCellTableViewCell{
     /// 设置头像
     private func setTouXiangImageView(_ avatar_large: String?) -> Void {
@@ -132,6 +137,21 @@ extension StatusCellTableViewCell{
     }
 }
 
+
+//MARK: 图片视图
+extension StatusCellTableViewCell {
+    /// 根据图片个数设置图片视图高度
+    ///
+    /// - Parameter count: 图片数
+    private func setPictureViewHeight(count: Int) -> Void {
+        if count == 0 {
+            pictureViewHeight.constant = 0
+        }
+        pictureViewHeight.constant = 100
+    }
+}
+
+//MARK: 转发/评论/点赞
 extension StatusCellTableViewCell {
     
     /// 获取转发/评论/赞个数
@@ -169,8 +189,6 @@ extension StatusCellTableViewCell {
         
     }
 }
-
-
 
 
 

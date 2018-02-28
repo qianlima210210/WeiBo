@@ -65,17 +65,7 @@ import UIKit
         //expiresDate = Date(timeIntervalSinceNow: -3600)
         if expiresDate?.compare(Date()) == .orderedAscending {
             print("访问令牌过期")
-            //1、将用户对象恢复初始化
-            access_token = nil
-            uid = nil
-            expires_in = 0
-            expiresDate = nil
-            screen_name = nil
-            avatar_large = nil
-            
-            //2、删除用户账号文件
-            try? FileManager.default.removeItem(at: url)
-            
+            resetUserAccount()
         }else{
             print("访问令牌NO过期")
         }
@@ -101,5 +91,22 @@ import UIKit
         let url = URL(fileURLWithPath: filePath)
         try? data.write(to: url)
         print("用户账号信息地址：\(filePath)")
+    }
+    
+    //重置用户账号
+    func resetUserAccount() -> Void {
+        let filePath = NSHomeDirectory() + "/Documents/userAccount"
+        let url = URL(fileURLWithPath: filePath)
+        
+        //1、将用户对象恢复初始化
+        access_token = nil
+        uid = nil
+        expires_in = 0
+        expiresDate = nil
+        screen_name = nil
+        avatar_large = nil
+        
+        //2、删除用户账号文件
+        try? FileManager.default.removeItem(at: url)
     }
 }

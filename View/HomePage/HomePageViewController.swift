@@ -133,7 +133,10 @@ extension HomePageViewController{
         }
         
         //图片视图容器的高度
-        let height3 = CGFloat(0.0)
+        var height3 = CGFloat(0.0)
+        if let cell = tableView.cellForRow(at: indexPath) as? StatusCellTableViewCell {
+            height3 = cell.pictureViewHeight.constant
+        }
         
         //图片视图容器和分割线的距离
         let height4 = CGFloat(3.0)
