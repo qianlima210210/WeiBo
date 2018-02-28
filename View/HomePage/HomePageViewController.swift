@@ -117,8 +117,12 @@ extension HomePageViewController{
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        //这里返回的是UITableViewCell的高度，但是内容是放在其contentView上的，contentView高度默认比UITableViewCell高度小0.63,所以要额外加上这0.63
+        let height0 = CGFloat(0.63)
+        
         //正文以上的高度
-        let height1 = CGFloat(65.0)
+        let height1 = CGFloat(66.0)
         
         //正文的高度
         var height2:CGFloat = 0.0
@@ -127,10 +131,17 @@ extension HomePageViewController{
                                                   font: UIFont.systemFont(ofSize: 13),
                                                   lineSpacing: 5.0)
         }
-        //转发、评论、赞所在区域的高度
-        let height3 = CGFloat(28.0 + 5.0)
         
-        return height1 + height2 + height3
+        //正文和分割线的间距
+        let height3 = CGFloat(12.0)
+        
+        //分割线的高度
+        let height4 = CGFloat(1.0)
+        
+        //转发、评论、赞所在区域的高度
+        let height5 = CGFloat(28.0)
+        
+        return height0 + height1 + height2 + height3 + height4 + height5
     }
 }
 
