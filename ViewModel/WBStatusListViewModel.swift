@@ -43,10 +43,10 @@ class WBStatusListViewModel {
         }
         
         //since_id：数组中第一条微博的ID
-        let since_id = isPullUp ?  0 : (statusList.first?.status.id ?? 0)
+        let since_id = isPullUp ?  0 : (statusList.first?.status?.id ?? 0)
         
         //max_id：数组中最后一条微博色ID
-        let max_id = isPullUp ? (statusList.last?.status.id ?? 0) : 0
+        let max_id = isPullUp ? (statusList.last?.status?.id ?? 0) : 0
         
         HttpEngine.httpEngine.statusesList(since_id: since_id, max_id: (max_id > 0 ? max_id - 1 : 0)) { (value, error) in
             if error == nil{
@@ -59,7 +59,8 @@ class WBStatusListViewModel {
                     //使用字典设置模型属性
                     status.yy_modelSet(with: dic)
                     //使用微博模型创建微博视图模型
-                    let viewModel = WBStatusViewModel(status: status)
+                    let viewModel = WBStatusViewModel()
+                    viewModel.status = status
                     //添加到list
                     list.append(viewModel)
                     

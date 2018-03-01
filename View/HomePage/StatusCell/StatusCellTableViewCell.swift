@@ -28,19 +28,19 @@ class StatusCellTableViewCell: UITableViewCell {
     
     var statusViewModel: WBStatusViewModel?{
         didSet{
-            setZhengWen(text: statusViewModel?.status.text ?? "")
-            setScreenName(name: statusViewModel?.status.user?.screen_name ?? "")
-            setTouXiangImageView(statusViewModel?.status.user?.profile_image_url)
-            setHuiYuanImageView(mbrank: statusViewModel?.status.user?.mbrank)
-            setRenZhengImageView(verified_type: statusViewModel?.status.user?.verified_type)
+            setZhengWen(text: statusViewModel?.status?.text ?? "")
+            setScreenName(name: statusViewModel?.status?.user?.screen_name ?? "")
+            setTouXiangImageView(statusViewModel?.status?.user?.profile_image_url)
+            setHuiYuanImageView(mbrank: statusViewModel?.status?.user?.mbrank)
+            setRenZhengImageView(verified_type: statusViewModel?.status?.user?.verified_type)
             
-            setPictureViewHeight(count: statusViewModel?.status.pic_urls?.count ?? 0)
+            setPictureViewHeight()
             
-            zhuanFaBtn.setTitle(getZhuanFaPingLunZanTitle(count: statusViewModel?.status.reposts_count ?? 0, defaultTitle: " 转发"),
+            zhuanFaBtn.setTitle(getZhuanFaPingLunZanTitle(count: statusViewModel?.status?.reposts_count ?? 0, defaultTitle: " 转发"),
                                 for: .normal)
-            pingLunBtn.setTitle(getZhuanFaPingLunZanTitle(count: statusViewModel?.status.comments_count ?? 0, defaultTitle: " 评论"),
+            pingLunBtn.setTitle(getZhuanFaPingLunZanTitle(count: statusViewModel?.status?.comments_count ?? 0, defaultTitle: " 评论"),
                                 for: .normal)
-            dianZhanBtn.setTitle(getZhuanFaPingLunZanTitle(count: statusViewModel?.status.attitudes_count ?? 0, defaultTitle: " 点赞"),
+            dianZhanBtn.setTitle(getZhuanFaPingLunZanTitle(count: statusViewModel?.status?.attitudes_count ?? 0, defaultTitle: " 点赞"),
                                 for: .normal)
             
         }
@@ -140,14 +140,8 @@ extension StatusCellTableViewCell{
 
 //MARK: 图片视图
 extension StatusCellTableViewCell {
-    /// 根据图片个数设置图片视图高度
-    ///
-    /// - Parameter count: 图片数
-    private func setPictureViewHeight(count: Int) -> Void {
-        if count == 0 {
-            pictureViewHeight.constant = 0
-        }
-        pictureViewHeight.constant = 100
+    func setPictureViewHeight() -> Void {
+        pictureViewHeight.constant = statusViewModel?.prictureViewSize.height ?? 0
     }
 }
 

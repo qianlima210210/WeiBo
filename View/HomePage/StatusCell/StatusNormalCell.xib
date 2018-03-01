@@ -190,6 +190,7 @@
                 <outlet property="dianZhanBtn" destination="nhy-r1-it3" id="U0D-jP-q6m"/>
                 <outlet property="from" destination="Dlc-01-ohY" id="8ZJ-MZ-Dfk"/>
                 <outlet property="huiYuanImageView" destination="Uqa-N9-UFv" id="Ghj-uQ-Jwc"/>
+                <outlet property="pictureViewHeight" destination="NxV-u3-7NT" id="149-7c-6lX"/>
                 <outlet property="pingLunBtn" destination="g1u-PO-rlq" id="v39-Qh-xUt"/>
                 <outlet property="renZhengImageView" destination="EoS-qh-pzE" id="zJo-Zk-0YA"/>
                 <outlet property="screenName" destination="5Ye-rh-cls" id="xDk-jl-Rh2"/>

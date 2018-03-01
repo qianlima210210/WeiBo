@@ -62,9 +62,9 @@ class HomePageViewController: BaseViewController {
     //重写父类的加载
     override func loadData() {
         if isPullUp {
-            print("上拉前最后一条数据是：" + (listViewModel.statusList.last?.status.text ?? ""))
+            print("上拉前最后一条数据是：" + (listViewModel.statusList.last?.status?.text ?? ""))
         }else{
-            print("下拉前第一条数据是：" + (listViewModel.statusList.first?.status.text ?? ""))
+            print("下拉前第一条数据是：" + (listViewModel.statusList.first?.status?.text ?? ""))
         }
         
         
@@ -126,7 +126,7 @@ extension HomePageViewController{
         
         //正文的高度
         var height2:CGFloat = 0.0
-        if let zhengWen = listViewModel.statusList[indexPath.row].status.text {
+        if let zhengWen = listViewModel.statusList[indexPath.row].status?.text {
             height2 = zhengWen.heightOfString(size: CGSize(width: kScreenWidth() - CGFloat(12 * 2), height: CGFloat(1000.0)),
                                                   font: UIFont.systemFont(ofSize: 13),
                                                   lineSpacing: 5.0)
@@ -134,9 +134,8 @@ extension HomePageViewController{
         
         //图片视图容器的高度
         var height3 = CGFloat(0.0)
-        if let cell = tableView.cellForRow(at: indexPath) as? StatusCellTableViewCell {
-            height3 = cell.pictureViewHeight.constant
-        }
+        let vm = listViewModel.statusList[indexPath.row]
+        height3 = vm.prictureViewSize.height
         
         //图片视图容器和分割线的距离
         let height4 = CGFloat(3.0)
