@@ -138,7 +138,7 @@ extension HomePageViewController{
         height3 = vm.prictureViewSize.height
         
         //图片视图容器和分割线的距离
-        let height4 = CGFloat(3.0)
+        let height4 = CGFloat(6.0)
         
         //分割线的高度
         let height5 = CGFloat(1.0)

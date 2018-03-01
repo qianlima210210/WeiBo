@@ -20,6 +20,7 @@ class StatusCellTableViewCell: UITableViewCell {
     @IBOutlet weak var zhengWen: UILabel!
     
     @IBOutlet weak var pictureViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var pictureContainerView: PictureContainerView!
     
     @IBOutlet weak var zhuanFaBtnWidth: NSLayoutConstraint!
     @IBOutlet weak var zhuanFaBtn: UIButton!
@@ -35,6 +36,7 @@ class StatusCellTableViewCell: UITableViewCell {
             setRenZhengImageView(verified_type: statusViewModel?.status?.user?.verified_type)
             
             setPictureViewHeight()
+            setPic_urls()
             
             zhuanFaBtn.setTitle(getZhuanFaPingLunZanTitle(count: statusViewModel?.status?.reposts_count ?? 0, defaultTitle: " 转发"),
                                 for: .normal)
@@ -140,8 +142,14 @@ extension StatusCellTableViewCell{
 
 //MARK: 图片视图
 extension StatusCellTableViewCell {
-    func setPictureViewHeight() -> Void {
+    //设置图片视图高度
+    private func setPictureViewHeight() -> Void {
         pictureViewHeight.constant = statusViewModel?.prictureViewSize.height ?? 0
+    }
+    
+    //设置图片数组
+    private func setPic_urls() -> Void {
+        pictureContainerView.pic_urls = statusViewModel?.status?.pic_urls
     }
 }
 

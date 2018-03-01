@@ -78,15 +78,15 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="自己的评论" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EWg-Z4-yCz" userLabel="正文">
-                        <rect key="frame" x="12" y="66" width="516" height="94"/>
+                        <rect key="frame" x="12" y="66" width="516" height="91"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SAB-wK-evT" userLabel="图片视图容器" customClass="PictureContainerView" customModule="WB" customModuleProvider="target">
-                        <rect key="frame" x="12" y="160" width="516" height="300"/>
-                        <color key="backgroundColor" red="0.45138680930000002" green="0.99309605359999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <rect key="frame" x="12" y="157" width="516" height="300"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="300" id="NxV-u3-7NT"/>
                         </constraints>
@@ -160,7 +160,7 @@
                     <constraint firstItem="EoS-qh-pzE" firstAttribute="centerY" secondItem="BTv-SW-mx5" secondAttribute="bottom" id="JSr-Ic-0ay"/>
                     <constraint firstItem="Dlc-01-ohY" firstAttribute="leading" secondItem="mB5-vg-0UI" secondAttribute="trailing" constant="5" id="LFv-rJ-PVK"/>
                     <constraint firstItem="5Ye-rh-cls" firstAttribute="top" secondItem="aVN-QY-ZlH" secondAttribute="bottom" constant="10" id="LSx-hK-XeF"/>
-                    <constraint firstItem="zfz-UE-Lt6" firstAttribute="top" secondItem="SAB-wK-evT" secondAttribute="bottom" constant="3" id="LWL-2g-Z3Z"/>
+                    <constraint firstItem="zfz-UE-Lt6" firstAttribute="top" secondItem="SAB-wK-evT" secondAttribute="bottom" constant="6" id="LWL-2g-Z3Z"/>
                     <constraint firstAttribute="bottom" secondItem="YYj-G0-MQu" secondAttribute="bottom" id="PMj-ns-ojp"/>
                     <constraint firstItem="YYj-G0-MQu" firstAttribute="leading" secondItem="LWE-Ix-6UD" secondAttribute="leading" constant="12" id="QMI-G9-vvO"/>
                     <constraint firstItem="aVN-QY-ZlH" firstAttribute="top" secondItem="LWE-Ix-6UD" secondAttribute="top" id="Rqw-lR-rUg"/>
@@ -187,6 +187,7 @@
                 <outlet property="dianZhanBtn" destination="nhy-r1-it3" id="U0D-jP-q6m"/>
                 <outlet property="from" destination="Dlc-01-ohY" id="8ZJ-MZ-Dfk"/>
                 <outlet property="huiYuanImageView" destination="Uqa-N9-UFv" id="Ghj-uQ-Jwc"/>
+                <outlet property="pictureContainerView" destination="SAB-wK-evT" id="HGN-sT-zqX"/>
                 <outlet property="pictureViewHeight" destination="NxV-u3-7NT" id="149-7c-6lX"/>
                 <outlet property="pingLunBtn" destination="g1u-PO-rlq" id="v39-Qh-xUt"/>
                 <outlet property="renZhengImageView" destination="EoS-qh-pzE" id="zJo-Zk-0YA"/>
@@ -197,7 +198,7 @@
                 <outlet property="zhuanFaBtn" destination="4Qt-18-e0Q" id="uPt-JE-vs7"/>
                 <outlet property="zhuanFaBtnWidth" destination="alH-NO-Nau" id="rW8-Ye-RFf"/>
             </connections>
-            <point key="canvasLocation" x="-6064" y="-747"/>
+            <point key="canvasLocation" x="-6477" y="-808"/>
         </tableViewCell>
     </objects>
     <resources>
