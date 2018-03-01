@@ -78,21 +78,18 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="自己的评论" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EWg-Z4-yCz" userLabel="正文">
-                        <rect key="frame" x="12" y="66" width="516" height="15.666666666666671"/>
+                        <rect key="frame" x="12" y="66" width="516" height="94"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SAB-wK-evT" userLabel="图片视图容器" customClass="PictureContainerView" customModule="WB" customModuleProvider="target">
-                        <rect key="frame" x="12" y="81.666666666666657" width="516" height="378.33333333333337"/>
+                        <rect key="frame" x="12" y="160" width="516" height="300"/>
                         <color key="backgroundColor" red="0.45138680930000002" green="0.99309605359999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="height" relation="greaterThanOrEqual" id="NxV-u3-7NT"/>
+                            <constraint firstAttribute="height" constant="300" id="NxV-u3-7NT"/>
                         </constraints>
-                        <connections>
-                            <outlet property="containerHeight" destination="NxV-u3-7NT" id="ITR-I2-h6t"/>
-                        </connections>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zfz-UE-Lt6" userLabel="分割线">
                         <rect key="frame" x="12" y="463" width="516" height="1"/>
@@ -200,7 +197,7 @@
                 <outlet property="zhuanFaBtn" destination="4Qt-18-e0Q" id="uPt-JE-vs7"/>
                 <outlet property="zhuanFaBtnWidth" destination="alH-NO-Nau" id="rW8-Ye-RFf"/>
             </connections>
-            <point key="canvasLocation" x="-5868" y="-719"/>
+            <point key="canvasLocation" x="-6064" y="-747"/>
         </tableViewCell>
     </objects>
     <resources>

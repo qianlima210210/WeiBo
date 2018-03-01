@@ -9,8 +9,6 @@
 import UIKit
 
 class PictureContainerView: UIView {
-
-    @IBOutlet weak var containerHeight: NSLayoutConstraint!
     
     /*
     // Only override draw() if you perform custom drawing.
@@ -22,6 +20,8 @@ class PictureContainerView: UIView {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        backgroundColor = UIColor.red
     }
 
 }

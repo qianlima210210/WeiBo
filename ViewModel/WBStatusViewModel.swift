@@ -26,23 +26,12 @@ class WBStatusViewModel {
         if count == 0 {
             prictureViewSize = CGSize()
         }else{
-            
-            //图片顶部间隔
-            let pictureTopMargin = CGFloat(12)
-            
-            //图片间距
-            let pictureMargin = CGFloat(5.0)
-            
-            //图片高度/宽度
-            let pictureWidth = (kScreenWidth() - CGFloat(12 * 2) - CGFloat(pictureMargin * 2)) / 3
-            
             //计算行数
-            let rowNum = CGFloat((count - 1) / 3 + 1)
+            let pictureRowNum = CGFloat((count - 1) / 3 + 1)
             
             //总高
-            let height = pictureTopMargin + rowNum * pictureWidth + (rowNum - 1) * pictureMargin
-            prictureViewSize = CGSize(width: 100, height: height)
-            
+            let height = pictureTopMargin + pictureRowNum * pictureWidth + (pictureRowNum - 1) * pictureMargin
+            prictureViewSize = CGSize(width: kScreenWidth(), height: height)
         }
     }
 }

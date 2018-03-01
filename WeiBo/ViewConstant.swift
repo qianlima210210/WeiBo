@@ -88,5 +88,16 @@ func ViewScaleY_667() -> CGFloat {
     }
 }
 
+//图片顶部间隔
+let pictureTopMargin = CGFloat(12)
+
+//图片间距
+let pictureMargin = CGFloat(5.0)
+
+//图片高度/宽度
+let pictureWidth = (kScreenWidth() - CGFloat(12 * 2) - CGFloat(pictureMargin * 2)) / 3
+
+
+
 
 
