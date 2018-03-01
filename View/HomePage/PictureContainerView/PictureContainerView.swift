@@ -15,6 +15,7 @@ class PictureContainerView: UIView {
         didSet{
             //first将所有imageView隐藏
             for view in subviews {
+                (view as! UIImageView).image = nil
                 view.isHidden = true
             }
 
@@ -27,6 +28,11 @@ class PictureContainerView: UIView {
                 imageView.sd_setImage(with: url, placeholderImage: nil, options: [], completed: { (image, error, type, url) in
                 })
                 imageView.isHidden = false
+                
+                //特殊设置4张图的布局
+                if pic_urls!.count == 4 && index == 1 {
+                    index += 1
+                }
 
                 index += 1
             }

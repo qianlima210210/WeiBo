@@ -10,7 +10,14 @@ import UIKit
 
 @objcMembers class WBThumbnailPic: NSObject {
 
-    var thumbnail_pic: String?
+    var thumbnail_pic: String?{
+        didSet{
+            if let thumbnail_pic = thumbnail_pic {
+                //这里应该有个网络类型的判断：WiFi下载bmiddle；GPRS下载thumbnail
+                self.thumbnail_pic = thumbnail_pic.replacingOccurrences(of: "bmiddle", with: "large")
+            }
+        }
+    }
     
     override var description: String{
         return yy_modelDescription()
