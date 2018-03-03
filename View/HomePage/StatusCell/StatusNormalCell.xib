@@ -77,9 +77,9 @@
                             <constraint firstAttribute="height" constant="15" id="fsu-hw-F8U"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="自己的评论" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EWg-Z4-yCz" userLabel="正文">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="自己的评论" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EWg-Z4-yCz" userLabel="正文">
                         <rect key="frame" x="12" y="66" width="516" height="91"/>
-                        <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -198,7 +198,7 @@
                 <outlet property="zhuanFaBtn" destination="4Qt-18-e0Q" id="uPt-JE-vs7"/>
                 <outlet property="zhuanFaBtnWidth" destination="alH-NO-Nau" id="rW8-Ye-RFf"/>
             </connections>
-            <point key="canvasLocation" x="-6477" y="-808"/>
+            <point key="canvasLocation" x="-6886" y="-828"/>
         </tableViewCell>
     </objects>
     <resources>

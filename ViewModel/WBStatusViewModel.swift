@@ -75,7 +75,13 @@ class WBStatusViewModel {
         
         if status?.retweeted_status != nil {//说明是转发微博，那么height3、height4需要调整
             height3 = CGFloat(12.0)
-            height4 = CGFloat(15.0)
+            
+            let text = "@\(status?.retweeted_status?.user?.screen_name ?? ""): \(status?.retweeted_status?.text ?? "")"
+            if text.count > 0 {
+                height4 = text.heightOfString(size: CGSize(width: kScreenWidth() - CGFloat(12 * 2), height: CGFloat(1000.0)),
+                                                font: UIFont.systemFont(ofSize: 12),
+                                                lineSpacing: 5.0)
+            }
         }
         
         //图片视图容器的高度

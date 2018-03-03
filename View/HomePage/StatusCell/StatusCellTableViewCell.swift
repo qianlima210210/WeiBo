@@ -27,6 +27,10 @@ class StatusCellTableViewCell: UITableViewCell {
     @IBOutlet weak var pingLunBtn: UIButton!
     @IBOutlet weak var dianZhanBtn: UIButton!
     
+    //被转发的微博的正文标签
+    @IBOutlet weak var retweetedZhenWen: UILabel?
+    
+    
     var statusViewModel: WBStatusViewModel?{
         didSet{
             setZhengWen(text: statusViewModel?.status?.text ?? "")
@@ -34,6 +38,9 @@ class StatusCellTableViewCell: UITableViewCell {
             setTouXiangImageView(statusViewModel?.status?.user?.profile_image_url)
             setHuiYuanImageView(mbrank: statusViewModel?.status?.user?.mbrank)
             setRenZhengImageView(verified_type: statusViewModel?.status?.user?.verified_type)
+            
+            setRetweetedZhenWen(screen_name: statusViewModel?.status?.retweeted_status?.user?.screen_name ?? "",
+                                text: statusViewModel?.status?.retweeted_status?.text ?? "")
             
             setPictureViewHeight()
             setPic_urls()
@@ -44,7 +51,6 @@ class StatusCellTableViewCell: UITableViewCell {
                                 for: .normal)
             dianZhanBtn.setTitle(getZhuanFaPingLunZanTitle(count: statusViewModel?.status?.attitudes_count ?? 0, defaultTitle: " 点赞"),
                                 for: .normal)
-            
         }
     }
     
@@ -192,7 +198,24 @@ extension StatusCellTableViewCell {
     }
 }
 
-
+//被转发的正文
+extension StatusCellTableViewCell {
+    //设置被转发微博的正文
+    private func setRetweetedZhenWen(screen_name: String, text: String) -> Void {
+        let text = "@\(screen_name): \(text)"
+        
+        retweetedZhenWen?.text = text
+        //调整标签行间距
+        let attributeText = NSMutableAttributedString(string: text)
+        
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineSpacing = 5.0
+        attributeText.addAttributes([NSAttributedStringKey.paragraphStyle:paragraphStyle],
+                                    range: NSRange(location: 0, length: text.count))
+        
+        retweetedZhenWen?.attributedText = attributeText
+    }
+}
 
 
 
