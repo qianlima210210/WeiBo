@@ -149,7 +149,7 @@ extension StatusCellTableViewCell {
     
     //设置图片数组
     private func setPic_urls() -> Void {
-        pictureContainerView.pic_urls = statusViewModel?.status?.pic_urls
+        pictureContainerView.pic_urls = statusViewModel?.picURLs
     }
 }
 

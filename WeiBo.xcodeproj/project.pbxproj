@@ -37,6 +37,7 @@
 		E97C01EA20464FCA002D4613 /* PictureContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97C01E920464FCA002D4613 /* PictureContainerView.swift */; };
 		E97C01EE2046A5CA002D4613 /* WBThumbnailPic.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97C01ED2046A5CA002D4613 /* WBThumbnailPic.swift */; };
 		E9949A1E2043DFAE00DFF936 /* WBStatusViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9949A1D2043DFAE00DFF936 /* WBStatusViewModel.swift */; };
+		E9956ECB20493ED600075C49 /* StatusRetweetedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9956ECA20493ED600075C49 /* StatusRetweetedCell.xib */; };
 		E9C562DA2004683100B7F6DE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E9C562D82004683100B7F6DE /* InfoPlist.strings */; };
 		E9C562DE20046BB000B7F6DE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E9C562E020046BB000B7F6DE /* Localizable.strings */; };
 		E9C562E320046D6E00B7F6DE /* ReadMe in Resources */ = {isa = PBXBuildFile; fileRef = E9C562E220046D6E00B7F6DE /* ReadMe */; };
@@ -90,6 +91,7 @@
 		E97C01E920464FCA002D4613 /* PictureContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureContainerView.swift; sourceTree = "<group>"; };
 		E97C01ED2046A5CA002D4613 /* WBThumbnailPic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBThumbnailPic.swift; sourceTree = "<group>"; };
 		E9949A1D2043DFAE00DFF936 /* WBStatusViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBStatusViewModel.swift; sourceTree = "<group>"; };
+		E9956ECA20493ED600075C49 /* StatusRetweetedCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatusRetweetedCell.xib; sourceTree = "<group>"; };
 		E9C562D92004683100B7F6DE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		E9C562DB2004684100B7F6DE /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		E9C562DF20046BB000B7F6DE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 			children = (
 				E908320F204148AC007B6AFE /* StatusCellTableViewCell.swift */,
 				E9083211204148D0007B6AFE /* StatusNormalCell.xib */,
+				E9956ECA20493ED600075C49 /* StatusRetweetedCell.xib */,
 			);
 			path = StatusCell;
 			sourceTree = "<group>";
@@ -407,6 +410,7 @@
 				E9FF994D203EECB7002B8738 /* NewFeatureView.xib in Resources */,
 				E9C562E320046D6E00B7F6DE /* ReadMe in Resources */,
 				E9584AC6200397860001A0E4 /* Assets.xcassets in Resources */,
+				E9956ECB20493ED600075C49 /* StatusRetweetedCell.xib in Resources */,
 				E9083212204148D0007B6AFE /* StatusNormalCell.xib in Resources */,
 				E9C562DE20046BB000B7F6DE /* Localizable.strings in Resources */,
 				E90094EF200859BC00B20928 /* Swift.gitignore in Resources */,

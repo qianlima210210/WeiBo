@@ -9,7 +9,9 @@
 import UIKit
 
 class HomePageViewController: BaseViewController {
-    let reuseIdentifier = "reuseIdentifier"
+    private let normalReuseIdentifier = "normalReuseIdentifier"
+    private let retweetedReuseIdentifier = "retweetedReuseIdentifier"
+    
     //列表视图模型
     var listViewModel = WBStatusListViewModel()
     
@@ -48,7 +50,11 @@ class HomePageViewController: BaseViewController {
         setNavigationLeftBtn(title: UserAccount.userAccount.isLogon ? "好友":"注册", target: self, action: #selector(leftBtnClicked))
         setNavigationRightBtn(title: UserAccount.userAccount.isLogon ? "":"登录", target: self, action: #selector(rightBtnClicked))
         
-        tableView.register(UINib(nibName: "StatusNormalCell", bundle: nil), forCellReuseIdentifier: reuseIdentifier)
+        tableView.register(UINib(nibName: "StatusNormalCell", bundle: nil),
+                           forCellReuseIdentifier: normalReuseIdentifier)
+        tableView.register(UINib(nibName: "StatusRetweetedCell", bundle: nil),
+                           forCellReuseIdentifier: retweetedReuseIdentifier)
+
 
     }
     
@@ -109,45 +115,19 @@ extension HomePageViewController{
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! StatusCellTableViewCell
+        //获取视图模型，判断是否是“转发微博”，来设置重用标识
+        let vm = listViewModel.statusList[indexPath.row]
+        let cellId = vm.status?.retweeted_status != nil ? retweetedReuseIdentifier : normalReuseIdentifier
         
-        cell.statusViewModel = listViewModel.statusList[indexPath.row]
+        //根据重用标识，获取cell
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! StatusCellTableViewCell
+        
+        cell.statusViewModel = vm
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        
-//        //这里返回的是UITableViewCell的高度，但是内容是放在其contentView上的，contentView高度默认比UITableViewCell高度小0.63,所以要额外加上这0.63
-//        let height0 = CGFloat(0.63)
-//
-//        //正文以上的高度
-//        let height1 = CGFloat(66.0)
-//
-//        //正文的高度
-//        var height2:CGFloat = 0.0
-//        if let zhengWen = listViewModel.statusList[indexPath.row].status?.text {
-//            height2 = zhengWen.heightOfString(size: CGSize(width: kScreenWidth() - CGFloat(12 * 2), height: CGFloat(1000.0)),
-//                                                  font: UIFont.systemFont(ofSize: 13),
-//                                                  lineSpacing: 5.0)
-//        }
-//
-//        //图片视图容器的高度
-//        var height3 = CGFloat(0.0)
-//        let vm = listViewModel.statusList[indexPath.row]
-//        height3 = vm.prictureViewSize.height
-//
-//        //图片视图容器和分割线的距离
-//        let height4 = CGFloat(6.0)
-//
-//        //分割线的高度
-//        let height5 = CGFloat(1.0)
-//
-//        //转发、评论、赞所在区域的高度
-//        let height6 = CGFloat(28.0)
-//
-//        return height0 + height1 + height2 + height3 + height4 + height5 + height6
-        
         return listViewModel.statusList[indexPath.row].cellHeight
     }
 }

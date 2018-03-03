@@ -10,8 +10,14 @@ import UIKit
 import YYModel
 
 @objcMembers class WBStatus: NSObject{
-    
+    //该条微博所属用户
     var user: User?
+    
+    //被转发的原创微博
+    var retweeted_status: WBStatus?
+    
+    //预览图数组
+    var pic_urls:[WBThumbnailPic]?
     
     //微博ID，每一条微博都会分配一个ID
     var id: Int64 = 0
@@ -24,17 +30,14 @@ import YYModel
     //评论数
     var comments_count: Int = 0
     
-    //表态数
+    //表态数，即点赞数
     var attitudes_count: Int = 0
-    
-    //预览图数组
-    var pic_urls:[WBThumbnailPic]?
     
     override var description: String{
         return yy_modelDescription()
     }
     
-    //为第三方库指定属性类型
+    //为第三方库(YYModel)指定属性类型
     class func modelContainerPropertyGenericClass() ->[String:AnyClass] {
         return ["pic_urls":WBThumbnailPic.self]
     }
