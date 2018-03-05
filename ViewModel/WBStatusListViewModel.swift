@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import SDWebImage
+
 //所有的视图模型，都用来从试图控制器中抽出来的处理逻辑
 /*
  父类的选择
@@ -34,7 +36,7 @@ class WBStatusListViewModel {
     /// 加载微博列表
     ///
     /// - Parameter completion: 完成回调（数据是否成功获取）
-    func loadStatus(isPullUp: Bool,completion:@escaping (_ isSuccess: Bool)->()) {
+    func loadStatus(isPullUp: Bool, completion:@escaping (_ isSuccess: Bool)->()) {
         
         if isPullUp && pullUpErrorTimes >= pullUpMaxTimes {
             //完成回调
@@ -83,14 +85,47 @@ class WBStatusListViewModel {
                     //完成回调
                     completion(false)
                 }else{
+                    //缓存单张图片
+                    self.cacheSingleImage(list, completion)
                     //完成回调
-                    completion(true)
+                    //completion(true)
                 }
                 
             }else{
                 //完成回调
                 completion(false)
             }
+        }
+    }
+    
+    /// 缓存单张图片
+    func cacheSingleImage(_ list: [WBStatusViewModel], _ completion:@escaping (_ isSuccess: Bool)->()) -> Void{
+        let dispatchGroup = DispatchGroup()
+        
+        var lenght: Int = 0
+        
+        for item in list {
+            let urls = item.picURLs ?? []
+            if urls.count == 1 {
+                guard let thumbnail_pic = urls[0].thumbnail_pic,
+                    let url = URL.init(string: thumbnail_pic) else{
+                    continue
+                }
+ 
+                dispatchGroup.enter()
+                SDWebImageManager.shared().loadImage(with: url, options: [], progress: nil, completed: { (image, _, _, _, _, _) in
+                    if let image = image,
+                        let imageData = UIImagePNGRepresentation(image) {
+                        lenght += imageData.count
+                    }
+                    dispatchGroup.leave()
+                })
+            }
+        }
+        
+        dispatchGroup.notify(queue: DispatchQueue.main) {
+            print("已缓存图片长度: \(lenght/1024)K")
+            completion(true)
         }
     }
 }
