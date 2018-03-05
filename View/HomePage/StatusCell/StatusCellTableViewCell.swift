@@ -150,6 +150,7 @@ extension StatusCellTableViewCell{
 extension StatusCellTableViewCell {
     //设置图片视图高度
     private func setPictureViewHeight() -> Void {
+        pictureContainerView.vm = statusViewModel
         pictureViewHeight.constant = statusViewModel?.prictureViewSize.height ?? 0
     }
     

@@ -10,6 +10,31 @@ import UIKit
 import SDWebImage
 
 class PictureContainerView: UIView {
+    //对应的视图模型
+    var vm: WBStatusViewModel? {
+        didSet{
+            let view0 = subviews[0]
+            
+            guard let vm = vm,
+               let picURLs = vm.picURLs else {
+                return
+            }
+            if picURLs.count == 1 {
+                //1、单图对subviews[0].frame特殊设置
+                view0.frame = CGRect(x: 0,
+                                     y: pictureTopMargin,
+                                     width: vm.prictureViewSize.width,
+                                     height: vm.prictureViewSize.height - pictureTopMargin)
+            }else{
+                //2、多图对subviews[0].frame恢复设置
+                view0.frame = CGRect(x: 0,
+                                     y: pictureTopMargin,
+                                     width: pictureWidth,
+                                     height: pictureWidth)
+            }
+        }
+    }
+    
     //预览图数组
     var pic_urls:[WBThumbnailPic]?{
         didSet{

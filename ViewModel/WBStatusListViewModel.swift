@@ -116,6 +116,7 @@ class WBStatusListViewModel {
                 SDWebImageManager.shared().loadImage(with: url, options: [], progress: nil, completed: { (image, _, _, _, _, _) in
                     if let image = image,
                         let imageData = UIImagePNGRepresentation(image) {
+                        item.updateSinglePictureViewSize(image)
                         lenght += imageData.count
                     }
                     dispatchGroup.leave()
