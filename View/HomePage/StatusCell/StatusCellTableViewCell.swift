@@ -87,13 +87,13 @@ extension StatusCellTableViewCell{
     /// - Parameter text: 正文内容；这里没有直接在外部对zhengWen的text进行赋值的原因是，需要设置
     /// 正文标签的文本属性
     private func setZhengWen(text: String) -> Void {
-        zhengWen.text = text
+
         //调整标签行间距
         let attributeText = NSMutableAttributedString(string: text)
         
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineSpacing = 5.0
-        attributeText.addAttributes([NSAttributedStringKey.paragraphStyle:paragraphStyle],
+        attributeText.addAttributes([NSAttributedStringKey.paragraphStyle:paragraphStyle,NSAttributedStringKey.font:zhengWen.font],
                                     range: NSRange(location: 0, length: text.count))
         
         zhengWen.attributedText = attributeText
@@ -203,15 +203,18 @@ extension StatusCellTableViewCell {
 extension StatusCellTableViewCell {
     //设置被转发微博的正文
     private func setRetweetedZhenWen(screen_name: String, text: String) -> Void {
+        if retweetedZhenWen == nil {
+            return
+        }
+        
         let text = "@\(screen_name): \(text)"
         
-        retweetedZhenWen?.text = text
         //调整标签行间距
         let attributeText = NSMutableAttributedString(string: text)
         
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineSpacing = 5.0
-        attributeText.addAttributes([NSAttributedStringKey.paragraphStyle:paragraphStyle],
+        attributeText.addAttributes([NSAttributedStringKey.paragraphStyle:paragraphStyle, NSAttributedStringKey.font:retweetedZhenWen!.font],
                                     range: NSRange(location: 0, length: text.count))
         
         retweetedZhenWen?.attributedText = attributeText

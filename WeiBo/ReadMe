@@ -447,8 +447,34 @@ func test() {
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//创建标签，并设置属性
+let label = UILabel()
+label.backgroundColor = UIColor.yellow
+label.textColor = UIColor.black
+label.numberOfLines = 0
+label.font = UIFont.systemFont(ofSize: 20)
+
+//动态计算字符串高度，形成最终实际frame
+let text = "您好啊Do any additionae您好啊Do any additionae您好啊Do any additionae"
+
+let size = CGSize(width: 300, height: 1000)
+let  height = text.heightOfString(size: size, font: label.font, lineSpacing: 15)
+label.frame = CGRect(x: 10, y: 300, width: 300, height: height)
 
 
+//创建属性文本，并赋值给标签。
+let attributeText = NSMutableAttributedString(string: text)
+
+let paragraphStyle = NSMutableParagraphStyle()
+paragraphStyle.lineSpacing = 15.0
+attributeText.addAttributes([NSAttributedStringKey.paragraphStyle:paragraphStyle, NSAttributedStringKey.font:label.font],
+range: NSRange(location: 0, length: text.count))
+
+label.attributedText = attributeText
+view.addSubview(label)
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 
