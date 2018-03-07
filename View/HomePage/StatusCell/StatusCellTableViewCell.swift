@@ -43,7 +43,6 @@ class StatusCellTableViewCell: UITableViewCell {
                                 text: statusViewModel?.status?.retweeted_status?.text ?? "")
             
             setPictureViewHeight()
-            setPic_urls()
             
             zhuanFaBtn.setTitle(getZhuanFaPingLunZanTitle(count: statusViewModel?.status?.reposts_count ?? 0, defaultTitle: " 转发"),
                                 for: .normal)
@@ -152,11 +151,6 @@ extension StatusCellTableViewCell {
     private func setPictureViewHeight() -> Void {
         pictureContainerView.vm = statusViewModel
         pictureViewHeight.constant = statusViewModel?.prictureViewSize.height ?? 0
-    }
-    
-    //设置图片数组
-    private func setPic_urls() -> Void {
-        pictureContainerView.pic_urls = statusViewModel?.picURLs
     }
 }
 

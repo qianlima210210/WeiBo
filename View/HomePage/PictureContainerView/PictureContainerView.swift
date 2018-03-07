@@ -32,6 +32,8 @@ class PictureContainerView: UIView {
                                      width: pictureWidth,
                                      height: pictureWidth)
             }
+            
+            pic_urls = vm.picURLs
         }
     }
     
