@@ -473,6 +473,12 @@ range: NSRange(location: 0, length: text.count))
 label.attributedText = attributeText
 view.addSubview(label)
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
+layoutSubviews:
+The default implementation of this method does nothing on iOS 5.1 and earlier. Otherwise, the default implementation uses any constraints you have set to determine the size and position of any subviews.
+Subclasses can override this method as needed to perform more precise layout of their subviews. You should override this method only if the autoresizing and constraint-based behaviors of the subviews do not offer the behavior you want. You can use your implementation to set the frame rectangles of your subviews directly.
+You should not call this method directly. If you want to force a layout update, call the setNeedsLayout() method instead to do so prior to the next drawing update. If you want to update the layout of your views immediately, call the layoutIfNeeded() method.
+
+此方法用来重新定义子元素的位置和大小。子类重写此方法，用来实现UI元素的更精确布局。不能主动调用该方法，如果要让布局重新刷新，那么就调用setNeedsLayout，即setNeedsLayout方法会触发调用layoutSubViews方法（在下一个屏幕刷新点）；如果你想立即刷星，可调用layoutIfNeeded。
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
