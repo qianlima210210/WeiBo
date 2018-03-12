@@ -38,6 +38,7 @@
 		E97C01EE2046A5CA002D4613 /* WBThumbnailPic.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97C01ED2046A5CA002D4613 /* WBThumbnailPic.swift */; };
 		E9949A1E2043DFAE00DFF936 /* WBStatusViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9949A1D2043DFAE00DFF936 /* WBStatusViewModel.swift */; };
 		E9956ECB20493ED600075C49 /* StatusRetweetedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9956ECA20493ED600075C49 /* StatusRetweetedCell.xib */; };
+		E9AE3C332051294F0054F7C1 /* BYButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AE3C322051294F0054F7C1 /* BYButton.swift */; };
 		E9C562DA2004683100B7F6DE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E9C562D82004683100B7F6DE /* InfoPlist.strings */; };
 		E9C562DE20046BB000B7F6DE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E9C562E020046BB000B7F6DE /* Localizable.strings */; };
 		E9C562E320046D6E00B7F6DE /* ReadMe in Resources */ = {isa = PBXBuildFile; fileRef = E9C562E220046D6E00B7F6DE /* ReadMe */; };
@@ -92,6 +93,7 @@
 		E97C01ED2046A5CA002D4613 /* WBThumbnailPic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBThumbnailPic.swift; sourceTree = "<group>"; };
 		E9949A1D2043DFAE00DFF936 /* WBStatusViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBStatusViewModel.swift; sourceTree = "<group>"; };
 		E9956ECA20493ED600075C49 /* StatusRetweetedCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatusRetweetedCell.xib; sourceTree = "<group>"; };
+		E9AE3C322051294F0054F7C1 /* BYButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BYButton.swift; sourceTree = "<group>"; };
 		E9C562D92004683100B7F6DE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		E9C562DB2004684100B7F6DE /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		E9C562DF20046BB000B7F6DE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -189,6 +191,7 @@
 		E94D877120382D5200871795 /* TitleButton */ = {
 			isa = PBXGroup;
 			children = (
+				E9AE3C322051294F0054F7C1 /* BYButton.swift */,
 				E94D877220382D6A00871795 /* TitleButton.swift */,
 			);
 			path = TitleButton;
@@ -489,6 +492,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9AE3C332051294F0054F7C1 /* BYButton.swift in Sources */,
 				E90094C22004BD1500B20928 /* TabBar.swift in Sources */,
 				E97AB236201AFCBE00E5C267 /* HttpEngine.swift in Sources */,
 				E9584AE22003A0DB0001A0E4 /* BaseViewController.swift in Sources */,
