@@ -79,7 +79,10 @@
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="自己的评论" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EWg-Z4-yCz" userLabel="正文">
                         <rect key="frame" x="12" y="66" width="520" height="347.66666666666669"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.45138680930000002" green="0.99309605359999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="347.67000000000002" id="TFn-g7-mu8"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -90,7 +93,10 @@
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="被转发微博的正文" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eb7-Z8-k7K" userLabel="被转发微博的正文">
                         <rect key="frame" x="12" y="426" width="520" height="15"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.99942404029999998" green="0.98555368190000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="15" id="K7c-di-nTd"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -192,7 +198,7 @@
                     <constraint firstAttribute="trailing" secondItem="EWg-Z4-yCz" secondAttribute="trailing" constant="12" id="pC2-fX-aAf"/>
                     <constraint firstItem="BTv-SW-mx5" firstAttribute="leading" secondItem="LWE-Ix-6UD" secondAttribute="leading" constant="12" id="qYp-Uh-2G7"/>
                     <constraint firstItem="YYj-G0-MQu" firstAttribute="top" secondItem="zfz-UE-Lt6" secondAttribute="bottom" id="qwg-aP-SRo"/>
-                    <constraint firstItem="Oyv-jm-o2s" firstAttribute="top" relation="lessThanOrEqual" secondItem="EWg-Z4-yCz" secondAttribute="bottom" constant="12" id="rRk-NI-2dm"/>
+                    <constraint firstItem="Oyv-jm-o2s" firstAttribute="top" secondItem="EWg-Z4-yCz" secondAttribute="bottom" constant="12" id="rRk-NI-2dm"/>
                     <constraint firstItem="Eb7-Z8-k7K" firstAttribute="top" secondItem="Oyv-jm-o2s" secondAttribute="top" id="rxv-cS-V7h"/>
                     <constraint firstItem="EoS-qh-pzE" firstAttribute="centerX" secondItem="BTv-SW-mx5" secondAttribute="trailing" id="uRc-mm-jJi"/>
                     <constraint firstAttribute="trailing" secondItem="SAB-wK-evT" secondAttribute="trailing" constant="12" id="uaE-sq-K2q"/>
@@ -210,10 +216,12 @@
                 <outlet property="pingLunBtn" destination="g1u-PO-rlq" id="v39-Qh-xUt"/>
                 <outlet property="renZhengImageView" destination="EoS-qh-pzE" id="zJo-Zk-0YA"/>
                 <outlet property="retweetedZhenWen" destination="Eb7-Z8-k7K" id="lMh-pb-AMD"/>
+                <outlet property="retweetedZhengWenHeight" destination="K7c-di-nTd" id="kcH-fi-fna"/>
                 <outlet property="screenName" destination="5Ye-rh-cls" id="xDk-jl-Rh2"/>
                 <outlet property="time" destination="mB5-vg-0UI" id="zKf-jX-oAd"/>
                 <outlet property="touXiangImageView" destination="BTv-SW-mx5" id="oND-ZS-t8i"/>
                 <outlet property="zhengWen" destination="EWg-Z4-yCz" id="UWH-06-Xci"/>
+                <outlet property="zhengWenHeight" destination="TFn-g7-mu8" id="Haf-uB-jB1"/>
                 <outlet property="zhuanFaBtn" destination="4Qt-18-e0Q" id="uPt-JE-vs7"/>
                 <outlet property="zhuanFaBtnWidth" destination="alH-NO-Nau" id="rW8-Ye-RFf"/>
             </connections>

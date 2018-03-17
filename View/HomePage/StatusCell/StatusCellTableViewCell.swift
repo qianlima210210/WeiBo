@@ -17,7 +17,9 @@ class StatusCellTableViewCell: UITableViewCell {
     @IBOutlet weak var time: UILabel!
     @IBOutlet weak var from: UILabel!
     @IBOutlet weak var renZhengImageView: UIImageView!
+    
     @IBOutlet weak var zhengWen: UILabel!
+    @IBOutlet weak var zhengWenHeight: NSLayoutConstraint!
     
     @IBOutlet weak var pictureViewHeight: NSLayoutConstraint!
     @IBOutlet weak var pictureContainerView: PictureContainerView!
@@ -30,6 +32,7 @@ class StatusCellTableViewCell: UITableViewCell {
     //被转发的微博的正文标签
     @IBOutlet weak var retweetedZhenWen: UILabel?
     
+    @IBOutlet weak var retweetedZhengWenHeight: NSLayoutConstraint!
     
     var statusViewModel: WBStatusViewModel?{
         didSet{
@@ -96,6 +99,11 @@ extension StatusCellTableViewCell{
                                     range: NSRange(location: 0, length: text.count))
         
         zhengWen.attributedText = attributeText
+        
+        zhengWenHeight.constant = ceil(text.heightOfString(size: CGSize(width: kScreenWidth() - CGFloat(12 * 2), height: CGFloat(1000.0)),
+                                                          font: zhengWen.font,
+                                                          lineSpacing: 5.0)) + 1
+
     }
     
     /// 设置昵称
@@ -212,6 +220,11 @@ extension StatusCellTableViewCell {
                                     range: NSRange(location: 0, length: text.count))
         
         retweetedZhenWen?.attributedText = attributeText
+        
+        
+        retweetedZhengWenHeight.constant = ceil(text.heightOfString(size: CGSize(width: kScreenWidth() - CGFloat(12 * 2), height: CGFloat(1000.0)),
+                                                      font: retweetedZhenWen!.font,
+                                                      lineSpacing: 5.0)) + 1
     }
 }
 

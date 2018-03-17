@@ -74,9 +74,9 @@ class WBStatusViewModel {
         //正文的高度
         var height2:CGFloat = 0.0
         if let zhengWen = status?.text {
-            height2 = zhengWen.heightOfString(size: CGSize(width: kScreenWidth() - CGFloat(12 * 2), height: CGFloat(1000.0)),
+            height2 = ceil(zhengWen.heightOfString(size: CGSize(width: kScreenWidth() - CGFloat(12 * 2), height: CGFloat(1000.0)),
                                               font: UIFont.systemFont(ofSize: 13),
-                                              lineSpacing: 5.0)
+                                              lineSpacing: 5.0)) + 1
         }
         
         //正文到被转发正文的距离
@@ -90,9 +90,9 @@ class WBStatusViewModel {
             
             let text = "@\(status?.retweeted_status?.user?.screen_name ?? ""): \(status?.retweeted_status?.text ?? "")"
             if text.count > 0 {
-                height4 = text.heightOfString(size: CGSize(width: kScreenWidth() - CGFloat(12 * 2), height: CGFloat(1000.0)),
+                height4 = ceil( text.heightOfString(size: CGSize(width: kScreenWidth() - CGFloat(12 * 2), height: CGFloat(1000.0)),
                                                 font: UIFont.systemFont(ofSize: 12),
-                                                lineSpacing: 5.0)
+                                                lineSpacing: 5.0)) + 1
             }
         }
         
