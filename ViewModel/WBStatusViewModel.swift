@@ -52,10 +52,22 @@ class WBStatusViewModel {
     
     func updateSinglePictureViewSize(_ image: UIImage) -> Void {
         var size = image.size
-        size.height = (size.height * (kScreenWidth() - 2 * 12)) / size.width
-        size.width = kScreenWidth() - 2 * 12
+
+        let maxWidth = kScreenWidth() - 2 * 12
+        let minWidth = CGFloat(40)
         
-        size.height += pictureTopMargin
+        //处理过宽
+        if size.width > maxWidth {
+            size.height  = maxWidth *  size.height / size.width + pictureTopMargin
+            size.width = maxWidth
+        }
+        
+        //处理过窄
+        if size.width < 40 {
+            size.height  = minWidth * size.height / size.width + pictureTopMargin
+            size.width = minWidth
+        }
+        
         prictureViewSize = size
         
         //重新统计cell总高度
