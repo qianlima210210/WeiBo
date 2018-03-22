@@ -88,7 +88,7 @@ class MainTabBarController: UITabBarController {
     //将首页内容滚动到顶部
     func scrollTopOfHomePageContent() -> Void {
         if let vc = ((self.selectedViewController as? MainNavigationController)?.childViewControllers[0]) as? BaseViewController {
-            if vc.refreshCtl.refreshing == false{
+            if vc.refreshCtl.isRefreshing == false{
                 vc.tableView.contentOffset = CGPoint(x: 0, y: 0)
                 vc.autoShowRefreshCtl()
             }

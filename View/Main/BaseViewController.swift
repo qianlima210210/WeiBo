@@ -32,7 +32,7 @@ class BaseViewController: UIViewController {
     var tableView = UITableView()
     
     //刷新控件
-    var refreshCtl = MQLRefreshControl()
+    var refreshCtl = UIRefreshControl()
     var isPullDown = false
     var isPullUp = false
     
@@ -313,7 +313,7 @@ extension BaseViewController{
     
     //自动显示刷新控件
     func autoShowRefreshCtl() -> Void {
-        if (refreshCtl.refreshing == false && self.tableView.contentOffset.y == 0){
+        if (refreshCtl.isRefreshing == false && self.tableView.contentOffset.y == 0){
             UIView.animate(withDuration: 0.25, animations: {
                 self.tableView.contentOffset = CGPoint(x: 0, y: -self.refreshCtl.bounds.height)
             }, completion: { (finished) in
@@ -327,7 +327,7 @@ extension BaseViewController{
     func removeTableView(){
         tableView.removeFromSuperview()
         tableView = UITableView()
-        refreshCtl = MQLRefreshControl()
+        refreshCtl = UIRefreshControl()
     }
     
     //MARK:添加游客视图
