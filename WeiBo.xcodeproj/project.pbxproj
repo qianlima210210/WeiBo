@@ -28,6 +28,7 @@
 		E9584ADE2003A0A10001A0E4 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9584ADD2003A0A10001A0E4 /* MainTabBarController.swift */; };
 		E9584AE02003A0C00001A0E4 /* MainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9584ADF2003A0C00001A0E4 /* MainNavigationController.swift */; };
 		E9584AE22003A0DB0001A0E4 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9584AE12003A0DB0001A0E4 /* BaseViewController.swift */; };
+		E96737C52063EFD10074DC77 /* MQLRefreshControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96737C42063EFD10074DC77 /* MQLRefreshControl.swift */; };
 		E9786A6120404841007EEE77 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9786A6020404841007EEE77 /* UIImage+Extension.swift */; };
 		E97AB236201AFCBE00E5C267 /* HttpEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97AB235201AFCBE00E5C267 /* HttpEngine.swift */; };
 		E97AB238201B65AE00E5C267 /* HttpEngine+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97AB237201B65AE00E5C267 /* HttpEngine+Extension.swift */; };
@@ -83,6 +84,7 @@
 		E9584ADD2003A0A10001A0E4 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		E9584ADF2003A0C00001A0E4 /* MainNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationController.swift; sourceTree = "<group>"; };
 		E9584AE12003A0DB0001A0E4 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		E96737C42063EFD10074DC77 /* MQLRefreshControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MQLRefreshControl.swift; sourceTree = "<group>"; };
 		E9786A6020404841007EEE77 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		E97AB235201AFCBE00E5C267 /* HttpEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpEngine.swift; sourceTree = "<group>"; };
 		E97AB237201B65AE00E5C267 /* HttpEngine+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HttpEngine+Extension.swift"; sourceTree = "<group>"; };
@@ -315,6 +317,7 @@
 		E9584ADB20039FFA0001A0E4 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				E96737C32063EFB50074DC77 /* MQLRefreshControl */,
 				E946F46B2021B794000341E4 /* RJBadgeView */,
 				E97AB234201AD12100E5C267 /* HttpEngine */,
 				E90094E220074F7400B20928 /* Extension */,
@@ -328,6 +331,14 @@
 				E9C562E62004AD5C00B7F6DE /* MessageViewController.swift */,
 			);
 			path = Message;
+			sourceTree = "<group>";
+		};
+		E96737C32063EFB50074DC77 /* MQLRefreshControl */ = {
+			isa = PBXGroup;
+			children = (
+				E96737C42063EFD10074DC77 /* MQLRefreshControl.swift */,
+			);
+			path = MQLRefreshControl;
 			sourceTree = "<group>";
 		};
 		E97AB234201AD12100E5C267 /* HttpEngine */ = {
@@ -508,6 +519,7 @@
 				E97AB238201B65AE00E5C267 /* HttpEngine+Extension.swift in Sources */,
 				E97AB23C201CAAFD00E5C267 /* WBStatus.swift in Sources */,
 				E90094E420074F8B00B20928 /* String+Extension.swift in Sources */,
+				E96737C52063EFD10074DC77 /* MQLRefreshControl.swift in Sources */,
 				E9786A6120404841007EEE77 /* UIImage+Extension.swift in Sources */,
 				E9C562E92004AD6A00B7F6DE /* DiscoveryViewController.swift in Sources */,
 				E9D9B787202443E80056BCA3 /* NotificationConstant.swift in Sources */,
