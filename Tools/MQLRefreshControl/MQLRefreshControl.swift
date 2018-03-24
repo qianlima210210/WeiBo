@@ -45,6 +45,26 @@ class MQLRefreshControl: UIControl {
         scrollView?.addObserver(self, forKeyPath: "contentOffset", options: [.new, .old], context: nil)
     }
     
+    
+    /// 当视图从父视图移除时调用
+    /// 所有的刷新控件都是监听父视图的contentOffset
+    override func removeFromSuperview() {
+        //superview还存在
+        superview?.removeObserver(self, forKeyPath: "contentOffset")
+        super.removeFromSuperview()
+        //superview不存在
+    }
+    
+    /// 所有KVO方法统一调用此方法
+    /// 在开发中通常只监听某一个对象的某几个属性，如果属性太多这个方法显得很乱
+    /// 观察者模式在不需要的时候要及时释放
+    /// 通知中心，如果不释放，什么也不会发生，但是会出现内存泄漏，这样造成注册多次
+    /// KVO如果不释放，会crash
+    /// - Parameters:
+    ///   - keyPath: <#keyPath description#>
+    ///   - object: <#object description#>
+    ///   - change: <#change description#>
+    ///   - context: <#context description#>
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         
         guard let sv = scrollView else { return  }

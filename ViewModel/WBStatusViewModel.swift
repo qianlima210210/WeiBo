@@ -63,7 +63,7 @@ class WBStatusViewModel {
         }
         
         //处理过窄
-        if size.width < 40 {
+        if size.width < minWidth {
             size.height  = minWidth * size.height / size.width + pictureTopMargin
             size.width = minWidth
         }
