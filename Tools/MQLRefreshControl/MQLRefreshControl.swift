@@ -8,6 +8,7 @@
 
 import UIKit
 
+//仅仅提供对外的逻辑处理入口
 class MQLRefreshControl: UIControl {
     
     //刷新控件的父视图，下拉刷新控件应适用于UITableView/UICollectionView
@@ -60,11 +61,6 @@ class MQLRefreshControl: UIControl {
     /// 观察者模式在不需要的时候要及时释放
     /// 通知中心，如果不释放，什么也不会发生，但是会出现内存泄漏，这样造成注册多次
     /// KVO如果不释放，会crash
-    /// - Parameters:
-    ///   - keyPath: <#keyPath description#>
-    ///   - object: <#object description#>
-    ///   - change: <#change description#>
-    ///   - context: <#context description#>
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         
         guard let sv = scrollView else { return  }
