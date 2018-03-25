@@ -25,6 +25,12 @@ class MQLRefreshView: UIView {
         didSet{
             switch refreshState {
             case .Normal:
+                //显示箭头
+                arrowheadImageView.isHidden = false
+                
+                //隐藏菊花
+                indicator.stopAnimating()
+                
                 promptLabel.text = "下拉刷新..."
                 UIView.animate(withDuration: 0.25){
                     self.arrowheadImageView.transform = CGAffineTransform.identity

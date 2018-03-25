@@ -104,13 +104,9 @@ class MQLRefreshControl: UIControl {
             //放手
             if refreshView.refreshState == .Pulling {
                 print("可以刷新了")
-                refreshView.refreshState = .WillRefresh
+                beginRefreshing()
                 
-                //为了让刷新视图显示出来，需要修改表格的contentInset
-                var inset = sv.contentInset
-                inset.top += refreshOffset
-                
-                sv.contentInset = inset
+                sendActions(for: .valueChanged)
             }
         }
     }
@@ -118,6 +114,10 @@ class MQLRefreshControl: UIControl {
     //MARK:开始刷新
     func beginRefreshing() {
         guard let sv = scrollView else { return }
+        
+        if refreshView.refreshState == .WillRefresh {
+            return
+        }
         
         //设置刷新状态
         refreshView.refreshState = .WillRefresh
@@ -133,7 +133,20 @@ class MQLRefreshControl: UIControl {
     
     //MARK:结束刷新
     func endRefreshing() {
+        guard let sv = scrollView else { return }
         
+        //只有正在刷新的才能结束刷新
+        if refreshView.refreshState != .WillRefresh {
+            return
+        }
+        
+        //恢复刷新视图的状态
+        refreshView.refreshState = .Normal
+        
+        //恢复表格的contentInset
+        var inset = sv.contentInset
+        inset.top -= refreshOffset
+        sv.contentInset = inset
     }
 }
 
