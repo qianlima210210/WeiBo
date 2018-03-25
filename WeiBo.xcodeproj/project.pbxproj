@@ -353,10 +353,10 @@
 		E96737C32063EFB50074DC77 /* MQLRefreshControl */ = {
 			isa = PBXGroup;
 			children = (
-				E93B08B52067AEEA008C3550 /* MQLRefreshView.swift */,
-				E93B08B62067AEEA008C3550 /* MQLRefreshView.xib */,
 				E93B08B22067AEEA008C3550 /* tableview_pull_refresh.imageset */,
 				E96737C42063EFD10074DC77 /* MQLRefreshControl.swift */,
+				E93B08B52067AEEA008C3550 /* MQLRefreshView.swift */,
+				E93B08B62067AEEA008C3550 /* MQLRefreshView.xib */,
 			);
 			path = MQLRefreshControl;
 			sourceTree = "<group>";

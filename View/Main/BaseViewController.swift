@@ -313,13 +313,9 @@ extension BaseViewController{
     
     //自动显示刷新控件
     func autoShowRefreshCtl() -> Void {
-        if (refreshCtl.refreshing == false && self.tableView.contentOffset.y == 0){
-            UIView.animate(withDuration: 0.25, animations: {
-                self.tableView.contentOffset = CGPoint(x: 0, y: -self.refreshCtl.bounds.height)
-            }, completion: { (finished) in
-                self.refreshCtl.beginRefreshing()
-                self.refreshCtl.sendActions(for: UIControlEvents.valueChanged)
-            })
+        if (refreshCtl.refreshView.refreshState == .Normal){
+            self.refreshCtl.beginRefreshing()
+            self.refreshCtl.sendActions(for: UIControlEvents.valueChanged)
         }
     }
     

@@ -74,19 +74,21 @@ class HomePageViewController: BaseViewController {
         }
         
         
-        listViewModel.loadStatus(isPullUp: isPullUp) { (isSuccess) in
-            print("请求数据结束\(Date())")
-            
-            if self.isPullDown{
-                self.isPullDown = false
-                self.refreshCtl.endRefreshing()
-                self.tableView.contentOffset = CGPoint(x: 0.0, y: 0.0)
-            }else{
-                self.isPullUp = false
-            }
-            
-            if isSuccess {
-                self.tableView.reloadData()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
+            self.listViewModel.loadStatus(isPullUp: self.isPullUp) { (isSuccess) in
+                print("请求数据结束\(Date())")
+                
+                if self.isPullDown{
+                    self.isPullDown = false
+                    self.refreshCtl.endRefreshing()
+                    
+                }else{
+                    self.isPullUp = false
+                }
+                
+                if isSuccess {
+                    self.tableView.reloadData()
+                }
             }
         }
     }

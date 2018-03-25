@@ -126,9 +126,12 @@ class MQLRefreshControl: UIControl {
         //为了让刷新视图显示出来，需要修改表格的contentInset
         var inset = sv.contentInset
         inset.top += refreshOffset
-        
         sv.contentInset = inset
         
+        //下面代码仅仅针对手动触发刷新
+        if sv.contentOffset.y != refreshOffset {
+            sv.contentOffset = CGPoint(x: 0, y: -refreshOffset)
+        }
     }
     
     //MARK:结束刷新
