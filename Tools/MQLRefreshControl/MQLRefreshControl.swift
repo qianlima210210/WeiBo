@@ -8,12 +8,29 @@
 
 import UIKit
 
+
+/// 刷新状态
+///
+/// - Normal: 普通状态，设么都不做
+/// - Pulling: 超过临界点，没有放手
+/// - WillRefresh:超过临界点，已放手
+enum RefreshState {
+    case Normal
+    case Pulling
+    case WillRefresh
+}
+
 //仅仅提供对外的逻辑处理入口
 class MQLRefreshControl: UIControl {
     
     //刷新控件的父视图，下拉刷新控件应适用于UITableView/UICollectionView
     private weak var scrollView: UIScrollView?
+    
+    let refreshView = MQLRefreshView.initMQLRefreshViewFromNib()
     var refreshing: Bool = false
+    
+    //刷新状态切换的临界点
+    let refreshOffset = CGFloat(44.0)
     
     //MARK: 构造函数
     init() {
@@ -66,12 +83,51 @@ class MQLRefreshControl: UIControl {
         guard let sv = scrollView else { return  }
         let height = -sv.contentOffset.y
         
+        //向上拖动不处理
+        if height < 0 {
+            return;
+        }
+        
         //设置控件frame
         frame = CGRect(x: 0, y: -height, width: sv.bounds.width, height: height)
+        
+        //判断临界点
+        if sv.isDragging {
+            if height > refreshOffset && refreshView.refreshState == .Normal{
+                print("可以放手刷新了")
+                refreshView.refreshState = .Pulling
+            }else if height <= refreshOffset && refreshView.refreshState == .Pulling{
+                print("过临界点，又拖回来了")
+                refreshView.refreshState = .Normal
+            }
+        }else{
+            //放手
+            if refreshView.refreshState == .Pulling {
+                print("可以刷新了")
+                refreshView.refreshState = .WillRefresh
+                
+                //为了让刷新视图显示出来，需要修改表格的contentInset
+                var inset = sv.contentInset
+                inset.top += refreshOffset
+                
+                sv.contentInset = inset
+            }
+        }
     }
     
     //MARK:开始刷新
     func beginRefreshing() {
+        guard let sv = scrollView else { return }
+        
+        //设置刷新状态
+        refreshView.refreshState = .WillRefresh
+        
+        //调整表格的间距
+        //为了让刷新视图显示出来，需要修改表格的contentInset
+        var inset = sv.contentInset
+        inset.top += refreshOffset
+        
+        sv.contentInset = inset
         
     }
     
@@ -84,6 +140,48 @@ class MQLRefreshControl: UIControl {
 extension MQLRefreshControl {
     func setUI() -> Void {
         backgroundColor = UIColor.orange
+        
+        //添加刷新视图
+        self.addSubview(refreshView)
+        
+        //添加refreshView和self的自动布局约束
+        refreshView.translatesAutoresizingMaskIntoConstraints = false
+        
+        let centerXConstraint = NSLayoutConstraint(item: refreshView,
+                                                   attribute: .centerX,
+                                                   relatedBy: .equal,
+                                                   toItem: self,
+                                                   attribute: .centerX,
+                                                   multiplier: 1.0,
+                                                   constant: 0.0)
+        
+        let bottomConstraint = NSLayoutConstraint(item: refreshView,
+                                                   attribute: .bottom,
+                                                   relatedBy: .equal,
+                                                   toItem: self,
+                                                   attribute: .bottom,
+                                                   multiplier: 1.0,
+                                                   constant: 0.0)
+        
+        let widthConstraint = NSLayoutConstraint(item: refreshView,
+                                                 attribute: .width,
+                                                 relatedBy: .equal,
+                                                 toItem: nil,
+                                                 attribute: .notAnAttribute,
+                                                 multiplier: 1.0,
+                                                 constant: refreshView.bounds.width)
+        
+        let heightConstraint = NSLayoutConstraint(item: refreshView,
+                                                 attribute: .height,
+                                                 relatedBy: .equal,
+                                                 toItem: nil,
+                                                 attribute: .notAnAttribute,
+                                                 multiplier: 1.0,
+                                                 constant: refreshView.bounds.height)
+        
+        self.addConstraints([centerXConstraint, bottomConstraint])
+        refreshView.addConstraints([widthConstraint, heightConstraint])
+        
     }
 }
 

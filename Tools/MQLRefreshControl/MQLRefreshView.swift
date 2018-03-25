@@ -15,4 +15,43 @@ class MQLRefreshView: UIView {
     @IBOutlet weak var indicator: UIActivityIndicatorView!
     //提示标签
     @IBOutlet weak var promptLabel: UILabel!
+    
+    //刷新状态
+    /*
+     IOS系统中UIView封装的旋转动画，默认是顺时针旋转，就近原则；要想实现逆方向旋转，需要调整一个非常小的数字（哪边近，就从哪变开始旋转）
+     如果想实现360旋转，需要核心动画CABaseAnimation
+    */
+    var refreshState: RefreshState = .Normal {
+        didSet{
+            switch refreshState {
+            case .Normal:
+                promptLabel.text = "下拉刷新..."
+                UIView.animate(withDuration: 0.25){
+                    self.arrowheadImageView.transform = CGAffineTransform.identity
+                }
+            case .Pulling:
+                promptLabel.text = "松手刷新..."
+                UIView.animate(withDuration: 0.25){
+                    self.arrowheadImageView.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi - 0.0001))
+                }
+            case .WillRefresh:
+                promptLabel.text = "正在刷新..."
+                
+                //隐藏箭头
+                arrowheadImageView.isHidden = true
+                
+                //显示菊花
+                indicator.startAnimating()
+                
+            }
+        }
+    }
+    
+    //工厂方法，从nib中初始化MQLRefreshView对象
+    class func initMQLRefreshViewFromNib() -> MQLRefreshView{
+        let nib = UINib(nibName: "MQLRefreshView", bundle: nil)
+        return nib.instantiate(withOwner: nil, options: nil)[0] as! MQLRefreshView
+    }
+    
+    
 }
