@@ -55,9 +55,8 @@ class MQLRefreshView: UIView {
     
     //工厂方法，从nib中初始化MQLRefreshView对象
     class func initMQLRefreshViewFromNib() -> MQLRefreshView{
-        let nib = UINib(nibName: "MQLRefreshView", bundle: nil)
+        let nib = UINib(nibName: "MQLHumanRefreshView", bundle: nil)
         return nib.instantiate(withOwner: nil, options: nil)[0] as! MQLRefreshView
     }
-    
     
 }

@@ -21,8 +21,6 @@
 		E92664352011C35A00ABF849 /* ContentOfVisitorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92664342011C35A00ABF849 /* ContentOfVisitorView.swift */; };
 		E932A08F203996FB001414E6 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E932A08E203996FB001414E6 /* WelcomeView.swift */; };
 		E932A091203997AE001414E6 /* NewFeatureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E932A090203997AE001414E6 /* NewFeatureView.swift */; };
-		E93B08B72067AEEA008C3550 /* tableview_pull_refresh@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E93B08B32067AEEA008C3550 /* tableview_pull_refresh@3x.png */; };
-		E93B08B82067AEEA008C3550 /* tableview_pull_refresh@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E93B08B42067AEEA008C3550 /* tableview_pull_refresh@2x.png */; };
 		E93B08B92067AEEA008C3550 /* MQLRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93B08B52067AEEA008C3550 /* MQLRefreshView.swift */; };
 		E93B08BA2067AEEA008C3550 /* MQLRefreshView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E93B08B62067AEEA008C3550 /* MQLRefreshView.xib */; };
 		E946F46F2021B794000341E4 /* UIView+RJBadge.m in Sources */ = {isa = PBXBuildFile; fileRef = E946F46D2021B794000341E4 /* UIView+RJBadge.m */; };
@@ -52,6 +50,9 @@
 		E9C562E92004AD6A00B7F6DE /* DiscoveryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C562E82004AD6A00B7F6DE /* DiscoveryViewController.swift */; };
 		E9C562EB2004AD7700B7F6DE /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C562EA2004AD7700B7F6DE /* ProfileViewController.swift */; };
 		E9C562ED2004B41200B7F6DE /* 应用常规尺寸.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E9C562EC2004B41100B7F6DE /* 应用常规尺寸.jpg */; };
+		E9D1F012206889490093D3D3 /* tableview_pull_refresh@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9D1F00F206889490093D3D3 /* tableview_pull_refresh@3x.png */; };
+		E9D1F013206889490093D3D3 /* refreshbg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9D1F010206889490093D3D3 /* refreshbg@2x.png */; };
+		E9D1F014206889490093D3D3 /* tableview_pull_refresh@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9D1F011206889490093D3D3 /* tableview_pull_refresh@2x.png */; };
 		E9D9B787202443E80056BCA3 /* NotificationConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D9B786202443E80056BCA3 /* NotificationConstant.swift */; };
 		E9FF994B203AB987002B8738 /* WelcomeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9FF994A203AB987002B8738 /* WelcomeView.xib */; };
 		E9FF994D203EECB7002B8738 /* NewFeatureView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9FF994C203EECB7002B8738 /* NewFeatureView.xib */; };
@@ -76,8 +77,6 @@
 		E92664342011C35A00ABF849 /* ContentOfVisitorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentOfVisitorView.swift; sourceTree = "<group>"; };
 		E932A08E203996FB001414E6 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		E932A090203997AE001414E6 /* NewFeatureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFeatureView.swift; sourceTree = "<group>"; };
-		E93B08B32067AEEA008C3550 /* tableview_pull_refresh@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tableview_pull_refresh@3x.png"; sourceTree = "<group>"; };
-		E93B08B42067AEEA008C3550 /* tableview_pull_refresh@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tableview_pull_refresh@2x.png"; sourceTree = "<group>"; };
 		E93B08B52067AEEA008C3550 /* MQLRefreshView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQLRefreshView.swift; sourceTree = "<group>"; };
 		E93B08B62067AEEA008C3550 /* MQLRefreshView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MQLRefreshView.xib; sourceTree = "<group>"; };
 		E946F46C2021B794000341E4 /* RJBadgeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RJBadgeView.h; sourceTree = "<group>"; };
@@ -114,6 +113,9 @@
 		E9C562E82004AD6A00B7F6DE /* DiscoveryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryViewController.swift; sourceTree = "<group>"; };
 		E9C562EA2004AD7700B7F6DE /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		E9C562EC2004B41100B7F6DE /* 应用常规尺寸.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "应用常规尺寸.jpg"; sourceTree = "<group>"; };
+		E9D1F00F206889490093D3D3 /* tableview_pull_refresh@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tableview_pull_refresh@3x.png"; sourceTree = "<group>"; };
+		E9D1F010206889490093D3D3 /* refreshbg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "refreshbg@2x.png"; sourceTree = "<group>"; };
+		E9D1F011206889490093D3D3 /* tableview_pull_refresh@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tableview_pull_refresh@2x.png"; sourceTree = "<group>"; };
 		E9D9B786202443E80056BCA3 /* NotificationConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationConstant.swift; sourceTree = "<group>"; };
 		E9FF994A203AB987002B8738 /* WelcomeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WelcomeView.xib; sourceTree = "<group>"; };
 		E9FF994C203EECB7002B8738 /* NewFeatureView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewFeatureView.xib; sourceTree = "<group>"; };
@@ -186,15 +188,6 @@
 				E9FF994C203EECB7002B8738 /* NewFeatureView.xib */,
 			);
 			path = NewFeature;
-			sourceTree = "<group>";
-		};
-		E93B08B22067AEEA008C3550 /* tableview_pull_refresh.imageset */ = {
-			isa = PBXGroup;
-			children = (
-				E93B08B32067AEEA008C3550 /* tableview_pull_refresh@3x.png */,
-				E93B08B42067AEEA008C3550 /* tableview_pull_refresh@2x.png */,
-			);
-			path = tableview_pull_refresh.imageset;
 			sourceTree = "<group>";
 		};
 		E946F46B2021B794000341E4 /* RJBadgeView */ = {
@@ -353,7 +346,7 @@
 		E96737C32063EFB50074DC77 /* MQLRefreshControl */ = {
 			isa = PBXGroup;
 			children = (
-				E93B08B22067AEEA008C3550 /* tableview_pull_refresh.imageset */,
+				E9D1F00E206889490093D3D3 /* tableview_pull_refresh */,
 				E96737C42063EFD10074DC77 /* MQLRefreshControl.swift */,
 				E93B08B52067AEEA008C3550 /* MQLRefreshView.swift */,
 				E93B08B62067AEEA008C3550 /* MQLRefreshView.xib */,
@@ -375,6 +368,16 @@
 				E97C01E920464FCA002D4613 /* PictureContainerView.swift */,
 			);
 			path = PictureContainerView;
+			sourceTree = "<group>";
+		};
+		E9D1F00E206889490093D3D3 /* tableview_pull_refresh */ = {
+			isa = PBXGroup;
+			children = (
+				E9D1F00F206889490093D3D3 /* tableview_pull_refresh@3x.png */,
+				E9D1F010206889490093D3D3 /* refreshbg@2x.png */,
+				E9D1F011206889490093D3D3 /* tableview_pull_refresh@2x.png */,
+			);
+			path = tableview_pull_refresh;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -440,19 +443,20 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E93B08B72067AEEA008C3550 /* tableview_pull_refresh@3x.png in Resources */,
 				E90094ED20084D1000B20928 /* Podfile in Resources */,
 				E9FF994D203EECB7002B8738 /* NewFeatureView.xib in Resources */,
 				E9C562E320046D6E00B7F6DE /* ReadMe in Resources */,
 				E9584AC6200397860001A0E4 /* Assets.xcassets in Resources */,
+				E9D1F014206889490093D3D3 /* tableview_pull_refresh@2x.png in Resources */,
 				E9956ECB20493ED600075C49 /* StatusRetweetedCell.xib in Resources */,
+				E9D1F012206889490093D3D3 /* tableview_pull_refresh@3x.png in Resources */,
 				E9083212204148D0007B6AFE /* StatusNormalCell.xib in Resources */,
 				E9C562DE20046BB000B7F6DE /* Localizable.strings in Resources */,
 				E90094EF200859BC00B20928 /* Swift.gitignore in Resources */,
+				E9D1F013206889490093D3D3 /* refreshbg@2x.png in Resources */,
 				E9C562DA2004683100B7F6DE /* InfoPlist.strings in Resources */,
 				E9C562ED2004B41200B7F6DE /* 应用常规尺寸.jpg in Resources */,
 				E9FF994B203AB987002B8738 /* WelcomeView.xib in Resources */,
-				E93B08B82067AEEA008C3550 /* tableview_pull_refresh@2x.png in Resources */,
 				E93B08BA2067AEEA008C3550 /* MQLRefreshView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -74,7 +74,7 @@ class HomePageViewController: BaseViewController {
         }
         
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0) {
             self.listViewModel.loadStatus(isPullUp: self.isPullUp) { (isSuccess) in
                 print("请求数据结束\(Date())")
                 
