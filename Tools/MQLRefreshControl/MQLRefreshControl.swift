@@ -91,12 +91,15 @@ class MQLRefreshControl: UIControl {
         //设置控件frame
         frame = CGRect(x: 0, y: -height, width: sv.bounds.width, height: height)
         
+        //向刷新视图传递高度
+        refreshView.parentViewHeight = height
+        
         //判断临界点
         if sv.isDragging {
-            if height > refreshOffset && refreshView.refreshState == .Normal{
+            if height >= refreshOffset && refreshView.refreshState == .Normal{
                 print("可以放手刷新了")
                 refreshView.refreshState = .Pulling
-            }else if height <= refreshOffset && refreshView.refreshState == .Pulling{
+            }else if height < refreshOffset && refreshView.refreshState == .Pulling{
                 print("过临界点，又拖回来了")
                 refreshView.refreshState = .Normal
             }
@@ -119,6 +122,13 @@ class MQLRefreshControl: UIControl {
             return
         }
         
+        //下面代码仅仅针对手动或自动触发刷新
+        if sv.contentOffset.y == 0.0 {
+            refreshView.refreshState = .Pulling
+            sv.contentOffset = CGPoint(x: 0, y: -refreshOffset)
+            return
+        }
+        
         //设置刷新状态
         refreshView.refreshState = .WillRefresh
         
@@ -127,11 +137,6 @@ class MQLRefreshControl: UIControl {
         var inset = sv.contentInset
         inset.top += refreshOffset
         sv.contentInset = inset
-        
-        //下面代码仅仅针对手动触发刷新
-        if sv.contentOffset.y != refreshOffset {
-            sv.contentOffset = CGPoint(x: 0, y: -refreshOffset)
-        }
     }
     
     //MARK:结束刷新

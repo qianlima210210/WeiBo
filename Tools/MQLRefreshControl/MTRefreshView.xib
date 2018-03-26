@@ -32,7 +32,12 @@
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="-390" y="-76"/>
+            <connections>
+                <outlet property="buildingImageView" destination="LrP-19-qbi" id="s23-ef-FtF"/>
+                <outlet property="earthImageView" destination="3Q3-Fg-gNO" id="tly-xS-heq"/>
+                <outlet property="kangarooImageView" destination="33m-If-crU" id="bvI-Sp-fMD"/>
+            </connections>
+            <point key="canvasLocation" x="-843" y="-54"/>
         </view>
     </objects>
     <resources>

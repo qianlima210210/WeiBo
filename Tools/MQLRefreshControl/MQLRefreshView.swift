@@ -16,6 +16,8 @@ class MQLRefreshView: UIView {
     //提示标签
     @IBOutlet weak var promptLabel: UILabel?
     
+    var parentViewHeight: CGFloat = 0.0
+    
     //刷新状态
     /*
      IOS系统中UIView封装的旋转动画，默认是顺时针旋转，就近原则；要想实现逆方向旋转，需要调整一个非常小的数字（哪边近，就从哪变开始旋转）
