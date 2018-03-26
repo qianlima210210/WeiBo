@@ -30,7 +30,7 @@ class MQLRefreshControl: UIControl {
     var refreshing: Bool = false
     
     //刷新状态切换的临界点
-    let refreshOffset = CGFloat(44.0)
+    let refreshOffset = CGFloat(126.0)
     
     //MARK: 构造函数
     init() {

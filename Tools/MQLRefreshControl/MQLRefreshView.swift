@@ -10,11 +10,11 @@ import UIKit
 
 class MQLRefreshView: UIView {
     //箭头图像视图
-    @IBOutlet weak var arrowheadImageView: UIImageView!
+    @IBOutlet weak var arrowheadImageView: UIImageView?
     //菊花指示器
-    @IBOutlet weak var indicator: UIActivityIndicatorView!
+    @IBOutlet weak var indicator: UIActivityIndicatorView?
     //提示标签
-    @IBOutlet weak var promptLabel: UILabel!
+    @IBOutlet weak var promptLabel: UILabel?
     
     //刷新状态
     /*
@@ -26,28 +26,28 @@ class MQLRefreshView: UIView {
             switch refreshState {
             case .Normal:
                 //显示箭头
-                arrowheadImageView.isHidden = false
+                arrowheadImageView?.isHidden = false
                 
                 //隐藏菊花
-                indicator.stopAnimating()
+                indicator?.stopAnimating()
                 
-                promptLabel.text = "下拉刷新..."
+                promptLabel?.text = "下拉刷新..."
                 UIView.animate(withDuration: 0.25){
-                    self.arrowheadImageView.transform = CGAffineTransform.identity
+                    self.arrowheadImageView?.transform = CGAffineTransform.identity
                 }
             case .Pulling:
-                promptLabel.text = "松手刷新..."
+                promptLabel?.text = "松手刷新..."
                 UIView.animate(withDuration: 0.25){
-                    self.arrowheadImageView.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi - 0.0001))
+                    self.arrowheadImageView?.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi - 0.0001))
                 }
             case .WillRefresh:
-                promptLabel.text = "正在刷新..."
+                promptLabel?.text = "正在刷新..."
                 
                 //隐藏箭头
-                arrowheadImageView.isHidden = true
+                arrowheadImageView?.isHidden = true
                 
                 //显示菊花
-                indicator.startAnimating()
+                indicator?.startAnimating()
                 
             }
         }
@@ -55,7 +55,7 @@ class MQLRefreshView: UIView {
     
     //工厂方法，从nib中初始化MQLRefreshView对象
     class func initMQLRefreshViewFromNib() -> MQLRefreshView{
-        let nib = UINib(nibName: "MQLHumanRefreshView", bundle: nil)
+        let nib = UINib(nibName: "MTRefreshView", bundle: nil)
         return nib.instantiate(withOwner: nil, options: nil)[0] as! MQLRefreshView
     }
     
