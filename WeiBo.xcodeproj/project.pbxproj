@@ -61,6 +61,7 @@
 		E9D1F04A206893220093D3D3 /* MQLHumanRefreshView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9D1F049206893210093D3D3 /* MQLHumanRefreshView.xib */; };
 		E9D1F0512068986E0093D3D3 /* MTRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D1F04F2068986E0093D3D3 /* MTRefreshView.swift */; };
 		E9D1F0522068986E0093D3D3 /* MTRefreshView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9D1F0502068986E0093D3D3 /* MTRefreshView.xib */; };
+		E9D85FB3206942000041A325 /* ComposeTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D85FB2206942000041A325 /* ComposeTypeView.swift */; };
 		E9D9B787202443E80056BCA3 /* NotificationConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D9B786202443E80056BCA3 /* NotificationConstant.swift */; };
 		E9FF994B203AB987002B8738 /* WelcomeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9FF994A203AB987002B8738 /* WelcomeView.xib */; };
 		E9FF994D203EECB7002B8738 /* NewFeatureView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9FF994C203EECB7002B8738 /* NewFeatureView.xib */; };
@@ -132,6 +133,7 @@
 		E9D1F049206893210093D3D3 /* MQLHumanRefreshView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MQLHumanRefreshView.xib; sourceTree = "<group>"; };
 		E9D1F04F2068986E0093D3D3 /* MTRefreshView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MTRefreshView.swift; sourceTree = "<group>"; };
 		E9D1F0502068986E0093D3D3 /* MTRefreshView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MTRefreshView.xib; sourceTree = "<group>"; };
+		E9D85FB2206942000041A325 /* ComposeTypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComposeTypeView.swift; sourceTree = "<group>"; };
 		E9D9B786202443E80056BCA3 /* NotificationConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationConstant.swift; sourceTree = "<group>"; };
 		E9FF994A203AB987002B8738 /* WelcomeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WelcomeView.xib; sourceTree = "<group>"; };
 		E9FF994C203EECB7002B8738 /* NewFeatureView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewFeatureView.xib; sourceTree = "<group>"; };
@@ -310,6 +312,7 @@
 		E9584AD820039FFA0001A0E4 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				E9D85FB1206941E20041A325 /* ComposeTypeView */,
 				E932A08620393119001414E6 /* NewFeature */,
 				E9584ADD2003A0A10001A0E4 /* MainTabBarController.swift */,
 				E9584ADF2003A0C00001A0E4 /* MainNavigationController.swift */,
@@ -410,6 +413,14 @@
 				E9D1F043206893080093D3D3 /* icon_building_loading_2@2x.png */,
 			);
 			path = MTRefresh;
+			sourceTree = "<group>";
+		};
+		E9D85FB1206941E20041A325 /* ComposeTypeView */ = {
+			isa = PBXGroup;
+			children = (
+				E9D85FB2206942000041A325 /* ComposeTypeView.swift */,
+			);
+			path = ComposeTypeView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -580,6 +591,7 @@
 				E9949A1E2043DFAE00DFF936 /* WBStatusViewModel.swift in Sources */,
 				E904D312202C2A870061A790 /* UserAccount.swift in Sources */,
 				E9584ABF200397860001A0E4 /* AppDelegate.swift in Sources */,
+				E9D85FB3206942000041A325 /* ComposeTypeView.swift in Sources */,
 				E904D30D202885DD0061A790 /* ApplicationBaseInfoConstantFromSinaOpenPlatform.swift in Sources */,
 				E9584AE02003A0C00001A0E4 /* MainNavigationController.swift in Sources */,
 				E904D310202889060061A790 /* OAuthViewController.swift in Sources */,

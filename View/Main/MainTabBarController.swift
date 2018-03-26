@@ -42,6 +42,8 @@ class MainTabBarController: UITabBarController {
             
             if index != 3 {
                 self.selectedIndex = index - 1
+            }else{
+                self.compose()
             }
         }
         
@@ -93,6 +95,18 @@ class MainTabBarController: UITabBarController {
         }
     }
     
+    
+    /// 撰写微博
+    func compose() -> Void {
+        //FIXME: 判断是否登录
+        
+        //创建撰写微博类型视图
+        let composeTypeView = ComposeTypeView()
+        
+        //显示微博
+        composeTypeView.show()
+        
+    }
 }
 
 //MARK: 设备旋转

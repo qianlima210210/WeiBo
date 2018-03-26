@@ -315,7 +315,6 @@ extension BaseViewController{
     func autoShowRefreshCtl() -> Void {
         if (refreshCtl.refreshView.refreshState == .Normal){
             self.refreshCtl.beginRefreshing()
-            self.refreshCtl.sendActions(for: UIControlEvents.valueChanged)
         }
     }
     
