@@ -40,6 +40,7 @@ extension ComposeTypeView {
     //添加类型按钮
     func addTypeButton() -> Void {
         let button = ComposeTypeButton.initComposeTypeButtonFromNib(imageName: "tabbar_compose_idea", text: "文本")
+        button.center = self.center
         button.addTarget(self, action: #selector(buttonClicked(sender:)), for: .touchUpInside)
         self.addSubview(button);
         
