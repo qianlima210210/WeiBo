@@ -101,7 +101,7 @@ class MainTabBarController: UITabBarController {
         //FIXME: 判断是否登录
         
         //创建撰写微博类型视图
-        let composeTypeView = ComposeTypeView()
+        let composeTypeView = ComposeTypeView.initComposeTypeViewFromNib()
         
         //显示微博
         composeTypeView.show()
