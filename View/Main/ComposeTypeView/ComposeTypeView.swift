@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import pop
 
 class ComposeTypeView: UIView {
 
@@ -32,6 +33,7 @@ class ComposeTypeView: UIView {
     class func initComposeTypeViewFromNib() ->  ComposeTypeView{
         let nib = UINib(nibName: "ComposeTypeView", bundle: nil)
         let view = nib.instantiate(withOwner: nil, options:nil)[0] as! ComposeTypeView
+        view.alpha = 0.0
         return view
     }
     
@@ -42,6 +44,9 @@ class ComposeTypeView: UIView {
         }
         
         vc.view.addSubview(self)
+        
+        //添加pop动效
+        showCurrentView()
     }
     
     override func awakeFromNib() {
@@ -64,15 +69,17 @@ class ComposeTypeView: UIView {
         let offset = CGPoint(x: 0.0, y: 0.0)
         scrollView.setContentOffset(offset, animated: true)
         
-        //显示返回按钮
-        returnBtn.isHidden = true
-        
-        let margin = scrollView.bounds.width / 6
-        closeBtnConstraint.constant -= margin
-        returnBtnConstraint.constant += margin
-        
-        UIView.animate(withDuration: 0.25) {
+        let margin = CGFloat(0.0)
+        closeBtnConstraint.constant = margin
+        returnBtnConstraint.constant = margin
+
+        UIView.animate(withDuration: 0.25, animations: {
             self.layoutIfNeeded()
+            self.returnBtn.alpha = 0.0
+        }) { _ in
+            //隐藏返回按钮
+            self.returnBtn.isHidden = true
+            self.returnBtn.alpha = 1.0
         }
     }
 }
@@ -153,6 +160,51 @@ extension ComposeTypeView {
             self.layoutIfNeeded()
         }
         
+    }
+}
+
+//MARK: pop动画扩展
+extension ComposeTypeView {
+    func showCurrentView() -> Void {
+        //创建动画
+        let animation = POPBasicAnimation(propertyNamed: kPOPViewAlpha)
+        animation?.fromValue = 0.0
+        animation?.toValue = 1.0
+        animation?.duration = 0.5
+        
+        //将动画添加的视图
+        pop_add(animation, forKey: nil)
+        
+        //让类型按钮以弹力效果显示
+        showButton()
+    }
+    
+    //让类型按钮以弹力效果显示
+    func showButton() -> Void {
+        //获取scrollview中的view0
+        let view0 = scrollView.subviews[0]
+        
+        //遍历view0中的所有按钮
+        for (i, btn) in view0.subviews.enumerated() {
+            //创建动画
+            let animation = POPSpringAnimation(propertyNamed: kPOPLayerPositionY)
+            animation?.fromValue = btn.center.y + 200
+            animation?.toValue = btn.center.y
+            
+            //弹力系数，取值[0, 20]，数值越大弹性越大，默认4
+            animation?.springBounciness = 8
+            
+            //弹力速度，取值[0, 20]，数值越大弹性越大，默认12
+            animation?.springSpeed = 8
+            
+            //设置动画启动时间点
+            animation?.beginTime = CACurrentMediaTime() + CFTimeInterval(i) * 0.01
+            
+            //添加动画
+            btn.pop_add(animation, forKey: nil)
+        }
+        
+
     }
 }
 

@@ -11,5 +11,6 @@ pod 'SnapKit'       #,'~> 4.0.0'
 pod 'SDWebImage'    #, '~> 4.2.3'
 pod 'SVProgressHUD' #, '~> 2.2.2'
 pod 'YYModel'       #, '~> 1.0.4'
+pod 'pop'	    #, '~> 1.0.10'
 
 end
