@@ -18,27 +18,17 @@ extension String {
      @return 字符串高度
      */
     func heightOfString(size:CGSize, font:UIFont, lineSpacing:CGFloat) -> CGFloat {
-        //先获取单行文本的高度
-        let sizeOfSingleLine: CGSize = self.size(withAttributes: [NSAttributedStringKey.font:font])
-        let singleLineHeight = sizeOfSingleLine.height
-        
-        //再获取多行文本的高度
+        if (self.count == 0) {
+            return font.lineHeight;
+        }
+
         let style = NSMutableParagraphStyle()
         style.lineSpacing = lineSpacing;
         let attributes = [NSAttributedStringKey.font:font, NSAttributedStringKey.paragraphStyle:style]
+        let attStr = NSAttributedString(string: self, attributes: attributes)
         
-        let opts = NSStringDrawingOptions.usesLineFragmentOrigin
-        let rect = self.boundingRect(with: size, options: opts, attributes: attributes, context: nil)
-        
-        let multiLineHeight = rect.height
-        
-        //最后决定，到底返回单行高度还是多行高度
-        if sizeOfSingleLine.width >= size.width {//应该分为多行
-            return multiLineHeight
-        }else{
-            return singleLineHeight
-        }
-        
+        let rect =  attStr.boundingRect(with: size, options: .usesLineFragmentOrigin, context: nil)
+        return ceil(rect.height) + 1
     }
     
 }
