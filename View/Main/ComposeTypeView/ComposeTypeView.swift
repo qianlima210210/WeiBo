@@ -18,7 +18,7 @@ class ComposeTypeView: UIView {
     
     
     
-    let buttonsInfo = [["imageName":"tabbar_compose_idea", "title":"文字"],
+    let buttonsInfo = [["imageName":"tabbar_compose_idea", "title":"文字", "clsName":"ComposeViewController"],
                        ["imageName":"tabbar_compose_photo", "title":"照片/视频"],
                        ["imageName":"tabbar_compose_weibo", "title":"长微博"],
                        ["imageName":"tabbar_compose_lbs", "title":"签到"],
@@ -121,10 +121,13 @@ extension ComposeTypeView {
             
             //创建按钮
             let button = ComposeTypeButton.initComposeTypeButtonFromNib(imageName: imageName, text: title)
+            button.clsName = dic["clsName"]
             
             //clickMore添加selecotor
             if let actionName = dic["actionName"] {
                 button.addTarget(self, action: Selector(actionName), for: .touchUpInside)
+            }else{
+                button.addTarget(self, action: #selector(composeTypeBtnClicked(btn:)), for: .touchUpInside)
             }
             
             //添加按钮
@@ -140,6 +143,19 @@ extension ComposeTypeView {
             let y = (btnSize.height + CGFloat(24.0)) * CGFloat(i / 3)
             
             btn.frame = CGRect(x: x, y: y, width: btnSize.width, height: btnSize.height)
+        }
+    }
+    
+    @objc func composeTypeBtnClicked(btn: ComposeTypeButton) -> Void {
+        guard let clsName = btn.clsName else { return }
+        
+        //拼接控制器名
+        let classStringName = "ProductModelName.\(clsName)"
+        //将控制名转换为类
+        let classType = NSClassFromString(classStringName) as? UIViewController.Type
+        if let type = classType {
+            let newVC = type.init()
+            print(newVC)
         }
     }
     
@@ -159,13 +175,13 @@ extension ComposeTypeView {
         UIView.animate(withDuration: 0.25) {
             self.layoutIfNeeded()
         }
-        
     }
 }
 
 //MARK: pop动画扩展
 extension ComposeTypeView {
     
+    /// 依次隐藏按钮，最后在隐藏自己
     func hideButtons() -> Void {
         let page = Int(scrollView.contentOffset.x / scrollView.bounds.width)
         let view = scrollView.subviews[page]
@@ -186,7 +202,6 @@ extension ComposeTypeView {
         }
         
     }
-    
     
     /// 隐藏自己
     func hideCurrentView() -> Void {

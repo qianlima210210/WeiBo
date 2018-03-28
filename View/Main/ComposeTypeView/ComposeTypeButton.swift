@@ -12,6 +12,7 @@ class ComposeTypeButton: UIControl {
 
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
+    var clsName: String?
     
     class func initComposeTypeButtonFromNib(imageName: String, text: String) -> ComposeTypeButton {
         let nib = UINib(nibName: "ComposeTypeButton", bundle: nil)
