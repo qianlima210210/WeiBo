@@ -183,16 +183,6 @@ extension ComposeTypeView {
                 }
             }
         }
-        
-//        guard let clsName = button.clsName else { return }
-//        //拼接控制器名
-//        let classStringName = "ProductModelName.\(clsName)"
-//        //将控制名转换为类
-//        let classType = NSClassFromString(classStringName) as? UIViewController.Type
-//        if let type = classType {
-//            let newVC = type.init()
-//            print(newVC)
-//        }
     }
     
     @objc func clickMore() -> Void {
@@ -225,7 +215,7 @@ extension ComposeTypeView {
         for (i, btn) in view.subviews.enumerated().reversed() {
             let animation0  = POPSpringAnimation(propertyNamed: kPOPLayerPositionY)
             animation0?.fromValue = btn.layer.position.y
-            animation0?.toValue = btn.layer.position.y + 300
+            animation0?.toValue = btn.layer.position.y + 500
             animation0?.beginTime = CACurrentMediaTime() + CFTimeInterval(view.subviews.count - 1 - i) * 0.01
             
             if i == 0 {
