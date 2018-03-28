@@ -61,7 +61,7 @@ class ComposeTypeView: UIView {
     }
     
     @IBAction func closeBtnClicked(_ sender: UIButton) {
-        self.removeFromSuperview()
+        hideButtons()
     }
     
     @IBAction func returnBtnClicked(_ sender: UIButton) {
@@ -165,12 +165,51 @@ extension ComposeTypeView {
 
 //MARK: pop动画扩展
 extension ComposeTypeView {
+    
+    func hideButtons() -> Void {
+        let page = Int(scrollView.contentOffset.x / scrollView.bounds.width)
+        let view = scrollView.subviews[page]
+        
+        for (i, btn) in view.subviews.enumerated().reversed() {
+            let animation0  = POPSpringAnimation(propertyNamed: kPOPLayerPositionY)
+            animation0?.fromValue = btn.layer.position.y
+            animation0?.toValue = btn.layer.position.y + 300
+            animation0?.beginTime = CACurrentMediaTime() + CFTimeInterval(view.subviews.count - 1 - i) * 0.01
+            
+            if i == 0 {
+                animation0?.completionBlock = {(animation: POPAnimation?, finished:Bool) -> Void in
+                    self.hideCurrentView()
+                }
+            }
+            
+            btn.layer.pop_add(animation0, forKey: nil)
+        }
+        
+    }
+    
+    
+    /// 隐藏自己
+    func hideCurrentView() -> Void {
+        //创建动画
+        let animation = POPBasicAnimation(propertyNamed: kPOPViewAlpha)
+        animation?.fromValue = 1.0
+        animation?.toValue = 0.0
+        animation?.duration = 0.25
+        
+        animation?.completionBlock = {(_, _) -> Void in
+            self.removeFromSuperview()
+        }
+        
+        //将动画添加的视图
+        pop_add(animation, forKey: nil)
+    }
+    
     func showCurrentView() -> Void {
         //创建动画
         let animation = POPBasicAnimation(propertyNamed: kPOPViewAlpha)
         animation?.fromValue = 0.0
         animation?.toValue = 1.0
-        animation?.duration = 0.5
+        animation?.duration = 0.25
         
         //将动画添加的视图
         pop_add(animation, forKey: nil)
@@ -192,19 +231,17 @@ extension ComposeTypeView {
             animation?.toValue = btn.center.y
             
             //弹力系数，取值[0, 20]，数值越大弹性越大，默认4
-            animation?.springBounciness = 8
+            animation?.springBounciness = 4
             
             //弹力速度，取值[0, 20]，数值越大弹性越大，默认12
-            animation?.springSpeed = 8
+            animation?.springSpeed = 6
             
             //设置动画启动时间点
             animation?.beginTime = CACurrentMediaTime() + CFTimeInterval(i) * 0.01
             
             //添加动画
-            btn.pop_add(animation, forKey: nil)
+            btn.layer.pop_add(animation, forKey: nil)
         }
-        
-
     }
 }
 
