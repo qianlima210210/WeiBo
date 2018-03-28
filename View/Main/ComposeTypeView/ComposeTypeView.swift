@@ -16,6 +16,8 @@ class ComposeTypeView: UIView {
     @IBOutlet weak var returnBtnConstraint: NSLayoutConstraint!
     @IBOutlet weak var returnBtn: UIButton!
     
+    //ComposeTypeButton被点击后的回调
+    var completionBlock: ((String?) -> Void)?
     
     
     let buttonsInfo = [["imageName":"tabbar_compose_idea", "title":"文字", "clsName":"ComposeViewController"],
@@ -37,7 +39,9 @@ class ComposeTypeView: UIView {
         return view
     }
     
-    func show() -> Void {
+    func show(completion: @escaping (_ clsName: String?) -> Void) -> Void {
+        completionBlock = completion
+        
         //将自己添加到应用窗口的根视图控制器上
         guard let vc = (UIApplication.shared.delegate as? AppDelegate)?.window?.rootViewController else{
             return
@@ -127,7 +131,7 @@ extension ComposeTypeView {
             if let actionName = dic["actionName"] {
                 button.addTarget(self, action: Selector(actionName), for: .touchUpInside)
             }else{
-                button.addTarget(self, action: #selector(composeTypeBtnClicked(btn:)), for: .touchUpInside)
+                button.addTarget(self, action: #selector(composeTypeBtnClicked(selectedbutton:)), for: .touchUpInside)
             }
             
             //添加按钮
@@ -146,17 +150,49 @@ extension ComposeTypeView {
         }
     }
     
-    @objc func composeTypeBtnClicked(btn: ComposeTypeButton) -> Void {
-        guard let clsName = btn.clsName else { return }
-        
-        //拼接控制器名
-        let classStringName = "ProductModelName.\(clsName)"
-        //将控制名转换为类
-        let classType = NSClassFromString(classStringName) as? UIViewController.Type
-        if let type = classType {
-            let newVC = type.init()
-            print(newVC)
+    @objc func composeTypeBtnClicked(selectedbutton: ComposeTypeButton) -> Void {
+        //放大点击项、缩小未点击项
+        let page = Int(scrollView.contentOffset.x / scrollView.bounds.width)
+        let view = scrollView.subviews[page]
+        for (i, btn) in view.subviews.enumerated() {
+            let scale = (btn == selectedbutton) ? 1.5 : 0.3
+            let fromPoint = CGPoint(x: 1.0, y: 1.0)
+            let toPoint = CGPoint(x: scale, y: scale)
+            
+            //创建动画对象
+            let scaleAnimation = POPBasicAnimation(propertyNamed: kPOPViewScaleXY)
+            scaleAnimation?.fromValue = NSValue.init(cgPoint: fromPoint)
+            scaleAnimation?.toValue = NSValue.init(cgPoint: toPoint)
+            scaleAnimation?.duration = 0.25
+            
+            //添加动画对象
+            btn.pop_add(scaleAnimation, forKey: nil)
+            
+            //创建动画对象
+            let alphaAnimation = POPBasicAnimation(propertyNamed: kPOPViewAlpha)
+            alphaAnimation?.fromValue = 1.0
+            alphaAnimation?.toValue = 0.0
+            alphaAnimation?.duration = 0.25
+            
+            //添加动画对象
+            btn.pop_add(alphaAnimation, forKey: nil)
+            
+            if i == 0 {
+                alphaAnimation?.completionBlock = {(_, _) -> Void in
+                    self.completionBlock?(selectedbutton.clsName)
+                }
+            }
         }
+        
+//        guard let clsName = button.clsName else { return }
+//        //拼接控制器名
+//        let classStringName = "ProductModelName.\(clsName)"
+//        //将控制名转换为类
+//        let classType = NSClassFromString(classStringName) as? UIViewController.Type
+//        if let type = classType {
+//            let newVC = type.init()
+//            print(newVC)
+//        }
     }
     
     @objc func clickMore() -> Void {

@@ -104,7 +104,23 @@ class MainTabBarController: UITabBarController {
         let composeTypeView = ComposeTypeView.initComposeTypeViewFromNib()
         
         //显示微博
-        composeTypeView.show()
+        composeTypeView.show { [weak composeTypeView] (clsName: String?) in
+            
+            guard let clsName = clsName,
+            let cls = NSClassFromString("ProductModelName." + clsName) as? UIViewController.Type
+                else
+            {
+                composeTypeView?.removeFromSuperview()
+                return
+            }
+            
+            let vc = cls.init()
+            let nav = UINavigationController(rootViewController: vc)
+            self.present(nav, animated: true, completion: {
+                composeTypeView?.removeFromSuperview()
+            })
+            
+        }
         
     }
 }
