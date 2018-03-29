@@ -48,14 +48,8 @@ class TitleButton: UIButton {
         let imageView = imageView  else { return }
 
         //重新设置titleLabel，imageView的位置
-        titleLabel.frame = CGRect(x: 0.0,
-                                  y: titleLabel.frame.minY,
-                                  width: titleLabel.frame.width,
-                                  height: titleLabel.frame.height)
-        imageView.frame = CGRect(x: titleLabel.frame.width,
-                                 y: imageView.frame.minY,
-                                 width: imageView.frame.width,
-                                 height: imageView.frame.height)
+        titleLabel.frame.origin.x = 0.0
+        imageView.frame.origin.x = titleLabel.bounds.width
     }
     
 }
