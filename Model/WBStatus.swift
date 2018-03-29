@@ -13,6 +13,12 @@ import YYModel
     //该条微博所属用户
     var user: User?
     
+    //微博创建时间
+    var created_at: String?
+    
+    //微博来源
+    var source: String?
+    
     //被转发的原创微博
     var retweeted_status: WBStatus?
     

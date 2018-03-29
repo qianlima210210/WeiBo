@@ -12,7 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="492" id="25f-7L-Kz6" customClass="StatusCellTableViewCell" customModule="WB" customModuleProvider="target">
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="492" id="25f-7L-Kz6" customClass="StatusCellTableViewCell" customModule="ProductModelName" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="540" height="493"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="25f-7L-Kz6" id="LWE-Ix-6UD">
@@ -61,10 +61,9 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="from" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dlc-01-ohY" userLabel="来源">
-                        <rect key="frame" x="83.333333333333329" y="42" width="42" height="12"/>
+                        <rect key="frame" x="83.333333333333343" y="42" width="444.66666666666663" height="12"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="12" id="8Vo-Lh-nez"/>
-                            <constraint firstAttribute="width" constant="42" id="hC9-BS-HUO"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                         <color key="textColor" red="0.50980392156862742" green="0.50980392156862742" blue="0.50980392156862742" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -87,7 +86,7 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SAB-wK-evT" userLabel="图片视图容器" customClass="PictureContainerView" customModule="WB" customModuleProvider="target">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SAB-wK-evT" userLabel="图片视图容器" customClass="PictureContainerView" customModule="ProductModelName" customModuleProvider="target">
                         <rect key="frame" x="12" y="157" width="516" height="300"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -160,6 +159,7 @@
                     <constraint firstItem="EWg-Z4-yCz" firstAttribute="top" secondItem="BTv-SW-mx5" secondAttribute="bottom" constant="12" id="6jZ-y2-xcf"/>
                     <constraint firstItem="SAB-wK-evT" firstAttribute="top" secondItem="EWg-Z4-yCz" secondAttribute="bottom" id="7Cw-09-Hlm"/>
                     <constraint firstItem="aVN-QY-ZlH" firstAttribute="leading" secondItem="LWE-Ix-6UD" secondAttribute="leading" id="7do-93-BuS"/>
+                    <constraint firstAttribute="trailing" secondItem="Dlc-01-ohY" secondAttribute="trailing" constant="12" id="JO4-l8-vFM"/>
                     <constraint firstItem="EoS-qh-pzE" firstAttribute="centerY" secondItem="BTv-SW-mx5" secondAttribute="bottom" id="JSr-Ic-0ay"/>
                     <constraint firstItem="Dlc-01-ohY" firstAttribute="leading" secondItem="mB5-vg-0UI" secondAttribute="trailing" constant="5" id="LFv-rJ-PVK"/>
                     <constraint firstItem="5Ye-rh-cls" firstAttribute="top" secondItem="aVN-QY-ZlH" secondAttribute="bottom" constant="10" id="LSx-hK-XeF"/>

@@ -13,6 +13,8 @@ class WBStatusViewModel {
     
     var status: WBStatus? {
         didSet{
+            // 设置来源
+            setSourceFrom(source: status?.source)
             //先设置控件的高度
             setPrictureViewSize(count: picURLs?.count ?? 0)
             //最后统计cell总高度
@@ -33,6 +35,21 @@ class WBStatusViewModel {
     
     //该视图模型对应的cell高度
     var cellHeight: CGFloat = 0.0
+    
+    //来源
+    var sourceFrom: String?
+    
+    
+    /// 设置来源
+    ///
+    /// - Parameter source: 包含地址、名称的来源
+    func setSourceFrom(source: String?) -> Void {
+        if source != nil && source!.count > 0{
+            sourceFrom = "来自 " + "\(source?.hrefAndName()?.name ?? "")"
+        }else{
+            sourceFrom = ""
+        }
+    }
     
     /// 根据图片个数设置图片视图高度，如果是转发微博，则计算的是转发微博的图片视图高度；如果是原创微博，则计算的是原创微博的图片视图高度
     ///

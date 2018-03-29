@@ -28,7 +28,24 @@ extension String {
         let attStr = NSAttributedString(string: self, attributes: attributes)
         
         let rect =  attStr.boundingRect(with: size, options: .usesLineFragmentOrigin, context: nil)
-        return ceil(rect.height) + 1
+        return ceil(rect.height) + 1.0
+    }
+    
+    /// 获取地址、名称
+    ///
+    /// - Returns: 地址、名称元组
+    func hrefAndName() -> (href: String?, name: String?)? {
+        let pattern = "<a href=\"(.*?)\".*?>(.*?)</a>"
+        let regx = try? NSRegularExpression(pattern: pattern)
+        
+        guard let result = regx?.firstMatch(in: self, options: [], range: NSMakeRange(0, self.count)) else{
+            return nil
+        }
+        
+        let href = (self as NSString).substring(with: result.range(at: 1))
+        let name = (self as NSString).substring(with: result.range(at: 2))
+        
+        return (href, name)
     }
     
 }

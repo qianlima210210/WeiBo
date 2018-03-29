@@ -41,6 +41,8 @@ class StatusCellTableViewCell: UITableViewCell {
             setTouXiangImageView(statusViewModel?.status?.user?.profile_image_url)
             setHuiYuanImageView(mbrank: statusViewModel?.status?.user?.mbrank)
             setRenZhengImageView(verified_type: statusViewModel?.status?.user?.verified_type)
+            setCreateTime(time: statusViewModel?.status?.created_at ?? "")
+            setFrom(from: statusViewModel?.status?.source ?? "")
             
             setRetweetedZhenWen(screen_name: statusViewModel?.status?.retweeted_status?.user?.screen_name ?? "",
                                 text: statusViewModel?.status?.retweeted_status?.text ?? "")
@@ -135,6 +137,38 @@ extension StatusCellTableViewCell{
         }
         let memberIcon = UIImage(named: imageName)
         huiYuanImageView.image = memberIcon
+    }
+    
+    
+    /// 设置创建时间
+    /// - Parameter time: 时间字符串
+    func setCreateTime(time: String?) -> Void {
+        // FIXME: ......
+//        guard let time = time else { return }
+//
+//        //先转成Date
+//        let formatter0 = DateFormatter()
+//        formatter0.dateStyle = .full
+//        formatter0.timeStyle = .full
+//        let timeZone = TimeZone.autoupdatingCurrent
+//        formatter0.timeZone = timeZone
+//        guard let date = formatter0.date(from: time) else {
+//            return
+//        }
+//
+//        //再转成想要的字符串
+//        let formatter1 = DateFormatter()
+//        formatter1.dateFormat = "yyyy-MM-dd HH:mm:ss"
+//
+//        self.time.text = formatter1.string(from: date)
+    }
+    
+    
+    /// 设置来源
+    ///
+    /// - Parameter from: 来源字符串
+    func setFrom(from: String?) -> Void {
+        self.from.text = statusViewModel?.sourceFrom
     }
     
     /// 设置认证类型
