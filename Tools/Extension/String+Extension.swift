@@ -11,7 +11,7 @@ import UIKit
 extension String {
     /**
      获取字符串高度
-     
+     这里有个小知识点：font.lineHeight + lineSpacing 等于一行高度rect.height
      @param size 限制区域
      @param font 字体
      @param lineSpacing 行间距
@@ -19,7 +19,7 @@ extension String {
      */
     func heightOfString(size:CGSize, font:UIFont, lineSpacing:CGFloat) -> CGFloat {
         if (self.count == 0) {
-            return font.lineHeight;
+            return CGFloat(0.0);
         }
 
         let style = NSMutableParagraphStyle()
@@ -28,7 +28,7 @@ extension String {
         let attStr = NSAttributedString(string: self, attributes: attributes)
         
         let rect =  attStr.boundingRect(with: size, options: .usesLineFragmentOrigin, context: nil)
-        return ceil(rect.height) + 1.0
+        return  ((font.lineHeight + lineSpacing) != rect.height) ? ceil(rect.height) + 1.0 : font.lineHeight
     }
     
     /// 获取地址、名称
