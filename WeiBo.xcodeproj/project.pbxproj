@@ -101,10 +101,24 @@
 		E9D85FFC2069F0250041A325 /* ComposeTypeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D85FFB2069F0250041A325 /* ComposeTypeButton.swift */; };
 		E9D85FFE2069F0320041A325 /* ComposeTypeButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9D85FFD2069F0320041A325 /* ComposeTypeButton.xib */; };
 		E9D9B787202443E80056BCA3 /* NotificationConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D9B786202443E80056BCA3 /* NotificationConstant.swift */; };
+		E9DA8474206E81AE0029F212 /* EmotionPackage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DA8471206E81AE0029F212 /* EmotionPackage.swift */; };
+		E9DA8475206E81AE0029F212 /* Emotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DA8472206E81AE0029F212 /* Emotion.swift */; };
+		E9DA8476206E81AE0029F212 /* EmotionsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DA8473206E81AE0029F212 /* EmotionsManager.swift */; };
+		E9DA847E206E82340029F212 /* MQLEmotions.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E9DA847D206E82340029F212 /* MQLEmotions.bundle */; };
 		E9FF994B203AB987002B8738 /* WelcomeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9FF994A203AB987002B8738 /* WelcomeView.xib */; };
 		E9FF994D203EECB7002B8738 /* NewFeatureView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9FF994C203EECB7002B8738 /* NewFeatureView.xib */; };
 		F7FA356D787C95851A0DE7A8 /* Pods_WeiBo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFD83F2C9283CD656E4B2E5F /* Pods_WeiBo.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E9DA847B206E81D80029F212 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E9DA8477206E81D80029F212 /* MQLEmotions.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = E96C14CB206DCE2A004BF387;
+			remoteInfo = MQLEmotions;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		7CCAEF78F37DB261C5BC1F04 /* Pods-WeiBo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeiBo.release.xcconfig"; path = "Pods/Target Support Files/Pods-WeiBo/Pods-WeiBo.release.xcconfig"; sourceTree = "<group>"; };
@@ -211,6 +225,11 @@
 		E9D85FFB2069F0250041A325 /* ComposeTypeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComposeTypeButton.swift; sourceTree = "<group>"; };
 		E9D85FFD2069F0320041A325 /* ComposeTypeButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ComposeTypeButton.xib; sourceTree = "<group>"; };
 		E9D9B786202443E80056BCA3 /* NotificationConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationConstant.swift; sourceTree = "<group>"; };
+		E9DA8471206E81AE0029F212 /* EmotionPackage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmotionPackage.swift; sourceTree = "<group>"; };
+		E9DA8472206E81AE0029F212 /* Emotion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Emotion.swift; sourceTree = "<group>"; };
+		E9DA8473206E81AE0029F212 /* EmotionsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmotionsManager.swift; sourceTree = "<group>"; };
+		E9DA8477206E81D80029F212 /* MQLEmotions.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MQLEmotions.xcodeproj; path = MQLEmotions/MQLEmotions.xcodeproj; sourceTree = SOURCE_ROOT; };
+		E9DA847D206E82340029F212 /* MQLEmotions.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MQLEmotions.bundle; sourceTree = "<group>"; };
 		E9FF994A203AB987002B8738 /* WelcomeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WelcomeView.xib; sourceTree = "<group>"; };
 		E9FF994C203EECB7002B8738 /* NewFeatureView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewFeatureView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -422,6 +441,7 @@
 		E9584ADB20039FFA0001A0E4 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				E9DA846F206E81AE0029F212 /* Emotion */,
 				E96737C32063EFB50074DC77 /* MQLRefreshControl */,
 				E946F46B2021B794000341E4 /* RJBadgeView */,
 				E97AB234201AD12100E5C267 /* HttpEngine */,
@@ -545,6 +565,34 @@
 			path = ComposeType;
 			sourceTree = "<group>";
 		};
+		E9DA846F206E81AE0029F212 /* Emotion */ = {
+			isa = PBXGroup;
+			children = (
+				E9DA847D206E82340029F212 /* MQLEmotions.bundle */,
+				E9DA8477206E81D80029F212 /* MQLEmotions.xcodeproj */,
+				E9DA8470206E81AE0029F212 /* Model */,
+				E9DA8473206E81AE0029F212 /* EmotionsManager.swift */,
+			);
+			path = Emotion;
+			sourceTree = "<group>";
+		};
+		E9DA8470206E81AE0029F212 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E9DA8471206E81AE0029F212 /* EmotionPackage.swift */,
+				E9DA8472206E81AE0029F212 /* Emotion.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		E9DA8478206E81D80029F212 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E9DA847C206E81D80029F212 /* MQLEmotions.bundle */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -596,12 +644,28 @@
 			mainGroup = E9584AB2200397860001A0E4;
 			productRefGroup = E9584ABC200397860001A0E4 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = E9DA8478206E81D80029F212 /* Products */;
+					ProjectRef = E9DA8477206E81D80029F212 /* MQLEmotions.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				E9584ABA200397860001A0E4 /* WeiBo */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		E9DA847C206E81D80029F212 /* MQLEmotions.bundle */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = MQLEmotions.bundle;
+			remoteRef = E9DA847B206E81D80029F212 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		E9584AB9200397860001A0E4 /* Resources */ = {
@@ -625,6 +689,7 @@
 				E9D85FDD2069D8CC0041A325 /* tabbar_compose_photo@3x.png in Resources */,
 				E9C562E320046D6E00B7F6DE /* ReadMe in Resources */,
 				E9D85FF82069D8CC0041A325 /* tabbar_compose_idea@3x.png in Resources */,
+				E9DA847E206E82340029F212 /* MQLEmotions.bundle in Resources */,
 				E9D85FF22069D8CC0041A325 /* tabbar_compose_music@3x.png in Resources */,
 				E9D85FE42069D8CC0041A325 /* tabbar_compose_weibo@3x.png in Resources */,
 				E9584AC6200397860001A0E4 /* Assets.xcassets in Resources */,
@@ -751,6 +816,7 @@
 				E9949A1E2043DFAE00DFF936 /* WBStatusViewModel.swift in Sources */,
 				E904D312202C2A870061A790 /* UserAccount.swift in Sources */,
 				E9584ABF200397860001A0E4 /* AppDelegate.swift in Sources */,
+				E9DA8475206E81AE0029F212 /* Emotion.swift in Sources */,
 				E9D85FB3206942000041A325 /* ComposeTypeView.swift in Sources */,
 				E904D30D202885DD0061A790 /* ApplicationBaseInfoConstantFromSinaOpenPlatform.swift in Sources */,
 				E9584AE02003A0C00001A0E4 /* MainNavigationController.swift in Sources */,
@@ -772,9 +838,11 @@
 				E9D1F0512068986E0093D3D3 /* MTRefreshView.swift in Sources */,
 				E97AB23E201CB20500E5C267 /* WBStatusListViewModel.swift in Sources */,
 				E94D877320382D6A00871795 /* TitleButton.swift in Sources */,
+				E9DA8476206E81AE0029F212 /* EmotionsManager.swift in Sources */,
 				E932A08F203996FB001414E6 /* WelcomeView.swift in Sources */,
 				E9C562E72004AD5C00B7F6DE /* MessageViewController.swift in Sources */,
 				E9C562EB2004AD7700B7F6DE /* ProfileViewController.swift in Sources */,
+				E9DA8474206E81AE0029F212 /* EmotionPackage.swift in Sources */,
 				E9584ADE2003A0A10001A0E4 /* MainTabBarController.swift in Sources */,
 				E97AB23A201B75C600E5C267 /* WBCustomNSError.swift in Sources */,
 				E97C01EE2046A5CA002D4613 /* WBThumbnailPic.swift in Sources */,
