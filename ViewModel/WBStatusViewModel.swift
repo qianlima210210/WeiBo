@@ -13,6 +13,13 @@ class WBStatusViewModel {
     
     var status: WBStatus? {
         didSet{
+            let zhengWenFont = UIFont.systemFont(ofSize: 13)
+            attrText = EmotionsManager.emotionsManager.translateAttributeString(string: status?.text, font: zhengWenFont, lineSpacing: 5.0)
+            
+            let zhuanFaWeiBoZhengWenFont = UIFont.systemFont(ofSize: 12)
+            let text = "@\(status?.retweeted_status?.user?.screen_name ?? ""): \(status?.retweeted_status?.text ?? "")"
+            retweetedAttrText = EmotionsManager.emotionsManager.translateAttributeString(string: text, font: zhuanFaWeiBoZhengWenFont, lineSpacing: 5.0)
+            
             // 设置来源
             setSourceFrom(source: status?.source)
             //先设置控件的高度
@@ -21,6 +28,12 @@ class WBStatusViewModel {
             setCellHeight()
         }
     }
+    
+    //微博信息内容属性文本
+    var attrText: NSAttributedString?
+    
+    //被转发微博的信息内容属性文本
+    var retweetedAttrText: NSAttributedString?
     
     //如果是转发微博，原创微博一定没有图
     var picURLs: [WBThumbnailPic]? {
@@ -102,7 +115,7 @@ class WBStatusViewModel {
         
         //正文的高度
         var height2:CGFloat = 0.0
-        if let zhengWen = status?.text {
+        if let zhengWen = attrText {
             height2 = zhengWen.heightOfString(size: CGSize(width: kScreenWidth() - CGFloat(12 * 2), height: CGFloat(1000.0)),
                                               font: UIFont.systemFont(ofSize: 13),
                                               lineSpacing: 5.0)
@@ -115,14 +128,11 @@ class WBStatusViewModel {
         var height4 = CGFloat(0.0)
         
         if status?.retweeted_status != nil {//说明是转发微博，那么height3、height4需要调整
+
             height3 = CGFloat(12.0)
-            
-            let text = "@\(status?.retweeted_status?.user?.screen_name ?? ""): \(status?.retweeted_status?.text ?? "")"
-            if text.count > 0 {
-                height4 = text.heightOfString(size: CGSize(width: kScreenWidth() - CGFloat(12 * 2), height: CGFloat(1000.0)),
+            height4 = retweetedAttrText!.heightOfString(size: CGSize(width: kScreenWidth() - CGFloat(12 * 2), height: CGFloat(1000.0)),
                                                 font: UIFont.systemFont(ofSize: 12),
                                                 lineSpacing: 5.0)
-            }
         }
         
         //图片视图容器的高度

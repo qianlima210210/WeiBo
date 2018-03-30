@@ -53,11 +53,14 @@ extension EmotionsManager {
     /// - Parameter string:指定字符串
     /// - Parameter font:字体
     /// - Returns: 属性字符串
-    func translateAttributeString(string: String?, font: UIFont) -> NSAttributedString {
+    func translateAttributeString(string: String?, font: UIFont, lineSpacing: CGFloat) -> NSAttributedString {
         guard let string = string else { return NSAttributedString.init(string: "",attributes: [NSAttributedStringKey.font:font]) }
         
         //先统一设置通用属性
-        let attrStr = NSMutableAttributedString(string: string, attributes: [NSAttributedStringKey.font:font])
+        let style = NSMutableParagraphStyle()
+        style.lineSpacing = lineSpacing;
+        
+        let attrStr = NSMutableAttributedString(string: string, attributes: [NSAttributedStringKey.font:font, NSAttributedStringKey.paragraphStyle : style])
         
         //查找所有匹配项
         let pattern = "\\[.*?\\]"
