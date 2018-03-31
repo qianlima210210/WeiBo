@@ -26,7 +26,7 @@ class OAuthViewController: BaseViewController, WKNavigationDelegate {
         }
     }
     
-    override func setUI() -> Void {
+    override func setUI(_ onlyNav: Bool) -> Void {
         if UserAccount.userAccount.isLogon == false {
             super.setUI()
             

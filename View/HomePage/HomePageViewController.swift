@@ -42,7 +42,7 @@ class HomePageViewController: BaseViewController {
         }
     }
     
-    override func setUI() {
+    override func setUI(_ onlyNav: Bool) {
         super.setUI()
         
         UserAccount.userAccount.isLogon ? setNavigationTitleButton(target: self,
@@ -137,7 +137,9 @@ extension HomePageViewController{
 
 extension HomePageViewController : StatusCellTableViewCellDelegate {
     func statusCellTableViewCellURLClicked(cell: StatusCellTableViewCell?, string: String?) {
-        print(string ?? "")
+        let vc = WebViewController()
+        vc.urlString = string
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     func statusCellTableViewCellPhoneNumClicked(cell: StatusCellTableViewCell?, string: String?) {

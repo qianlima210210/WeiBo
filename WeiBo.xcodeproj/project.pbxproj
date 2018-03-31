@@ -108,6 +108,7 @@
 		E9DA8482206E8A380029F212 /* NSAttributedString+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DA8481206E8A380029F212 /* NSAttributedString+Extension.swift */; };
 		E9DA848C206F27750029F212 /* NSAttributedString+AttributedStringHeight.m in Sources */ = {isa = PBXBuildFile; fileRef = E9DA8489206F27750029F212 /* NSAttributedString+AttributedStringHeight.m */; };
 		E9DA848D206F27750029F212 /* BYChatLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = E9DA848A206F27750029F212 /* BYChatLabel.m */; };
+		E9DA849B206FCD530029F212 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DA849A206FCD530029F212 /* WebViewController.swift */; };
 		E9FF994B203AB987002B8738 /* WelcomeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9FF994A203AB987002B8738 /* WelcomeView.xib */; };
 		E9FF994D203EECB7002B8738 /* NewFeatureView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9FF994C203EECB7002B8738 /* NewFeatureView.xib */; };
 		F7FA356D787C95851A0DE7A8 /* Pods_WeiBo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFD83F2C9283CD656E4B2E5F /* Pods_WeiBo.framework */; };
@@ -239,6 +240,7 @@
 		E9DA8489206F27750029F212 /* NSAttributedString+AttributedStringHeight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAttributedString+AttributedStringHeight.m"; sourceTree = "<group>"; };
 		E9DA848A206F27750029F212 /* BYChatLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BYChatLabel.m; sourceTree = "<group>"; };
 		E9DA8498206FAD6C0029F212 /* BYChatLabelDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BYChatLabelDelegate.h; sourceTree = "<group>"; };
+		E9DA849A206FCD530029F212 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		E9FF994A203AB987002B8738 /* WelcomeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WelcomeView.xib; sourceTree = "<group>"; };
 		E9FF994C203EECB7002B8738 /* NewFeatureView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewFeatureView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -394,6 +396,7 @@
 				E908320E20414878007B6AFE /* StatusCell */,
 				E94D877120382D5200871795 /* TitleButton */,
 				E9C562E42004AD4500B7F6DE /* HomePageViewController.swift */,
+				E9DA849A206FCD530029F212 /* WebViewController.swift */,
 			);
 			path = HomePage;
 			sourceTree = "<group>";
@@ -856,6 +859,7 @@
 				E9C562E52004AD4500B7F6DE /* HomePageViewController.swift in Sources */,
 				E946F46F2021B794000341E4 /* UIView+RJBadge.m in Sources */,
 				E96C132F206B93EB004BF387 /* ComposeViewController.swift in Sources */,
+				E9DA849B206FCD530029F212 /* WebViewController.swift in Sources */,
 				E9DA8482206E8A380029F212 /* NSAttributedString+Extension.swift in Sources */,
 				E90094CA2005C13C00B20928 /* ViewConstant.swift in Sources */,
 				E9083210204148AC007B6AFE /* StatusCellTableViewCell.swift in Sources */,

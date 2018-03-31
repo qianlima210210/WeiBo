@@ -56,8 +56,12 @@ class BaseViewController: UIViewController {
     }
     
     //MARK: 设置界面
-    func setUI() -> Void {
+    func setUI(_ onlyNav:Bool = false) -> Void {
         addNewNavigationBar()
+        
+        if onlyNav {
+            return
+        }
         
         if UserAccount.userAccount.isLogon {
             addTableView()
