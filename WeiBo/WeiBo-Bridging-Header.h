@@ -4,5 +4,7 @@
 
 #import "RJBadgeView.h"
 #import "UIView+RJBadge.h"
+#import "BYChatLabel.h"
+#import "NSAttributedString+AttributedStringHeight.h"
 
 

@@ -37,14 +37,14 @@ class StatusCellTableViewCell: UITableViewCell {
     var statusViewModel: WBStatusViewModel?{
         didSet{
             setZhengWen()
+            setRetweetedZhenWen()
+            
             setScreenName(name: statusViewModel?.status?.user?.screen_name ?? "")
             setTouXiangImageView(statusViewModel?.status?.user?.profile_image_url)
             setHuiYuanImageView(mbrank: statusViewModel?.status?.user?.mbrank)
             setRenZhengImageView(verified_type: statusViewModel?.status?.user?.verified_type)
             setCreateTime(time: statusViewModel?.status?.created_at ?? "")
             setFrom(from: statusViewModel?.status?.source ?? "")
-            
-            setRetweetedZhenWen()
             
             setPictureViewHeight()
             

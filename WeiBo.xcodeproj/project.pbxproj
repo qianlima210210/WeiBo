@@ -106,6 +106,8 @@
 		E9DA8476206E81AE0029F212 /* EmotionsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DA8473206E81AE0029F212 /* EmotionsManager.swift */; };
 		E9DA847E206E82340029F212 /* MQLEmotions.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E9DA847D206E82340029F212 /* MQLEmotions.bundle */; };
 		E9DA8482206E8A380029F212 /* NSAttributedString+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DA8481206E8A380029F212 /* NSAttributedString+Extension.swift */; };
+		E9DA848C206F27750029F212 /* NSAttributedString+AttributedStringHeight.m in Sources */ = {isa = PBXBuildFile; fileRef = E9DA8489206F27750029F212 /* NSAttributedString+AttributedStringHeight.m */; };
+		E9DA848D206F27750029F212 /* BYChatLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = E9DA848A206F27750029F212 /* BYChatLabel.m */; };
 		E9FF994B203AB987002B8738 /* WelcomeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9FF994A203AB987002B8738 /* WelcomeView.xib */; };
 		E9FF994D203EECB7002B8738 /* NewFeatureView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9FF994C203EECB7002B8738 /* NewFeatureView.xib */; };
 		F7FA356D787C95851A0DE7A8 /* Pods_WeiBo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFD83F2C9283CD656E4B2E5F /* Pods_WeiBo.framework */; };
@@ -232,6 +234,10 @@
 		E9DA8477206E81D80029F212 /* MQLEmotions.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MQLEmotions.xcodeproj; path = MQLEmotions/MQLEmotions.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E9DA847D206E82340029F212 /* MQLEmotions.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MQLEmotions.bundle; sourceTree = "<group>"; };
 		E9DA8481206E8A380029F212 /* NSAttributedString+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+Extension.swift"; sourceTree = "<group>"; };
+		E9DA8487206F27750029F212 /* NSAttributedString+AttributedStringHeight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAttributedString+AttributedStringHeight.h"; sourceTree = "<group>"; };
+		E9DA8488206F27750029F212 /* BYChatLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BYChatLabel.h; sourceTree = "<group>"; };
+		E9DA8489206F27750029F212 /* NSAttributedString+AttributedStringHeight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAttributedString+AttributedStringHeight.m"; sourceTree = "<group>"; };
+		E9DA848A206F27750029F212 /* BYChatLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BYChatLabel.m; sourceTree = "<group>"; };
 		E9FF994A203AB987002B8738 /* WelcomeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WelcomeView.xib; sourceTree = "<group>"; };
 		E9FF994C203EECB7002B8738 /* NewFeatureView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewFeatureView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -444,6 +450,7 @@
 		E9584ADB20039FFA0001A0E4 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				E9DA8486206F27750029F212 /* BYChatLabel */,
 				E9DA846F206E81AE0029F212 /* Emotion */,
 				E96737C32063EFB50074DC77 /* MQLRefreshControl */,
 				E946F46B2021B794000341E4 /* RJBadgeView */,
@@ -594,6 +601,17 @@
 				E9DA847C206E81D80029F212 /* MQLEmotions.bundle */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		E9DA8486206F27750029F212 /* BYChatLabel */ = {
+			isa = PBXGroup;
+			children = (
+				E9DA8487206F27750029F212 /* NSAttributedString+AttributedStringHeight.h */,
+				E9DA8489206F27750029F212 /* NSAttributedString+AttributedStringHeight.m */,
+				E9DA8488206F27750029F212 /* BYChatLabel.h */,
+				E9DA848A206F27750029F212 /* BYChatLabel.m */,
+			);
+			path = BYChatLabel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -817,6 +835,7 @@
 				E932A091203997AE001414E6 /* NewFeatureView.swift in Sources */,
 				E97C01EA20464FCA002D4613 /* PictureContainerView.swift in Sources */,
 				E9949A1E2043DFAE00DFF936 /* WBStatusViewModel.swift in Sources */,
+				E9DA848C206F27750029F212 /* NSAttributedString+AttributedStringHeight.m in Sources */,
 				E904D312202C2A870061A790 /* UserAccount.swift in Sources */,
 				E9584ABF200397860001A0E4 /* AppDelegate.swift in Sources */,
 				E9DA8475206E81AE0029F212 /* Emotion.swift in Sources */,
@@ -838,6 +857,7 @@
 				E9DA8482206E8A380029F212 /* NSAttributedString+Extension.swift in Sources */,
 				E90094CA2005C13C00B20928 /* ViewConstant.swift in Sources */,
 				E9083210204148AC007B6AFE /* StatusCellTableViewCell.swift in Sources */,
+				E9DA848D206F27750029F212 /* BYChatLabel.m in Sources */,
 				E90832142043B398007B6AFE /* User.swift in Sources */,
 				E9D1F0512068986E0093D3D3 /* MTRefreshView.swift in Sources */,
 				E97AB23E201CB20500E5C267 /* WBStatusListViewModel.swift in Sources */,
