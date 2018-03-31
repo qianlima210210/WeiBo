@@ -238,6 +238,7 @@
 		E9DA8488206F27750029F212 /* BYChatLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BYChatLabel.h; sourceTree = "<group>"; };
 		E9DA8489206F27750029F212 /* NSAttributedString+AttributedStringHeight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAttributedString+AttributedStringHeight.m"; sourceTree = "<group>"; };
 		E9DA848A206F27750029F212 /* BYChatLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BYChatLabel.m; sourceTree = "<group>"; };
+		E9DA8498206FAD6C0029F212 /* BYChatLabelDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BYChatLabelDelegate.h; sourceTree = "<group>"; };
 		E9FF994A203AB987002B8738 /* WelcomeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WelcomeView.xib; sourceTree = "<group>"; };
 		E9FF994C203EECB7002B8738 /* NewFeatureView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewFeatureView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -610,6 +611,7 @@
 				E9DA8489206F27750029F212 /* NSAttributedString+AttributedStringHeight.m */,
 				E9DA8488206F27750029F212 /* BYChatLabel.h */,
 				E9DA848A206F27750029F212 /* BYChatLabel.m */,
+				E9DA8498206FAD6C0029F212 /* BYChatLabelDelegate.h */,
 			);
 			path = BYChatLabel;
 			sourceTree = "<group>";

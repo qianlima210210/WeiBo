@@ -123,6 +123,7 @@ extension HomePageViewController{
         
         //根据重用标识，获取cell
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! StatusCellTableViewCell
+        cell.delegate = self
         
         cell.statusViewModel = vm
         
@@ -134,3 +135,16 @@ extension HomePageViewController{
     }
 }
 
+extension HomePageViewController : StatusCellTableViewCellDelegate {
+    func statusCellTableViewCellURLClicked(cell: StatusCellTableViewCell?, string: String?) {
+        print(string ?? "")
+    }
+    
+    func statusCellTableViewCellPhoneNumClicked(cell: StatusCellTableViewCell?, string: String?) {
+        print(string ?? "")
+    }
+    
+    func statusCellTableViewCellEmailClicked(cell: StatusCellTableViewCell?, string: String?) {
+        print(string ?? "")
+    }
+}

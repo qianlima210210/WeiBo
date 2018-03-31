@@ -283,12 +283,21 @@
     switch (type) {
         case BYURLClickedTypeOnChatLabel:
             NSLog(@"您点击了url链接=%@", string);
+            if([self.delegate respondsToSelector:@selector(chatLabelURLClicked:string:)]){
+                [self.delegate chatLabelURLClicked:self string:string];
+            }
             break;
         case BYPhoneNumClickedTypeOnChatLabel:
             NSLog(@"您点击了电话号码=%@", string);
+            if([self respondsToSelector:@selector(chatLabelPhoneNumClicked:string:)]){
+                [self.delegate chatLabelPhoneNumClicked:self string:string];
+            }
             break;
         case BYEmailClickedTypeOnChatLabel:
             NSLog(@"您点击了邮箱地址=%@", string);
+            if([self.delegate respondsToSelector:@selector(chatLabelEmailClicked:string:)]){
+                [self.delegate chatLabelEmailClicked:self string:string];
+            }
             break;
             
         default:

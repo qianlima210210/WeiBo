@@ -9,7 +9,15 @@
 import UIKit
 import SDWebImage
 
+@objc protocol StatusCellTableViewCellDelegate : NSObjectProtocol {
+    @objc optional func statusCellTableViewCellURLClicked(cell: StatusCellTableViewCell?, string: String?)
+    @objc optional func statusCellTableViewCellPhoneNumClicked(cell: StatusCellTableViewCell?, string: String?)
+    @objc optional func statusCellTableViewCellEmailClicked(cell: StatusCellTableViewCell?, string: String?)
+}
+
 class StatusCellTableViewCell: UITableViewCell {
+    
+    weak var delegate: StatusCellTableViewCellDelegate?
 
     @IBOutlet weak var touXiangImageView: UIImageView!
     @IBOutlet weak var screenName: UILabel!
@@ -18,7 +26,7 @@ class StatusCellTableViewCell: UITableViewCell {
     @IBOutlet weak var from: UILabel!
     @IBOutlet weak var renZhengImageView: UIImageView!
     
-    @IBOutlet weak var zhengWen: UILabel!
+    @IBOutlet weak var zhengWen: BYChatLabel!
     @IBOutlet weak var zhengWenHeight: NSLayoutConstraint!
     
     @IBOutlet weak var pictureViewHeight: NSLayoutConstraint!
@@ -30,7 +38,7 @@ class StatusCellTableViewCell: UITableViewCell {
     @IBOutlet weak var dianZhanBtn: UIButton!
     
     //被转发的微博的正文标签
-    @IBOutlet weak var retweetedZhenWen: UILabel?
+    @IBOutlet weak var retweetedZhenWen: BYChatLabel?
     
     @IBOutlet weak var retweetedZhengWenHeight: NSLayoutConstraint?
     
@@ -98,6 +106,8 @@ extension StatusCellTableViewCell{
     /// - Parameter text: 正文内容；这里没有直接在外部对zhengWen的text进行赋值的原因是，需要设置
     /// 正文标签的文本属性
     private func setZhengWen() -> Void {
+        zhengWen.delegate = self
+        
         zhengWen.attributedText = statusViewModel?.attrText
         zhengWenHeight.constant = statusViewModel?.attrText?.heightOfString(size: CGSize(width: kScreenWidth() - CGFloat(12 * 2),
                                                                             height: CGFloat(1000.0)),
@@ -236,6 +246,8 @@ extension StatusCellTableViewCell {
 extension StatusCellTableViewCell {
     //设置被转发微博的正文
     private func setRetweetedZhenWen() -> Void {
+        retweetedZhenWen?.delegate = self
+        
         retweetedZhenWen?.attributedText = statusViewModel?.retweetedAttrText
         retweetedZhengWenHeight?.constant = statusViewModel?.retweetedAttrText?.heightOfString(size: CGSize(width: kScreenWidth() - CGFloat(12 * 2),
                                                                                          height: CGFloat(1000.0)),
@@ -245,7 +257,19 @@ extension StatusCellTableViewCell {
     }
 }
 
-
+@objc extension StatusCellTableViewCell : BYChatLabelDelegate {
+    func chatLabelURLClicked(_ chatLabel: BYChatLabel?, string: String?) {
+        delegate?.statusCellTableViewCellURLClicked?(cell: self, string: string)
+    }
+    
+    func chatLabelPhoneNumClicked(_ chatLabel: BYChatLabel?, string: String?) {
+        delegate?.statusCellTableViewCellPhoneNumClicked?(cell: self, string: string)
+    }
+    
+    func chatLabelEmailClicked(_ chatLabel: BYChatLabel?, string: String?) {
+        delegate?.statusCellTableViewCellEmailClicked?(cell: self, string: string)
+    }
+}
 
 
 

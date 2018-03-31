@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BYChatLabelDelegate.h"
 
 //被点击类型
 typedef enum : NSUInteger {
@@ -21,5 +22,7 @@ typedef enum : NSUInteger {
 @property (nonatomic, strong) NSTextStorage *textStorage;       //存放属性字符串及一组NSLayoutManager对象
 @property (nonatomic, strong) NSLayoutManager *layoutManager;   //字形管理对象，形成TextView，并显示到NSTextContainer
 @property (nonatomic, strong) NSTextContainer *textContainer;   //属性字符串绘制范围
+
+@property (nonatomic, weak) id<BYChatLabelDelegate> delegate;
     
 @end
