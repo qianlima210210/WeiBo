@@ -25,6 +25,7 @@ class HttpEngine: NSObject {
     var dataRequestOfUnread_count: DataRequest?
     var dataRequestOfAccessToken: DataRequest?
     var dataRequestOfUserInfo: DataRequest?
+    var dataRequestOfPublishWeiBo: DataRequest?
     
     /// 发送登录后的http请求
     ///

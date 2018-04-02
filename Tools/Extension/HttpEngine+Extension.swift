@@ -152,6 +152,30 @@ extension HttpEngine {
             self.dataRequestOfUserInfo = nil
         }
     }
+    
+    
+    /// 发布微博
+    func publishWeiBo(text: String, completionHandler:@escaping ( _ dic: [String:Any]?, _ error: Error?) ->()) -> Void {
+        // 取消发布微博
+        cancelPublishWeiBo()
+        
+        //组织请求地址及参数，然后发送请求
+        let parameters = ["status":text]
+        let url = "http://api.weibo.com/2/statuses/update.json"
+        
+        dataRequestOfPublishWeiBo = httpRequestAfterLogoned(url: url, method: .post, parameters: parameters, encoding: URLEncoding.default, headers: nil) { (value: Any?, error: Error?) in
+            print(value ?? "")
+            print(error ?? "")
+        }
+    }
+    
+    /// 取消发布微博
+    func cancelPublishWeiBo() -> Void {
+        if let dataRequestOfPublishWeiBo = dataRequestOfPublishWeiBo {
+            dataRequestOfPublishWeiBo.cancel()
+            self.dataRequestOfPublishWeiBo = nil
+        }
+    }
 }
 
 extension HttpEngine {
