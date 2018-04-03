@@ -15,6 +15,9 @@ import YYModel
     /// 分组名
     var groupName: String?
     
+    /// 背景图片名称
+    var bgImageName: String?
+    
     /// 表情包所在目录，从该目录下加载info.plist，获取表情模型数组
     var directory: String? {
         didSet{

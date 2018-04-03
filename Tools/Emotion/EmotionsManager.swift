@@ -12,6 +12,13 @@ import YYModel
 /// 表情管理器
 class EmotionsManager {
     
+    //表情素材所在bundle
+    var bundle: Bundle = {
+        let emotionsBundleFullPath = Bundle.main.path(forResource: "MQLEmotions.bundle", ofType: nil)
+        let emotionsBundle = Bundle(path: emotionsBundleFullPath!)
+        return emotionsBundle!
+    }()
+    
     //表情管理器单例
     static let emotionsManager = EmotionsManager()
     
