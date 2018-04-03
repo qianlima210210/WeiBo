@@ -95,6 +95,73 @@ class HttpEngine: NSObject {
         return dataRequest
     }
     
+    func postHttpRequestAfterLogoned(
+        url: String,
+        parameters: [String:Any]?,
+        name: String,
+        data: Data,
+        encoding: ParameterEncoding = URLEncoding.default,
+        headers: HTTPHeaders? = nil, completionHandler: @escaping httpRequestCompletionHandler)-> DataRequest?
+    {
+        //判断access_token是否有值
+        guard let access_token = UserAccount.userAccount.access_token else {
+            //手动触发请求完成回调
+            completionHandler(nil, WBCustomNSError(errorDescription: "access_token为nil"))
+            
+            //通知登录去获取access_token
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: logonNotification), object: nil, userInfo:["showAlert":true])
+            
+            return nil
+        }
+        
+        //添加请求参数及公共参数
+        var mutableParameters = [String: Any]()
+        if let parameters = parameters {
+            for (key, value) in parameters{
+                mutableParameters[key] = value
+            }
+        }
+        mutableParameters["access_token"] = access_token
+        
+        //创建URL
+        guard let url = URL(string: url) else {
+            //手动触发请求完成回调
+            completionHandler(nil, WBCustomNSError(errorDescription: "url为nil"))
+            return nil
+        }
+        
+        let request = URLRequest(url: url)
+        
+        //调用AF
+        upload(multipartFormData: { (formData) in
+            //添加文件数据
+            formData.append(data, withName: "pic", mimeType: "image/png")
+            
+            //添加参数字典信息
+            for (key, value) in parameters ?? [:] {
+                //formData.append(value.dataUsingEncoding(NSUTF8StringEncoding)!, name: key)
+                guard let value = value as? String,
+                    let data = value.data(using: String.Encoding.utf8) else {
+                       continue
+                }
+                formData.append(data, withName: key)
+            }
+            
+        }, with: request) { (result: SessionManager.MultipartFormDataEncodingResult) in
+            switch result {
+                
+            case .success(let request, _,  _):
+                request.response(completionHandler: { (response) in
+                    
+                })
+            case .failure(_):
+                break
+            }
+        }
+        
+        return nil
+    }
+    
     /// 发送登录前的http请求
     ///
     /// - Parameters:
