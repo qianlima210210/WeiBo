@@ -16,7 +16,12 @@ class ComposeViewController: UIViewController {
     
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     
+    
+    /// 发布按钮
     var rightButton = UIButton(type: UIButtonType.system)
+    
+    /// 记录系统键盘大小
+    var rectOfSystemKeyBoard = CGRect()
     
     
     @objc func exit() -> Void {
@@ -32,8 +37,22 @@ class ComposeViewController: UIViewController {
         
         //发布微博
         HttpEngine.httpEngine.publishWeiBo(text: text) { (dic:[String:Any]?, error: Error?) in
-            
+            //FIXME: 目前是403
         }
+    }
+    
+    /// 点击表情按钮
+    @objc func emotionButtonClicked() {
+        //当控件使用系统提供的键盘时，textView.inputView为nil
+        //1.创建自己的inputView
+        let inputView = UIView(frame: rectOfSystemKeyBoard)
+        inputView.backgroundColor = UIColor.cyan
+        
+        //2.赋值给textView
+        textView.inputView = (textView.inputView == nil) ? inputView : nil
+        
+        //3.加载显示
+        textView.reloadInputViews()
     }
     
     override func viewDidLoad() {
@@ -69,6 +88,9 @@ class ComposeViewController: UIViewController {
             else{
                 return
         }
+        //记录系统键盘大小
+        rectOfSystemKeyBoard = frame
+        
         //更新toolBar的bottomConstraint约束
         bottomConstraint.constant = view.frame.height - frame.minY
         
@@ -97,15 +119,18 @@ private extension ComposeViewController {
         let itemSettings = [["normalImg":#imageLiteral(resourceName: "compose_toolbar_picture"), "highlightedImg":#imageLiteral(resourceName: "compose_toolbar_picture_highlighted")],
                             ["normalImg":#imageLiteral(resourceName: "compose_mentionbutton_background"), "highlightedImg":#imageLiteral(resourceName: "compose_mentionbutton_background_highlighted")],
                             ["normalImg":#imageLiteral(resourceName: "compose_trendbutton_background"), "highlightedImg":#imageLiteral(resourceName: "compose_trendbutton_background_highlighted")],
-                            ["normalImg":#imageLiteral(resourceName: "compose_emoticonbutton_background"), "highlightedImg":#imageLiteral(resourceName: "compose_emoticonbutton_background_highlighted")],
+                            ["normalImg":#imageLiteral(resourceName: "compose_emoticonbutton_background"), "highlightedImg":#imageLiteral(resourceName: "compose_emoticonbutton_background_highlighted"), "actionName":"emotionButtonClicked"],
                             ["normalImg":#imageLiteral(resourceName: "compose_add_background"), "highlightedImg":#imageLiteral(resourceName: "compose_add_background_highlighted")]]
         
         var items = [UIBarButtonItem]()
         //遍历数组
         for item in itemSettings {
             let button = UIButton(type: .custom)
-            button.setImage(item["normalImg"], for: .normal)
-            button.setImage(item["highlightedImg"], for: .highlighted)
+            button.setImage(item["normalImg"] as? UIImage, for: .normal)
+            button.setImage(item["highlightedImg"] as? UIImage, for: .highlighted)
+            if let actionName = item["actionName"] as? String {
+                button.addTarget(self, action: Selector(actionName), for: .touchUpInside)
+            }
             
             //添加UIBarButtonItem
             items.append(UIBarButtonItem(customView: button))
