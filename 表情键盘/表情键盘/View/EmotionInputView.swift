@@ -12,6 +12,8 @@ class EmotionInputView: UIView {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var toolbar: EmotionToolbar!
     
+    let reusableCellID = "reusableCellID"
+    
     /// 工厂方法
     ///
     /// - Returns: 表情输入视图对象
@@ -20,5 +22,43 @@ class EmotionInputView: UIView {
         let view = nib.instantiate(withOwner: nil, options: nil)[0] as! EmotionInputView
         return view
     }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+//        let nib = UINib(nibName: "EmotionCell", bundle: nil)
+//        collectionView.register(nib, forCellWithReuseIdentifier: reusableCellID)
+        collectionView.register(EmotionCell.self, forCellWithReuseIdentifier: reusableCellID)
+    }
 
 }
+
+extension EmotionInputView : UICollectionViewDataSource{
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return EmotionsManager.emotionsManager.emotionPackages.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return EmotionsManager.emotionsManager.emotionPackages[section].numOfPage
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reusableCellID, for: indexPath) as! EmotionCell
+        
+        cell.backgroundColor = UIColor.orange
+//        cell.label.text = "\(indexPath.section):\(indexPath.item)"
+        
+        return cell
+    }
+}
+
+
+
+
+
+
+
+
+
+

@@ -20,6 +20,9 @@
 		E9236CF62073ABCF0043CF9C /* Emotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9236CF22073ABCF0043CF9C /* Emotion.swift */; };
 		E9236CF72073ABCF0043CF9C /* MQLEmotions.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E9236CF32073ABCF0043CF9C /* MQLEmotions.bundle */; };
 		E9236CF82073ABCF0043CF9C /* EmotionsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9236CF42073ABCF0043CF9C /* EmotionsManager.swift */; };
+		E9236CFB2073C3EC0043CF9C /* EmotionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9236CF92073C3EC0043CF9C /* EmotionCell.swift */; };
+		E9236CFC2073C3EC0043CF9C /* EmotionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9236CFA2073C3EC0043CF9C /* EmotionCell.xib */; };
+		E9236CFE2073C6E70043CF9C /* EmotionLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9236CFD2073C6E70043CF9C /* EmotionLayout.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +43,9 @@
 		E9236CF22073ABCF0043CF9C /* Emotion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Emotion.swift; sourceTree = "<group>"; };
 		E9236CF32073ABCF0043CF9C /* MQLEmotions.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MQLEmotions.bundle; sourceTree = "<group>"; };
 		E9236CF42073ABCF0043CF9C /* EmotionsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmotionsManager.swift; sourceTree = "<group>"; };
+		E9236CF92073C3EC0043CF9C /* EmotionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionCell.swift; sourceTree = "<group>"; };
+		E9236CFA2073C3EC0043CF9C /* EmotionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmotionCell.xib; sourceTree = "<group>"; };
+		E9236CFD2073C6E70043CF9C /* EmotionLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionLayout.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,9 +113,12 @@
 		E91915632073793F0005E082 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				E9191564207379400005E082 /* EmotionInputView.xib */,
 				E9191565207379400005E082 /* EmotionInputView.swift */,
+				E9191564207379400005E082 /* EmotionInputView.xib */,
 				E91915682073796B0005E082 /* EmotionToolbar.swift */,
+				E9236CF92073C3EC0043CF9C /* EmotionCell.swift */,
+				E9236CFA2073C3EC0043CF9C /* EmotionCell.xib */,
+				E9236CFD2073C6E70043CF9C /* EmotionLayout.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -201,6 +210,7 @@
 				E919154A207362250005E082 /* LaunchScreen.storyboard in Resources */,
 				E9191547207362250005E082 /* Assets.xcassets in Resources */,
 				E9191545207362250005E082 /* Main.storyboard in Resources */,
+				E9236CFC2073C3EC0043CF9C /* EmotionCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -270,8 +280,10 @@
 				E9236CF52073ABCF0043CF9C /* EmotionPackage.swift in Sources */,
 				E9191540207362250005E082 /* AppDelegate.swift in Sources */,
 				E9236CF82073ABCF0043CF9C /* EmotionsManager.swift in Sources */,
+				E9236CFE2073C6E70043CF9C /* EmotionLayout.swift in Sources */,
 				E9191567207379400005E082 /* EmotionInputView.swift in Sources */,
 				E9236CF62073ABCF0043CF9C /* Emotion.swift in Sources */,
+				E9236CFB2073C3EC0043CF9C /* EmotionCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

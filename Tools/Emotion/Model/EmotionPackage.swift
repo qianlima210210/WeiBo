@@ -45,6 +45,11 @@ import YYModel
     /// 表情模型数组
     var emotions = [Emotion]()
     
+    /// 此表情包所需页面
+    var numOfPage: Int {
+        return (emotions.count - 1) / 20 + 1
+    }
+    
     override var description: String {
         return yy_modelDescription()
     }
