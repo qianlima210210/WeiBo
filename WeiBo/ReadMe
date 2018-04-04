@@ -814,6 +814,21 @@ textView.textContainerInset = UIEdgeInsets.zero
 内容永不调整（默认automatic你会发现bound被视图控制器调整了）
 textView.contentInsetAdjustmentBehavior = .never
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//十六进制字符串
+let code = "0x1f6b9"
+
+//将十六进制字符串转成十进制数值
+let scanner = Scanner(string: code)
+var result: UInt32 = 0
+scanner.scanHexInt32(&result)
+
+//使用十进制数值，生成utf8字符
+if let  scalar = UnicodeScalar(result) {
+let c = Character(scalar)
+let emotion = String.init(c)
+print(emotion)
+}
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 

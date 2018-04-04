@@ -46,7 +46,6 @@ extension EmotionInputView : UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reusableCellID, for: indexPath) as! EmotionCell
         
-        cell.backgroundColor = UIColor.orange
         cell.emotions = EmotionsManager.emotionsManager.emotionPackages[indexPath.section].emotions(page: indexPath.item)
         
         return cell

@@ -29,6 +29,8 @@ class EmotionCell: UICollectionViewCell {
                 if let btn = contentView.subviews[i] as? UIButton {
                     btn.setImage(emotion.image, for: .normal)
                     btn.isHidden = false
+                    
+                    btn.setTitle(emotion.emojString, for: .normal)
                 }
             }
         }
@@ -62,7 +64,8 @@ extension EmotionCell {
             let col = i % colCount
             
             let btn = UIButton(type: .custom)
-            btn.backgroundColor = .red
+            btn.titleLabel?.font = UIFont.systemFont(ofSize: 32)
+            
             let x = leftMargin + btnWidth * CGFloat(col)
             let y = btnHeight * CGFloat(row)
             

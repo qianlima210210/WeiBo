@@ -26,7 +26,25 @@ import YYModel
     var png: String?
     
     /// emoji表情的十六进制编码
-    var code: String?
+    var code: String?{
+        didSet{
+            guard let code = code else { return }
+            
+            //将十六进制字符串转成十进制数值
+            let scanner = Scanner(string: code)
+            var result: UInt32 = 0
+            scanner.scanHexInt32(&result)
+            
+            //使用十进制数值，生成utf8字符
+            if let  scalar = UnicodeScalar(result) {
+                let c = Character(scalar)
+                emojString = String.init(c)
+            }
+        }
+    }
+    
+    ///emoji字符串
+    var emojString: String?
     
     /// 图片表情对应的图片
     var image: UIImage? {
