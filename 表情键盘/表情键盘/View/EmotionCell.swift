@@ -24,6 +24,9 @@ class EmotionCell: UICollectionViewCell {
                 v.isHidden = true
             }
             
+            //显示删除按钮
+            contentView.subviews.last?.isHidden = false
+            
             //遍历表情模型数组，设置按钮图片
             for (i, emotion) in (emotions ?? []).enumerated() {
                 if let btn = contentView.subviews[i] as? UIButton {
@@ -58,7 +61,7 @@ extension EmotionCell {
         let btnWidth = (bounds.width - leftMargin * CGFloat(2)) / CGFloat(colCount)
         let btnHeight = (bounds.height - bottomMargin) / CGFloat(rowCount)
         
-        //1.连续创建21个按钮
+        //1.连续创建21个按钮=20个表情+1删除
         for i in 0..<21 {
             let row = i / colCount
             let col = i % colCount
@@ -71,8 +74,15 @@ extension EmotionCell {
             
             btn.frame = CGRect(x: x, y: y, width: btnWidth, height: btnHeight)
             contentView.addSubview(btn)
-            
         }
+        
+        //设置删除按钮
+        let removeBtn = contentView.subviews.last as! UIButton
+        let image = UIImage(named: "compose_emotion_delete", in: EmotionsManager.emotionsManager.bundle, compatibleWith: nil)
+        let imageHL = UIImage(named: "compose_emotion_delete_highlighted", in: EmotionsManager.emotionsManager.bundle, compatibleWith: nil)
+        removeBtn.setImage(image, for: .normal)
+        removeBtn.setImage(imageHL, for: .normal)
+        
     }
 }
 
