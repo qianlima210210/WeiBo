@@ -16,6 +16,24 @@ import UIKit
 class EmotionCell: UICollectionViewCell {
     @IBOutlet weak var label: UILabel!
     
+    //该cell中包含的表情数组
+    var emotions: [Emotion]? {
+        didSet{
+            //隐藏所有按钮
+            for v in contentView.subviews {
+                v.isHidden = true
+            }
+            
+            //遍历表情模型数组，设置按钮图片
+            for (i, emotion) in (emotions ?? []).enumerated() {
+                if let btn = contentView.subviews[i] as? UIButton {
+                    btn.setImage(emotion.image, for: .normal)
+                    btn.isHidden = false
+                }
+            }
+        }
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         

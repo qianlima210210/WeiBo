@@ -50,6 +50,27 @@ import YYModel
         return (emotions.count - 1) / 20 + 1
     }
     
+    
+    /// 从表情包中，按照page截取最多20个表情模型的数组
+    ///
+    /// - Parameter page: 页码
+    /// - Returns:表情模型的数组
+    func emotions(page: Int) -> [Emotion] {
+        //每页的数量
+        let count = 20
+        let location = page * count
+        var length = count
+        
+        //判断范围是否越界
+        if location + length > emotions.count {
+            length = emotions.count - location
+        }
+        let range = NSRange.init(location: location, length: length)
+        let subArray = (emotions as NSArray).subarray(with: range)
+        
+        return subArray as! [Emotion]
+    }
+    
     override var description: String {
         return yy_modelDescription()
     }
