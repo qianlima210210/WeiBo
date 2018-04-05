@@ -26,33 +26,39 @@ class EmotionInputView: UIView {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-//        let nib = UINib(nibName: "EmotionCell", bundle: nil)
-//        collectionView.register(nib, forCellWithReuseIdentifier: reusableCellID)
+        //注册cell
         collectionView.register(EmotionCell.self, forCellWithReuseIdentifier: reusableCellID)
     }
 
 }
 
+// MARK: - UICollectionViewDataSource协议实现
 extension EmotionInputView : UICollectionViewDataSource{
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
+        //返回表情包个数，即表情分组个数
         return EmotionsManager.emotionsManager.emotionPackages.count
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        //某表情包需要使用多少页显示表情
         return EmotionsManager.emotionsManager.emotionPackages[section].numOfPage
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reusableCellID, for: indexPath) as! EmotionCell
-        
         cell.emotions = EmotionsManager.emotionsManager.emotionPackages[indexPath.section].emotions(page: indexPath.item)
+        cell.delegate = self
         
         return cell
     }
 }
 
-
+extension EmotionInputView : EmotionCellEmotionBtnClickedDelegate {
+    func emotionBtnClicked(cell: EmotionCell, emotion: Emotion?) {
+        print(emotion)
+    }
+}
 
 
 

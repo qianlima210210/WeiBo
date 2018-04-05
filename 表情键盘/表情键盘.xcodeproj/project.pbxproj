@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D4FCD89C62196C9D5EFFFAED /* Pods_____.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC55CD689BFD451A7CCA3357 /* Pods_____.framework */; };
+		0430FC8E2075AD5700ED8908 /* Pods_表情键盘.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0430FC8F2075AD5700ED8908 /* Pods_表情键盘.framework */; };
 		E9191540207362250005E082 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E919153F207362250005E082 /* AppDelegate.swift */; };
 		E9191542207362250005E082 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9191541207362250005E082 /* ViewController.swift */; };
 		E9191545207362250005E082 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9191543207362250005E082 /* Main.storyboard */; };
@@ -26,9 +26,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0430FC8F2075AD5700ED8908 /* Pods_表情键盘.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = "Pods_表情键盘.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		58236F991FE0E34A61C5D729 /* Pods-表情键盘.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-表情键盘.debug.xcconfig"; path = "Pods/Target Support Files/Pods-表情键盘/Pods-表情键盘.debug.xcconfig"; sourceTree = "<group>"; };
 		A057135017B4AB30D155E3FA /* Pods-表情键盘.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-表情键盘.release.xcconfig"; path = "Pods/Target Support Files/Pods-表情键盘/Pods-表情键盘.release.xcconfig"; sourceTree = "<group>"; };
-		CC55CD689BFD451A7CCA3357 /* Pods_____.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_____.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CC55CD689BFD451A7CCA3357 /* Pods_____.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = "Pods_____.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E919153C207362240005E082 /* 表情键盘.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "表情键盘.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E919153F207362250005E082 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E9191541207362250005E082 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -53,7 +54,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D4FCD89C62196C9D5EFFFAED /* Pods_____.framework in Frameworks */,
+				0430FC8E2075AD5700ED8908 /* Pods_表情键盘.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +64,7 @@
 		172A9658E84296F2CBE03A0B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0430FC8F2075AD5700ED8908 /* Pods_表情键盘.framework */,
 				CC55CD689BFD451A7CCA3357 /* Pods_____.framework */,
 			);
 			name = Frameworks;
@@ -406,7 +408,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 736T58M9ZN;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "表情键盘/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.qding.----";
@@ -422,7 +424,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 736T58M9ZN;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "表情键盘/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.qding.----";

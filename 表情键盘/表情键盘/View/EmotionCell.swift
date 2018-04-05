@@ -8,6 +8,9 @@
 
 import UIKit
 
+protocol EmotionCellEmotionBtnClickedDelegate : NSObjectProtocol {
+    func emotionBtnClicked(cell: EmotionCell, emotion: Emotion?)
+}
 
 /// 表情的页面cell
 /// 每一个cell和collectionView的大小一样
@@ -39,6 +42,8 @@ class EmotionCell: UICollectionViewCell {
         }
     }
     
+    weak var delegate: EmotionCellEmotionBtnClickedDelegate?
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -47,6 +52,18 @@ class EmotionCell: UICollectionViewCell {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    /// 表情按钮点击相应函数
+    ///
+    /// - Parameter button: 被点击的按钮
+    @objc func emotionBtnClicked(button: UIButton) -> Void {
+        var emotion: Emotion?
+        if button.tag < (emotions ?? []).count {
+            emotion = emotions?[button.tag]
+        }
+        
+        delegate?.emotionBtnClicked(cell: self, emotion: emotion)
     }
 }
 
@@ -67,7 +84,9 @@ extension EmotionCell {
             let col = i % colCount
             
             let btn = UIButton(type: .custom)
-            btn.titleLabel?.font = UIFont.systemFont(ofSize: 32)
+            btn.tag = i
+            btn.titleLabel?.font = UIFont.systemFont(ofSize: 32)//32是表情图片的高度
+            btn.addTarget(self, action: #selector(emotionBtnClicked(button:)), for: .touchUpInside)
             
             let x = leftMargin + btnWidth * CGFloat(col)
             let y = btnHeight * CGFloat(row)
@@ -85,6 +104,16 @@ extension EmotionCell {
         
     }
 }
+
+
+
+
+
+
+
+
+
+
 
 
 

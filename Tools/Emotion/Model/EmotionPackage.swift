@@ -56,9 +56,11 @@ import YYModel
     /// - Parameter page: 页码
     /// - Returns:表情模型的数组
     func emotions(page: Int) -> [Emotion] {
-        //每页的数量
+        //每页最大表情数量
         let count = 20
+        //每页第一个表情索引
         let location = page * count
+        //每页初始长度
         var length = count
         
         //判断范围是否越界
