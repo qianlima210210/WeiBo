@@ -12,14 +12,19 @@ class EmotionInputView: UIView {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var toolbar: EmotionToolbar!
     
+    // 表情按钮点击回调
+    var emotionBtnClickedBlock:((Emotion?) ->(Void))?
+    
     let reusableCellID = "reusableCellID"
     
     /// 工厂方法
     ///
     /// - Returns: 表情输入视图对象
-    class func emotionInputView() -> EmotionInputView {
+    class func emotionInputView(emotionBtnClicked:@escaping (Emotion?) ->(Void)) -> EmotionInputView {
         let nib = UINib(nibName: "EmotionInputView", bundle: nil)
         let view = nib.instantiate(withOwner: nil, options: nil)[0] as! EmotionInputView
+        view.emotionBtnClickedBlock = emotionBtnClicked
+        
         return view
     }
     
@@ -56,7 +61,7 @@ extension EmotionInputView : UICollectionViewDataSource{
 
 extension EmotionInputView : EmotionCellEmotionBtnClickedDelegate {
     func emotionBtnClicked(cell: EmotionCell, emotion: Emotion?) {
-        print(emotion)
+        emotionBtnClickedBlock?(emotion)
     }
 }
 
