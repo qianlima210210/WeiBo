@@ -34,6 +34,22 @@ class ViewController: UIViewController {
             textView.replace(range, withText: emojString)
             return
         }
+        
+        //3.处理图文混排
+        //3.1获取textView的属性文本
+        let attrStrM = NSMutableAttributedString(attributedString: textView.attributedText)
+        
+        //3.2将图片的属性文本插入到当前光标位置(先记录当前光标位置，插入后，重新设置光标位置)
+        let selectedRange = textView.selectedRange
+        
+        guard let font = textView.font,
+         let imageAttributeString = emotion.imageAttributeString(font: font) else {
+            return
+        }
+        
+        attrStrM.replaceCharacters(in: selectedRange, with:imageAttributeString)
+        textView.attributedText = attrStrM
+        textView.selectedRange = NSRange.init(location: selectedRange.location + imageAttributeString.length, length: 0)
     }
     
     override func viewDidLoad() {
@@ -54,7 +70,19 @@ class ViewController: UIViewController {
         
         textView.becomeFirstResponder()
     }
-
+    
+    @IBAction func show(_ sender: UIBarButtonItem) {
+        print(EmotionsManager.emotionsManager.stringWithoutAttribute(attributeString: textView.attributedText))
+    }
+    
 
 }
+
+
+
+
+
+
+
+
 

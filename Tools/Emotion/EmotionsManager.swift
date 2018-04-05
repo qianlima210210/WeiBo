@@ -94,6 +94,30 @@ extension EmotionsManager {
         
         return attrStr
     }
+    
+    /// 提取不带属性的字符串
+    ///
+    /// - Parameter attributeString:带属性的字符串
+    /// - Returns:不带属性的字符串
+    func stringWithoutAttribute(attributeString: NSAttributedString?) -> String {
+        guard let attributeString = attributeString else {
+            return ""
+        }
+        
+        //遍历属性文本中所有的NSAttachment对象
+        var result = String()
+        attributeString.enumerateAttribute(NSAttributedStringKey.attachment, in: NSRange.init(location: 0, length: attributeString.length), options: []) { (attachment: Any?, range: NSRange, _) in
+            guard let attachment = attachment as? EmotionTextAttachment else {
+                let subString = (attributeString.string as NSString).substring(with: range)
+                result += subString
+                return
+            }
+            
+            //将attachment转换成[表情汉字]，并拼接到result后面
+            result += attachment.chs ?? ""
+        }
+        return result
+    }
 }
 
 // MARK: Emotion资源处理

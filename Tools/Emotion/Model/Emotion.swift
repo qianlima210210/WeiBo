@@ -62,7 +62,6 @@ import YYModel
         return UIImage.init(named: "\(directory)/\(png)", in: bundle, compatibleWith: nil)
     }
     
-    
     /// 图片属性字符串
     ///
     /// - Parameter font: 用来计算行高
@@ -71,11 +70,18 @@ import YYModel
         guard let image = image else { return nil }
         
         //创建文本附件
-        let attachment = NSTextAttachment()
+        let attachment = EmotionTextAttachment()
+        attachment.chs = chs
         attachment.image = image
         attachment.bounds = CGRect(x: 0.0, y: -4.0, width: font.lineHeight, height: font.lineHeight)
         
-        return NSAttributedString(attachment: attachment)
+        //创建属性字符串
+        let imageAttributeString = NSMutableAttributedString(attributedString: NSAttributedString(attachment: attachment))
+        
+        //添加字体属性
+        imageAttributeString.addAttributes([NSAttributedStringKey.font : font], range: NSRange.init(location: 0, length: imageAttributeString.length))
+        
+        return imageAttributeString
     }
     
     override var description: String {

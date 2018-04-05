@@ -37,14 +37,20 @@
                             <constraint firstAttribute="trailing" secondItem="c16-LC-xAN" secondAttribute="trailing" id="yku-w0-t9w"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="1sC-gd-o5i"/>
+                    <navigationItem key="navigationItem" id="1sC-gd-o5i">
+                        <barButtonItem key="rightBarButtonItem" title="show" id="GDg-6Q-bNY">
+                            <connections>
+                                <action selector="show:" destination="BYZ-38-t0r" id="Hm4-t8-rQH"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="textView" destination="c16-LC-xAN" id="fHv-6R-2VR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-183" y="-73"/>
+            <point key="canvasLocation" x="-468" y="-247"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="RUn-lx-6CT">
