@@ -20,9 +20,8 @@ class ComposeViewController: UIViewController {
     /// 发布按钮
     var rightButton = UIButton(type: UIButtonType.system)
     
-    /// 记录系统键盘大小
-    var rectOfSystemKeyBoard = CGRect()
-    
+    /// 记录系统键盘高度，供自己的inputView使用
+    var heightOfSystemKeyBoard = CGFloat(0.0)
     
     @objc func exit() -> Void {
         dismiss(animated: true, completion: nil)
@@ -44,8 +43,8 @@ class ComposeViewController: UIViewController {
     /// 点击表情按钮
     @objc func emotionButtonClicked() {
         //当控件使用系统提供的键盘时，textView.inputView为nil
-        //1.创建自己的inputView
-        let inputView = UIView(frame: rectOfSystemKeyBoard)
+        //1.创建自己的inputView(x, y, width值任意)
+        let inputView = UIView(frame:CGRect(x: 0.0, y: 0.0, width: 0.0, height: heightOfSystemKeyBoard))
         inputView.backgroundColor = UIColor.cyan
         
         //2.赋值给textView
@@ -88,8 +87,8 @@ class ComposeViewController: UIViewController {
             else{
                 return
         }
-        //记录系统键盘大小
-        rectOfSystemKeyBoard = frame
+        //记录系统键盘高度
+        heightOfSystemKeyBoard = frame.height > CGFloat(0.0) ? frame.height : heightOfSystemKeyBoard
         
         //更新toolBar的bottomConstraint约束
         bottomConstraint.constant = view.frame.height - frame.minY

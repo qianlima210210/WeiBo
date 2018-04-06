@@ -21,7 +21,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="compose_slogan.png" translatesAutoresizingMaskIntoConstraints="NO" id="TaU-x1-kyK">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="compose_slogan" translatesAutoresizingMaskIntoConstraints="NO" id="TaU-x1-kyK">
                                 <rect key="frame" x="83" y="50" width="154" height="48"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="154" id="FQT-v8-gLl"/>
@@ -37,7 +37,7 @@
                                             <constraint firstAttribute="width" constant="20" id="4tg-fv-0tX"/>
                                             <constraint firstAttribute="height" constant="20" id="qvG-i5-4iw"/>
                                         </constraints>
-                                        <state key="normal" image="tabbar_compose_background_icon_close.png"/>
+                                        <state key="normal" image="tabbar_compose_background_icon_close"/>
                                         <connections>
                                             <action selector="closeBtnClicked:" destination="iN0-l3-epB" eventType="touchUpInside" id="D8Q-3B-UbD"/>
                                         </connections>
@@ -48,7 +48,7 @@
                                             <constraint firstAttribute="width" constant="20" id="TeJ-gR-exA"/>
                                             <constraint firstAttribute="height" constant="20" id="eJD-P1-GUG"/>
                                         </constraints>
-                                        <state key="normal" title="Button" image="tabbar_compose_background_icon_return.png"/>
+                                        <state key="normal" title="Button" image="tabbar_compose_background_icon_return"/>
                                         <connections>
                                             <action selector="returnBtnClicked:" destination="iN0-l3-epB" eventType="touchUpInside" id="oxL-1F-mgP"/>
                                         </connections>
@@ -98,12 +98,12 @@
                 <outlet property="returnBtnConstraint" destination="eeb-V5-ZTL" id="tpJ-mG-dLh"/>
                 <outlet property="scrollView" destination="KzF-aD-97V" id="5h7-sp-bvp"/>
             </connections>
-            <point key="canvasLocation" x="-1527" y="-448"/>
+            <point key="canvasLocation" x="-1721" y="-572"/>
         </view>
     </objects>
     <resources>
-        <image name="compose_slogan.png" width="154" height="48"/>
-        <image name="tabbar_compose_background_icon_close.png" width="25" height="25"/>
-        <image name="tabbar_compose_background_icon_return.png" width="25" height="25"/>
+        <image name="compose_slogan" width="154" height="48"/>
+        <image name="tabbar_compose_background_icon_close" width="25" height="25"/>
+        <image name="tabbar_compose_background_icon_return" width="25" height="25"/>
     </resources>
 </document>

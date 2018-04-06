@@ -130,9 +130,10 @@
 		E9236CEF2073ABCF0043CF9C /* Emotion */ = {
 			isa = PBXGroup;
 			children = (
+				E9236CF42073ABCF0043CF9C /* EmotionsManager.swift */,
+				0449C0AE20766257005A88D2 /* EmotionTextAttachment.swift */,
 				E9236CF02073ABCF0043CF9C /* Model */,
 				E9236CF32073ABCF0043CF9C /* MQLEmotions.bundle */,
-				E9236CF42073ABCF0043CF9C /* EmotionsManager.swift */,
 			);
 			name = Emotion;
 			path = ../../Tools/Emotion;
@@ -143,7 +144,6 @@
 			children = (
 				E9236CF12073ABCF0043CF9C /* EmotionPackage.swift */,
 				E9236CF22073ABCF0043CF9C /* Emotion.swift */,
-				0449C0AE20766257005A88D2 /* EmotionTextAttachment.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";

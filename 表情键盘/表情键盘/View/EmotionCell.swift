@@ -17,7 +17,6 @@ protocol EmotionCellEmotionBtnClickedDelegate : NSObjectProtocol {
 /// 每一个cell用九宫格算法，添加20个表情
 /// 最后一个位置放置删除按钮
 class EmotionCell: UICollectionViewCell {
-    @IBOutlet weak var label: UILabel!
     
     //该cell中包含的表情数组
     var emotions: [Emotion]? {

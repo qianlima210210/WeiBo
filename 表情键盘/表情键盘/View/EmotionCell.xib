@@ -17,24 +17,7 @@
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bt0-1j-y3Y">
-                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                </subviews>
             </view>
-            <constraints>
-                <constraint firstAttribute="bottom" secondItem="Bt0-1j-y3Y" secondAttribute="bottom" id="4lN-gX-OVW"/>
-                <constraint firstItem="Bt0-1j-y3Y" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="TYh-mz-Uh0"/>
-                <constraint firstAttribute="trailing" secondItem="Bt0-1j-y3Y" secondAttribute="trailing" id="Vxb-VV-sRK"/>
-                <constraint firstItem="Bt0-1j-y3Y" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="zVf-rk-sER"/>
-            </constraints>
-            <connections>
-                <outlet property="label" destination="Bt0-1j-y3Y" id="qHC-Ge-4ak"/>
-            </connections>
             <point key="canvasLocation" x="-355" y="-71"/>
         </collectionViewCell>
     </objects>

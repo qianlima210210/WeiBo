@@ -33,7 +33,7 @@ class EmotionsManager {
 // MARK: 表情符号处理
 extension EmotionsManager {
     
-    /// 根据更定的字符串查找表情对象
+    /// 根据zhi定的字符串查找表情对象
     ///
     /// - Parameter string: eg:[xxx]
     /// - Returns:表情对象
