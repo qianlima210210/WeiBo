@@ -1,6 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Workspace
    version = "1.0">
+   <Group
+      location = "group:Tools/Emotion"
+      name = "Emotion">
+      <FileRef
+         location = "group:EmotionsManager.swift">
+      </FileRef>
+      <FileRef
+         location = "group:EmotionTextAttachment.swift">
+      </FileRef>
+      <Group
+         location = "group:Model"
+         name = "Model">
+         <FileRef
+            location = "group:Emotion.swift">
+         </FileRef>
+         <FileRef
+            location = "group:EmotionPackage.swift">
+         </FileRef>
+      </Group>
+      <FileRef
+         location = "group:MQLEmotions.bundle">
+      </FileRef>
+      <Group
+         location = "group:View"
+         name = "View">
+         <FileRef
+            location = "group:EmotionCell.swift">
+         </FileRef>
+         <FileRef
+            location = "group:EmotionCell.xib">
+         </FileRef>
+         <FileRef
+            location = "group:EmotionInputView.swift">
+         </FileRef>
+         <FileRef
+            location = "group:EmotionInputView.xib">
+         </FileRef>
+         <FileRef
+            location = "group:EmotionLayout.swift">
+         </FileRef>
+         <FileRef
+            location = "group:EmotionToolbar.swift">
+         </FileRef>
+      </Group>
+   </Group>
    <FileRef
       location = "group:WeiBo.xcodeproj">
    </FileRef>

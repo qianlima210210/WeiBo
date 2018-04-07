@@ -7,11 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		048E8FA02077B48800926895 /* EmotionsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048E8F9A2077B48800926895 /* EmotionsManager.swift */; };
-		048E8FA12077B48800926895 /* EmotionTextAttachment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048E8F9B2077B48800926895 /* EmotionTextAttachment.swift */; };
-		048E8FA22077B48800926895 /* Emotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048E8F9D2077B48800926895 /* Emotion.swift */; };
-		048E8FA32077B48800926895 /* EmotionPackage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048E8F9E2077B48800926895 /* EmotionPackage.swift */; };
-		048E8FA42077B48800926895 /* MQLEmotions.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 048E8F9F2077B48800926895 /* MQLEmotions.bundle */; };
+		049AFEE82078670D0091C9C4 /* EmotionsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049AFEDB2078670D0091C9C4 /* EmotionsManager.swift */; };
+		049AFEE92078670D0091C9C4 /* EmotionTextAttachment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049AFEDC2078670D0091C9C4 /* EmotionTextAttachment.swift */; };
+		049AFEEA2078670D0091C9C4 /* Emotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049AFEDE2078670D0091C9C4 /* Emotion.swift */; };
+		049AFEEB2078670D0091C9C4 /* EmotionPackage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049AFEDF2078670D0091C9C4 /* EmotionPackage.swift */; };
+		049AFEEC2078670D0091C9C4 /* MQLEmotions.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 049AFEE02078670D0091C9C4 /* MQLEmotions.bundle */; };
+		049AFEED2078670D0091C9C4 /* EmotionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049AFEE22078670D0091C9C4 /* EmotionCell.swift */; };
+		049AFEEE2078670D0091C9C4 /* EmotionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 049AFEE32078670D0091C9C4 /* EmotionCell.xib */; };
+		049AFEEF2078670D0091C9C4 /* EmotionInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049AFEE42078670D0091C9C4 /* EmotionInputView.swift */; };
+		049AFEF02078670D0091C9C4 /* EmotionInputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 049AFEE52078670D0091C9C4 /* EmotionInputView.xib */; };
+		049AFEF12078670D0091C9C4 /* EmotionLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049AFEE62078670D0091C9C4 /* EmotionLayout.swift */; };
+		049AFEF22078670D0091C9C4 /* EmotionToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049AFEE72078670D0091C9C4 /* EmotionToolbar.swift */; };
 		E90094C22004BD1500B20928 /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90094C12004BD1500B20928 /* TabBar.swift */; };
 		E90094CA2005C13C00B20928 /* ViewConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90094C92005C13C00B20928 /* ViewConstant.swift */; };
 		E90094E420074F8B00B20928 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90094E320074F8B00B20928 /* String+Extension.swift */; };
@@ -84,11 +90,17 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		048E8F9A2077B48800926895 /* EmotionsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmotionsManager.swift; sourceTree = "<group>"; };
-		048E8F9B2077B48800926895 /* EmotionTextAttachment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmotionTextAttachment.swift; sourceTree = "<group>"; };
-		048E8F9D2077B48800926895 /* Emotion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Emotion.swift; sourceTree = "<group>"; };
-		048E8F9E2077B48800926895 /* EmotionPackage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmotionPackage.swift; sourceTree = "<group>"; };
-		048E8F9F2077B48800926895 /* MQLEmotions.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MQLEmotions.bundle; sourceTree = "<group>"; };
+		049AFEDB2078670D0091C9C4 /* EmotionsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmotionsManager.swift; sourceTree = "<group>"; };
+		049AFEDC2078670D0091C9C4 /* EmotionTextAttachment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmotionTextAttachment.swift; sourceTree = "<group>"; };
+		049AFEDE2078670D0091C9C4 /* Emotion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Emotion.swift; sourceTree = "<group>"; };
+		049AFEDF2078670D0091C9C4 /* EmotionPackage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmotionPackage.swift; sourceTree = "<group>"; };
+		049AFEE02078670D0091C9C4 /* MQLEmotions.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MQLEmotions.bundle; sourceTree = "<group>"; };
+		049AFEE22078670D0091C9C4 /* EmotionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmotionCell.swift; sourceTree = "<group>"; };
+		049AFEE32078670D0091C9C4 /* EmotionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmotionCell.xib; sourceTree = "<group>"; };
+		049AFEE42078670D0091C9C4 /* EmotionInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmotionInputView.swift; sourceTree = "<group>"; };
+		049AFEE52078670D0091C9C4 /* EmotionInputView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmotionInputView.xib; sourceTree = "<group>"; };
+		049AFEE62078670D0091C9C4 /* EmotionLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmotionLayout.swift; sourceTree = "<group>"; };
+		049AFEE72078670D0091C9C4 /* EmotionToolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmotionToolbar.swift; sourceTree = "<group>"; };
 		7CCAEF78F37DB261C5BC1F04 /* Pods-WeiBo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeiBo.release.xcconfig"; path = "Pods/Target Support Files/Pods-WeiBo/Pods-WeiBo.release.xcconfig"; sourceTree = "<group>"; };
 		DFD83F2C9283CD656E4B2E5F /* Pods_WeiBo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeiBo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E824298BE511A22086D359E8 /* Pods-WeiBo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeiBo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WeiBo/Pods-WeiBo.debug.xcconfig"; sourceTree = "<group>"; };
@@ -184,24 +196,38 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		048E8F992077B48800926895 /* Emotion */ = {
+		049AFEDA2078670D0091C9C4 /* Emotion */ = {
 			isa = PBXGroup;
 			children = (
-				048E8F9A2077B48800926895 /* EmotionsManager.swift */,
-				048E8F9B2077B48800926895 /* EmotionTextAttachment.swift */,
-				048E8F9C2077B48800926895 /* Model */,
-				048E8F9F2077B48800926895 /* MQLEmotions.bundle */,
+				049AFEDB2078670D0091C9C4 /* EmotionsManager.swift */,
+				049AFEDC2078670D0091C9C4 /* EmotionTextAttachment.swift */,
+				049AFEDD2078670D0091C9C4 /* Model */,
+				049AFEE02078670D0091C9C4 /* MQLEmotions.bundle */,
+				049AFEE12078670D0091C9C4 /* View */,
 			);
 			path = Emotion;
 			sourceTree = "<group>";
 		};
-		048E8F9C2077B48800926895 /* Model */ = {
+		049AFEDD2078670D0091C9C4 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				048E8F9D2077B48800926895 /* Emotion.swift */,
-				048E8F9E2077B48800926895 /* EmotionPackage.swift */,
+				049AFEDE2078670D0091C9C4 /* Emotion.swift */,
+				049AFEDF2078670D0091C9C4 /* EmotionPackage.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		049AFEE12078670D0091C9C4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				049AFEE22078670D0091C9C4 /* EmotionCell.swift */,
+				049AFEE32078670D0091C9C4 /* EmotionCell.xib */,
+				049AFEE42078670D0091C9C4 /* EmotionInputView.swift */,
+				049AFEE52078670D0091C9C4 /* EmotionInputView.xib */,
+				049AFEE62078670D0091C9C4 /* EmotionLayout.swift */,
+				049AFEE72078670D0091C9C4 /* EmotionToolbar.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		7FC7EEA069A220587F459BB7 /* Pods */ = {
@@ -401,7 +427,7 @@
 		E9584ADB20039FFA0001A0E4 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
-				048E8F992077B48800926895 /* Emotion */,
+				049AFEDA2078670D0091C9C4 /* Emotion */,
 				E9DA8486206F27750029F212 /* BYChatLabel */,
 				E96737C32063EFB50074DC77 /* MQLRefreshControl */,
 				E946F46B2021B794000341E4 /* RJBadgeView */,
@@ -575,6 +601,7 @@
 				E9D1F046206893080093D3D3 /* icon_small_kangaroo_loading_1@2x.png in Resources */,
 				E9D85FB52069D0BE0041A325 /* ComposeTypeView.xib in Resources */,
 				E9083212204148D0007B6AFE /* StatusNormalCell.xib in Resources */,
+				049AFEF02078670D0091C9C4 /* EmotionInputView.xib in Resources */,
 				E9DA849F2070F3AE0029F212 /* ComposeViewController.xib in Resources */,
 				E9C562DE20046BB000B7F6DE /* Localizable.strings in Resources */,
 				E9D1F045206893080093D3D3 /* icon_building_loading_1@2x.png in Resources */,
@@ -584,8 +611,9 @@
 				E9C562DA2004683100B7F6DE /* InfoPlist.strings in Resources */,
 				E9C562ED2004B41200B7F6DE /* 应用常规尺寸.jpg in Resources */,
 				E9FF994B203AB987002B8738 /* WelcomeView.xib in Resources */,
-				048E8FA42077B48800926895 /* MQLEmotions.bundle in Resources */,
+				049AFEEC2078670D0091C9C4 /* MQLEmotions.bundle in Resources */,
 				E93B08BA2067AEEA008C3550 /* MQLRefreshView.xib in Resources */,
+				049AFEEE2078670D0091C9C4 /* EmotionCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -648,10 +676,11 @@
 				E9AE3C332051294F0054F7C1 /* BYButton.swift in Sources */,
 				E90094C22004BD1500B20928 /* TabBar.swift in Sources */,
 				E97AB236201AFCBE00E5C267 /* HttpEngine.swift in Sources */,
-				048E8FA22077B48800926895 /* Emotion.swift in Sources */,
+				049AFEEA2078670D0091C9C4 /* Emotion.swift in Sources */,
 				E93B08B92067AEEA008C3550 /* MQLRefreshView.swift in Sources */,
 				E9584AE22003A0DB0001A0E4 /* BaseViewController.swift in Sources */,
-				048E8FA02077B48800926895 /* EmotionsManager.swift in Sources */,
+				049AFEE82078670D0091C9C4 /* EmotionsManager.swift in Sources */,
+				049AFEF22078670D0091C9C4 /* EmotionToolbar.swift in Sources */,
 				E92664352011C35A00ABF849 /* ContentOfVisitorView.swift in Sources */,
 				E932A091203997AE001414E6 /* NewFeatureView.swift in Sources */,
 				E97C01EA20464FCA002D4613 /* PictureContainerView.swift in Sources */,
@@ -662,13 +691,15 @@
 				E9D85FB3206942000041A325 /* ComposeTypeView.swift in Sources */,
 				E904D30D202885DD0061A790 /* ApplicationBaseInfoConstantFromSinaOpenPlatform.swift in Sources */,
 				E9584AE02003A0C00001A0E4 /* MainNavigationController.swift in Sources */,
+				049AFEF12078670D0091C9C4 /* EmotionLayout.swift in Sources */,
 				E9DA84C6207237340029F212 /* ComposeTextView.swift in Sources */,
 				E904D310202889060061A790 /* OAuthViewController.swift in Sources */,
 				E97AB238201B65AE00E5C267 /* HttpEngine+Extension.swift in Sources */,
 				E97AB23C201CAAFD00E5C267 /* WBStatus.swift in Sources */,
 				E90094E420074F8B00B20928 /* String+Extension.swift in Sources */,
 				E96737C52063EFD10074DC77 /* MQLRefreshControl.swift in Sources */,
-				048E8FA12077B48800926895 /* EmotionTextAttachment.swift in Sources */,
+				049AFEED2078670D0091C9C4 /* EmotionCell.swift in Sources */,
+				049AFEE92078670D0091C9C4 /* EmotionTextAttachment.swift in Sources */,
 				E9D85FFC2069F0250041A325 /* ComposeTypeButton.swift in Sources */,
 				E9786A6120404841007EEE77 /* UIImage+Extension.swift in Sources */,
 				E9C562E92004AD6A00B7F6DE /* DiscoveryViewController.swift in Sources */,
@@ -679,10 +710,11 @@
 				E9DA849B206FCD530029F212 /* WebViewController.swift in Sources */,
 				E9DA8482206E8A380029F212 /* NSAttributedString+Extension.swift in Sources */,
 				E90094CA2005C13C00B20928 /* ViewConstant.swift in Sources */,
-				048E8FA32077B48800926895 /* EmotionPackage.swift in Sources */,
+				049AFEEB2078670D0091C9C4 /* EmotionPackage.swift in Sources */,
 				E9083210204148AC007B6AFE /* StatusCellTableViewCell.swift in Sources */,
 				E9DA848D206F27750029F212 /* BYChatLabel.m in Sources */,
 				E90832142043B398007B6AFE /* User.swift in Sources */,
+				049AFEEF2078670D0091C9C4 /* EmotionInputView.swift in Sources */,
 				E9D1F0512068986E0093D3D3 /* MTRefreshView.swift in Sources */,
 				E97AB23E201CB20500E5C267 /* WBStatusListViewModel.swift in Sources */,
 				E94D877320382D6A00871795 /* TitleButton.swift in Sources */,

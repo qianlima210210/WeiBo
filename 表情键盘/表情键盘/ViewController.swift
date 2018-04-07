@@ -74,11 +74,14 @@ class ViewController: UIViewController {
     @IBAction func show(_ sender: UIBarButtonItem) {
         print(EmotionsManager.emotionsManager.stringWithoutAttribute(attributeString: textView.attributedText))
     }
-    
 
 }
 
-
+extension ViewController : UITextViewDelegate {
+    func textViewDidChange(_ textView: UITextView) {
+        print(textView.text)
+    }
+}
 
 
 

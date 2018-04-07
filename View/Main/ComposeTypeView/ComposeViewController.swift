@@ -10,17 +10,22 @@ import UIKit
 
 class ComposeViewController: UIViewController {
 
-    @IBOutlet weak var textView: UITextView!
+    @IBOutlet weak var textView: ComposeTextView!
     @IBOutlet weak var toolBar: UIToolbar!
     @IBOutlet var titleLabel: UILabel!
-    
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
-    
-    
-    /// 发布按钮
+
+    //MARK: 发布按钮
     var rightButton = UIButton(type: UIButtonType.system)
     
-    /// 记录系统键盘高度，供自己的inputView使用
+    //MARK: lazy只能和var一同使用；因为let需要初始值；
+    lazy var emotionInputView: EmotionInputView = {
+        return EmotionInputView.emotionInputView(){[weak self] (emotion: Emotion?) -> Void in
+            self?.textView.insertEmotion(emotion: emotion)
+        }
+    }()
+    
+    //MARK: 记录系统键盘高度，供自己的inputView使用
     var heightOfSystemKeyBoard = CGFloat(0.0)
     
     @objc func exit() -> Void {
@@ -28,7 +33,7 @@ class ComposeViewController: UIViewController {
     }
     
     
-    /// 发布微博
+    //MARK: 发布微博
     @objc func send() -> Void {
         guard let text = textView.text else {
             return
@@ -40,15 +45,14 @@ class ComposeViewController: UIViewController {
         }
     }
     
-    /// 点击表情按钮
+    //MARK: 点击表情按钮
     @objc func emotionButtonClicked() {
         //当控件使用系统提供的键盘时，textView.inputView为nil
         //1.创建自己的inputView(x, y, width值任意)
-        let inputView = UIView(frame:CGRect(x: 0.0, y: 0.0, width: 0.0, height: heightOfSystemKeyBoard))
-        inputView.backgroundColor = UIColor.cyan
+        emotionInputView.frame = CGRect(x: 0.0, y: 0.0, width: 0.0, height: heightOfSystemKeyBoard)
         
         //2.赋值给textView
-        textView.inputView = (textView.inputView == nil) ? inputView : nil
+        textView.inputView = (textView.inputView == nil) ? emotionInputView : nil
         
         //3.加载显示
         textView.reloadInputViews()
@@ -74,7 +78,7 @@ class ComposeViewController: UIViewController {
         textView.resignFirstResponder()
     }
     
-    /// 注册通知
+    //MARK: 注册通知
     func registerNotification() -> Void {
         NotificationCenter.default.addObserver(self, selector: #selector(receivedNotification(n:)), name: Notification.Name.UIKeyboardWillChangeFrame, object: nil)
     }
@@ -170,6 +174,7 @@ private extension ComposeViewController {
         navigationItem.titleView = titleLabel
         
     }
+    
 }
 
 extension ComposeViewController : UITextViewDelegate {
