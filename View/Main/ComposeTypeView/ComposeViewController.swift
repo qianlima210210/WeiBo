@@ -19,7 +19,7 @@ class ComposeViewController: UIViewController {
     var rightButton = UIButton(type: UIButtonType.system)
     
     //MARK: lazy只能和var一同使用；因为let需要初始值；
-    lazy var emotionInputView: EmotionInputView = {
+     lazy var emotionInputView: EmotionInputView = {
         return EmotionInputView.emotionInputView(){[weak self] (emotion: Emotion?) -> Void in
             self?.textView.insertEmotion(emotion: emotion)
         }
@@ -35,9 +35,9 @@ class ComposeViewController: UIViewController {
     
     //MARK: 发布微博
     @objc func send() -> Void {
-        guard let text = textView.text else {
-            return
-        }
+        let attributedText = textView.attributedText
+        let text = EmotionsManager.emotionsManager.stringWithoutAttribute(attributeString: attributedText)
+        
         
         //发布微博
         HttpEngine.httpEngine.publishWeiBo(text: text) { (dic:[String:Any]?, error: Error?) in

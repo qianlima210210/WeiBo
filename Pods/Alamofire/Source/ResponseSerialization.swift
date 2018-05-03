@@ -111,7 +111,7 @@ extension DataRequest {
     ///
     /// - returns: The request.
     @discardableResult
-    public func response(queue: DispatchQueue? = nil, completionHandler: @escaping (DefaultDataResponse) -> Void) -> Self {
+    public func  response(queue: DispatchQueue? = nil, completionHandler: @escaping (DefaultDataResponse) -> Void) -> Self {
         delegate.queue.addOperation {
             (queue ?? DispatchQueue.main).async {
                 var dataResponse = DefaultDataResponse(

@@ -95,6 +95,17 @@ class HttpEngine: NSObject {
         return dataRequest
     }
     
+    /// 文件、参数上传请求
+    ///
+    /// - Parameters:
+    ///   - url: 请求地址
+    ///   - parameters: 参数信息
+    ///   - name: 服务端需要的字段
+    ///   - data: 文件二进制流
+    ///   - encoding: 参数编码方式
+    ///   - headers: 请求头
+    ///   - completionHandler: 完成回调
+    /// - Returns:
     func postHttpRequestAfterLogoned(
         url: String,
         parameters: [String:Any]?,
@@ -133,6 +144,7 @@ class HttpEngine: NSObject {
         let request = URLRequest(url: url)
         
         //调用AF
+        var dataRequest: DataRequest?
         upload(multipartFormData: { (formData) in
             //添加文件数据
             formData.append(data, withName: "pic", mimeType: "image/png")
@@ -148,18 +160,20 @@ class HttpEngine: NSObject {
             }
             
         }, with: request) { (result: SessionManager.MultipartFormDataEncodingResult) in
+            print(result)
             switch result {
                 
             case .success(let request, _,  _):
-                request.response(completionHandler: { (response) in
-                    
+                dataRequest = request.response(completionHandler: { (response) in
+                    print(response)
                 })
             case .failure(_):
+                print(errno)
                 break
             }
         }
         
-        return nil
+        return dataRequest
     }
     
     /// 发送登录前的http请求

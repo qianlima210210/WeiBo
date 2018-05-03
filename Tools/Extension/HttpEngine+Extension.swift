@@ -163,10 +163,12 @@ extension HttpEngine {
         let parameters = ["status":text]
         let url = "http://api.weibo.com/2/statuses/update.json"
         
-        dataRequestOfPublishWeiBo = httpRequestAfterLogoned(url: url, method: .post, parameters: parameters, encoding: URLEncoding.default, headers: nil) { (value: Any?, error: Error?) in
-            print(value ?? "")
-            print(error ?? "")
-        }
+//        dataRequestOfPublishWeiBo = httpRequestAfterLogoned(url: url, method: .post, parameters: parameters, encoding: URLEncoding.default, headers: nil) { (value: Any?, error: Error?) in
+//            print(value ?? "")
+//            print(error ?? "")
+        dataRequestOfPublishWeiBo = postHttpRequestAfterLogoned(url: url, parameters: parameters, name: "pcc", data: Data.init(), completionHandler: { (_, error) in
+            
+        })
     }
     
     /// 取消发布微博

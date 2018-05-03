@@ -137,7 +137,7 @@ class Rectangle {
 var origin: Point = Point()
 var size: Size = Size()
 
-// 计算型属性：（1）必须用var（2）属性的类型不可以省略 （3）如果要想修改属性的值，必须写setter方法，否则只有一个getter方法
+// 计算型属性：（1）必须用var（2）属性的类型不可以省略 （3）如果要想修改属性的值，必须写set方法，否则只有一个get方法
 var center: Point {
 
 get {
@@ -832,8 +832,58 @@ print(emotion)
 问题是pod install完成后还是提示：解决Swift中出现 No such module 'YYModel'
 解决办法是在build phases中的link binary with libraries中先删除pods_xxx.framework，再重新添加一次就好了
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#import <Foundation/Foundation.h>
+
+int main(int argc, const char * argv[]) {
 
 
+    NSMutableData * data = [[NSMutableData alloc]init];
+
+    //拼接字节流
+    {
+        char type = 0x61;
+        short length = 0;
+        NSString *name = @"值值值你的值";
+        NSData *value = [name dataUsingEncoding:NSUTF8StringEncoding];
+
+        length = value.length;
+
+        [data appendBytes:&type length:1];
+        [data appendBytes:&length length:2];
+        //[data appendData:value];
+        [data appendBytes:value.bytes length:value.length];
+    }
+
+    //解析字节流
+    {
+        char* pointer = (char*)[data bytes];
+        char type = *pointer;
+        if (type == 0x61) {
+            NSLog(@"类型是 0x61");
+
+            pointer++;
+            short length0 = *pointer;//低位字节
+
+            pointer++;
+            short length1 = *pointer << 8;//高位字节
+
+            short length = length1 + length0;
+            NSLog(@"%hu", length);
+
+            pointer++;
+            NSMutableData *data =  [[NSMutableData alloc] initWithCapacity:length];
+            [data appendBytes:pointer length:length];
+
+            NSString *value = [[NSString alloc]initWithData:data encoding:4];
+            NSLog(@"%@", value);
+        }
+
+    }
+
+    return 0;
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 
