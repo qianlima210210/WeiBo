@@ -107,6 +107,14 @@ class BaseViewController: UIViewController {
 }
 
 //MARK: 设备旋转
+/*流程说明
+
+首先，对于任意一个viewController，iOS会以info.plist中的设置和当前viewController的preferredInterfaceOrientationForPresentation和supportedInterfaceOrientations三者支持的方法做一个交运算，若交集不为空，则以preferredInterfaceOrientationForPresentation为初始方向，交集中的所有方向均支持，但仅在shouldAutorotate返回YES时，允许从初始方向旋转至其他方向。若交集为空，进入viewController时即crash，错误信息中会提示交集为空。
+
+其次，UINavigationController稍有些特别，难以用常规API做到同一个naviVC中的ViewController在不同方向间自如地切换。(如果去SO之类的地方搜索，会找到一个present empty viewController and then dismiss it之类的hacky trick，不太建议使用)，如果要在横竖屏间切换，建议使用presentXXX方法。
+
+再次，AppDelegate中有一个委托方法可以动态的设置应用支持的旋转方向，且此委托的返回值会覆盖info.plist中的固定设置。使用该方法的便利之处不言自明，但缺点是搞明白当前哪个ViewController即将要被显示，很可能会导致耦合增加；
+*/
 extension BaseViewController {
     override var shouldAutorotate: Bool {
         return false
