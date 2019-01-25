@@ -12,7 +12,7 @@
 2、点击它，点击右边的Localize...
 3、选择English，点击Localize
 4、点击Localizable.strings，将其他语言勾选上
-5、为每种语言编写TestKey = "test";
+5、为每种语言编写"TestKey" = "test";
 6、应用内使用NSLocalizedString("TestKey", comment: "")获取字符串
 
 
